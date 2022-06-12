@@ -1,0 +1,63 @@
+@import '../../../sass/mixins'
+
+.card
+    flex: 1 1 0
+    perspective: 75vw
+    cursor: pointer
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
+    &__side
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        border-radius: var(--border-radius-normal)
+        transition: transform .6s ease-in-out
+        backface-visibility: hidden
+        overflow: hidden
+
+        &--front
+            transform: rotateY(0deg)
+
+        &--first
+            background-image: linear-gradient(var(--main-color-1), var(--main-color-3))
+
+            &::before
+                @include before-after
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                // background-image: radial-gradient(ellipse at center, var(--main-color-1), #888 70%)
+                background-image: linear-gradient(90deg, #888, var(--main-color-1), #888)
+
+            &::after
+                @include before-after
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+
+                background-image: linear-gradient(#666, #666)
+                mask-image: url('../../../media/pat_correct.svg')
+                mask-size: 58px
+                mask-position: center
+
+        &--second
+            background-color: var(--main-color-2)
+        &--third
+            background-color: var(--main-color-3)
+
+        &--back
+            transform: rotateY(180deg)
+
+            &::after
+                background-color: #ddd
+                background-image: unset
+                mask-image: unset
+
+    &:hover &__side--front
+        transform: rotateY(-180deg)
+
+    &:hover &__side--back
+        transform: rotateY(0deg)

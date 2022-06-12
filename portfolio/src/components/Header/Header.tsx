@@ -1,4 +1,3 @@
-import React from 'react';
 import bemCssModules from 'bem-css-modules';
 
 import headerStyles from './Header.module.sass';
