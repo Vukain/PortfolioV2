@@ -1,63 +1,120 @@
 @import '../../../sass/mixins'
 
+@keyframes background-position
+    0%
+        background-position: 0% 0%
+    50%
+        background-position: 100% 0%
+    100%
+        background-position: 0% 0%
+
+@keyframes background-position-radial
+    0%
+        background-position: 0% 0%
+    25%
+        background-position: 0% 100%
+
+    50%
+        background-position: 100% 100%
+
+    75%
+        background-position: 100% 0%
+
+    100%
+        background-position: 0% 0%
+
+%side
+    @include zero-hundred
+    position: absolute
+    z-index: 3
+    border-radius: var(--border-radius-normal)
+    transition: transform .6s ease-in-out
+    backface-visibility: hidden
+    overflow: hidden
+
 .card
     flex: 1 1 0
     perspective: 75vw
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
-    &__side
-        position: absolute
-        width: 100%
-        height: 100%
-        top: 0
-        left: 0
-        border-radius: var(--border-radius-normal)
-        transition: transform .6s ease-in-out
-        backface-visibility: hidden
-        overflow: hidden
 
-        &--front
-            transform: rotateY(0deg)
+    &__front
+        @extend %side
+        transform: rotateY(0deg)
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        background-color: var(--grey-medium)
+        border: 6px solid var(--grey-medium)
+        z-index: 4
+        &::before
+            @include before-after
+            @include zero-hundred
+            border-radius: calc(var(--border-radius-normal) * 3/5)
+            z-index: 1
+            background-size: 600%
+            animation: background-position 8s infinite
+        &::after
+            @include before-after
+            @include zero-hundred
+            border-radius: calc(var(--border-radius-normal) * 3/5)
+            background-color: var(--grey-dark)
+            // background-image: radial-gradient( var(--grey-dark) 30%, var(--grey-medium))
+            // background-size: 300% 300%
+            // animation: background-position-radial 6s infinite
+            // background-image: radial-gradient( ellipse at center, var(--grey-medium), var(--grey-dark))
+            // background-image: linear-gradient(45deg, var(--grey-medium), var(--grey-dark) 70%)
+            // background-size: 400%
+            // animation: background-position 6s infinite
+            mask-image: url('../../../media/pat_correct.svg')
+            mask-size: 58px
+            mask-position: center
+            z-index: 2
 
         &--first
-            background-image: linear-gradient(var(--main-color-1), var(--main-color-3))
-
             &::before
-                @include before-after
-                top: 0
-                left: 0
-                width: 100%
-                height: 100%
-                // background-image: radial-gradient(ellipse at center, var(--main-color-1), #888 70%)
-                background-image: linear-gradient(90deg, #888, var(--main-color-1), #888)
-
-            &::after
-                @include before-after
-                top: 0
-                left: 0
-                width: 100%
-                height: 100%
-
-                background-image: linear-gradient(#666, #666)
-                mask-image: url('../../../media/pat_correct.svg')
-                mask-size: 58px
-                mask-position: center
+                @include gradient-middle(90deg, var(--color-main-1), var(--grey-medium))
 
         &--second
-            background-color: var(--main-color-2)
+            &::before
+                @include gradient-middle(90deg, var(--color-main-2), var(--grey-medium))
+
         &--third
-            background-color: var(--main-color-3)
+            &::before
+                @include gradient-middle(90deg, var(--color-main-3), var(--grey-medium))
 
-        &--back
-            transform: rotateY(180deg)
+    &__back
+        @extend %side
+        transform: rotateY(180deg)
+        &::after
+            @include before-after
+            @include zero-hundred
+            background-color: var(--grey-light)
 
-            &::after
-                background-color: #ddd
-                background-image: unset
-                mask-image: unset
+        // &--first
+        // &--second
+        // &--third
 
-    &:hover &__side--front
+    &:hover &__front
         transform: rotateY(-180deg)
 
-    &:hover &__side--back
+    &:hover &__back
         transform: rotateY(0deg)
+
+    &__title
+        display: block
+        position: relative
+        padding: 15px 40px
+        z-index: 4
+        font-size: 40px
+        text-transform: uppercase
+        background-color: var(--grey-dark)
+        border-radius: var(--border-radius-big)
+
+        &--first
+            color: var(--color-main-1)
+        &--second
+            color: var(--color-main-2)
+        &--third
+            color: var(--color-main-3)

@@ -8,7 +8,6 @@ const Header: React.FC = (props) => {
 
     return (
         <div className={style()}>
-            Hello
         </div>
     );
 }
