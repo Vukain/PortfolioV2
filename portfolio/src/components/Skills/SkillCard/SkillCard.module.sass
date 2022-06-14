@@ -45,44 +45,37 @@
         flex-direction: column
         align-items: center
         justify-content: center
-        background-color: var(--grey-medium)
-        border: 6px solid var(--grey-medium)
         z-index: 4
         &::before
             @include before-after
             @include zero-hundred
             border-radius: calc(var(--border-radius-normal) * 3/5)
             z-index: 1
-            background-size: 600%
-            animation: background-position 8s infinite
+            background-size: 400%
+            animation: background-position 10s ease infinite
+
         &::after
             @include before-after
-            @include zero-hundred
             border-radius: calc(var(--border-radius-normal) * 3/5)
-            background-color: var(--grey-dark)
-            // background-image: radial-gradient( var(--grey-dark) 30%, var(--grey-medium))
-            // background-size: 300% 300%
-            // animation: background-position-radial 6s infinite
-            // background-image: radial-gradient( ellipse at center, var(--grey-medium), var(--grey-dark))
-            // background-image: linear-gradient(45deg, var(--grey-medium), var(--grey-dark) 70%)
-            // background-size: 400%
-            // animation: background-position 6s infinite
-            mask-image: url('../../../media/pat_correct.svg')
-            mask-size: 58px
+            background-color: var(--background-color-2)
+            mask-image: url('../../../media/romboid_small.svg')
+            mask-size: 61px
             mask-position: center
             z-index: 2
+            top: 6px
+            left: 6px
+            bottom: 6px
+            right: 6px
 
         &--first
             &::before
-                @include gradient-middle(90deg, var(--color-main-1), var(--grey-medium))
-
+                @include gradient-middle(-45deg, var(--color-main-1), var(--grey-medium))
         &--second
             &::before
-                @include gradient-middle(90deg, var(--color-main-2), var(--grey-medium))
-
+                @include gradient-middle(-45deg, var(--color-main-2), var(--grey-medium))
         &--third
             &::before
-                @include gradient-middle(90deg, var(--color-main-3), var(--grey-medium))
+                @include gradient-middle(-45deg, var(--color-main-3), var(--grey-medium))
 
     &__back
         @extend %side
@@ -109,7 +102,7 @@
         z-index: 4
         font-size: 40px
         text-transform: uppercase
-        background-color: var(--grey-dark)
+        background-color: var(--background-color-2)
         border-radius: var(--border-radius-big)
 
         &--first
