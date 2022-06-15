@@ -27,10 +27,13 @@
     @include zero-hundred
     position: absolute
     z-index: 3
+    display: flex
+    flex-direction: column
+    align-items: center
     border-radius: var(--border-radius-normal)
-    transition: transform .6s ease-in-out
     backface-visibility: hidden
     overflow: hidden
+    transition: transform .6s ease-in-out
 
 .card
     flex: 1 1 0
@@ -41,31 +44,27 @@
     &__front
         @extend %side
         transform: rotateY(0deg)
-        display: flex
-        flex-direction: column
-        align-items: center
         justify-content: center
-        z-index: 4
         &::before
             @include before-after
             @include zero-hundred
-            border-radius: calc(var(--border-radius-normal) * 3/5)
+            border-radius: var(--border-radius-normal)
             z-index: 1
             background-size: 400%
             animation: background-position 10s ease infinite
 
         &::after
             @include before-after
+            top: 6px
+            left: 6px
+            bottom: 6px
+            right: 6px
             border-radius: calc(var(--border-radius-normal) * 3/5)
             background-color: var(--background-color-2)
             mask-image: url('../../../media/romboid_small.svg')
             mask-size: 61px
             mask-position: center
             z-index: 2
-            top: 6px
-            left: 6px
-            bottom: 6px
-            right: 6px
 
         &--first
             &::before
@@ -80,10 +79,32 @@
     &__back
         @extend %side
         transform: rotateY(180deg)
-        &::after
+        justify-content: space-between
+        &::before
             @include before-after
             @include zero-hundred
-            background-color: var(--grey-light)
+            border-radius: var(--border-radius-normal)
+            z-index: -2
+
+        &::after
+            @include before-after
+            top: 18%
+            left: 6px
+            bottom: 6px
+            right: 6px
+            border-radius: 0 0 calc(var(--border-radius-normal) * 3/5) calc(var(--border-radius-normal) * 3/5)
+            background-color: var(--background-color-2)
+            z-index: -1
+            clip-path: polygon(0 12%, 100% 0, 100% 100%, 0% 100%)
+        &--first
+            &::before
+                background-color: var(--color-main-1)
+        &--second
+            &::before
+                background-color: var(--color-main-2)
+        &--third
+            &::before
+                background-color: var(--color-main-3)
 
         // &--first
         // &--second
@@ -100,7 +121,7 @@
         position: relative
         padding: 15px 40px
         z-index: 4
-        font-size: 40px
+        font-size: var(--font-size-heading-2)
         text-transform: uppercase
         background-color: var(--background-color-2)
         border-radius: var(--border-radius-big)
@@ -111,3 +132,44 @@
             color: var(--color-main-2)
         &--third
             color: var(--color-main-3)
+
+        &--back
+            border-radius: 0
+            margin: 11% 0 0 0
+            transform: skewY(-7.5deg)
+            width: calc(100% - 12px)
+
+    &__icon
+        // width: calc(100% - 12px)
+        // height: 10%
+        height: 5vh
+        width: 5vh
+        position: relative
+        z-index: 4
+        align-self: end
+        margin: 0 16px 16px 0
+        &_image
+            &--first
+                fill: var(--color-main-1)
+            &--second
+                fill: var(--color-main-2)
+            &--third
+                fill: var(--color-main-3)
+
+    &__skills
+        color: var(--grey-light)
+        padding: 0
+        list-style-type: none
+        margin-bottom: -5vh
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__skill
+        font-size: var(--font-size-normal)
+        text-transform: uppercase
+        line-height: 1.6em
+        display: inline-block
+        padding: 0 10px 0 10px
+        &:not(:last-child)
+            border-bottom: 2px solid var(--grey-light)
