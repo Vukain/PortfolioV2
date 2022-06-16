@@ -15,8 +15,9 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
     const styles = bemCssModules(skillCardStyles);
 
     const position: { [key: string]: boolean } = {};
-
     position[props.position] = true;
+
+    // const position: Record<MyProps['position'], boolean> = {};
 
     // type Position = { first?: boolean, second?: boolean, third?: boolean };
     // const first: boolean = props.position === 'first';
@@ -24,7 +25,8 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
     // const third: boolean = props.position === 'third';
     // const position: Position = { first, second, third };
 
-    type CardData = { [key: string]: { title: string, icon: JSX.Element, skills: string[] } };
+    // type CardData = { [key: string]: { title: string, icon: JSX.Element, skills: string[] } };
+    type CardData = Record<MyProps['position'], { title: string, icon: JSX.Element, skills: string[] }>;
 
     const cardData: CardData = {
         first: { title: 'frontend', icon: <FrontendIcon className={styles('icon_image', position)} />, skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
@@ -36,7 +38,6 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
         <div className={styles()}>
             <div className={styles('front', position)}>
                 <h2 className={styles('title', position)}>{cardData[props.position].title}</h2>
-
             </div>
             <div className={styles('back', position)}>
                 <h2 className={styles('title', { ...position, back: true })}>{cardData[props.position].title}</h2>
