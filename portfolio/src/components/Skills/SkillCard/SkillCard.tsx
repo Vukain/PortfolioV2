@@ -14,16 +14,15 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
 
     const styles = bemCssModules(skillCardStyles);
 
-    const position: { [key: string]: boolean } = {};
-    position[props.position] = true;
+    const position: Partial<Record<MyProps['position'], boolean>> = {};
 
-    // const position: Record<MyProps['position'], boolean> = {};
+    // const position: { [key: string]: boolean } = {};
 
     // type Position = { first?: boolean, second?: boolean, third?: boolean };
-    // const first: boolean = props.position === 'first';
-    // const second: boolean = props.position === 'second';
-    // const third: boolean = props.position === 'third';
-    // const position: Position = { first, second, third };
+    // const position: Position = {};
+
+    position[props.position] = true;
+
 
     // type CardData = { [key: string]: { title: string, icon: JSX.Element, skills: string[] } };
     type CardData = Record<MyProps['position'], { title: string, icon: JSX.Element, skills: string[] }>;
