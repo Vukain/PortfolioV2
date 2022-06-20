@@ -12,9 +12,6 @@
     @include zero-hundred
     position: absolute
     z-index: 3
-    display: flex
-    flex-direction: column
-    align-items: center
     border-radius: var(--border-radius-normal)
     backface-visibility: hidden
     overflow: hidden
@@ -28,6 +25,9 @@
 
     &__front
         @extend %side
+        display: flex
+        flex-direction: column
+        align-items: center
         transform: rotateY(0deg)
         justify-content: center
         &::before
@@ -39,14 +39,14 @@
             animation: background-position 10s ease infinite
         &::after
             @include before-after
-            top: 6px
-            left: 6px
-            bottom: 6px
-            right: 6px
+            top: var(--card-border-size)
+            left: var(--card-border-size)
+            bottom: var(--card-border-size)
+            right: var(--card-border-size)
             border-radius: calc(var(--border-radius-normal) * 3/5)
             background-color: var(--background-color-2)
             mask-image: url('../../../media/romboid_small.svg')
-            mask-size: 61px
+            mask-size: var(--card-mask-size)
             mask-position: center
             z-index: 2
 
@@ -64,25 +64,31 @@
 
     &__back
         @extend %side
+        display: block
+        position: relative
         transform: rotateY(180deg)
         justify-content: space-between
+        display: flex
+        justify-content: center
+        align-items: center
         &::before
             @include before-after
             @include zero-hundred
             border-radius: var(--border-radius-normal)
             z-index: -2
-            background-size: 100%
+            background-size: 80%
+            background-position: 50% 25%
 
-        &::after
-            @include before-after
-            top: 18%
-            left: 6px
-            bottom: 6px
-            right: 6px
-            border-radius: 0 0 calc(var(--border-radius-normal) * 3/5) calc(var(--border-radius-normal) * 3/5)
-            background-color: var(--background-color-2)
-            z-index: -1
-            clip-path: polygon(0 12%, 100% 0, 100% 100%, 0% 100%)
+        // &::after
+        //     @include before-after
+        //     top: 18%
+        //     left: 6px
+        //     bottom: 6px
+        //     right: 6px
+        //     border-radius: 0 0 calc(var(--border-radius-normal) * 3/5) calc(var(--border-radius-normal) * 3/5)
+        //     background-color: var(--background-color-2)
+        //     z-index: -1
+        //     clip-path: polygon(0 12%, 100% 0, 100% 100%, 0% 100%)
 
         &--first
             &::before
@@ -105,6 +111,18 @@
     &:hover &__back
         transform: rotateY(0deg)
 
+    &__skew_wrapper
+        position: absolute
+        top: var(--card-border-size)
+        left: var(--card-border-size)
+        bottom: var(--card-border-size)
+        right: var(--card-border-size)
+        border-radius: calc(var(--border-radius-normal) * 3/5)
+        // background-color: red
+        overflow: hidden
+        display: flex
+        flex-direction: column
+
     &__title
         display: block
         position: relative
@@ -126,18 +144,21 @@
 
         &--back
             border-radius: 0
-            margin: 11% 0 0 0
+            margin: 5vh 0 var(--card-border-size) 0
+            padding: 15px 0
             transform: skewY(-7.5deg)
-            width: calc(100% - 12px)
+            width: 100%
 
     &__icon
-        height: 5vh
-        width: 5vh
         position: relative
         z-index: 4
         align-self: end
-        margin: 0 16px 16px 0
+        margin: 0 2vh 2vh 0
+
         &_image
+            height: 4vh
+            width: 4vh
+
             &--first
                 fill: var(--color-main-1)
 
@@ -148,13 +169,23 @@
                 fill: var(--color-main-3)
 
     &__skills
+        flex-grow: 1
         color: var(--grey-light)
         padding: 0
         list-style-type: none
-        margin-bottom: -5vh
+        margin-bottom: -4vh
         display: flex
         flex-direction: column
         align-items: center
+        justify-content: center
+        position: relative
+        &::before
+            @include before-after
+            @include zero-hundred
+            height: 120%
+            background-color: var(--background-color-2)
+            transform: skewY(-7.5deg)
+            z-index: -1
 
     &__skill
         font-size: var(--font-size-normal)
@@ -162,5 +193,16 @@
         line-height: 1.6em
         display: inline-block
         padding: 0 10px 0 10px
+
+        &--first
+            border-color: var(--color-main-1)
+
+        &--second
+            border-color: var(--color-main-2)
+
+        &--third
+            border-color: var(--color-main-3)
+
         &:not(:last-child)
-            border-bottom: 2px solid var(--grey-light)
+            border-width: 2px
+            border-bottom-style: solid

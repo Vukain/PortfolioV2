@@ -38,12 +38,14 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
                 <h2 className={styles('title', position)}>{cardData[props.position].title}</h2>
             </div>
             <div className={styles('back', position)}>
-                <h2 className={styles('title', { ...position, back: true })}>{cardData[props.position].title}</h2>
-                <ul className={styles('skills')}>
-                    {cardData[props.position].skills.map((skill, idx) => <li className={styles('skill')} key={idx}>{skill}</li>)}
-                </ul>
-                <div className={styles('icon')}>
-                    {cardData[props.position].icon}
+                <div className={styles('skew_wrapper')}>
+                    <h2 className={styles('title', { ...position, back: true })}>{cardData[props.position].title}</h2>
+                    <ul className={styles('skills')}>
+                        {cardData[props.position].skills.map((skill, idx) => <li className={styles('skill', position)} key={idx}>{skill}</li>)}
+                    </ul>
+                    <div className={styles('icon')}>
+                        {cardData[props.position].icon}
+                    </div>
                 </div>
             </div>
         </div>
