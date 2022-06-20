@@ -14,17 +14,16 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
 
     const styles = bemCssModules(skillCardStyles);
 
-    const position: Partial<Record<MyProps['position'], boolean>> = {};
-
-    // const position: { [key: string]: boolean } = {};
-
     // type Position = { first?: boolean, second?: boolean, third?: boolean };
     // const position: Position = {};
+    // const position: { [key: string]: boolean } = {};\
+
+    const position: Partial<Record<MyProps['position'], boolean>> = {};
 
     position[props.position] = true;
 
-
     // type CardData = { [key: string]: { title: string, icon: JSX.Element, skills: string[] } };
+
     type CardData = Record<MyProps['position'], { title: string, icon: JSX.Element, skills: string[] }>;
 
     const cardData: CardData = {
@@ -41,7 +40,7 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
             <div className={styles('back', position)}>
                 <h2 className={styles('title', { ...position, back: true })}>{cardData[props.position].title}</h2>
                 <ul className={styles('skills')}>
-                    {cardData[props.position].skills.map(skill => <li className={styles('skill')}>{skill}</li>)}
+                    {cardData[props.position].skills.map((skill, idx) => <li className={styles('skill')} key={idx}>{skill}</li>)}
                 </ul>
                 <div className={styles('icon')}>
                     {cardData[props.position].icon}

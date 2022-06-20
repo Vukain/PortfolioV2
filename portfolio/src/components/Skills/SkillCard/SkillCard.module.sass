@@ -8,21 +8,6 @@
     100%
         background-position: 0% 0%
 
-@keyframes background-position-radial
-    0%
-        background-position: 0% 0%
-    25%
-        background-position: 0% 100%
-
-    50%
-        background-position: 100% 100%
-
-    75%
-        background-position: 100% 0%
-
-    100%
-        background-position: 0% 0%
-
 %side
     @include zero-hundred
     position: absolute
@@ -52,7 +37,6 @@
             z-index: 1
             background-size: 400%
             animation: background-position 10s ease infinite
-
         &::after
             @include before-after
             top: 6px
@@ -69,9 +53,11 @@
         &--first
             &::before
                 @include gradient-middle(-45deg, var(--color-main-1), var(--grey-medium))
+
         &--second
             &::before
                 @include gradient-middle(-45deg, var(--color-main-2), var(--grey-medium))
+
         &--third
             &::before
                 @include gradient-middle(-45deg, var(--color-main-3), var(--grey-medium))
@@ -85,6 +71,7 @@
             @include zero-hundred
             border-radius: var(--border-radius-normal)
             z-index: -2
+            background-size: 100%
 
         &::after
             @include before-after
@@ -96,15 +83,17 @@
             background-color: var(--background-color-2)
             z-index: -1
             clip-path: polygon(0 12%, 100% 0, 100% 100%, 0% 100%)
+
         &--first
             &::before
-                background-color: var(--color-main-1)
+                background-image: url('../../../media/bg1.svg'), linear-gradient(var(--color-main-1), var(--color-main-1))
+
         &--second
             &::before
-                background-color: var(--color-main-2)
+                background-image: url('../../../media/bg2.svg'), linear-gradient(var(--color-main-2), var(--color-main-2))
         &--third
             &::before
-                background-color: var(--color-main-3)
+                background-image: url('../../../media/bg3.svg'), linear-gradient(var(--color-main-3), var(--color-main-3))
 
         // &--first
         // &--second
@@ -128,8 +117,10 @@
 
         &--first
             color: var(--color-main-1)
+
         &--second
             color: var(--color-main-2)
+
         &--third
             color: var(--color-main-3)
 
@@ -140,8 +131,6 @@
             width: calc(100% - 12px)
 
     &__icon
-        // width: calc(100% - 12px)
-        // height: 10%
         height: 5vh
         width: 5vh
         position: relative
@@ -151,8 +140,10 @@
         &_image
             &--first
                 fill: var(--color-main-1)
+
             &--second
                 fill: var(--color-main-2)
+
             &--third
                 fill: var(--color-main-3)
 
