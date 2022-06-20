@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.c1d9e9d3.css",
-    "main.js": "/PortfolioV2/static/js/main.96391976.js",
+    "main.css": "/PortfolioV2/static/css/main.2b01047a.css",
+    "main.js": "/PortfolioV2/static/js/main.cba37201.js",
+    "static/media/bg1.svg": "/PortfolioV2/static/media/bg1.706457661416f2f2aaba.svg",
+    "static/media/bg2.svg": "/PortfolioV2/static/media/bg2.91bacf1b7fd0a94274b0.svg",
+    "static/media/bg3.svg": "/PortfolioV2/static/media/bg3.27480bfbab82004ba787.svg",
     "static/media/tools-2.svg": "/PortfolioV2/static/media/tools-2.2f10c80fc2a9824b4d2002da91305290.svg",
     "static/media/tools.svg": "/PortfolioV2/static/media/tools.5ab5f3ad8d3c68c00195dd6dd774a33d.svg",
     "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.eaa2fbd3dccd8c283d587a9da44020e7.svg",
     "index.html": "/PortfolioV2/index.html",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
-    "main.c1d9e9d3.css.map": "/PortfolioV2/static/css/main.c1d9e9d3.css.map",
-    "main.96391976.js.map": "/PortfolioV2/static/js/main.96391976.js.map"
+    "main.2b01047a.css.map": "/PortfolioV2/static/css/main.2b01047a.css.map",
+    "main.cba37201.js.map": "/PortfolioV2/static/js/main.cba37201.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1d9e9d3.css",
-    "static/js/main.96391976.js"
+    "static/css/main.2b01047a.css",
+    "static/js/main.cba37201.js"
   ]
 }
