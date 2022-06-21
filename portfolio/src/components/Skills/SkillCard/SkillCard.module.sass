@@ -12,9 +12,9 @@
     @include zero-hundred
     position: absolute
     z-index: 3
-    border-radius: var(--border-radius-normal)
     backface-visibility: hidden
     overflow: hidden
+    border-radius: var(--border-radius-normal)
     transition: transform .6s ease-in-out
 
 .card
@@ -25,20 +25,18 @@
 
     &__front
         @extend %side
-        display: flex
+        @include flex-center
         flex-direction: column
-        align-items: center
-        transform: rotateY(0deg)
-        justify-content: center
         &::before
             @include before-after
             @include zero-hundred
-            border-radius: var(--border-radius-normal)
             z-index: 1
+            border-radius: var(--border-radius-normal)
             background-size: 400%
             animation: background-position 10s ease infinite
         &::after
             @include before-after
+            z-index: 2
             top: var(--card-border-size)
             left: var(--card-border-size)
             bottom: var(--card-border-size)
@@ -48,62 +46,42 @@
             mask-image: url('../../../media/romboid_small.svg')
             mask-size: var(--card-mask-size)
             mask-position: center
-            z-index: 2
 
-        &--first
+        &--frontend
             &::before
-                @include gradient-middle(-45deg, var(--color-main-1), var(--grey-medium))
+                background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-1), var(--grey-medium))
 
-        &--second
+        &--backend
             &::before
-                @include gradient-middle(-45deg, var(--color-main-2), var(--grey-medium))
+                background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-2), var(--grey-medium))
 
-        &--third
+        &--grafika
             &::before
-                @include gradient-middle(-45deg, var(--color-main-3), var(--grey-medium))
+                background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-3), var(--grey-medium))
 
     &__back
         @extend %side
         display: block
-        position: relative
         transform: rotateY(180deg)
-        justify-content: space-between
-        display: flex
-        justify-content: center
-        align-items: center
         &::before
             @include before-after
             @include zero-hundred
-            border-radius: var(--border-radius-normal)
             z-index: -2
+            border-radius: var(--border-radius-normal)
             background-size: 80%
             background-position: 50% 25%
 
-        // &::after
-        //     @include before-after
-        //     top: 18%
-        //     left: 6px
-        //     bottom: 6px
-        //     right: 6px
-        //     border-radius: 0 0 calc(var(--border-radius-normal) * 3/5) calc(var(--border-radius-normal) * 3/5)
-        //     background-color: var(--background-color-2)
-        //     z-index: -1
-        //     clip-path: polygon(0 12%, 100% 0, 100% 100%, 0% 100%)
-
-        &--first
+        &--frontend
             &::before
                 background-image: url('../../../media/bg1.svg'), linear-gradient(var(--color-main-1), var(--color-main-1))
 
-        &--second
+        &--backend
             &::before
                 background-image: url('../../../media/bg2.svg'), linear-gradient(var(--color-main-2), var(--color-main-2))
-        &--third
+
+        &--grafika
             &::before
                 background-image: url('../../../media/bg3.svg'), linear-gradient(var(--color-main-3), var(--color-main-3))
-
-        // &--first
-        // &--second
-        // &--third
 
     &:hover &__front
         transform: rotateY(-180deg)
@@ -113,96 +91,75 @@
 
     &__skew_wrapper
         position: absolute
+        display: flex
+        flex-direction: column
+        overflow: hidden
         top: var(--card-border-size)
         left: var(--card-border-size)
         bottom: var(--card-border-size)
         right: var(--card-border-size)
         border-radius: calc(var(--border-radius-normal) * 3/5)
-        // background-color: red
-        overflow: hidden
-        display: flex
-        flex-direction: column
 
     &__title
-        display: block
-        position: relative
-        padding: 15px 40px
+        padding: .5em 1em
         z-index: 4
         font-size: var(--font-size-heading-2)
         text-transform: uppercase
         background-color: var(--background-color-2)
         border-radius: var(--border-radius-big)
 
-        &--first
+        &--frontend
             color: var(--color-main-1)
 
-        &--second
+        &--backend
             color: var(--color-main-2)
 
-        &--third
+        &--grafika
             color: var(--color-main-3)
 
         &--back
             border-radius: 0
             margin: 5vh 0 var(--card-border-size) 0
-            padding: 15px 0
-            transform: skewY(-7.5deg)
-            width: 100%
+            padding: .5em 0
+            transform: skewY(var(--skew))
 
-    &__icon
-        position: relative
+    &__image
+        position: absolute
+        bottom: 2vh
+        right: 2vh
         z-index: 4
-        align-self: end
-        margin: 0 2vh 2vh 0
-
-        &_image
-            height: 4vh
-            width: 4vh
-
-            &--first
-                fill: var(--color-main-1)
-
-            &--second
-                fill: var(--color-main-2)
-
-            &--third
-                fill: var(--color-main-3)
 
     &__skills
-        flex-grow: 1
-        color: var(--grey-light)
-        padding: 0
-        list-style-type: none
-        margin-bottom: -4vh
-        display: flex
+        @include flex-center
         flex-direction: column
-        align-items: center
-        justify-content: center
+        flex-grow: 1
         position: relative
+        padding: 0
+        color: var(--grey-light)
+        list-style-type: none
+
         &::before
             @include before-after
             @include zero-hundred
+            z-index: -1
             height: 120%
             background-color: var(--background-color-2)
-            transform: skewY(-7.5deg)
-            z-index: -1
+            transform: skewY(var(--skew))
 
     &__skill
         font-size: var(--font-size-normal)
         text-transform: uppercase
-        line-height: 1.6em
-        display: inline-block
-        padding: 0 10px 0 10px
-
-        &--first
-            border-color: var(--color-main-1)
-
-        &--second
-            border-color: var(--color-main-2)
-
-        &--third
-            border-color: var(--color-main-3)
-
+        line-height: 1.8em
+        padding: 0 1vh 0 1vh
         &:not(:last-child)
             border-width: 2px
             border-bottom-style: solid
+
+        &--frontend
+            border-color: var(--color-main-1)
+
+        &--backend
+            border-color: var(--color-main-2)
+
+        &--grafika
+            border-color: var(--color-main-3)

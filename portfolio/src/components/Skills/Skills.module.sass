@@ -1,6 +1,25 @@
+@import '../../sass/mixins'
+
 .skills
-    height: 80vh
-    background-color: var(--background-color-1)
+    height: 100vh
     display: flex
-    padding: 10vh
+    padding: 20vh 10vh
     gap: 20vh
+    position: relative
+    &::before
+        @include before-after
+        @include zero-hundred
+        background-color: var(--background-color-1)
+        transform: skewY(var(--skew))
+
+    &__icon
+        height: 4vh
+        width: 4vh
+        &--frontend
+            fill: var(--color-main-1)
+
+        &--backend
+            fill: var(--color-main-2)
+
+        &--grafika
+            fill: var(--color-main-3)
