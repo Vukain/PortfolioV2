@@ -4,6 +4,8 @@ import bemCssModules from 'bem-css-modules';
 
 import skillCardStyles from './SkillCard.module.sass';
 
+import { ReactComponent as CardCrystal } from '../../../media/card_crystal.svg';
+
 interface MyProps {
     data: { title: string, skills: string[] },
     children: JSX.Element
@@ -22,6 +24,7 @@ const SkillCard: React.FC<MyProps> = (props: MyProps) => {
         <div className={styles()}>
 
             <div className={styles('front', position)}>
+                <CardCrystal className={styles('crystal')} />
                 <h2 className={styles('title', position)}>{props.data.title}</h2>
             </div>
 
