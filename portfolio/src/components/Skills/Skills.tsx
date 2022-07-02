@@ -8,7 +8,6 @@ import { ReactComponent as GraphicIcon } from '../../media/icons/tools.svg';
 
 const Skills: React.FC = (props) => {
 
-
     type CardData = Record<'frontend' | 'backend' | 'graphics', { category: string, skills: string[] }>;
 
     const cardData: CardData = {

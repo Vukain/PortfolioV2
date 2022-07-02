@@ -5,6 +5,7 @@ import './App.sass';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import AppContextProvider from './store/AppContext'
 import Header from './components/Header/Header';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
@@ -75,12 +76,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <div className="eh" ref={sRef}></div>
-      <Header />
-      <Skills />
-      <Projects ref={projectsRef} test='test' />
-    </div >
+    <AppContextProvider >
+      <div className="App">
+        <div className="eh" ref={sRef}></div>
+        <Header />
+        <Skills />
+        <Projects ref={projectsRef} test='test' />
+      </div >
+    </AppContextProvider>
   );
 }
 
