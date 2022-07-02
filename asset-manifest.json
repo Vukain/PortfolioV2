@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.64259773.css",
-    "main.js": "/PortfolioV2/static/js/main.31dc355c.js",
+    "main.css": "/PortfolioV2/static/css/main.76db1d9a.css",
+    "main.js": "/PortfolioV2/static/js/main.c0c02434.js",
     "static/media/card_crystal.svg": "/PortfolioV2/static/media/card_crystal.320fde85b546e51ec40f641ba9187af5.svg",
     "static/media/bg1.svg": "/PortfolioV2/static/media/bg1.706457661416f2f2aaba.svg",
     "static/media/bg2.svg": "/PortfolioV2/static/media/bg2.91bacf1b7fd0a94274b0.svg",
     "static/media/bg3.svg": "/PortfolioV2/static/media/bg3.27480bfbab82004ba787.svg",
     "static/media/animation_test.svg": "/PortfolioV2/static/media/animation_test.cff6db22e7a245846724374d4827b4c1.svg",
-    "static/media/tools-2.svg": "/PortfolioV2/static/media/tools-2.2f10c80fc2a9824b4d2002da91305290.svg",
-    "static/media/tools.svg": "/PortfolioV2/static/media/tools.5ab5f3ad8d3c68c00195dd6dd774a33d.svg",
-    "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.eaa2fbd3dccd8c283d587a9da44020e7.svg",
+    "static/media/tools-2.svg": "/PortfolioV2/static/media/tools-2.33c87a5b9bfad4d109eb96c64cac3793.svg",
+    "static/media/tools.svg": "/PortfolioV2/static/media/tools.58b8d0c2c5b2abcd8687e9abd320f4da.svg",
+    "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.89d54cfc4ab57c5eba653c01fa587b2a.svg",
     "index.html": "/PortfolioV2/index.html",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
-    "main.64259773.css.map": "/PortfolioV2/static/css/main.64259773.css.map",
-    "main.31dc355c.js.map": "/PortfolioV2/static/js/main.31dc355c.js.map"
+    "main.76db1d9a.css.map": "/PortfolioV2/static/css/main.76db1d9a.css.map",
+    "main.c0c02434.js.map": "/PortfolioV2/static/js/main.c0c02434.js.map"
   },
   "entrypoints": [
-    "static/css/main.64259773.css",
-    "static/js/main.31dc355c.js"
+    "static/css/main.76db1d9a.css",
+    "static/js/main.c0c02434.js"
   ]
 }
