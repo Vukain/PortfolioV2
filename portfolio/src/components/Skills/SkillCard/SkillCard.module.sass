@@ -101,14 +101,14 @@
         border-radius: calc(var(--border-radius-normal) * 3/5)
 
     &__title
-        padding: .5em 1em
+        @include flex-center
         z-index: 4
         font-size: var(--font-size-heading-2)
         text-transform: uppercase
         background-color: var(--background-color-2)
         border-radius: var(--border-radius-big)
-        display: inline-block
-        width: 58%
+        width: 30vh
+        height: 7vh
 
         &--frontend
             color: var(--color-main-1)
@@ -122,7 +122,6 @@
         &--back
             border-radius: 0
             margin: 5vh 0 var(--card-border-size) 0
-            padding: .5em 0
             transform: skewY(var(--skew))
             width: 100%
 
