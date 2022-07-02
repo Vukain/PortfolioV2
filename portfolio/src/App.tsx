@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
 
     const elementGetter = gsap.utils.selector(projectsRef.current);
-    const projects: HTMLElement[] = elementGetter('[class*="s_project"]');
+    const projects: HTMLElement[] = elementGetter('[class*="project"]');
 
     console.log(projectsRef)
 
