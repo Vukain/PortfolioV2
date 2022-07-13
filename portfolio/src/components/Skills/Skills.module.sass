@@ -12,14 +12,17 @@
         background-color: var(--background-color-1)
         transform: skewY(var(--skew))
 
-    &__icon
-        height: 4vh
-        width: 4vh
-        &--frontend
-            fill: var(--color-main-1)
+.icon
+    height: 4vh
+    width: 4vh
+    &_frontend
+        composes: icon
+        fill: var(--color-main-1)
 
-        &--backend
-            fill: var(--color-main-2)
+    &_backend
+        composes: icon
+        fill: var(--color-main-2)
 
-        &--grafika
-            fill: var(--color-main-3)
+    &_graphics
+        composes: icon
+        fill: var(--color-main-3)

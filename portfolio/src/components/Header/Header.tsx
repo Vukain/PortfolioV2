@@ -1,15 +1,11 @@
 import { useRef, useEffect } from 'react';
-import bemCssModules from 'bem-css-modules';
 import gsap from 'gsap';
 
-import headerStyles from './Header.module.sass';
+import styles from './Header.module.sass';
 
 import { ReactComponent as Crystal } from '../../media/animation_test.svg';
 
-
 const Header: React.FC = (props) => {
-
-    const style = bemCssModules(headerStyles);
 
     const crystalWrapper: React.MutableRefObject<null> = useRef(null);
     const tl = gsap.timeline({ defaults: { ease: 'back.out(1.7)', transformOrigin: 'center' } });
@@ -30,8 +26,8 @@ const Header: React.FC = (props) => {
 
 
     return (
-        <div className={style()}>
-            <Crystal className={style('crystal')} ref={crystalWrapper} />
+        <div className={styles.header}>
+            <Crystal className={styles.crystal} ref={crystalWrapper} />
         </div>
     );
 }
