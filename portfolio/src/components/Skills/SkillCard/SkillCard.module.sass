@@ -13,12 +13,16 @@
     perspective: 75vw
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
-
-    &:hover .frontside
-        transform: rotateY(-180deg)
-
-    &:hover .backside
-        transform: rotateY(0deg)
+    transition: transform .3s .6s ease
+    &:hover
+        transform: scale(1.08)
+        transition-delay: 0s
+        .frontside
+            transition-delay: .3s
+            transform: rotateY(-180deg)
+        .backside
+            transition-delay: .3s
+            transform: rotateY(0deg)
 
 %side
     @include zero-hundred
