@@ -13,15 +13,17 @@
     perspective: 75vw
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
-    transition: transform .3s .6s ease
+    z-index: 2
+    // transition: transform .3s ease
+    // transition-delay: .6s
     &:hover
-        transform: scale(1.08)
-        transition-delay: 0s
+        // transform: scale(1.08)
+        // transition-delay: 0s
         .frontside
-            transition-delay: .3s
+            // transition-delay: .3s
             transform: rotateY(-180deg)
         .backside
-            transition-delay: .3s
+            // transition-delay: .3s
             transform: rotateY(0deg)
 
 %side

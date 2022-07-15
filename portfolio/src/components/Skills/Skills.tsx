@@ -6,7 +6,10 @@ import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.sv
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
 import { ReactComponent as GraphicIcon } from '../../media/icons/tools.svg';
 
+import { ReactComponent as MotionPath } from '../../media/mp.svg';
+
 const Skills: React.FC = (props) => {
+
 
     type CardData = Record<'frontend' | 'backend' | 'graphics', { category: string, skills: string[] }>;
 
@@ -27,6 +30,11 @@ const Skills: React.FC = (props) => {
             <SkillCard data={cardData['graphics']}>
                 <GraphicIcon className={styles.icon_graphics} title="graphics icon" />
             </SkillCard>
+
+            <svg className={styles.path_svg} id="path-svg" width="400" height="400" version="1.1" viewBox="0 0 400 400" preserveAspectRatio='none' xmlns="http://www.w3.org/2000/svg">
+                <path id="motionPath" d="M.001.5h400v400l-400-1" />
+            </svg>
+
         </section>
     );
 }
