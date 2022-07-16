@@ -36,8 +36,8 @@
         width: 20vh
         height: 20vh
     &:nth-child(2)
-        top: 68%
-        left: 5%
+        top: 38%
+        left: 10%
         width: 30vh
         height: 30vh
     &:nth-child(3)
@@ -46,17 +46,17 @@
         width: 10vh
         height: 10vh
     &:nth-child(4)
-        top: 45%
+        top: 25%
         left: 80%
         width: 40vh
         height: 40vh
     &:nth-child(5)
-        top: 75%
+        top: 45%
         left: 50%
         width: 15vh
         height: 15vh
     &:nth-child(6)
-        top: 36%
+        top: 16%
         left: 60%
         width: 10vh
         height: 10vh
@@ -65,3 +65,7 @@
         left: 80%
         width: 25vh
         height: 25vh
+
+    @for $i from 1 to 7
+        &:nth-child(#{$i})
+            animation-duration: 3 + ($i * 1s)
