@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.598da4ad.css",
-    "main.js": "/PortfolioV2/static/js/main.da7c73f7.js",
+    "main.css": "/PortfolioV2/static/css/main.cebf776e.css",
+    "main.js": "/PortfolioV2/static/js/main.25377f44.js",
     "static/media/card_crystal.svg": "/PortfolioV2/static/media/card_crystal.320fde85b546e51ec40f641ba9187af5.svg",
     "static/media/bg1.svg": "/PortfolioV2/static/media/bg1.706457661416f2f2aaba.svg",
     "static/media/bg2.svg": "/PortfolioV2/static/media/bg2.91bacf1b7fd0a94274b0.svg",
@@ -12,11 +12,11 @@
     "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.eaa2fbd3dccd8c283d587a9da44020e7.svg",
     "index.html": "/PortfolioV2/index.html",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
-    "main.598da4ad.css.map": "/PortfolioV2/static/css/main.598da4ad.css.map",
-    "main.da7c73f7.js.map": "/PortfolioV2/static/js/main.da7c73f7.js.map"
+    "main.cebf776e.css.map": "/PortfolioV2/static/css/main.cebf776e.css.map",
+    "main.25377f44.js.map": "/PortfolioV2/static/js/main.25377f44.js.map"
   },
   "entrypoints": [
-    "static/css/main.598da4ad.css",
-    "static/js/main.da7c73f7.js"
+    "static/css/main.cebf776e.css",
+    "static/js/main.25377f44.js"
   ]
 }
