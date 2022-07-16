@@ -1,0 +1,67 @@
+@import '../../sass/mixins'
+
+@keyframes crystal-move
+    0%
+        transform: translate(0, 0)
+    25%
+        transform: translate(50%, 50%)
+    50%
+        transform: translate(0, 100%)
+    75%
+        transform: translate(-50%, 50%)
+    100%
+        transform: translate(0, 0)
+
+.contact
+    @include flex-center
+    height: 100vh
+    position: relative
+    overflow: hidden
+
+.form_card
+    width: 80vw
+    height: 80vh
+    background-color: #ffffff12
+    backdrop-filter: blur(10px)
+    z-index: 999
+    border-radius: var(--border-radius-normal)
+    border: 2px solid #ffffff18
+
+.floating_crystal
+    position: absolute
+    animation: crystal-move 5s infinite
+    &:nth-child(1)
+        top: 15%
+        left: 20%
+        width: 20vh
+        height: 20vh
+    &:nth-child(2)
+        top: 68%
+        left: 5%
+        width: 30vh
+        height: 30vh
+    &:nth-child(3)
+        top: 15%
+        left: 5%
+        width: 10vh
+        height: 10vh
+    &:nth-child(4)
+        top: 45%
+        left: 80%
+        width: 40vh
+        height: 40vh
+    &:nth-child(5)
+        top: 75%
+        left: 50%
+        width: 15vh
+        height: 15vh
+    &:nth-child(6)
+        top: 36%
+        left: 60%
+        width: 10vh
+        height: 10vh
+    &:nth-child(7)
+        top: 6%
+        left: 80%
+        width: 25vh
+        height: 25vh

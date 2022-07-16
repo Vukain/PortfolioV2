@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 import styles from './Header.module.sass';
 
-import { ReactComponent as Crystal } from '../../media/animation_test.svg';
+import { ReactComponent as Crystal } from '../../media/phold_crystal.svg';
 
 const Header: React.FC = (props) => {
 
@@ -26,9 +26,9 @@ const Header: React.FC = (props) => {
 
 
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <Crystal className={styles.crystal} ref={crystalWrapper} />
-        </div>
+        </header>
     );
 }
 

@@ -10,7 +10,7 @@ interface MyProps {
 const SkillCard: React.FC<MyProps> = ({ data: { category, skills }, children }) => {
 
     return (
-        <div className={styles.card}>
+        <article className={styles.card}>
 
             <div className={styles[`frontside_${category}`]}>
                 <CardCrystal className={styles.crystal} />
@@ -29,7 +29,7 @@ const SkillCard: React.FC<MyProps> = ({ data: { category, skills }, children }) 
                 </div>
             </div>
 
-        </div>
+        </article>
     );
 };
 

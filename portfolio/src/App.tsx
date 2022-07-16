@@ -10,8 +10,11 @@ import AppContextProvider from './store/AppContext'
 import Header from './components/Header/Header';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
+import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact';
 
-import { ReactComponent as MotionPath } from './media/motion_path.svg';
+import { ReactComponent as CrystalMoving } from './media/phold_crystal.svg';
+
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
@@ -107,23 +110,22 @@ function App() {
   return (
     <AppContextProvider >
       <div className="App">
-        <div className="eh" ref={sRef}>crystal</div>
+        <CrystalMoving className="sliding_crystal" ref={sRef} />
         <Header />
         <Projects ref={projectsRef} test='test' />
         <Skills />
+        <Contact />
+        <Footer />
         {/* <MotionPath className='esz' ref={pathRef} id='motionPath' /> */}
         {/* <svg id="path-svg" width="881.57" height="3834.2" version="1.1" viewBox="0 0 881.57 6834.2" xmlns="http://www.w3.org/2000/svg">
           <path id="motionPath" d="M.001.5h400v400l-400-1" />
         </svg> */}
 
         {/* <svg xmlns="http://www.w3.org/2000/svg" width="1711.2" height="1156.8" viewBox="0 0 855.6 578.4">
-
-
-
           <ellipse id="flightPath" cx="450" cy="250" rx="410" ry="80" />
           <circle id="circle_1" cx="87.4" cy="228.9" r="50" fill="#6c63ff" />
-
         </svg> */}
+
       </div >
     </AppContextProvider>
   );

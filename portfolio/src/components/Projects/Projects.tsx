@@ -8,13 +8,13 @@ const Projects = forwardRef<HTMLDivElement, MyProps>(({ test }, ref) => {
 
     return (
 
-        <div className={styles.projects} ref={ref}>
-            <div className={styles.project}>Project 1</div>
-            <div className={styles.project}>Project 2</div>
-            <div className={styles.project}>Project 3</div>
-            <div className={styles.project}>Project 4</div>
-            <div className={styles.project}>Project 5</div>
-        </div>
+        <section className={styles.projects} ref={ref}>
+            <article className={styles.project}>Project 1</article>
+            <article className={styles.project}>Project 2</article>
+            <article className={styles.project}>Project 3</article>
+            <article className={styles.project}>Project 4</article>
+            <article className={styles.project}>Project 5</article>
+        </section>
     );
 })
 
