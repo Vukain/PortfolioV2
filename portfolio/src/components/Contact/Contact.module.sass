@@ -2,15 +2,15 @@
 
 @keyframes crystal-move
     0%
-        transform: translate(0, 0)
+        transform: translate(0, 0) rotateZ(0deg)
     25%
-        transform: translate(50%, 50%)
+        transform: translate(50%, 50%) rotateZ(6deg)
     50%
-        transform: translate(0, 100%)
+        transform: translate(0, 100%) rotateZ(0deg)
     75%
-        transform: translate(-50%, 50%)
+        transform: translate(-50%, 50%) rotateZ(-6deg)
     100%
-        transform: translate(0, 0)
+        transform: translate(0, 0) rotateZ(0deg)
 
 .contact
     @include flex-center
@@ -29,7 +29,7 @@
 
 .floating_crystal
     position: absolute
-    animation: crystal-move 5s infinite
+    // animation: crystal-move 5s infinite
     &:nth-child(1)
         top: 15%
         left: 20%

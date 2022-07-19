@@ -15,13 +15,12 @@ import Contact from './components/Contact/Contact';
 
 import { ReactComponent as CrystalMoving } from './media/phold_crystal.svg';
 
-
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 function App() {
 
-  const sRef: React.MutableRefObject<null> = useRef(null);
-  const projectsRef: React.MutableRefObject<null> = useRef(null);
+  const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
+  const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
   const pathRef: React.MutableRefObject<null> = useRef(null);
 
   useEffect(() => {
@@ -62,7 +61,7 @@ function App() {
       },
     });
 
-    gsap.to(sRef.current, {
+    gsap.to(crystalRef.current, {
       // x: -1800,
       // rotateZ: 180,
       ease: "none",
@@ -110,7 +109,7 @@ function App() {
   return (
     <AppContextProvider >
       <div className="App">
-        <CrystalMoving className="sliding_crystal" ref={sRef} />
+        <CrystalMoving className="sliding_crystal" ref={crystalRef} />
         <Header />
         <Projects ref={projectsRef} test='test' />
         <Skills />
