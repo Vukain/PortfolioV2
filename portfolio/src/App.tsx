@@ -21,14 +21,13 @@ function App() {
 
   const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
   const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-  const pathRef: React.MutableRefObject<null> = useRef(null);
+  // const pathRef: React.MutableRefObject<null> = useRef(null);
 
   useEffect(() => {
 
     const elementGetter = gsap.utils.selector(projectsRef.current);
     const projects: HTMLElement[] = elementGetter('[class*="project"]');
 
-    console.log(pathRef)
 
     // MotionPathPlugin.convertToPath("#flightPath");
     // gsap.set("#flightPath", { rotation: 15 });
