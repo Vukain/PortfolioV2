@@ -4,11 +4,11 @@
     0%
         transform: translate(0, 0) rotateZ(0deg)
     25%
-        transform: translate(50%, 50%) rotateZ(6deg)
+        transform: translate(10%, 10%) rotateZ(6deg)
     50%
-        transform: translate(0, 100%) rotateZ(0deg)
+        transform: translate(0, 20%) rotateZ(0deg)
     75%
-        transform: translate(-50%, 50%) rotateZ(-6deg)
+        transform: translate(-10%, 10%) rotateZ(-6deg)
     100%
         transform: translate(0, 0) rotateZ(0deg)
 
@@ -27,7 +27,7 @@
     border-radius: var(--border-radius-normal)
     border: 2px solid #ffffff18
 
-.floating_crystal
+.crystal_wrapper
     position: absolute
     // animation: crystal-move 5s infinite
     &:nth-child(1)
@@ -46,7 +46,7 @@
         width: 10vh
         height: 10vh
     &:nth-child(4)
-        top: 25%
+        top: 45%
         left: 80%
         width: 40vh
         height: 40vh
@@ -65,7 +65,9 @@
         left: 80%
         width: 25vh
         height: 25vh
-
     @for $i from 1 to 7
-        &:nth-child(#{$i})
+        &:nth-child(#{$i}) .floating_crystal
             animation-duration: 3 + ($i * 1s)
+
+.floating_crystal
+    animation: crystal-move 5s infinite
