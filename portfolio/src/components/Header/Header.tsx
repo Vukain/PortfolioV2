@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 import styles from './Header.module.sass';
 
-import { ReactComponent as Crystal } from '../../media/phold_crystal.svg';
+import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 const Header: React.FC = (props) => {
 

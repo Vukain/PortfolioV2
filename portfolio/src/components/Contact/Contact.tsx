@@ -41,9 +41,12 @@ const Contact: React.FC = () => {
 
     type Crystals = Array<{ crystalImage: React.FC<{ className?: string }>, speed: number }>;
 
-    const crystals: Crystals = [{ crystalImage: Crystal, speed: 2 }, { crystalImage: Crystal, speed: 4 }, { crystalImage: Crystal, speed: 2 }, { crystalImage: Crystal, speed: 9 }, { crystalImage: Crystal, speed: 7 }, { crystalImage: Crystal, speed: 5 }, { crystalImage: Crystal, speed: 2 }]
+    const crystals: Crystals = [
+        { crystalImage: Crystal, speed: 2 }, { crystalImage: Crystal, speed: 4 }, { crystalImage: Crystal, speed: 2 },
+        { crystalImage: Crystal, speed: 9 }, { crystalImage: Crystal, speed: 7 }, { crystalImage: Crystal, speed: 5 },
+        { crystalImage: Crystal, speed: 2 }];
 
-    const crystalsMapped: JSX.Element[] = crystals.map(({ crystalImage, speed }, index) => {
+    const crystalsMapped = crystals.map(({ crystalImage, speed }, index) => {
         const Image = crystalImage;
         return (
             <div key={index} className={styles.crystal_wrapper} style={{ transform: `translate(${speed * (window.innerWidth - cursorXPosition) / 100}px, ${speed * (window.innerHeight - cursorYPosition) / 100}px)` }}>
@@ -54,7 +57,6 @@ const Contact: React.FC = () => {
 
     return (
         <section className={styles.contact} onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
-
             {crystalsMapped}
             {/* <div className={styles.crystal_wrapper} style={{ transform: `translate(${2 * (window.innerWidth - cursorXPosition) / 100}px, ${2 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
                 <Crystal className={styles.floating_crystal} />
