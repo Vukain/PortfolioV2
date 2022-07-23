@@ -10,7 +10,6 @@ import { ReactComponent as MotionPath } from '../../media/mp.svg';
 
 const Skills: React.FC = (props) => {
 
-
     type CardData = Record<'frontend' | 'backend' | 'graphics', { category: string, skills: string[] }>;
 
     const cardData: CardData = {

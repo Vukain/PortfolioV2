@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
 
     const mouseMoveHandler = (e: MouseEvent): void => {
         // e.preventDefault();
-        if (sectionRef.current !== null) {
+        if (sectionRef.current) {
             setCursorXPosition(e.clientX - sectionRef.current?.getBoundingClientRect().left - initialCursorXPositionRef.current + exitCursorXPosition)
             setCursorYPosition(e.clientY - sectionRef.current?.getBoundingClientRect().top - initialCursorYPositionRef.current + exitCursorYPosition)
         };
@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
 
     const mouseEnterHandler = (e: MouseEvent): void => {
         // e.preventDefault();
-        if (sectionRef.current !== null) {
+        if (sectionRef.current) {
             initialCursorXPositionRef.current = e.clientX - sectionRef.current.getBoundingClientRect().left
             initialCursorYPositionRef.current = e.clientY - sectionRef.current.getBoundingClientRect().top
         };

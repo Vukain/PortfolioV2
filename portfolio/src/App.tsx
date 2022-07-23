@@ -28,7 +28,6 @@ function App() {
     const elementGetter = gsap.utils.selector(projectsRef.current);
     const projects: HTMLElement[] = elementGetter('[class*="project"]');
 
-
     // MotionPathPlugin.convertToPath("#flightPath");
     // gsap.set("#flightPath", { rotation: 15 });
     // gsap.to(sRef.current, {
