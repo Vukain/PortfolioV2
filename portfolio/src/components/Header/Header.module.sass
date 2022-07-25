@@ -1,3 +1,5 @@
+@import '../../sass/mixins'
+
 .header
     height: 100vh
     position: relative
@@ -11,3 +13,6 @@
     transform: translate(-50%, -50%)
     z-index: 999
     overflow: visible
+    @include mobile-and-small
+        top: 40%
+        left: 60%

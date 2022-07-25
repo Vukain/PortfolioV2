@@ -13,3 +13,7 @@
     display: flex
     justify-content: center
     align-items: center
+
+@mixin mobile-and-small
+    @media (orientation: portrait), (max-width: 600px)
+        @content
