@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.e96b9116.css",
-    "main.js": "/PortfolioV2/static/js/main.a29d2991.js",
+    "main.css": "/PortfolioV2/static/css/main.a6437677.css",
+    "main.js": "/PortfolioV2/static/js/main.bf99f04e.js",
     "static/media/card_crystal.svg": "/PortfolioV2/static/media/card_crystal.8cfcf1329c14de85ffb47b5d35a2e0d7.svg",
-    "static/media/main_crystal.svg": "/PortfolioV2/static/media/main_crystal.1686dc413fd7790322fc28a37db6367f.svg",
+    "static/media/main_crystal.svg": "/PortfolioV2/static/media/main_crystal.627c2e598580628f04ac13984f2c7ba5.svg",
     "static/media/bg1.svg": "/PortfolioV2/static/media/bg1.706457661416f2f2aaba.svg",
     "static/media/bg2.svg": "/PortfolioV2/static/media/bg2.91bacf1b7fd0a94274b0.svg",
     "static/media/bg3.svg": "/PortfolioV2/static/media/bg3.27480bfbab82004ba787.svg",
-    "static/media/phold_crystal.svg": "/PortfolioV2/static/media/phold_crystal.cf4d191e5b81d16733040b3fcfb40464.svg",
     "static/media/tools-2.svg": "/PortfolioV2/static/media/tools-2.2f10c80fc2a9824b4d2002da91305290.svg",
     "static/media/tools.svg": "/PortfolioV2/static/media/tools.5ab5f3ad8d3c68c00195dd6dd774a33d.svg",
     "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.eaa2fbd3dccd8c283d587a9da44020e7.svg",
     "index.html": "/PortfolioV2/index.html",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
-    "main.e96b9116.css.map": "/PortfolioV2/static/css/main.e96b9116.css.map",
-    "main.a29d2991.js.map": "/PortfolioV2/static/js/main.a29d2991.js.map"
+    "main.a6437677.css.map": "/PortfolioV2/static/css/main.a6437677.css.map",
+    "main.bf99f04e.js.map": "/PortfolioV2/static/js/main.bf99f04e.js.map"
   },
   "entrypoints": [
-    "static/css/main.e96b9116.css",
-    "static/js/main.a29d2991.js"
+    "static/css/main.a6437677.css",
+    "static/js/main.bf99f04e.js"
   ]
 }
