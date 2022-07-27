@@ -1,7 +1,7 @@
 import styles from './Contact.module.sass';
 import { MouseEvent, useRef, useState } from 'react';
 
-import { ReactComponent as Crystal } from '../../media/phold_crystal.svg';
+import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 const Contact: React.FC = () => {
 
@@ -58,27 +58,6 @@ const Contact: React.FC = () => {
     return (
         <section className={styles.contact} onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
             {crystalsMapped}
-            {/* <div className={styles.crystal_wrapper} style={{ transform: `translate(${2 * (window.innerWidth - cursorXPosition) / 100}px, ${2 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${4 * (window.innerWidth - cursorXPosition) / 100}px, ${4 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${2 * (window.innerWidth - cursorXPosition) / 100}px, ${2 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${9 * (window.innerWidth - cursorXPosition) / 100}px, ${9 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${7 * (window.innerWidth - cursorXPosition) / 100}px, ${7 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${5 * (window.innerWidth - cursorXPosition) / 100}px, ${5 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div>
-            <div className={styles.crystal_wrapper} style={{ transform: `translate(${2 * (window.innerWidth - cursorXPosition) / 100}px, ${2 * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Crystal className={styles.floating_crystal} />
-            </div> */}
             <div className={styles.form_card}></div>
         </section>
     );
