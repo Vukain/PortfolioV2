@@ -9,7 +9,7 @@ import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.sv
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
 import { ReactComponent as GraphicIcon } from '../../media/icons/tools.svg';
 
-import { ReactComponent as CrystalMoving } from '../../media/main_crystal.svg';
+import { ReactComponent as CrystalMoving } from '../../media/scroll_crystal.svg';
 
 
 
@@ -31,7 +31,7 @@ const Skills: React.FC = () => {
     useEffect(() => {
         const crystal = crystalRef.current;
         //@ts-ignore
-        const lowerShard = crystal.getElementById('main_crystal_svg__lower');
+        const lowerShard = crystal.getElementById('scroll_crystal_svg__left-bottom');
 
         const floatingCrystal = gsap.timeline({
             scrollTrigger: {
@@ -68,7 +68,7 @@ const Skills: React.FC = () => {
         const floatingShardScroll = gsap.timeline({
             defaults: { ease: 'none', transformOrigin: 'center' },
             repeat: 4,
-            // yoyo: true,
+            yoyo: true,
             scrollTrigger: {
                 trigger: "#motionPath",
                 toggleActions: 'restart pause reverse pause',
@@ -85,37 +85,38 @@ const Skills: React.FC = () => {
         floatingShardScroll.to(lowerShard, {
             // x: -1800,
             // rotateZ: 180,
-            xPercent: 50,
-            yPercent: 50,
+            xPercent: -50,
+            yPercent: 0,
             duration: .2,
+
         })
-            .to(lowerShard, {
-                // x: -1800,
-                // rotateZ: 180,
-                xPercent: 0,
-                yPercent: 100,
-                duration: .2,
-            })
-            .to(lowerShard, {
-                // x: -1800,
-                // rotateZ: 180,
-                xPercent: -50,
-                yPercent: 50,
-                duration: .2,
-            })
-            .to(lowerShard, {
-                // x: -1800,
-                // rotateZ: 180,
-                xPercent: 0,
-                yPercent: 0,
-                duration: .2,
-            })
+        // .to(lowerShard, {
+        //     // x: -1800,
+        //     // rotateZ: 180,
+        //     xPercent: 0,
+        //     yPercent: 100,
+        //     duration: .2,
+        // })
+        // .to(lowerShard, {
+        //     // x: -1800,
+        //     // rotateZ: 180,
+        //     xPercent: -50,
+        //     yPercent: 50,
+        //     duration: .2,
+        // })
+        // .to(lowerShard, {
+        //     // x: -1800,
+        //     // rotateZ: 180,
+        //     xPercent: 0,
+        //     yPercent: 0,
+        //     duration: .2,
+        // })
 
     }, [])
 
     return (
         <section className={styles.skills}>
-            <CrystalMoving className="sliding_crystal" ref={crystalRef} />
+            <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
             <SkillCard data={cardData['frontend']}>
                 <FrontendIcon className={styles.icon_frontend} title="frontend icon" />
             </SkillCard>

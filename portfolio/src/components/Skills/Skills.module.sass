@@ -1,17 +1,25 @@
 @import '../../sass/mixins'
 
 .skills
-    height: 100vh
+    // height: 100vh
     display: flex
-    padding: 20vh 10vh
-    gap: 20vh
+    padding: 20vh 0
+    gap: 5vw
     position: relative
+    margin-top: 10vh
+    justify-content: center
     // overflow: hidden
     // &::before
     //     @include before-after
     //     @include zero-hundred
     //     background-color: var(--background-color-1)
     //     transform: skewY(var(--skew))
+
+    @include mobile-and-small
+        height: 220vh
+        flex-direction: column
+        padding: 0
+        gap: 10vh
 
 .icon
     height: 4vh
@@ -30,7 +38,7 @@
 
 .path_svg
     position: absolute
-    width: 100%
+    width: 94%
     height: 100%
     left: 0
     top: 0
@@ -43,9 +51,11 @@
     stroke-width: 2px
 
 .sliding_crystal
-    left: -10vh
-    height: 200px
-    width: 200px
+    height: 30vh
+    width: 20vh
     position: absolute
     z-index: 99
     overflow: visible
+    @include mobile-and-small
+        height: 40vw
+        width: 30vw

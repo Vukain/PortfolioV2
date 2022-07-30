@@ -9,11 +9,13 @@
         background-position: 0% 0%
 
 .card
-    flex: 1 1 0
+    // flex: 1 1 0
     perspective: 75vw
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
     z-index: 2
+    height: 60vh
+    width: 44vh
     // transition: transform .3s ease
     // transition-delay: .6s
     &:hover
@@ -25,6 +27,14 @@
         .backside
             // transition-delay: .3s
             transform: rotateY(0deg)
+
+    @include mobile-and-small
+        height: 50vh
+        width: 70vw
+        perspective: 140vh
+        margin: 0
+        &:nth-of-type(2)
+            align-self: end
 
 %side
     @include zero-hundred
@@ -144,6 +154,8 @@
     position: absolute
     z-index: 4
     height: 60vh
+    @include mobile-and-small
+        height: 50vh
 
 .skills
     @include flex-center
