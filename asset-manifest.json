@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.608a5873.css",
-    "main.js": "/PortfolioV2/static/js/main.fd5b7011.js",
+    "main.css": "/PortfolioV2/static/css/main.c1b4574f.css",
+    "main.js": "/PortfolioV2/static/js/main.236ffde6.js",
     "static/media/card_crystal.svg": "/PortfolioV2/static/media/card_crystal.8cfcf1329c14de85ffb47b5d35a2e0d7.svg",
     "static/media/crystal_scroll.svg": "/PortfolioV2/static/media/crystal_scroll.1cf563e81e0c862d45a9b6ce59204b5b.svg",
     "static/media/main_crystal.svg": "/PortfolioV2/static/media/main_crystal.627c2e598580628f04ac13984f2c7ba5.svg",
@@ -13,11 +13,11 @@
     "static/media/adjustments.svg": "/PortfolioV2/static/media/adjustments.eaa2fbd3dccd8c283d587a9da44020e7.svg",
     "index.html": "/PortfolioV2/index.html",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
-    "main.608a5873.css.map": "/PortfolioV2/static/css/main.608a5873.css.map",
-    "main.fd5b7011.js.map": "/PortfolioV2/static/js/main.fd5b7011.js.map"
+    "main.c1b4574f.css.map": "/PortfolioV2/static/css/main.c1b4574f.css.map",
+    "main.236ffde6.js.map": "/PortfolioV2/static/js/main.236ffde6.js.map"
   },
   "entrypoints": [
-    "static/css/main.608a5873.css",
-    "static/js/main.fd5b7011.js"
+    "static/css/main.c1b4574f.css",
+    "static/js/main.236ffde6.js"
   ]
 }
