@@ -24,13 +24,13 @@ const Header: React.FC = (props) => {
 
             gsap.set(crystal, { autoAlpha: 0 });
 
-            crystalTL.fromTo(crystal, { scale: 3, filter: ' grayscale(0) blur(10px)' }, { ease: 'bounce.out', duration: 1.6, scale: 1, delay: 2.1, filter: 'grayscale(0) blur(0px)', autoAlpha: 1 })
+            crystalTL.fromTo(crystal, { scale: 3, filter: ' grayscale(0) blur(10px)' }, { ease: 'bounce.out', duration: 1.6, scale: 1, delay: 3.1, filter: 'grayscale(0) blur(0px)', autoAlpha: 1 })
                 .to(lowerShard, { duration: .4, delay: -.2, yPercent: '25', rotateZ: '-3deg' })
                 .to(lowerLeftShard, { duration: .4, delay: -.4, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
                 .to(leftShard, { duration: .4, delay: -.4, yPercent: '-30', xPercent: '-95', rotateZ: '-18deg' })
                 .to(tinyShard, { duration: .4, delay: -.4, xPercent: '-195', rotateZ: '-5deg' })
                 .to([crystal, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.5, filter: 'grayscale(1)' })
-                .to([crystal, '#vukain'], { ease: 'bounce.out', duration: 2, delay: 1, filter: 'grayscale(0)' })
+                .to([crystal, '#vukain'], { ease: 'bounce.out', duration: 2, delay: .6, filter: 'grayscale(0)' })
                 .to(crystal, { duration: .1, filter: 'none' })
 
             tls1.delay(crystalTL.duration() - .8)
@@ -71,19 +71,20 @@ const Header: React.FC = (props) => {
     return (
         <header className={styles.header}>
             <Crystal className={styles.crystal} ref={crystalRef} />
-            <div className={styles.hello}>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>jestem</p></div>
-                <div className={styles.overflow_wrapper}><h1 className={styles.color} id='vukain'>vukain</h1></div>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
+            <div className={styles.hello_wrapper}>
+                <div className={styles.hello}>
+                    <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>
+                    <div className={styles.overflow_wrapper}><p className={styles.line}>jestem</p></div>
+                    <div className={styles.overflow_wrapper}><h1 className={styles.color} id='vukain'><span>v</span><span>u</span><span>k</span><span>a</span><span>i</span><span>n</span></h1></div>
+                    <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
+                </div>
             </div>
-
-            {/* <div className={styles.hello_v2}>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>jestem</p></div>
-                <div className={styles.overflow_wrapper}><h1 className={styles.color}>vukain</h1></div>
-                <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
-            </div> */}
+            {/* <div className={styles.hello_v2}> */}
+            {/* <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>
+                <div className={styles.overflow_wrapper}><p className={styles.line}>jestem</p></div> */}
+            {/* <div className={styles.overflow_wrapper_v2}><h1 className={styles.color_v2}>vu<span>ka</span>in</h1></div> */}
+            {/* <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div> */}
+            {/* </div> */}
 
         </header>
     );
