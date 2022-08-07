@@ -37,11 +37,7 @@
 
 .hello
     will-change: transform
-    // position: absolute
-    // bottom: 50%
-    // right: 50%
     transform: scale(1.8)
-    transform-origin: center center
     color: #fefefe
     display: grid
     grid-template-columns: min-content min-content
@@ -112,33 +108,33 @@
     background-attachment: fixed
     // background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
     color: transparent
+    justify-self: center
     // animation: right-slide .8s .9s cubic-bezier(0, 0.55, 0.45, 1) forwards
     & span
         // color: white
-        background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3) 94%)
         background-size: 400%
         background-clip: text
         transform: translateX(90vh)
-
         animation: right-slide .8s cubic-bezier(0, 0.55, 0.45, 1) forwards
         @for $i from 1 to 7
             &:nth-child(#{$i})
                 background-position: $i * 16%
                 animation-delay: .9s + ($i - 1) * .1s
 
-.color_v2
-    display: block
-    margin: 0
-    font-size: calc(2.8 * var(--font-size-heading-1))
-    font-weight: 700
-    line-height: .8em
-    letter-spacing: .06em
-    text-transform: uppercase
-    background-clip: text
-    background-attachment: fixed
-    background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
-    color: transparent
-    animation: right-slide .8s .9s cubic-bezier(0, 0.55, 0.45, 1) forwards
+// .color_v2
+//     display: block
+//     margin: 0
+//     font-size: calc(2.8 * var(--font-size-heading-1))
+//     font-weight: 700
+//     line-height: .8em
+//     letter-spacing: .06em
+//     text-transform: uppercase
+//     background-clip: text
+//     background-attachment: fixed
+//     background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+//     color: transparent
+//     animation: right-slide .8s .9s cubic-bezier(0, 0.55, 0.45, 1) forwards
 
 // .tes
 //     position: absolute

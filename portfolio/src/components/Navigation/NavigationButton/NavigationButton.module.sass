@@ -1,0 +1,81 @@
+@import '../../../sass/mixins'
+
+.button
+    @include flex-center
+    z-index: 9999
+    padding: 2vh
+    border: none
+    background-color: transparent
+    cursor: pointer
+    overflow: hidden
+    @include mobile-and-small
+        padding: 0
+        opacity: 1
+        z-index: 99999
+
+    &:nth-child(1)
+        margin-right: auto
+        @include mobile-and-small
+            margin: unset
+        & .text
+            background-position-x: 0%
+            @include mobile-and-small
+                margin: unset
+                background-position-x: unset
+                background-position-y: 0%
+                transition-delay: .92s
+    &:nth-child(2)
+        & .text
+            background-position-x: 33%
+            @include mobile-and-small
+                background-position-x: unset
+                background-position-y: 33%
+                transition-delay: .82s
+    &:nth-child(3)
+        & .text
+            background-position-x: 66%
+            @include mobile-and-small
+                background-position-x: unset
+                background-position-y: 66%
+                transition-delay: .72s
+
+    &:nth-child(4)
+        & .text
+            background-position-x: 100%
+            @include mobile-and-small
+                background-position-x: unset
+                background-position-y: 100%
+                transition-delay: .62s
+
+    &--hidden
+        @extend .button
+        @include mobile-and-small
+            &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
+                & .text
+                    transition: 0s 0s
+                    transform: translateY(100%)
+
+    &--active, &:hover, &:focus
+        outline: none
+        .text
+            color: #fff
+
+.text
+    display: inline-block
+    background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+    background-clip: text
+    background-size: 100vw 100%
+    color: transparent
+    font-size: var(--font-size-bigger)
+    font-weight: 400
+    text-transform: uppercase
+    letter-spacing: var(--letter-spacing-normal)
+    transition: color .4s linear
+    @include mobile-and-small
+        transition: transform .8s ease, color .4s linear
+        transform: translateY(0%)
+        background-size: 100% 100vh
+
+.color
+    transition: .5s
+    color: var(--main-color-2)

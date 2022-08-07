@@ -69,7 +69,7 @@ const Header: React.FC = (props) => {
 
 
     return (
-        <header className={styles.header}>
+        <header className={styles.header} id="header">
             <Crystal className={styles.crystal} ref={crystalRef} />
             <div className={styles.hello_wrapper}>
                 <div className={styles.hello}>

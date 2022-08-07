@@ -17,3 +17,7 @@
 @mixin mobile-and-small
     @media (orientation: portrait), (max-width: 600px)
         @content
+
+@mixin desktop
+    @media (orientation: landscape), (min-width: 600px)
+        @content

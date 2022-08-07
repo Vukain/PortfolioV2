@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
     });
 
     return (
-        <section className={styles.contact} onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
+        <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
             {crystalsMapped}
             <div className={styles.form_card}></div>
         </section>

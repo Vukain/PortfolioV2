@@ -7,6 +7,7 @@ import './App.sass';
 
 import AppContextProvider from './store/AppContext'
 import Header from './components/Header/Header';
+import Navigation from './components/Navigation/Navigation';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
 import Footer from './components/Footer/Footer';
@@ -43,6 +44,7 @@ function App() {
       <div className="App">
 
         {/* <CrystalMoving className="sliding_crystal" ref={crystalRef2} /> */}
+        <Navigation />
         <Header />
         <Projects test='test' />
         <Skills />

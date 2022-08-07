@@ -125,7 +125,7 @@ const Skills: React.FC = () => {
     }, [])
 
     return (
-        <section className={styles.skills}>
+        <section className={styles.skills} id='skills'>
             <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
             <SkillCard data={cardData['frontend']}>
                 <FrontendIcon className={styles.icon_frontend} title="frontend icon" />

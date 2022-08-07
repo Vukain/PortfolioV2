@@ -5,14 +5,17 @@ interface ContextProps {
 };
 
 interface ContextType {
-    test: string
+    navigateTo: string,
+    setNavigateTo: React.Dispatch<React.SetStateAction<string>>
 };
 
-export const AppContext = createContext<ContextType>({ test: "" });
+export const AppContext = createContext<ContextType>({ navigateTo: '', setNavigateTo: () => { } });
 
 const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
 
-    const contextValue: ContextType = { test: 'abc' };
+    const [navigateTo, setNavigateTo] = useState('');
+
+    const contextValue: ContextType = { navigateTo, setNavigateTo };
 
     return (
         <AppContext.Provider value={contextValue}>

@@ -39,7 +39,7 @@ const Projects: React.FC<MyProps> = ({ test }) => {
     }, [])
 
     return (
-        <section className={styles.projects} ref={projectsRef}>
+        <section className={styles.projects} ref={projectsRef} id="projects">
             <article className={styles.project}>Project 1</article>
             <article className={styles.project}>Project 2</article>
             <article className={styles.project}>Project 3</article>
