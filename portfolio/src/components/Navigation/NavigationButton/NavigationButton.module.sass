@@ -1,5 +1,9 @@
 @import '../../../sass/mixins'
 
+@keyframes nav-slide
+    100%
+        transform: translateY(0%)
+
 .button
     @include flex-center
     z-index: 9999
@@ -12,7 +16,9 @@
         padding: 0
         opacity: 1
         z-index: 99999
-
+    @include desktop
+        transform: translateY(-120%)
+        animation: nav-slide 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
     &:nth-child(1)
         margin-right: auto
         @include mobile-and-small
@@ -69,9 +75,11 @@
 
     &--hidden
         @include mobile-and-small
+            transition: 0s 2s
+            visibility: hidden
             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
                 & .text
-                    transition: 0s 0s
+                    transition: transform .3s 0s ease
                     transform: translateY(100%)
 
     &--active, &:hover, &:focus
@@ -89,7 +97,7 @@
     background-clip: text
     background-size: 100vw 100%
     color: transparent
-    padding: .5vh 0
+    padding: .5vh 0 .5vh .1vh
     font-size: var(--font-size-bigger)
     font-weight: 400
     text-transform: uppercase
@@ -102,6 +110,7 @@
         background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
         background-size: 100vw 100%
         bottom: 0
+        left: 0
         transform: scaleX(0)
         transform-origin: center right
         transition: transform .3s ease
@@ -111,7 +120,4 @@
         transition: transform .8s ease, color .4s linear
         transform: translateY(0%)
         background-size: 100% 100vh
-
-// .color
-//     transition: .5s
-//     color: var(--main-color-2)
+        padding: .5vw 0 .5vw .1vw

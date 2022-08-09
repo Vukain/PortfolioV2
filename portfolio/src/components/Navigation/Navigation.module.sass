@@ -4,6 +4,10 @@
     100%
         transform: translateY(0%)
 
+@keyframes nav-opacity
+    100%
+        opacity: 1
+
 @keyframes bottom-slide
     0%
         transform: translateY(120%)
@@ -15,10 +19,6 @@
         transform: translateY(0%)
     100%
         transform: translateY(-120%)
-
-@keyframes hider
-    100%
-        visibility: hidden
 
 .navigation
     position: fixed
@@ -33,6 +33,9 @@
     align-items: center
     z-index: 9991
     backdrop-filter: blur(2vh) hue-rotate(0deg)
+    // @include desktop
+    //     transform: translateY(-120%)
+    //     animation: nav-slide 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
     @include mobile-and-small
         backdrop-filter: unset
         flex-direction: column
@@ -41,9 +44,6 @@
         width: 100%
         height: 100%
         padding: calc(8vw + 2 * var(--color-border-width))
-    @include desktop
-        animation: nav-slide 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
-
     &::before
         @include before-after
         position: fixed
@@ -57,16 +57,16 @@
         transform: scaleY(1)
         transition-delay: 0s
         background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
-
         @include mobile-and-small
             background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
-            opacity: 1
             left: unset
             right: 0
             clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%)
             transition: 1s cubic-bezier(0.83, 0, 0.17, 1)
             transition-delay: 0s
             box-shadow: 0 0 var(--shadow-radius) rgba(0, 0, 0, 0.2)
+            opacity: 0
+            animation: nav-opacity 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
 
     &::after
         @include before-after
@@ -85,31 +85,34 @@
             clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%)
             transition: 1s cubic-bezier(0.83, 0, 0.17, 1)
             transition-delay: .2s
+            opacity: 0
+            animation: nav-opacity .6s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
         @include desktop
             transform-origin: bottom center
             transform: scaleY(1)
+
     &--hidden
-        &::before
-            transition-delay: .4s
-        &::after
-            transition-delay: .2s
         @include desktop
-            transform: translateY(-120%)
-            animation: nav-slide 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
+
             &::before
                 transform-origin: top center
                 transform: scaleY(0)
+                transition-delay: .4s
             &::after
                 transform-origin: top center
                 transform: scaleY(0)
+                transition-delay: .2s
         @include mobile-and-small
             padding: 0
             height: 100%
             width: 0%
+            transition: 0s 1s
             &::before
                 clip-path: polygon(85vw 16vw, 90vw 8vw, 95vw 16vw, 90vw 24vw)
+                transition-delay: .2s
             &::after
                 clip-path: polygon(86vw 16vw, 90vw 10vw, 94vw 16vw, 90vw 22vw)
+                transition-delay: 0s
 
 .hamburger
     position: fixed
@@ -121,6 +124,8 @@
         clip-path: polygon(86vw 16vw, 90vw 10vw, 94vw 16vw, 90vw 22vw)
         background-color: var(--background-color-3)
         z-index: 99998
+        opacity: 0
+        animation: nav-opacity .3s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
 
     &--active
         & .hamburger_icon
@@ -168,7 +173,8 @@
     @include mobile-and-small
         visibility: hidden
     &--hidden
-        animation: hider 0s 1s ease both
+        transition: 0s 1s
+        visibility: hidden
         & .destination_text
             @include desktop
                 animation: slide-top .8s 0s cubic-bezier(0.65, 0, 0.35, 1) both
