@@ -19,6 +19,11 @@
             margin: unset
         & .text
             background-position-x: 0%
+            &::before
+                background-position-x: 0%
+                @include mobile-and-small
+                    background-position-x: unset
+                    background-position-y: 0%
             @include mobile-and-small
                 margin: unset
                 background-position-x: unset
@@ -27,6 +32,11 @@
     &:nth-child(2)
         & .text
             background-position-x: 33%
+            &::before
+                background-position-x: 33%
+                @include mobile-and-small
+                    background-position-x: unset
+                    background-position-y: 33%
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 33%
@@ -34,6 +44,11 @@
     &:nth-child(3)
         & .text
             background-position-x: 66%
+            &::before
+                background-position-x: 66%
+                @include mobile-and-small
+                    background-position-x: unset
+                    background-position-y: 66%
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 66%
@@ -42,13 +57,17 @@
     &:nth-child(4)
         & .text
             background-position-x: 100%
+            &::before
+                background-position-x: 100%
+                @include mobile-and-small
+                    background-position-x: unset
+                    background-position-y: 100%
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 100%
                 transition-delay: .62s
 
     &--hidden
-        @extend .button
         @include mobile-and-small
             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
                 & .text
@@ -58,24 +77,41 @@
     &--active, &:hover, &:focus
         outline: none
         .text
-            color: #fff
+            &::before
+                transform: scaleX(1)
+                transform-origin: center left
 
 .text
     display: inline-block
+    overflow: hidden
+    position: relative
     background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
     background-clip: text
     background-size: 100vw 100%
     color: transparent
+    padding: .5vh 0
     font-size: var(--font-size-bigger)
     font-weight: 400
     text-transform: uppercase
     letter-spacing: var(--letter-spacing-normal)
-    transition: color .4s linear
+    // transition: color .4s linear
+    &::before
+        @include before-after
+        width: 100%
+        height: 2px
+        background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        background-size: 100vw 100%
+        bottom: 0
+        transform: scaleX(0)
+        transform-origin: center right
+        transition: transform .3s ease
+        @include mobile-and-small
+            background-size: 100% 100vh
     @include mobile-and-small
         transition: transform .8s ease, color .4s linear
         transform: translateY(0%)
         background-size: 100% 100vh
 
-.color
-    transition: .5s
-    color: var(--main-color-2)
+// .color
+//     transition: .5s
+//     color: var(--main-color-2)

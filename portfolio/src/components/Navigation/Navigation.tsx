@@ -5,6 +5,7 @@ import { AppContext } from '../../store/AppContext';
 import NavigationButton from './NavigationButton/NavigationButton';
 
 import styles from './Navigation.module.sass';
+import { clsx } from 'clsx';
 
 
 const Navigation: React.FC = () => {
@@ -19,15 +20,15 @@ const Navigation: React.FC = () => {
 
     type ButtonData = { name: string, id: string };
 
-    const buttonsData: ButtonData[] = [{ name: 'header', id: 'header' }, { name: 'projekty', id: 'projects' },
+    const buttonsData: ButtonData[] = [{ name: 'vukain', id: 'header' }, { name: 'projekty', id: 'projects' },
     { name: 'umiejętności', id: 'skills' }, { name: 'kontakt', id: 'contact' }]
     const buttonsList = buttonsData.map((item, idx) => (<NavigationButton navigationVisibility={mobileNavigationVisibility} navigationVisibilitySetter={setMobileNavigationVisibility} name={item.name} id={item.id} key={idx} />))
 
     return (
-        <nav className={mobileNavigationVisibility ? styles.navigation : styles['navigation--hidden']}>
+        <nav className={clsx(styles.navigation, !mobileNavigationVisibility && styles['navigation--hidden'])}>
             {buttonsList}
-            <div className={mobileNavigationVisibility ? styles['hamburger--active'] : styles.hamburger} onClick={hamburgerHandler}> <div className={styles.hamburger_icon}></div></div>
-            <div className={mobileNavigationVisibility ? styles.destination : styles['destination--hidden']}><span className={styles.destination_text}>{navigateTo}</span></div>
+            <div className={clsx(styles.hamburger, mobileNavigationVisibility && styles['hamburger--active'])} onClick={hamburgerHandler}> <div className={styles.hamburger_icon}></div></div>
+            <div className={clsx(styles.destination, !mobileNavigationVisibility && styles['destination--hidden'])}><span className={styles.destination_text}>{navigateTo}</span></div>
         </nav >
     );
 };
