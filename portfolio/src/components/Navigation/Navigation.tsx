@@ -11,7 +11,7 @@ const Navigation: React.FC = () => {
 
     const [mobileNavigationVisibility, setMobileNavigationVisibility] = useState(false);
 
-    // const { currentSection, setCurrentSection } = useContext(AppContext);
+    const { navigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
     const hamburgerHandler = () => {
         setMobileNavigationVisibility(!mobileNavigationVisibility);
@@ -27,6 +27,7 @@ const Navigation: React.FC = () => {
         <nav className={mobileNavigationVisibility ? styles.navigation : styles['navigation--hidden']}>
             {buttonsList}
             <div className={mobileNavigationVisibility ? styles['hamburger--active'] : styles.hamburger} onClick={hamburgerHandler}> <div className={styles.hamburger_icon}></div></div>
+            <div className={mobileNavigationVisibility ? styles.destination : styles['destination--hidden']}><span className={styles.destination_text}>{navigateTo}</span></div>
         </nav >
     );
 };

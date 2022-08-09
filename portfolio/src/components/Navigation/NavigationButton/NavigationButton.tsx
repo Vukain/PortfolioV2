@@ -9,7 +9,7 @@ type MyProps = { id: string, name: string, navigationVisibility: boolean, naviga
 const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, navigationVisibilitySetter }) => {
 
     // const { sectionNames } = useContext(AppContext);
-    const { navigateTo, setNavigateTo } = useContext(AppContext);
+    const { setNavigateTo } = useContext(AppContext);
     // const { currentLevel } = useContext(AppContext);
 
     // const overalStyle = { upper_level: currentLevel === 1, hidden_burger: hiddenBurger };

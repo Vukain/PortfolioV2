@@ -1,5 +1,25 @@
 @import '../../sass/mixins'
 
+@keyframes nav-slide
+    100%
+        transform: translateY(0%)
+
+@keyframes bottom-slide
+    0%
+        transform: translateY(120%)
+    100%
+        transform: translateY(0%)
+
+@keyframes slide-top
+    0%
+        transform: translateY(0%)
+    100%
+        transform: translateY(-120%)
+
+@keyframes hider
+    100%
+        visibility: hidden
+
 .navigation
     position: fixed
     top: 0
@@ -13,6 +33,9 @@
     align-items: center
     z-index: 9991
     backdrop-filter: blur(2vh) hue-rotate(0deg)
+    @desktop
+        transform: translateY(-120%)
+        animation: nav-slide 1s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
     @include mobile-and-small
         backdrop-filter: unset
         flex-direction: column
@@ -53,7 +76,6 @@
         width: 100vw
         height: 100vh
         transition: 1s transform ease
-
         transition-delay: .2s
         background-color: var(--background-color-2)
         z-index: 99997
@@ -62,15 +84,16 @@
             right: 0
             clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%)
             transition: 1s cubic-bezier(0.83, 0, 0.17, 1)
+            transition-delay: .2s
         @include desktop
             transform-origin: bottom center
             transform: scaleY(1)
     &--hidden
         @extend .navigation
         &::before
-            transition-delay: .2s
+            transition-delay: .4s
         &::after
-            transition-delay: 0s
+            transition-delay: .2s
         @include desktop
             &::before
                 transform-origin: top center
@@ -133,3 +156,33 @@
             border-radius: 3vh 0 0 3vh
             border: 2px solid #fff
             border-right: none
+
+.destination
+    position: fixed
+    @include desktop
+        top: 50vh
+        left: 50%
+        transform: translate(-50%, -50%)
+        font-size: calc(3 * var(--font-size-heading-1))
+        text-transform: uppercase
+        z-index: 99998
+        overflow: hidden
+    @include mobile-and-small
+        visibility: hidden
+    & .destination_text
+        animation: bottom-slide .8s .2s cubic-bezier(0.65, 0, 0.35, 1) both
+    &--hidden
+        @extend .destination
+        animation: hider 0s 1s ease both
+        & .destination_text
+            @include desktop
+                animation: slide-top .8s 0s cubic-bezier(0.65, 0, 0.35, 1) both
+
+.destination_text
+    @include desktop
+        transform: translateY(120%)
+        z-index: 99999
+        display: inline-block
+        color: transparent
+        background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        background-clip: text
