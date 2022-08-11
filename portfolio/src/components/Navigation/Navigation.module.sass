@@ -157,27 +157,31 @@
                     border-bottom: 1.3vw solid var(--color-gradient-1)
                     border-left: 1vw solid transparent
                     border-right: 1vw solid transparent
+                    transition-delay: .9s
                 &:nth-child(2)
                     align-self: end
                     width: 5.8vw
                     border-bottom: 2.48vw solid var(--color-gradient-2)
                     border-left: 1.58vw solid transparent
                     border-right: 1.58vw solid transparent
+                    transition-delay: .6s
                 &:nth-child(3)
                     width: 5.8vw
                     border-top: 1.12vw solid var(--color-gradient-3)
                     border-left: .9vw solid transparent
                     border-right: .9vw solid transparent
+                    transition-delay: .3s
                 &:nth-child(4)
                     align-self: start
                     width: 0px
                     border-top: 0px solid #fff
                     border-left: 1vw solid transparent
                     border-right: 1vw solid transparent
+                    transition-delay: 0s
 
 .hamburger_segment
     @include mobile-and-small
-        transition: .6s linear
+        transition: .3s linear
         z-index: 99999
         // flex: 0 0 25%
         &:nth-child(1)
@@ -186,23 +190,27 @@
             border-bottom: 0px solid #fff
             border-left: 1vw solid transparent
             border-right: 1vw solid transparent
+            transition-delay: 0s
         &:nth-child(2)
             width: 5.8vw
             border-bottom: 1.12vw solid #fff
             border-left: .9vw solid transparent
             border-right: .9vw solid transparent
             align-self: end
+            transition-delay: .3s
         &:nth-child(3)
             width: 5.8vw
             border-top: 2.48vw solid #fff
             border-left: 1.58vw solid transparent
             border-right: 1.58vw solid transparent
+            transition-delay: .6s
         &:nth-child(4)
             align-self: start
             width: 0px
             border-top: 1.3vw solid #fff
             border-left: 1vw solid transparent
             border-right: 1vw solid transparent
+            transition-delay: .9s
 
 .destination
     position: fixed
