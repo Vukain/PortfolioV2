@@ -108,7 +108,6 @@
 
     &--hidden
         @include desktop
-
             &::before
                 transform-origin: top center
                 transform: scaleY(0)
@@ -123,16 +122,16 @@
             width: 0%
             transition: 0s 1s
             &::before
-                clip-path: polygon(85vw 16vw, 90vw 8vw, 95vw 16vw, 90vw 24vw)
+                clip-path: polygon(85vw 13vw, 90vw 5vw, 95vw 13vw, 90vw 21vw)
                 transition-delay: .2s
             &::after
-                clip-path: polygon(86vw 16vw, 90vw 10vw, 94vw 16vw, 90vw 22vw)
+                clip-path: polygon(86vw 13vw, 90vw 6.6vw, 94vw 13vw, 90vw 19.4vw)
                 transition-delay: 0s
 
 .hamburger
     position: fixed
     @include mobile-and-small
-        top: 16vw
+        top: 13vw
         right: 10vw
         width: 8vw
         height: 12vw
@@ -140,9 +139,6 @@
         z-index: 99998
         opacity: 0
         animation: nav-opacity .3s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
-        // display: flex
-        // flex-direction: column
-        // justify-content: center
         display: grid
         grid-template-rows: repeat(4, 1fr)
         grid-template-columns: 1fr
