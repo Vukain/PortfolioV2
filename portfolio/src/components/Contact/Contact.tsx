@@ -43,7 +43,6 @@ const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
-
     type Crystals = Array<{ crystalImage: React.FC<{ className?: string }>, speed: number }>;
 
     const crystals: Crystals = [
@@ -70,7 +69,7 @@ const Contact: React.FC = () => {
                 end: 'bottom center'
             }
         });
-    })
+    });
 
     return (
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>

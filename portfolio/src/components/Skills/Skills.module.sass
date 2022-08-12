@@ -1,7 +1,6 @@
 @import '../../sass/mixins'
 
 .skills
-    // height: 100vh
     display: flex
     padding: 20vh 0
     gap: 5vw
@@ -25,15 +24,12 @@
     height: 4vh
     width: 4vh
     &_frontend
-        composes: icon
         fill: var(--color-main-1)
 
     &_backend
-        composes: icon
         fill: var(--color-main-2)
 
     &_graphics
-        composes: icon
         fill: var(--color-main-3)
 
 .path_svg
@@ -44,11 +40,6 @@
     top: 0
     z-index: 1
     transform: skewY(var(--skew))
-
-#motionPath
-    fill: none
-    stroke: var(--color-main-3)
-    stroke-width: 2px
 
 .sliding_crystal
     height: 30vh

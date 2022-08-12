@@ -11,25 +11,28 @@ type MyProps = { test?: string };
 
 const Projects: React.FC<MyProps> = ({ test }) => {
 
+
     const { setCurrentSection } = useContext(AppContext);
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
     useEffect(() => {
-        const elementGetter = gsap.utils.selector(projectsRef.current);
+
+        const projectsSection = projectsRef.current;
+        const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project"]');
 
         // const projects = Array.prototype.slice.call(projectsRef.current?.querySelectorAll('[class*="project"]'));
 
         const slidingProjects = gsap.timeline({
             scrollTrigger: {
-                trigger: projectsRef.current,
+                trigger: projectsSection,
                 toggleActions: 'restart pause reverse pause',
                 scrub: true,
-                // start: 'center center',
                 pin: true,
+                pinSpacing: true,
+                // start: 'center center',
                 end: 4 * projects[0].offsetWidth,
                 snap: 1 / 4,
-                pinSpacing: true,
                 onEnter: () => { setCurrentSection('projects') },
                 onEnterBack: () => { setCurrentSection('projects') }
             }
