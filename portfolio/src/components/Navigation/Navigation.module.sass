@@ -140,10 +140,17 @@
         opacity: 0
         animation: nav-opacity .3s 6s cubic-bezier(0.65, 0, 0.35, 1) forwards
         display: grid
-        grid-template-rows: repeat(4, 1fr)
+        grid-template-rows: 2.32vw 2.48vw 2.48vw 2.32vw
         grid-template-columns: 1fr
-        gap: .7vw
         justify-items: center
+        gap: 2px
+    @media (min-width: 320px)
+        gap: 3px
+    @media (min-width: 460px)
+        gap: 4px
+    @media (min-width: 600px)
+        gap: .8vw
+
     &--active
         & .hamburger_segment
             @include mobile-and-small
@@ -163,7 +170,7 @@
                     transition-delay: .6s
                 &:nth-child(3)
                     width: 5.8vw
-                    border-top: 1.12vw solid var(--color-gradient-3)
+                    border-top: 1.15vw solid var(--color-gradient-3)
                     border-left: .9vw solid transparent
                     border-right: .9vw solid transparent
                     transition-delay: .3s
@@ -189,7 +196,7 @@
             transition-delay: 0s
         &:nth-child(2)
             width: 5.8vw
-            border-bottom: 1.12vw solid #fff
+            border-bottom: 1.15vw solid #fff
             border-left: .9vw solid transparent
             border-right: .9vw solid transparent
             align-self: end

@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import gsap from 'gsap';
 
 import styles from './Skills.module.sass';
 
 import SkillCard from './SkillCard/SkillCard';
+
+import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.svg';
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
@@ -15,6 +17,7 @@ import { ReactComponent as CrystalMoving } from '../../media/crystal_scroll.svg'
 
 const Skills: React.FC = () => {
 
+    const { setCurrentSection } = useContext(AppContext);
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
     type CardData = Record<'frontend' | 'backend' | 'graphics', { category: string, skills: string[] }>;
@@ -119,6 +122,16 @@ const Skills: React.FC = () => {
                 xPercent: 5,
                 yPercent: 24,
                 duration: 500
+            });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#skills',
+                    onEnter: () => { setCurrentSection('skills') },
+                    onEnterBack: () => { setCurrentSection('skills') },
+                    start: 'top center',
+                    end: 'bottom center'
+                }
             });
 
         };

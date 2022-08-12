@@ -1,10 +1,15 @@
+import { MouseEvent, useRef, useState, useContext, useEffect } from 'react';
+import gsap from 'gsap';
+
 import styles from './Contact.module.sass';
-import { MouseEvent, useRef, useState } from 'react';
+
+import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 const Contact: React.FC = () => {
 
+    const { setCurrentSection } = useContext(AppContext);
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
 
     const initialCursorXPositionRef = useRef(0);
@@ -54,6 +59,18 @@ const Contact: React.FC = () => {
             </div>
         );
     });
+
+    useEffect(() => {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#contact',
+                onEnter: () => { setCurrentSection('contact') },
+                onEnterBack: () => { setCurrentSection('contact') },
+                start: 'top center',
+                end: 'bottom center'
+            }
+        });
+    })
 
     return (
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>

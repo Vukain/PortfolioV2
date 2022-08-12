@@ -1,20 +1,20 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
 import gsap from 'gsap';
 
 import styles from './Header.module.sass';
+
+import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 const Header: React.FC = (props) => {
 
+    const { setCurrentSection } = useContext(AppContext);
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
-    const crystalTL = gsap.timeline({ defaults: { ease: 'Expo.easeOut', transformOrigin: 'center' } });
-
-    const [tls1, tls2, tls3, tls4, tls5] = Array.from(Array(5), () => (gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1 })))
-
     useEffect(() => {
-
+        const crystalTL = gsap.timeline({ defaults: { ease: 'Expo.easeOut', transformOrigin: 'center' } });
+        const [tls1, tls2, tls3, tls4, tls5] = Array.from(Array(5), () => (gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1 })))
         const crystal = crystalRef.current;
 
         if (crystal) {
@@ -65,7 +65,17 @@ const Header: React.FC = (props) => {
                 .to(lowerLeftShard, { duration: 1.5, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
         };
 
-    }, [crystalTL, tls1, tls2, tls3, tls4, tls5])
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#header',
+                onEnter: () => { setCurrentSection('header') },
+                onEnterBack: () => { setCurrentSection('header') },
+                start: 'top center',
+                end: 'bottom center'
+            }
+        });
+
+    }, [])
 
 
     return (
