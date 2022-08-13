@@ -4,7 +4,7 @@
 
 Work in progress...
 
-## Feagures
+## Features
 
 ...
 
