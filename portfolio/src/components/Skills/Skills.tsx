@@ -1,20 +1,18 @@
 import { useEffect, useRef, useContext, useState } from 'react';
-import gsap from 'gsap';
 import { clsx } from 'clsx';
+import gsap from 'gsap';
 
 import styles from './Skills.module.sass';
 
 import SkillCard from './SkillCard/SkillCard';
-
 import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.svg';
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
 import { ReactComponent as GraphicIcon } from '../../media/icons/tools.svg';
-
 import { ReactComponent as CrystalMoving } from '../../media/crystal_scroll.svg';
-
-// import { ReactComponent as MotionPath } from '../../media/mp.svg';
+import { ReactComponent as MotionPathDesktop } from '../../media/motion_path_desktop.svg';
+import { ReactComponent as MotionPathMobile } from '../../media/motion_path_mobile.svg';
 
 const Skills: React.FC = () => {
 
@@ -35,22 +33,26 @@ const Skills: React.FC = () => {
         graphics: { category: 'graphics', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] }
     };
 
+    const isDesktop = window.matchMedia('(orientation: landscape)').matches;
+
     useEffect(() => {
         const crystal = crystalRef.current;
 
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
+            const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
+            const motionEnd = `+=${isDesktop ? '80' : '220'}%`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
 
             const floatingCrystalTL = gsap.timeline({
                 scrollTrigger: {
-                    trigger: "#motionPath",
+                    trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     // markers: true,
                     start: 'top center',
-                    end: '+=100%',
+                    end: motionEnd
                     // pin: true,
                     // pinSpacing: false
                 }
@@ -60,8 +62,8 @@ const Skills: React.FC = () => {
                 ease: "none",
                 immediateRender: true,
                 motionPath: {
-                    path: "#motionPath",
-                    align: "#motionPath",
+                    path: motionTrigger,
+                    align: motionTrigger,
                     alignOrigin: [0.5, 0.5],
                     autoRotate: 90,
                 }
@@ -79,46 +81,41 @@ const Skills: React.FC = () => {
                 repeat: 4 + 2 * index,
                 yoyo: true,
                 scrollTrigger: {
-                    trigger: "#motionPath",
+                    trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: 'top center',
-                    end: '+=100%'
+                    end: motionEnd
                 }
             })));
 
             leftBottomShardTL.to(leftBottomShard, {
-                // rotateZ: 180,
                 xPercent: -40,
                 yPercent: 8,
                 duration: .2,
-            })
+            });
 
             leftShardTL.to(leftShard, {
-                // rotateZ: 180,
-                xPercent: -15,
+                xPercent: -24,
                 yPercent: -8,
                 duration: .2
             });
 
             topShardTL.to(topShard, {
-                // rotateZ: 180,
                 xPercent: 0,
                 yPercent: -30,
                 duration: .2
             });
 
             rightShardTL.to(rightShard, {
-                // rotateZ: 180,
                 xPercent: 34,
                 yPercent: -20,
                 duration: .2
             });
 
             rightBottomShardTL.to(rightBottomShard, {
-                // rotateZ: 180,
-                xPercent: 15,
-                yPercent: 2,
+                xPercent: 17,
+                yPercent: 3,
                 duration: .2
             });
 
@@ -177,6 +174,8 @@ const Skills: React.FC = () => {
         };
     }, [])
 
+    const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
+
     return (
         <section className={styles.skills} id='skills'>
             <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
@@ -191,9 +190,7 @@ const Skills: React.FC = () => {
                 <GraphicIcon className={clsx(styles.icon, styles.icon_graphics)} title="graphics icon" />
             </SkillCard>
 
-            <svg className={styles.path_svg} id="path-svg" width="400" height="400" version="1.1" viewBox="0 0 400 400" preserveAspectRatio='none' xmlns="http://www.w3.org/2000/svg">
-                <path id="motionPath" d="M.001.5h400v400l-400-1" />
-            </svg>
+            {svgPath}
 
         </section>
     );

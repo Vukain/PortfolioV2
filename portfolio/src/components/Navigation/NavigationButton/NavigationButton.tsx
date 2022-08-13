@@ -9,9 +9,7 @@ type MyProps = { id: string, name: string, navigationVisibility: boolean, naviga
 
 const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, navigationVisibilitySetter }) => {
 
-
     const { setNavigateTo, currentSection, setCurrentSection } = useContext(AppContext);
-
 
     const onClickHandler = () => {
         setCurrentSection(id)

@@ -1,12 +1,11 @@
 import { useCallback, useContext, useState } from 'react';
+import { clsx } from 'clsx';
 
 import { AppContext } from '../../store/AppContext';
 
 import NavigationButton from './NavigationButton/NavigationButton';
 
 import styles from './Navigation.module.sass';
-import { clsx } from 'clsx';
-
 
 const Navigation: React.FC = () => {
 

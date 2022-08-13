@@ -7,18 +7,10 @@
     position: relative
     margin-top: 10vh
     justify-content: center
-    // overflow: hidden
-    // &::before
-    //     @include before-after
-    //     @include zero-hundred
-    //     background-color: var(--background-color-1)
-    //     transform: skewY(var(--skew))
-
     @include mobile-and-small
-        height: 220vh
         flex-direction: column
-        padding: 0
-        gap: 10vh
+        padding: 20vh 0
+        gap: 20vh
 
 .icon
     height: 4vh
@@ -34,19 +26,16 @@
 
 .path_svg
     position: absolute
-    width: 94%
+    width: 100%
     height: 100%
     left: 0
     top: 0
     z-index: 1
-    transform: skewY(var(--skew))
 
 .sliding_crystal
     height: 30vh
-    width: 20vh
     position: absolute
     z-index: 99
     overflow: visible
     @include mobile-and-small
         height: 40vw
-        width: 30vw
