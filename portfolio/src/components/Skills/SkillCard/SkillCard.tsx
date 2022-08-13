@@ -1,18 +1,15 @@
-import { clsx } from 'clsx';
 import { forwardRef } from 'react';
+import { clsx } from 'clsx';
 
 import styles from './SkillCard.module.sass';
 
 import { ReactComponent as CardCrystal } from '../../../media/card_crystal.svg';
-
 
 interface MyProps {
     data: { category: string, skills: string[] },
     children: JSX.Element,
     activeCard: string
 };
-
-// const SkillCard = forwardRef<HTMLDivElement, MyProps>(({ data: { category, skills }, activeCard, children }, ref) => {})
 
 const SkillCard = forwardRef<HTMLDivElement, MyProps>(({ data: { category, skills }, activeCard, children }, ref) => {
 

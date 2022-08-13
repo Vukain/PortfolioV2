@@ -10,8 +10,8 @@ import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 const Contact: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
-    const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
 
+    const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
     const initialCursorXPositionRef = useRef(0);
     const initialCursorYPositionRef = useRef(0);
 
@@ -19,7 +19,6 @@ const Contact: React.FC = () => {
     const [cursorYPosition, setCursorYPosition] = useState(0);
     const [exitCursorXPosition, setExitCursorXPosition] = useState(0);
     const [exitCursorYPosition, setExitCursorYPosition] = useState(0);
-
 
     const mouseMoveHandler = (e: MouseEvent): void => {
         // e.preventDefault();

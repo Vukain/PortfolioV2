@@ -1,18 +1,16 @@
-import React, { useRef, useEffect, useContext, forwardRef } from 'react';
-
+import { useRef, useEffect, useContext, forwardRef } from 'react';
 import gsap from 'gsap';
+
 import styles from './Projects.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 
 type MyProps = { test?: string };
 
-// const Projects = forwardRef<HTMLDivElement, MyProps>(({ test }, ref) => {})
-
 const Projects: React.FC<MyProps> = ({ test }) => {
 
-
     const { setCurrentSection } = useContext(AppContext);
+
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
     useEffect(() => {
@@ -43,7 +41,7 @@ const Projects: React.FC<MyProps> = ({ test }) => {
             ease: "none",
         });
 
-    }, [])
+    }, [setCurrentSection])
 
     return (
         <section className={styles.projects} ref={projectsRef} id="projects">

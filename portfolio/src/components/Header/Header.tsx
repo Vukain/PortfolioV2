@@ -7,9 +7,10 @@ import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
-const Header: React.FC = (props) => {
+const Header: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
+
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
     useEffect(() => {
