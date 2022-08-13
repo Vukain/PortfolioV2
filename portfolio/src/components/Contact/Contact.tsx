@@ -5,6 +5,8 @@ import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 
+import ParallaxCrystal from './ParallaxCrystal/ParallaxCrystal';
+
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 const Contact: React.FC = () => {
@@ -42,19 +44,16 @@ const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
-    type Crystals = Array<{ crystalImage: React.FC<{ className?: string }>, speed: number }>;
+    type Crystals = Array<{ crystalImage: React.FC, speed: number }>;
 
     const crystals: Crystals = [
         { crystalImage: Crystal, speed: 2 }, { crystalImage: Crystal, speed: 4 }, { crystalImage: Crystal, speed: 2 },
         { crystalImage: Crystal, speed: 9 }, { crystalImage: Crystal, speed: 7 }, { crystalImage: Crystal, speed: 5 },
         { crystalImage: Crystal, speed: 2 }];
 
-    const crystalsMapped = crystals.map(({ crystalImage, speed }, index) => {
-        const Image = crystalImage;
+    const crystalsMapped = crystals.map((data, index) => {
         return (
-            <div key={index} className={styles.crystal_wrapper} style={{ transform: `translate(${speed * (window.innerWidth - cursorXPosition) / 100}px, ${speed * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-                <Image className={styles.floating_crystal} />
-            </div>
+            <ParallaxCrystal key={index} data={data} cursorXPosition={cursorXPosition} cursorYPosition={cursorYPosition} />
         );
     });
 

@@ -1,1 +1,55 @@
+@keyframes crystal-move
+    0%
+        transform: translate(0, 0) rotateZ(0deg)
+    25%
+        transform: translate(10%, 10%) rotateZ(6deg)
+    50%
+        transform: translate(0, 20%) rotateZ(0deg)
+    75%
+        transform: translate(-10%, 10%) rotateZ(-6deg)
+    100%
+        transform: translate(0, 0) rotateZ(0deg)
 
+.crystal_wrapper
+    position: absolute
+    &:nth-child(1)
+        top: 15%
+        left: 20%
+        width: 20vh
+        height: 20vh
+    &:nth-child(2)
+        top: 38%
+        left: 10%
+        width: 30vh
+        height: 30vh
+    &:nth-child(3)
+        top: 15%
+        left: 5%
+        width: 10vh
+        height: 10vh
+    &:nth-child(4)
+        top: 45%
+        left: 66%
+        width: 40vh
+        height: 40vh
+    &:nth-child(5)
+        top: 45%
+        left: 50%
+        width: 15vh
+        height: 15vh
+    &:nth-child(6)
+        top: 16%
+        left: 60%
+        width: 10vh
+        height: 10vh
+    &:nth-child(7)
+        top: 6%
+        left: 80%
+        width: 25vh
+        height: 25vh
+    @for $i from 1 to 7
+        &:nth-child(#{$i}) .floating_crystal
+            animation-duration: 3 + ($i * 1s)
+
+.floating_crystal
+    animation: crystal-move 5s linear infinite
