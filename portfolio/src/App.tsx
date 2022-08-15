@@ -12,6 +12,7 @@ import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
 import Footer from './components/Footer/Footer';
 import Contact from './components/Contact/Contact';
+import ProgressBar from './components/ProgressBar/ProgressBar';
 
 import { ReactComponent as CrystalMoving } from './media/main_crystal.svg';
 
@@ -43,10 +44,10 @@ function App() {
     <AppContextProvider >
       <div className="App">
 
-        {/* <CrystalMoving className="sliding_crystal" ref={crystalRef2} /> */}
+        <ProgressBar />
         <Navigation />
         <Header />
-        <Projects test='test' />
+        <Projects />
         <Skills />
         <Contact />
         <Footer />

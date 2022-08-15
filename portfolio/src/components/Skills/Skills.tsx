@@ -36,12 +36,12 @@ const Skills: React.FC = () => {
     const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
     useEffect(() => {
-        const crystal = crystalRef.current;
+        const [crystal, frontendCard, backendCard, graphicsCard] = [crystalRef.current, frontendRef.current, backendRef.current, graphicsRef.current];
 
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
-            const motionEnd = `+=${isDesktop ? '80' : '220'}%`;
+            const motionEnd = `+=${isDesktop ? '100' : '240'}%`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
 
@@ -50,9 +50,9 @@ const Skills: React.FC = () => {
                     trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
+                    start: 'top 65%',
+                    end: motionEnd,
                     // markers: true,
-                    start: 'top center',
-                    end: motionEnd
                     // pin: true,
                     // pinSpacing: false
                 }
@@ -78,13 +78,13 @@ const Skills: React.FC = () => {
 
             const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (element, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
-                repeat: 4 + 2 * index,
+                repeat: 4 + (isDesktop ? 1 : 2) * index,
                 yoyo: true,
                 scrollTrigger: {
                     trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
-                    start: 'top center',
+                    start: 'top 65%',
                     end: motionEnd
                 }
             })));
@@ -123,7 +123,7 @@ const Skills: React.FC = () => {
                 rotateZ: -6,
                 xPercent: 5,
                 yPercent: 24,
-                duration: 500
+                duration: .2
             });
 
             gsap.timeline({
@@ -171,6 +171,25 @@ const Skills: React.FC = () => {
                     end: 'bottom center'
                 }
             });
+
+            if (!isDesktop) {
+                gsap.set([frontendCard, graphicsCard, backendCard], { xPercent: -100, opacity: 0, scale: .6 })
+                gsap.set(backendCard, { xPercent: 100 })
+
+                const cards = [frontendCard, backendCard, graphicsCard];
+                cards.forEach((element) => {
+                    gsap.to(element, {
+                        xPercent: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: .6,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "10% bottom"
+                        }
+                    });
+                });
+            };
         };
     }, [])
 
