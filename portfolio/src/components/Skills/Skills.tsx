@@ -40,8 +40,14 @@ const Skills: React.FC = () => {
 
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
+
+            const cardTriggerPosition = window.innerHeight / 2;
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
-            const motionEnd = `+=${isDesktop ? '100' : '240'}%`;
+            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.7 : cardTriggerPosition * 1.3}px`;
+            //@ts-ignore
+            const motionEnd = `+=${document.getElementById('skills').offsetHeight}px`;
+
+
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
 
@@ -50,11 +56,9 @@ const Skills: React.FC = () => {
                     trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
-                    start: 'top 65%',
+                    start: motionStart,
                     end: motionEnd,
                     // markers: true,
-                    // pin: true,
-                    // pinSpacing: false
                 }
             });
 
@@ -84,7 +88,7 @@ const Skills: React.FC = () => {
                     trigger: motionTrigger,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
-                    start: 'top 65%',
+                    start: motionStart,
                     end: motionEnd
                 }
             })));
@@ -138,60 +142,81 @@ const Skills: React.FC = () => {
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: frontendRef.current,
+                    trigger: '#skills',
                     onEnter: () => { setActiveCard('frontend') },
                     onEnterBack: () => { setActiveCard('frontend') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: 'top center',
-                    end: 'bottom center'
+                    start: `8% ${cardTriggerPosition}px`,
+                    end: `29% ${cardTriggerPosition}px`,
+                    // markers: true
                 }
             });
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: backendRef.current,
+                    trigger: '#skills',
                     onEnter: () => { setActiveCard('backend') },
                     onEnterBack: () => { setActiveCard('backend') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: 'top center',
-                    end: 'bottom center'
+                    start: `38% ${cardTriggerPosition}px`,
+                    end: `58% ${cardTriggerPosition}px`,
+                    // markers: true
                 }
             });
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: graphicsRef.current,
+                    trigger: '#skills',
                     onEnter: () => { setActiveCard('graphics') },
                     onEnterBack: () => { setActiveCard('graphics') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: 'top center',
-                    end: 'bottom center'
+                    start: `68% ${cardTriggerPosition}px`,
+                    end: `88% ${cardTriggerPosition}px`,
+                    // markers: true
                 }
             });
 
             if (!isDesktop) {
-                gsap.set([frontendCard, graphicsCard, backendCard], { xPercent: -100, opacity: 0, scale: .6 })
-                gsap.set(backendCard, { xPercent: 100 })
+                gsap.set([frontendCard, graphicsCard, backendCard], { xPercent: -100, opacity: 0 });
+                gsap.set(backendCard, { xPercent: 100 });
 
                 const cards = [frontendCard, backendCard, graphicsCard];
                 cards.forEach((element) => {
                     gsap.to(element, {
                         xPercent: 0,
                         opacity: 1,
-                        scale: 1,
                         duration: .6,
+                        ease: 'power2.out',
                         scrollTrigger: {
                             trigger: element,
-                            start: "10% bottom"
+                            start: "20% bottom"
+                        }
+                    });
+                });
+            } else {
+                gsap.set([frontendCard, graphicsCard, backendCard], { yPercent: 60, opacity: 0, scale: .6 })
+                const cards = [frontendCard, backendCard, graphicsCard];
+
+                cards.forEach((element, index) => {
+                    gsap.to(element, {
+                        yPercent: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: .9,
+                        delay: index * .3,
+                        ease: 'back.out(1.0)',
+                        scrollTrigger: {
+                            trigger: '#skills',
+                            start: "30% bottom"
                         }
                     });
                 });
             };
         };
-    }, [])
+    }, [setCurrentSection])
 
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
 

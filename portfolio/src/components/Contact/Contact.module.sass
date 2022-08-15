@@ -7,13 +7,16 @@
     overflow: hidden
 
 .form_card
-    width: 80vw
-    height: 80vh
+    width: 40vw
+    height: 60vh
     background-color: #ffffff12
     backdrop-filter: blur(10px)
     z-index: 999
     border-radius: var(--border-radius-normal)
     border: 2px solid #ffffff18
+    @include mobile-and-small
+        width: 80vw
+        height: 60vh
 
 .crystal_wrapper
     position: absolute
