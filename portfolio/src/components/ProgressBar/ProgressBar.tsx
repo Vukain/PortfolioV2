@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import styles from './ProgressBar.module.sass';
 
-const ProgressBar: React.FC = () => {
+export const ProgressBar: React.FC = () => {
 
     useEffect(() => {
 
@@ -11,7 +11,6 @@ const ProgressBar: React.FC = () => {
             const app: HTMLDivElement | null = document.querySelector('.App');
 
             if (app) {
-                console.log(app.offsetHeight);
                 gsap.to('progress', {
                     value: 100,
                     ease: 'none',
@@ -29,6 +28,4 @@ const ProgressBar: React.FC = () => {
         <progress className={styles.progress} max="100" value="0">
         </progress>
     );
-}
-
-export default ProgressBar;
+};

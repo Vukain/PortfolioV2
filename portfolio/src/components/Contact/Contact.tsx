@@ -1,21 +1,21 @@
 import { MouseEvent, useRef, useState, useContext, useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-
-import ParallaxCrystal from './ParallaxCrystal/ParallaxCrystal';
+import { SectionName } from '../SectionName/SectionName';
+import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
-const Contact: React.FC = () => {
+export const Contact: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
 
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
-    const initialCursorXPositionRef = useRef(0);
-    const initialCursorYPositionRef = useRef(0);
+    const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
+    const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
 
     const [cursorXPosition, setCursorXPosition] = useState(0);
     const [cursorYPosition, setCursorYPosition] = useState(0);
@@ -70,11 +70,15 @@ const Contact: React.FC = () => {
     });
 
     return (
-        <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
-            {crystalsMapped}
-            <div className={styles.form_card}></div>
+        <section className={styles.contact_wrapper} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
+
+            <SectionName>kontakt</SectionName>
+
+            <div className={styles.contact}>
+                {crystalsMapped}
+                <div className={styles.form_card}></div>
+            </div>
+
         </section>
     );
-}
-
-export default Contact;
+};

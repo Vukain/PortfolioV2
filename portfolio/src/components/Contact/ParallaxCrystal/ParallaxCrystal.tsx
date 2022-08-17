@@ -9,7 +9,7 @@ type MyProps = {
     };
 };
 
-const ParallaxCrystal: React.FC<MyProps> = ({ data: { speed, crystalImage }, cursorXPosition, cursorYPosition }) => {
+export const ParallaxCrystal: React.FC<MyProps> = ({ data: { speed, crystalImage }, cursorXPosition, cursorYPosition }) => {
 
     const Image = crystalImage;
 
@@ -18,6 +18,4 @@ const ParallaxCrystal: React.FC<MyProps> = ({ data: { speed, crystalImage }, cur
             <Image className={styles.floating_crystal} />
         </div>
     );
-}
-
-export default ParallaxCrystal;
+};

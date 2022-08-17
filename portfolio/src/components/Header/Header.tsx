@@ -1,5 +1,5 @@
 import { useRef, useEffect, useContext } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import styles from './Header.module.sass';
 
@@ -7,7 +7,7 @@ import { AppContext } from '../../store/AppContext';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
 
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
             }
         });
 
-    }, []);
+    }, [setCurrentSection]);
 
     return (
         <header className={styles.header} id="header">
@@ -100,6 +100,4 @@ const Header: React.FC = () => {
 
         </header>
     );
-}
-
-export default Header;
+};

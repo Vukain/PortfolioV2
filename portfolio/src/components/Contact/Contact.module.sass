@@ -1,10 +1,21 @@
 @import '../../sass/mixins'
 
+.contact_wrapper
+    @include section
+
+    @include mobile-and-small
+        margin-top: 14vh
+
 .contact
     @include flex-center
     height: 100vh
     position: relative
     overflow: hidden
+    grid-column: 1 / 3
+    grid-row: 1
+    @include mobile-and-small
+        grid-column: 1
+        grid-row: 1 / 3
 
 .form_card
     width: 40vw
@@ -20,7 +31,6 @@
 
 .crystal_wrapper
     position: absolute
-    // animation: crystal-move 5s infinite
     &:nth-child(1)
         top: 15%
         left: 20%

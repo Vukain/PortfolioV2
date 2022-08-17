@@ -1,5 +1,5 @@
-import { useRef, useEffect, useContext, forwardRef } from 'react';
-import gsap from 'gsap';
+import { useRef, useEffect, useContext } from 'react';
+import { gsap } from 'gsap';
 
 import styles from './Projects.module.sass';
 
@@ -7,7 +7,7 @@ import { AppContext } from '../../store/AppContext';
 
 type MyProps = { test?: string };
 
-const Projects: React.FC<MyProps> = ({ test }) => {
+export const Projects: React.FC<MyProps> = ({ test }) => {
 
     const { setCurrentSection } = useContext(AppContext);
 
@@ -52,6 +52,4 @@ const Projects: React.FC<MyProps> = ({ test }) => {
             <article className={styles.project}>Project 5</article>
         </section>
     );
-}
-
-export default Projects;
+};

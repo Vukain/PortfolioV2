@@ -1,13 +1,13 @@
-import React, { ReactSVG, useContext } from 'react';
+import { useContext } from 'react';
+import { clsx } from 'clsx';
 
 import { AppContext } from '../../../store/AppContext';
 
 import styles from './NavigationButton.module.sass';
-import { clsx } from 'clsx';
 
 type MyProps = { id: string, name: string, navigationVisibility: boolean, navigationVisibilitySetter: React.Dispatch<React.SetStateAction<boolean>> };
 
-const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, navigationVisibilitySetter }) => {
+export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, navigationVisibilitySetter }) => {
 
     const { setNavigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
@@ -36,5 +36,3 @@ const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, n
         </button >
     );
 };
-
-export default NavigationButton;

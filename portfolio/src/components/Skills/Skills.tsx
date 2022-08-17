@@ -1,11 +1,12 @@
 import { useEffect, useRef, useContext, useState } from 'react';
 import { clsx } from 'clsx';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import styles from './Skills.module.sass';
 
-import SkillCard from './SkillCard/SkillCard';
 import { AppContext } from '../../store/AppContext';
+import { SkillCard } from './SkillCard/SkillCard';
+import { SectionName } from '../SectionName/SectionName';
 
 import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.svg';
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
@@ -14,7 +15,7 @@ import { ReactComponent as CrystalMoving } from '../../media/crystal_scroll.svg'
 import { ReactComponent as MotionPathDesktop } from '../../media/motion_path_desktop.svg';
 import { ReactComponent as MotionPathMobile } from '../../media/motion_path_mobile.svg';
 
-const Skills: React.FC = () => {
+export const Skills: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
 
@@ -25,12 +26,30 @@ const Skills: React.FC = () => {
 
     const [activeCard, setActiveCard] = useState('');
 
-    type CardData = Record<'frontend' | 'backend' | 'graphics', { category: string, skills: string[] }>;
+    // Had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
+
+    type CardData = Record<string, {
+        data: { category: string, skills: string[] },
+        icon: React.FC<{ className?: string, title?: string }>,
+        ref: React.MutableRefObject<null | HTMLDivElement>
+    }>;
 
     const cardData: CardData = {
-        frontend: { category: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
-        backend: { category: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'mongodb', 'sqlite'] },
-        graphics: { category: 'graphics', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] }
+        frontend: {
+            data: { category: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
+            icon: FrontendIcon,
+            ref: frontendRef
+        },
+        backend: {
+            data: { category: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'mongodb', 'sqlite'] },
+            icon: BackendIcon,
+            ref: backendRef
+        },
+        graphics: {
+            data: { category: 'graphics', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] },
+            icon: GraphicIcon,
+            ref: graphicsRef
+        }
     };
 
     const isDesktop = window.matchMedia('(orientation: landscape)').matches;
@@ -43,11 +62,8 @@ const Skills: React.FC = () => {
 
             const cardTriggerPosition = window.innerHeight / 2;
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
-            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.7 : cardTriggerPosition * 1.3}px`;
-            //@ts-ignore
-            const motionEnd = `+=${document.getElementById('skills').offsetHeight}px`;
-
-
+            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.7 : cardTriggerPosition * 1.4}px`;
+            const motionEnd = `+=${document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
 
@@ -68,10 +84,13 @@ const Skills: React.FC = () => {
                 motionPath: {
                     path: motionTrigger,
                     align: motionTrigger,
-                    alignOrigin: [0.5, 0.5],
+                    alignOrigin: [.5, .5],
                     autoRotate: 90,
+                    start: isDesktop ? .05 : .09
                 }
             });
+
+            // Unused automatic crystal floating
 
             // const floatingShardAuto = gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1, yoyo: true });
 
@@ -82,7 +101,7 @@ const Skills: React.FC = () => {
 
             const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (element, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
-                repeat: 4 + (isDesktop ? 1 : 2) * index,
+                repeat: (isDesktop ? 2 : 4) + 2 * index,
                 yoyo: true,
                 scrollTrigger: {
                     trigger: motionTrigger,
@@ -132,7 +151,7 @@ const Skills: React.FC = () => {
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#skills',
+                    trigger: '#cards',
                     onEnter: () => { setCurrentSection('skills') },
                     onEnterBack: () => { setCurrentSection('skills') },
                     start: 'top center',
@@ -142,63 +161,47 @@ const Skills: React.FC = () => {
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#skills',
+                    trigger: '#cards',
                     onEnter: () => { setActiveCard('frontend') },
                     onEnterBack: () => { setActiveCard('frontend') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: `8% ${cardTriggerPosition}px`,
-                    end: `29% ${cardTriggerPosition}px`,
+                    start: `-2% ${cardTriggerPosition}px`,
+                    end: `21% ${cardTriggerPosition}px`,
                     // markers: true
                 }
             });
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#skills',
+                    trigger: '#cards',
                     onEnter: () => { setActiveCard('backend') },
                     onEnterBack: () => { setActiveCard('backend') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: `38% ${cardTriggerPosition}px`,
-                    end: `58% ${cardTriggerPosition}px`,
+                    start: `32% ${cardTriggerPosition}px`,
+                    end: `55% ${cardTriggerPosition}px`,
                     // markers: true
                 }
             });
 
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#skills',
+                    trigger: '#cards',
                     onEnter: () => { setActiveCard('graphics') },
                     onEnterBack: () => { setActiveCard('graphics') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: `68% ${cardTriggerPosition}px`,
-                    end: `88% ${cardTriggerPosition}px`,
+                    start: `67% ${cardTriggerPosition}px`,
+                    end: `90% ${cardTriggerPosition}px`,
                     // markers: true
                 }
             });
 
-            if (!isDesktop) {
-                gsap.set([frontendCard, graphicsCard, backendCard], { xPercent: -100, opacity: 0 });
-                gsap.set(backendCard, { xPercent: 100 });
+            const cards = [frontendCard, backendCard, graphicsCard];
 
-                const cards = [frontendCard, backendCard, graphicsCard];
-                cards.forEach((element) => {
-                    gsap.to(element, {
-                        xPercent: 0,
-                        opacity: 1,
-                        duration: .6,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "20% bottom"
-                        }
-                    });
-                });
-            } else {
-                gsap.set([frontendCard, graphicsCard, backendCard], { yPercent: 60, opacity: 0, scale: .6 })
-                const cards = [frontendCard, backendCard, graphicsCard];
+            if (isDesktop) {
+                gsap.set(cards, { yPercent: 60, opacity: 0, scale: .7 });
 
                 cards.forEach((element, index) => {
                     gsap.to(element, {
@@ -214,30 +217,55 @@ const Skills: React.FC = () => {
                         }
                     });
                 });
+            } else {
+                gsap.set(cards, { xPercent: -100, opacity: 0, scale: .6 });
+                gsap.set(backendCard, { xPercent: 100 });
+
+                cards.forEach((element) => {
+                    gsap.to(element, {
+                        xPercent: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: .6,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "10% bottom"
+                        }
+                    });
+                });
             };
         };
-    }, [setCurrentSection])
+    }, [setCurrentSection, isDesktop])
 
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
 
+    const cards = Object.keys(cardData).map((element, index) => {
+
+        const Icon = cardData[element].icon;
+
+        return (
+            <SkillCard data={cardData[element].data} activeCard={activeCard} ref={cardData[element].ref} key={index}>
+                <Icon className={clsx(styles.icon, styles[`icon_${element}`])} title={`${element} icon`} />
+            </SkillCard>
+        );
+    }
+    );
+
+
     return (
         <section className={styles.skills} id='skills'>
-            <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
 
-            <SkillCard data={cardData['frontend']} activeCard={activeCard} ref={frontendRef}>
-                <FrontendIcon className={clsx(styles.icon, styles.icon_frontend)} title="frontend icon" />
-            </SkillCard>
-            <SkillCard data={cardData['backend']} activeCard={activeCard} ref={backendRef}>
-                <BackendIcon className={clsx(styles.icon, styles.icon_backend)} title="backend icon" />
-            </SkillCard>
-            <SkillCard data={cardData['graphics']} activeCard={activeCard} ref={graphicsRef}>
-                <GraphicIcon className={clsx(styles.icon, styles.icon_graphics)} title="graphics icon" />
-            </SkillCard>
+            <SectionName>umiejętności</SectionName>
 
-            {svgPath}
+            <div className={styles.cards} id='cards'>
+                <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
+
+                {cards}
+
+                {svgPath}
+            </div>
 
         </section>
     );
-}
-
-export default Skills;
+};

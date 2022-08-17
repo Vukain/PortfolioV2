@@ -1,17 +1,16 @@
-import { useCallback, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { clsx } from 'clsx';
 
 import { AppContext } from '../../store/AppContext';
-
-import NavigationButton from './NavigationButton/NavigationButton';
+import { NavigationButton } from './NavigationButton/NavigationButton';
 
 import styles from './Navigation.module.sass';
 
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
+
+    const { navigateTo } = useContext(AppContext);
 
     const [mobileNavigationVisibility, setMobileNavigationVisibility] = useState(false);
-
-    const { navigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
     const hamburgerHandler = () => {
         setMobileNavigationVisibility(!mobileNavigationVisibility);
@@ -36,5 +35,3 @@ const Navigation: React.FC = () => {
         </nav >
     );
 };
-
-export default Navigation;
