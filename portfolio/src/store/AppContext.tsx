@@ -12,13 +12,14 @@ interface ContextType {
     language: string,
     setLanguage: React.Dispatch<React.SetStateAction<string>>,
     darkMode: boolean,
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>,
-
+    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 export const AppContext = createContext<ContextType>({
-    navigateTo: '', setNavigateTo: () => { }, currentSection: '', setCurrentSection: () => { },
-    language: '', setLanguage: () => { }, darkMode: true, setDarkMode: () => { }
+    navigateTo: '', setNavigateTo: () => { },
+    currentSection: '', setCurrentSection: () => { },
+    language: '', setLanguage: () => { },
+    darkMode: true, setDarkMode: () => { }
 });
 
 export const AppContextProvider: React.FC<ContextProps> = ({ children }) => {

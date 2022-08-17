@@ -25,13 +25,15 @@ export const Navigation: React.FC = () => {
     return (
         <nav className={clsx(styles.navigation, !mobileNavigationVisibility && styles['navigation--hidden'])}>
             {buttonsList}
+
             <div className={clsx(styles.hamburger, mobileNavigationVisibility && styles['hamburger--active'])} onClick={hamburgerHandler}>
                 <div className={styles.hamburger_segment}></div>
                 <div className={styles.hamburger_segment}></div>
                 <div className={styles.hamburger_segment}></div>
                 <div className={styles.hamburger_segment}></div>
             </div>
+
             <div className={clsx(styles.destination, !mobileNavigationVisibility && styles['destination--hidden'])}><span className={styles.destination_text}>{navigateTo}</span></div>
-        </nav >
+        </nav>
     );
 };

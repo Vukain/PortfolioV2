@@ -99,7 +99,7 @@ export const Skills: React.FC = () => {
             //   .to(lowerShard, { duration: 1, yPercent: '+=30', rotateZ: '3deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
 
-            const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (element, index) => (gsap.timeline({
+            const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
                 repeat: (isDesktop ? 2 : 4) + 2 * index,
                 yoyo: true,
@@ -252,10 +252,8 @@ export const Skills: React.FC = () => {
     }
     );
 
-
     return (
         <section className={styles.skills} id='skills'>
-
             <SectionName>umiejętności</SectionName>
 
             <div className={styles.cards} id='cards'>
@@ -265,7 +263,6 @@ export const Skills: React.FC = () => {
 
                 {svgPath}
             </div>
-
         </section>
     );
 };
