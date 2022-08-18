@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { clsx } from 'clsx';
 
-import { AppContext } from '../../../store/AppContext';
-
 import styles from './NavigationButton.module.sass';
+
+import { AppContext } from '../../../store/AppContext';
 
 type MyProps = { id: string, name: string, navigationVisibility: boolean, navigationVisibilitySetter: React.Dispatch<React.SetStateAction<boolean>> };
 

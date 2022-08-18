@@ -254,6 +254,7 @@ export const Skills: React.FC = () => {
 
     return (
         <section className={styles.skills} id='skills'>
+
             <SectionName>umiejętności</SectionName>
 
             <div className={styles.cards} id='cards'>
@@ -263,6 +264,7 @@ export const Skills: React.FC = () => {
 
                 {svgPath}
             </div>
+
         </section>
     );
 };

@@ -81,7 +81,9 @@ export const Header: React.FC = () => {
 
     return (
         <header className={styles.header} id="header">
+
             <Crystal className={styles.crystal} ref={crystalRef} />
+
             <div className={styles.hello_wrapper}>
                 <div className={styles.hello}>
                     <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>

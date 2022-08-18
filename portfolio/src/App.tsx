@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
@@ -17,6 +17,14 @@ import { Skills } from './components/Skills/Skills';
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 export const App = () => {
+
+  useEffect(() => {
+    // Allow linking to section
+    const [, location] = window.location.href.split('#');
+    if (['projects', 'skills', 'contact'].includes(location)) {
+      window.location.href = `#${location}`
+    };
+  })
 
   return (
     <AppContextProvider >
