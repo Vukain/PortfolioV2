@@ -152,8 +152,14 @@ export const Skills: React.FC = () => {
             gsap.timeline({
                 scrollTrigger: {
                     trigger: '#cards',
-                    onEnter: () => { setCurrentSection('skills') },
-                    onEnterBack: () => { setCurrentSection('skills') },
+                    onEnter: () => {
+                        setCurrentSection('skills');
+                        window.history.pushState({}, '', '#skills');
+                    },
+                    onEnterBack: () => {
+                        setCurrentSection('skills');
+                        window.history.pushState({}, '', '#skills');
+                    },
                     start: 'top center',
                     end: 'bottom center'
                 }

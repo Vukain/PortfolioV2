@@ -61,8 +61,14 @@ export const Contact: React.FC = () => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#contact',
-                onEnter: () => { setCurrentSection('contact') },
-                onEnterBack: () => { setCurrentSection('contact') },
+                onEnter: () => {
+                    setCurrentSection('contact');
+                    window.history.pushState({}, '', '#contact');
+                },
+                onEnterBack: () => {
+                    setCurrentSection('contact');
+                    window.history.pushState({}, '', '#contact');
+                },
                 start: 'top center',
                 end: 'bottom center'
             }

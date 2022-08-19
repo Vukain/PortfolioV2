@@ -70,8 +70,13 @@ export const Header: React.FC = () => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#header',
-                onEnter: () => { setCurrentSection('header') },
-                onEnterBack: () => { setCurrentSection('header') },
+                onEnter: () => {
+                    setCurrentSection('header');
+                },
+                onEnterBack: () => {
+                    setCurrentSection('header');
+                    window.history.pushState({}, '', ' ');
+                },
                 start: 'top center',
                 end: 'bottom center'
             }

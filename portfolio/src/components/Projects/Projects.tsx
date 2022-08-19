@@ -31,8 +31,14 @@ export const Projects: React.FC<MyProps> = ({ test }) => {
                 // start: 'center center',
                 end: 4 * projects[0].offsetWidth,
                 snap: 1 / 4,
-                onEnter: () => { setCurrentSection('projects') },
-                onEnterBack: () => { setCurrentSection('projects') }
+                onEnter: () => {
+                    setCurrentSection('projects');
+                    window.history.pushState({}, '', '#projects');
+                },
+                onEnterBack: () => {
+                    setCurrentSection('projects');
+                    window.history.pushState({}, '', '#projects');
+                }
             }
         });
 
