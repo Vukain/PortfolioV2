@@ -1,0 +1,29 @@
+@import '../../../sass/mixins'
+
+.menu
+    display: flex
+    grid-row: 3
+    grid-column: 2
+    align-items: center
+    @include mobile-and-small
+        display: none
+
+.wrapper
+    @include flex-center
+    flex-grow: 1
+
+.button
+    @include flex-center
+
+    border: none
+    background-color: transparent
+    cursor: pointer
+    padding: 1em
+
+.text
+    font-size: var(--font-size-heading-3)
+    text-transform: uppercase
+    transition: .5s color
+    color: #888888
+    &:hover, &--active
+        color: #e4e4e4

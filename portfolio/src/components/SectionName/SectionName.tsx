@@ -4,7 +4,12 @@ import { clsx } from 'clsx';
 
 import styles from './SectionName.module.sass';
 
-export const SectionName: React.FC<{ children: string }> = ({ children }) => {
+type MyProps = {
+    children: string
+    lighter?: boolean
+}
+
+export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
 
     const [visible, setVisible] = useState(false);
     const nameRef = useRef(null);
@@ -26,8 +31,8 @@ export const SectionName: React.FC<{ children: string }> = ({ children }) => {
     });
 
     return (
-        <div className={styles.wrapper}>
-            <h2 className={clsx(styles.section_name, visible && styles['section_name--visible'])} ref={nameRef}>
+        <div className={clsx(styles.wrapper, lighter && styles['wrapper--projects'])}>
+            <h2 className={clsx(styles.section_name, visible && styles['section_name--visible'], lighter && styles['section_name--lighter'])} ref={nameRef}>
                 {children}
             </h2>
         </div>

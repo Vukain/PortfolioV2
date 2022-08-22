@@ -73,14 +73,14 @@ export const Contact: React.FC = () => {
                 end: 'bottom center'
             }
         });
-    });
+    }, [setCurrentSection]);
 
     return (
-        <section className={styles.contact_wrapper} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
+        <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
             <SectionName>kontakt</SectionName>
 
-            <div className={styles.contact}>
+            <div className={styles.form}>
                 {crystalsMapped}
                 <div className={styles.form_card}></div>
             </div>

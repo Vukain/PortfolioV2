@@ -1,23 +1,32 @@
-import { useRef, useEffect, useContext } from 'react';
+import { useRef, useEffect, useContext, useState } from 'react';
 import { gsap } from 'gsap';
 
 import styles from './Projects.module.sass';
 
 import { AppContext } from '../../store/AppContext';
+import { SectionName } from '../SectionName/SectionName';
+import { Menu } from './Menu/Menu';
 
-type MyProps = { test?: string };
-
-export const Projects: React.FC<MyProps> = ({ test }) => {
+export const Projects: React.FC = () => {
 
     const { setCurrentSection } = useContext(AppContext);
 
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
+    const [projectSize, setProjectSize] = useState(0);
+    const [currentProject, setCurrentProject] = useState(0);
+
+    // console.log('rerender')
+
     useEffect(() => {
+        const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
         const projectsSection = projectsRef.current;
         const elementGetter = gsap.utils.selector(projectsSection);
-        const projects: HTMLElement[] = elementGetter('[class*="project"]');
+        const projects: HTMLElement[] = elementGetter('[class*="project_"]');
+
+        const size = isDesktop ? projects[0].offsetWidth : projects[0].offsetHeight;
+        setProjectSize(size);
 
         // const projects = Array.prototype.slice.call(projectsRef.current?.querySelectorAll('[class*="project"]'));
 
@@ -28,9 +37,10 @@ export const Projects: React.FC<MyProps> = ({ test }) => {
                 scrub: true,
                 pin: true,
                 pinSpacing: true,
-                // start: 'center center',
-                end: 4 * projects[0].offsetWidth,
-                snap: 1 / 4,
+                start: 'center center',
+                end: window.innerHeight + (projects.length - 1) * size,
+                snap: 1 / (projects.length - 1),
+                // markers: true,
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
@@ -42,20 +52,55 @@ export const Projects: React.FC<MyProps> = ({ test }) => {
             }
         });
 
-        slidingProjects.to(projects, {
-            xPercent: -100 * (projects.length - 1),
-            ease: "none",
-        });
+        if (isDesktop) {
+            slidingProjects.to(projects.slice(1), {
+                xPercent: -100,
+                stagger: .5,
+                ease: "none"
+            });
+        } else {
+            slidingProjects.to(projects.slice(1), {
+                yPercent: -100,
+                stagger: .5,
+                ease: "none"
+            });
+        };
 
+        projects.forEach((_, index) => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#app',
+                    onEnter: () => {
+                        setCurrentProject(index);
+                    },
+                    onEnterBack: () => {
+                        setCurrentProject(index);
+                    },
+                    start: `${window.innerHeight + index * size}px 1px`,
+                    end: `${window.innerHeight + (index + 1) * size}px top`,
+                    // markers: true
+                }
+            });
+        });
     }, [setCurrentSection])
+
+    const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];
+
 
     return (
         <section className={styles.projects} ref={projectsRef} id="projects">
-            <article className={styles.project}>Project 1</article>
-            <article className={styles.project}>Project 2</article>
-            <article className={styles.project}>Project 3</article>
-            <article className={styles.project}>Project 4</article>
-            <article className={styles.project}>Project 5</article>
+            <SectionName lighter={true}>projekty</SectionName>
+
+            <div className={styles.gallery}>
+                <article className={styles.project}>Project 1</article>
+                <article className={styles.project}>Project 2</article>
+                <article className={styles.project}>Project 3</article>
+                <article className={styles.project}>Project 4</article>
+                <article className={styles.project}>Project 5</article>
+            </div>
+
+            <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} />
+
         </section>
     );
 };

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import './App.sass';
 
@@ -14,7 +15,7 @@ import { Projects } from './components/Projects/Projects';
 import { ProgressBar } from './components/ProgressBar/ProgressBar';
 import { Skills } from './components/Skills/Skills';
 
-gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
 export const App = () => {
 
@@ -29,7 +30,7 @@ export const App = () => {
   return (
     <AppContextProvider >
 
-      <div className="App">
+      <div className="App" id='app'>
 
         <ProgressBar />
         <Navigation />

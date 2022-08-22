@@ -1,26 +1,42 @@
+@import '../../sass/mixins'
+
 .projects
+    @include section
     position: relative
-    // margin-top: -10vh
-    // height: 500vw
-    // width: 500vw
-    width: 100vw
-    padding: 10vh 0
     background-color: var(--background-color-2)
+    height: 100vh
+    grid-template-rows: 12vh 1fr 12vh
+    @include mobile-and-small
+        grid-template-rows: 26vw 1fr 26vw
+
+.gallery
+    position: relative
     display: flex
-    // flex-direction: column
+    grid-column: 2 / 3
+    grid-row: 2
+    @include mobile-and-small
+        grid-column: 1
+        grid-row: 2 / 4
 
 .project
-    height: 80vh
-    flex: 0 0 100vw
-    // align-self: end
-    position: relative
+    height: 100%
+    width: 100%
+    position: absolute
+    left: 0
     font-size: 40px
+    &:not(:first-child)
+        @include desktop
+            left: 100%
+        @include mobile-and-small
+            top: 100%
     &:nth-child(3n+1)
         background-color: var(--color-main-1)
     &:nth-child(3n+2)
         background-color: var(--color-main-2)
     &:nth-child(3n+3)
         background-color: var(--color-main-3)
+    @include mobile-and-small
+        height: 100%
     // &:nth-child(5n+4)
     //     background-color: var(--color-main-3)
     // &:nth-child(5n+5)
