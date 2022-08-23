@@ -25,6 +25,7 @@ export const Projects: React.FC = () => {
         const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project_"]');
 
+        const sectionHeight = document.getElementById('header')!.offsetHeight
         const size = isDesktop ? projects[0].offsetWidth : projects[0].offsetHeight;
         setProjectSize(size);
 
@@ -37,8 +38,8 @@ export const Projects: React.FC = () => {
                 scrub: true,
                 pin: true,
                 pinSpacing: true,
-                start: 'center center',
-                end: window.innerHeight + (projects.length - 1) * size,
+                start: '10px 10px',
+                end: sectionHeight + (projects.length - 1) * size,
                 snap: 1 / (projects.length - 1),
                 // markers: true,
                 onEnter: () => {
@@ -72,16 +73,19 @@ export const Projects: React.FC = () => {
                     trigger: '#app',
                     onEnter: () => {
                         setCurrentProject(index);
+                        console.log('enter' + index)
                     },
                     onEnterBack: () => {
                         setCurrentProject(index);
+                        console.log('enter back' + index)
                     },
-                    start: `${window.innerHeight + index * size}px 1px`,
-                    end: `${window.innerHeight + (index + 1) * size}px top`,
-                    // markers: true
+                    start: `${2 * sectionHeight + (index - 1) * size}px ${sectionHeight - 1}px)`,
+                    end: `${2 * sectionHeight + index * size}px ${sectionHeight - 1}px`,
+                    markers: true
                 }
             });
         });
+
     }, [setCurrentSection])
 
     const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];

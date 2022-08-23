@@ -6,7 +6,10 @@
     grid-column: 2
     align-items: center
     @include mobile-and-small
-        display: none
+        grid-row: 3
+        grid-column: 1 / 2
+        background-color: var(--background-color-2)
+        z-index: 999
 
 .wrapper
     @include flex-center
@@ -14,11 +17,13 @@
 
 .button
     @include flex-center
-
     border: none
     background-color: transparent
     cursor: pointer
     padding: 1em
+    @include mobile-and-small
+        padding: 0.5em
+        transform: rotateZ(-45deg)
 
 .text
     font-size: var(--font-size-heading-3)
@@ -27,3 +32,5 @@
     color: #888888
     &:hover, &--active
         color: #e4e4e4
+    @include mobile-and-small
+        font-size: calc(0.6 * var(--font-size-heading-3))
