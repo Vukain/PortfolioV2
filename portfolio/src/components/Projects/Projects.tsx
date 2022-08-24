@@ -14,6 +14,7 @@ export const Projects: React.FC = () => {
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
     const [projectSize, setProjectSize] = useState(0);
+    const [sectionHeight, setSectionHeight] = useState(0);
     const [currentProject, setCurrentProject] = useState(0);
 
     // console.log('rerender')
@@ -25,8 +26,9 @@ export const Projects: React.FC = () => {
         const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project_"]');
 
-        const sectionHeight = document.getElementById('header')!.offsetHeight
+        const height = document.getElementById('header')!.offsetHeight
         const size = isDesktop ? projects[0].offsetWidth : projects[0].offsetHeight;
+        setSectionHeight(height);
         setProjectSize(size);
 
         // const projects = Array.prototype.slice.call(projectsRef.current?.querySelectorAll('[class*="project"]'));
@@ -39,7 +41,7 @@ export const Projects: React.FC = () => {
                 pin: true,
                 pinSpacing: true,
                 start: '10px 10px',
-                end: sectionHeight + (projects.length - 1) * size,
+                end: height + (projects.length - 1) * size,
                 snap: 1 / (projects.length - 1),
                 // markers: true,
                 onEnter: () => {
@@ -73,15 +75,13 @@ export const Projects: React.FC = () => {
                     trigger: '#app',
                     onEnter: () => {
                         setCurrentProject(index);
-                        console.log('enter' + index)
                     },
                     onEnterBack: () => {
                         setCurrentProject(index);
-                        console.log('enter back' + index)
                     },
-                    start: `${2 * sectionHeight + (index - 1) * size}px ${sectionHeight - 1}px)`,
-                    end: `${2 * sectionHeight + index * size}px ${sectionHeight - 1}px`,
-                    markers: true
+                    start: `${2 * height + (index - 1) * size}px ${height - 1}px)`,
+                    end: `${2 * height + index * size}px ${height - 1}px`,
+                    // markers: true
                 }
             });
         });
@@ -103,7 +103,7 @@ export const Projects: React.FC = () => {
                 <article className={styles.project}>Project 5</article>
             </div>
 
-            <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} />
+            <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} sectionHeight={sectionHeight} />
 
         </section>
     );

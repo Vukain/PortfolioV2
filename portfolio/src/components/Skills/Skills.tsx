@@ -66,6 +66,137 @@ export const Skills: React.FC = () => {
             const motionEnd = `+=${document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
+            const inner = elementGetter('[id*="inner"]');
+
+            gsap.set([inner, crystal], { autoAlpha: 0 })
+
+            const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
+                defaults: { ease: 'none', transformOrigin: 'center' },
+                repeat: (isDesktop ? 2 : 4) + 2 * index,
+                yoyo: true,
+                scrollTrigger: {
+                    trigger: motionTrigger,
+                    toggleActions: 'restart pause reverse pause',
+                    scrub: 2,
+                    start: motionStart,
+                    end: motionEnd
+                }
+            })));
+
+            const crystalFloater = () => {
+
+                leftBottomShardTL
+                    .fromTo(leftBottomShard, {
+                        xPercent: -30,
+                        yPercent: 30,
+                        duration: .2
+                    }, {
+                        xPercent: -60,
+                        yPercent: 40,
+                        duration: .2
+                    });
+
+                leftShardTL
+                    .fromTo(leftShard, {
+                        xPercent: -23,
+                        yPercent: -4,
+                        rotateZ: '4deg',
+                        duration: .2
+                    }, {
+                        xPercent: -28,
+                        yPercent: -7,
+                        rotateZ: '4deg',
+                        duration: .2
+                    });
+
+                rightBottomShardTL
+                    .fromTo(rightBottomShard, {
+                        xPercent: 18,
+                        yPercent: 18,
+                        duration: .2
+                    }, {
+                        xPercent: 32,
+                        yPercent: 32,
+                        duration: .2
+                    });
+
+                rightShardTL
+                    .fromTo(rightShard, {
+                        xPercent: 35,
+                        yPercent: 4,
+                        duration: .2
+                    }, {
+                        xPercent: 55,
+                        yPercent: 12,
+                        duration: .2
+                    });
+
+                topShardTL
+                    .fromTo(topShard, {
+                        yPercent: -16,
+                        duration: .2,
+                    }, {
+                        yPercent: -26,
+                        duration: .2,
+                    });
+
+                bottomShardTL
+                    .fromTo(bottomShard, {
+                        yPercent: 70,
+                        duration: .2
+                    }, {
+                        xPercent: -25,
+                        yPercent: 100,
+                        duration: .2
+                    });
+            }
+
+            const breakCrystalTL = gsap.timeline({
+                defaults: { ease: "sine.out" },
+                scrollTrigger: {
+                    trigger: '#skills',
+                    start: '10% bottom',
+                    // end: motionEnd,
+                    // markers: true,
+                }
+            });
+
+            breakCrystalTL.fromTo(crystal, { scale: 1.7 }, {
+                scale: 1, autoAlpha: 1, duration: .3
+            }).to(inner, {
+                autoAlpha: 1,
+                duration: .1
+            }).to(leftBottomShard, {
+                xPercent: -30,
+                yPercent: 30,
+                duration: .2,
+                delay: -.1
+            }).to(leftShard, {
+                xPercent: -23,
+                yPercent: -4,
+                rotateZ: '4deg',
+                duration: .2,
+                delay: -.2
+            }).to(rightBottomShard, {
+                xPercent: 18,
+                yPercent: 18,
+                duration: .2,
+                delay: -.2
+            }).to(rightShard, {
+                xPercent: 35,
+                yPercent: 4,
+                duration: .2,
+                delay: -.2
+            }).to(topShard, {
+                yPercent: -16,
+                duration: .2,
+                delay: -.2
+            }).to(bottomShard, {
+                yPercent: 70,
+                duration: .2,
+                delay: -.2,
+                onComplete: crystalFloater
+            });
 
             const floatingCrystalTL = gsap.timeline({
                 scrollTrigger: {
@@ -86,7 +217,7 @@ export const Skills: React.FC = () => {
                     align: motionTrigger,
                     alignOrigin: [.5, .5],
                     autoRotate: 90,
-                    start: isDesktop ? .05 : .09
+                    start: isDesktop ? .05 : .085
                 }
             });
 
@@ -98,56 +229,6 @@ export const Skills: React.FC = () => {
             //   .to(lowerShard, { duration: 1, yPercent: '+=40', rotateZ: '-4deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=30', rotateZ: '3deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
-
-            const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
-                defaults: { ease: 'none', transformOrigin: 'center' },
-                repeat: (isDesktop ? 2 : 4) + 2 * index,
-                yoyo: true,
-                scrollTrigger: {
-                    trigger: motionTrigger,
-                    toggleActions: 'restart pause reverse pause',
-                    scrub: 2,
-                    start: motionStart,
-                    end: motionEnd
-                }
-            })));
-
-            leftBottomShardTL.to(leftBottomShard, {
-                xPercent: -40,
-                yPercent: 8,
-                duration: .2,
-            });
-
-            leftShardTL.to(leftShard, {
-                xPercent: -24,
-                yPercent: -8,
-                duration: .2
-            });
-
-            topShardTL.to(topShard, {
-                xPercent: 0,
-                yPercent: -30,
-                duration: .2
-            });
-
-            rightShardTL.to(rightShard, {
-                xPercent: 34,
-                yPercent: -20,
-                duration: .2
-            });
-
-            rightBottomShardTL.to(rightBottomShard, {
-                xPercent: 17,
-                yPercent: 3,
-                duration: .2
-            });
-
-            bottomShardTL.to(bottomShard, {
-                rotateZ: -6,
-                xPercent: 5,
-                yPercent: 24,
-                duration: .2
-            });
 
             gsap.timeline({
                 scrollTrigger: {

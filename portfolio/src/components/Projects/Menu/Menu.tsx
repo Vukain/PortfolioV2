@@ -3,16 +3,16 @@ import { clsx } from 'clsx';
 
 import styles from './Menu.module.sass';
 
-type MyProps = { names: string[], currentProject: number, projectSize: number };
+type MyProps = { names: string[], currentProject: number, projectSize: number, sectionHeight: number };
 
-export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize }) => {
+export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, sectionHeight }) => {
 
     const clickHandler = (e: React.MouseEvent<HTMLElement>, index: number) => {
         e.preventDefault()
 
         // Alternative scroll method without ability to adjust speed
         // window.scroll({
-        //     top: window.innerHeight + (index * projectWidth),
+        //     top: sectionHeight + (index * projectWidth),
         //     left: 0,
         //     behavior: 'smooth'
         // });
@@ -20,19 +20,19 @@ export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize }) 
         // Fix for weird jump glitch when entering pinned state
         if (currentProject === 0) {
             window.scroll({
-                top: window.innerHeight + 1,
+                top: sectionHeight + 1,
                 left: 0,
             });
         } else if (currentProject === names.length - 1) {
             window.scroll({
-                top: window.innerHeight + 4 * projectSize - 1,
+                top: sectionHeight + 4 * projectSize - 1,
                 left: 0,
             });
         };
 
         gsap.to(window, {
             scrollTo: {
-                y: window.innerHeight + index * projectSize,
+                y: sectionHeight + index * projectSize,
                 autoKill: false
             }, ease: "power2",
             duration: Math.abs(currentProject - index)
