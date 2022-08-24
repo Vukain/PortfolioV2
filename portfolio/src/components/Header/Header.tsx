@@ -5,7 +5,7 @@ import styles from './Header.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 
-import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
+import { ReactComponent as Crystal } from '../../media/crystal_hero.svg';
 
 export const Header: React.FC = () => {
 
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
 
-            const [lowerShard, lowerLeftShard, leftShard, tinyShard, mainShard] = ['lower', 'lower-left', 'middle-left', 'middle-tiny', 'main'].map((element) => (elementGetter(`[id="main_crystal_svg__${element}"]`)));
+            const [lowerShard, lowerLeftShard, leftShard, tinyShard, mainShard] = ['lower', 'lower-left', 'middle-left', 'middle-tiny', 'main'].map((element) => (elementGetter(`[id="crystal_hero_svg__${element}"]`)));
 
             gsap.set(crystal, { autoAlpha: 0 });
 
