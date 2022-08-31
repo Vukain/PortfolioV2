@@ -1,4 +1,5 @@
 import { useRef, useEffect, useContext } from 'react';
+import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 
 import styles from './Header.module.sass';
@@ -9,11 +10,15 @@ import { ReactComponent as Crystal } from '../../media/crystal_hero.svg';
 
 export const Header: React.FC = () => {
 
-    const { setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection, setLanguage } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
     useEffect(() => {
+        if (window.navigator.language !== 'pl-PL') {
+            setLanguage('english')
+        };
+
         const crystal = crystalRef.current;
 
         const crystalTL = gsap.timeline({ defaults: { ease: 'Expo.easeOut', transformOrigin: 'center' } });
@@ -84,18 +89,18 @@ export const Header: React.FC = () => {
 
     }, [setCurrentSection]);
 
+    const isEnglish = language === 'english';
+
     return (
         <header className={styles.header} id="header">
 
             <Crystal className={styles.crystal} ref={crystalRef} />
 
-            <div className={styles.hello_wrapper}>
-                <div className={styles.hello}>
-                    <div className={styles.overflow_wrapper}><p className={styles.line}>cześć!</p></div>
-                    <div className={styles.overflow_wrapper}><p className={styles.line}>jestem</p></div>
-                    <div className={styles.overflow_wrapper}><h1 className={styles.color} id='vukain'><span>v</span><span>u</span><span>k</span><span>a</span><span>i</span><span>n</span></h1></div>
-                    <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
-                </div>
+            <div className={styles.hello}>
+                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language === 'polish' ? 'cześć!' : 'Hi'}</p></div>
+                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language === 'polish' ? 'jestem' : 'I am'}</p></div>
+                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><h1 className={styles.color} id='vukain'><span>v</span><span>u</span><span>k</span><span>a</span><span>i</span><span>n</span></h1></div>
+                <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
             </div>
 
             {/* <div className={styles.hello_v2}> */}
