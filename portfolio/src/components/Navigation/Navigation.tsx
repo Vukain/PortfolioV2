@@ -8,9 +8,11 @@ import { NavigationButton } from './NavigationButton/NavigationButton';
 
 export const Navigation: React.FC = () => {
 
-    const { navigateTo } = useContext(AppContext);
+    const { language, navigateTo } = useContext(AppContext);
 
     const [mobileNavigationVisibility, setMobileNavigationVisibility] = useState(false);
+
+    const isEnglish = language === 'english';
 
     const hamburgerHandler = () => {
         setMobileNavigationVisibility(!mobileNavigationVisibility);
@@ -18,8 +20,8 @@ export const Navigation: React.FC = () => {
 
     type ButtonData = { name: string, id: string };
 
-    const buttonsData: ButtonData[] = [{ name: 'vukain', id: 'header' }, { name: 'projekty', id: 'projects' },
-    { name: 'umiejętności', id: 'skills' }, { name: 'kontakt', id: 'contact' }]
+    const buttonsData: ButtonData[] = [{ name: 'vukain', id: 'header' }, { name: isEnglish ? 'projects' : 'projekty', id: 'projects' },
+    { name: isEnglish ? 'skills' : 'umiejętności', id: 'skills' }, { name: isEnglish ? 'contact' : 'kontakt', id: 'contact' }]
 
     const buttonsList = buttonsData.map((item, index) => (<NavigationButton navigationVisibility={mobileNavigationVisibility} navigationVisibilitySetter={setMobileNavigationVisibility} name={item.name} id={item.id} key={index} />))
     const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index}></div>));

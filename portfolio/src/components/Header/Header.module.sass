@@ -41,8 +41,8 @@
     transform: scale(1.8)
     color: #fefefe
     display: grid
-    grid-template-columns: min-content min-content
-    grid-template-rows: min-content min-content min-content
+    grid-template-columns: max-content max-content
+    grid-template-rows: max-content max-content max-content
     align-items: end
     justify-items: start
     animation: zoom-out .8s 2.3s cubic-bezier(0.65, 0, 0.35, 1) both
@@ -72,16 +72,16 @@
         @include mobile-and-small
             margin-bottom: -3vw
         & .line
-            font-size: calc(0.7 * var(--font-size-heading-1))
             animation: bottom-slide .6s .3s cubic-bezier(0.65, 0, 0.35, 1) forwards
     &:nth-child(2)
         & .line
-            font-size: calc(0.7 * var(--font-size-heading-1))
             line-height: .9em
             animation: bottom-slide .6s .6s cubic-bezier(0.65, 0, 0.35, 1) forwards
     &:nth-child(3)
         grid-row: 1 / 3
         grid-column: 2
+        justify-self: end
+        margin-right: -1em
     &:nth-child(4)
         grid-column: span 2
         & .line
@@ -90,12 +90,24 @@
             font-weight: 400
             animation: bottom-slide .8s 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards
 
+    &--english
+        &:nth-child(1)
+            margin-bottom: -1.1vw
+            @include mobile-and-small
+                margin-bottom: -.3vw
+        & .line
+            font-size: calc(.9 * var(--font-size-heading-1))
+            letter-spacing: .1em
+        & .color
+            letter-spacing: .09em
+
 .line
     transform: translateY(120%)
     display: block
     font-size: var(--font-size-heading-1)
     font-weight: 400
     text-transform: uppercase
+    font-size: calc(0.7 * var(--font-size-heading-1))
 
 .color
     // transform: translateX(100%)
@@ -108,9 +120,8 @@
     text-transform: uppercase
     background-clip: text
     background-attachment: fixed
-    // background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
     color: transparent
-    // animation: right-slide .8s .9s cubic-bezier(0, 0.55, 0.45, 1) forwards
+
     & span
         // color: white
         background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3) 94%)

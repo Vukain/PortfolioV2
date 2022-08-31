@@ -17,7 +17,7 @@ import { ReactComponent as MotionPathMobile } from '../../media/motion_path_mobi
 
 export const Skills: React.FC = () => {
 
-    const { setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
     const frontendRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
@@ -26,27 +26,29 @@ export const Skills: React.FC = () => {
 
     const [activeCard, setActiveCard] = useState('');
 
+    const isEnglish = language === 'english';
+
     // Had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
 
     type CardData = Record<string, {
-        data: { category: string, skills: string[] },
+        data: { category: string, display: string, skills: string[] },
         icon: React.FC<{ className?: string, title?: string }>,
         ref: React.MutableRefObject<null | HTMLDivElement>
     }>;
 
     const cardData: CardData = {
         frontend: {
-            data: { category: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
+            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
             icon: FrontendIcon,
             ref: frontendRef
         },
         backend: {
-            data: { category: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'mongodb', 'sqlite'] },
+            data: { category: 'backend', display: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'firebase', 'mongodb', 'sqlite'] },
             icon: BackendIcon,
             ref: backendRef
         },
         graphics: {
-            data: { category: 'graphics', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] },
+            data: { category: 'graphics', display: isEnglish ? 'graphics' : 'grafika', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] },
             icon: GraphicIcon,
             ref: graphicsRef
         }
@@ -70,9 +72,9 @@ export const Skills: React.FC = () => {
 
             gsap.set([inner, crystal], { autoAlpha: 0 })
 
-            const [leftBottomShardTL, leftShardTL, topShardTL, rightShardTL, rightBottomShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
+            const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
-                repeat: (isDesktop ? 2 : 4) + 2 * index,
+                repeat: (isDesktop ? 2 : 4) + 2 * (index < 5 ? index : 3),
                 yoyo: true,
                 scrollTrigger: {
                     trigger: motionTrigger,
@@ -103,8 +105,8 @@ export const Skills: React.FC = () => {
                         rotateZ: '4deg',
                         duration: .2
                     }, {
-                        xPercent: -28,
-                        yPercent: -7,
+                        xPercent: -33,
+                        yPercent: -12,
                         rotateZ: '4deg',
                         duration: .2
                     });
@@ -336,13 +338,12 @@ export const Skills: React.FC = () => {
                 <Icon className={clsx(styles.icon, styles[`icon_${element}`])} title={`${element} icon`} />
             </SkillCard>
         );
-    }
-    );
+    });
 
     return (
         <section className={styles.skills} id='skills'>
 
-            <SectionName>umiejętności</SectionName>
+            <SectionName>{isEnglish ? 'skills' : 'umiejętności'}</SectionName>
 
             <div className={styles.cards} id='cards'>
                 <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />

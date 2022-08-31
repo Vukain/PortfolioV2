@@ -9,7 +9,7 @@ import { Menu } from './Menu/Menu';
 
 export const Projects: React.FC = () => {
 
-    const { setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
@@ -90,10 +90,11 @@ export const Projects: React.FC = () => {
 
     const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];
 
+    const isEnglish = language === 'english';
 
     return (
         <section className={styles.projects} ref={projectsRef} id="projects">
-            <SectionName lighter={true}>projekty</SectionName>
+            <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
 
             <div className={styles.gallery}>
                 <article className={styles.project}>Project 1</article>

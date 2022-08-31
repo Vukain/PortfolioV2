@@ -11,11 +11,14 @@ import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
 export const Contact: React.FC = () => {
 
-    const { setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
     const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
     const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
+    const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
+    const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
+    const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
 
     const [cursorXPosition, setCursorXPosition] = useState(0);
     const [cursorYPosition, setCursorYPosition] = useState(0);
@@ -75,14 +78,22 @@ export const Contact: React.FC = () => {
         });
     }, [setCurrentSection]);
 
+    const isEnglish = language === 'english';
+
     return (
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
-            <SectionName>kontakt</SectionName>
+            <SectionName>{isEnglish ? 'contact' : 'kontakt'}</SectionName>
 
-            <div className={styles.form}>
+            <div className={styles.wrapper}>
                 {crystalsMapped}
-                <div className={styles.form_card}></div>
+                <div className={styles.form_card}>
+                    <form className={styles.form} action="submit">
+                        <input className={styles.input} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
+                        <input className={styles.input} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
+                        <textarea className={styles.text_area} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
+                    </form>
+                </div>
             </div>
 
         </section>
