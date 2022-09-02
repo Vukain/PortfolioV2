@@ -74,7 +74,7 @@ export const Skills: React.FC = () => {
 
             const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
-                repeat: (isDesktop ? 2 : 4) + 2 * (index < 5 ? index : 3),
+                repeat: (isDesktop ? 2 : 4) + 2 * (index < 5 ? index : 2),
                 yoyo: true,
                 scrollTrigger: {
                     trigger: motionTrigger,

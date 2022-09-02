@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { clsx } from 'clsx';
 
 import styles from './Navigation.module.sass';
@@ -8,15 +8,21 @@ import { NavigationButton } from './NavigationButton/NavigationButton';
 
 export const Navigation: React.FC = () => {
 
-    const { language, navigateTo } = useContext(AppContext);
+    const { language, navigateTo, setLanguage } = useContext(AppContext);
 
     const [mobileNavigationVisibility, setMobileNavigationVisibility] = useState(false);
 
-    const isEnglish = language === 'english';
+    useEffect(() => {
+        if (window.navigator.language !== 'pl-PL') {
+            setLanguage('english')
+        };
+    }, [setLanguage])
 
     const hamburgerHandler = () => {
         setMobileNavigationVisibility(!mobileNavigationVisibility);
     };
+
+    const isEnglish = language === 'english';
 
     type ButtonData = { name: string, id: string };
 

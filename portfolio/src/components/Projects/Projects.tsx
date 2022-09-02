@@ -37,7 +37,7 @@ export const Projects: React.FC = () => {
             scrollTrigger: {
                 trigger: projectsSection,
                 toggleActions: 'restart pause reverse pause',
-                scrub: true,
+                scrub: .5,
                 pin: true,
                 pinSpacing: true,
                 start: '10px 10px',
