@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
@@ -19,12 +19,10 @@ gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
 export const App = () => {
 
-  const { language, setLanguage } = useContext(AppContext);
+  const [lightTheme, setLightTheme] = useState(false);
 
   useEffect(() => {
 
-
-    // Allow linking to section
     const [, location] = window.location.href.split('#');
     if (['projects', 'skills', 'contact'].includes(location)) {
       window.location.href = `#${location}`
@@ -34,7 +32,7 @@ export const App = () => {
   return (
     <AppContextProvider >
 
-      <div className="App" id='app'>
+      <div className={`App ${lightTheme ? 'App--light' : null}`} id='app'>
 
         <ProgressBar />
         <Navigation />
@@ -42,7 +40,7 @@ export const App = () => {
         <Projects />
         <Skills />
         <Contact />
-        <Footer />
+        <Footer theme={lightTheme} themeChanger={setLightTheme} />
 
       </div >
 

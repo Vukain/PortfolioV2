@@ -10,16 +10,13 @@ interface ContextType {
     currentSection: string,
     setCurrentSection: React.Dispatch<React.SetStateAction<string>>,
     language: string,
-    setLanguage: React.Dispatch<React.SetStateAction<string>>,
-    darkMode: boolean,
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+    setLanguage: React.Dispatch<React.SetStateAction<string>>
 };
 
 export const AppContext = createContext<ContextType>({
     navigateTo: '', setNavigateTo: () => { },
     currentSection: '', setCurrentSection: () => { },
-    language: '', setLanguage: () => { },
-    darkMode: true, setDarkMode: () => { }
+    language: '', setLanguage: () => { }
 });
 
 export const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
@@ -27,9 +24,9 @@ export const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
     const [navigateTo, setNavigateTo] = useState('');
     const [currentSection, setCurrentSection] = useState('header');
     const [language, setLanguage] = useState('polish');
-    const [darkMode, setDarkMode] = useState(true);
 
-    const contextValue: ContextType = { navigateTo, setNavigateTo, currentSection, setCurrentSection, language, setLanguage, darkMode, setDarkMode };
+
+    const contextValue: ContextType = { navigateTo, setNavigateTo, currentSection, setCurrentSection, language, setLanguage };
 
     return (
         <AppContext.Provider value={contextValue}>

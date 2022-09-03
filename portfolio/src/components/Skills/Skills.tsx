@@ -65,7 +65,7 @@ export const Skills: React.FC = () => {
             const cardTriggerPosition = window.innerHeight / 2;
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
             const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.7 : cardTriggerPosition * 1.4}px`;
-            const motionEnd = `+=${document.getElementById('skills')!.offsetHeight}px`;
+            const motionEnd = `+=${(isDesktop ? 1.4 : 1) * document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
             const inner = elementGetter('[id*="inner"]');
