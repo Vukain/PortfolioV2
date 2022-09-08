@@ -23,7 +23,9 @@ export const Header: React.FC = () => {
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
 
-            const [lowerShard, lowerLeftShard, leftShard, tinyShard, mainShard] = ['lower', 'lower-left', 'middle-left', 'middle-tiny', 'main'].map((element) => (elementGetter(`[id="crystal_hero_svg__${element}"]`)));
+            const [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard] = ['main', 'lower', 'lower-left', 'middle-left', 'middle-tiny',].map((element) => (elementGetter(`[id="crystal_hero_svg__${element}"]`)));
+
+            const shards = [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard];
 
             gsap.set(crystal, { autoAlpha: 0 });
 
@@ -32,40 +34,41 @@ export const Header: React.FC = () => {
                 .to(lowerLeftShard, { duration: .4, delay: -.4, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
                 .to(leftShard, { duration: .4, delay: -.4, yPercent: '-30', xPercent: '-95', rotateZ: '-18deg' })
                 .to(tinyShard, { duration: .4, delay: -.4, xPercent: '-195', rotateZ: '-5deg' })
-                .to([crystal, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.5, filter: 'grayscale(1)' })
-                .to([crystal, '#vukain'], { ease: 'bounce.out', duration: 2, delay: .6, filter: 'grayscale(0)' })
-                .to(crystal, { duration: .1, filter: 'none' })
+                .to([...shards, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.5, filter: 'grayscale(1)' })
+                .to(['#vukain'], { ease: 'bounce.out', duration: 3, delay: .4, filter: 'grayscale(0)' })
+                .to([...shards], { ease: 'bounce.out', duration: 2, delay: -3, stagger: .2, filter: 'grayscale(0)' })
 
-            mainShardTL.delay(crystalTL.duration() - .8)
+            mainShardTL.delay(crystalTL.duration() - 2)
                 .to(mainShard, { duration: 2, xPercent: '-5', yPercent: '-4', rotateZ: '-2deg' })
                 .to(mainShard, { duration: 2, xPercent: '0', yPercent: '-6', rotateZ: '0deg' })
                 .to(mainShard, { duration: 2, xPercent: '5', yPercent: '-2', rotateZ: '2deg' })
                 .to(mainShard, { duration: 2, xPercent: '0', yPercent: '0', rotateZ: '0deg' })
 
-            lowerShardTL.delay(crystalTL.duration() - .4)
+            lowerShardTL.delay(crystalTL.duration() - 1.8)
                 .to(lowerShard, { duration: 2, yPercent: '35', rotateZ: '2deg' })
                 .to(lowerShard, { duration: 2, yPercent: '40', rotateZ: '-4deg' })
                 .to(lowerShard, { duration: 2, yPercent: '30', rotateZ: '3deg' })
                 .to(lowerShard, { duration: 2, yPercent: '25', rotateZ: '-3deg' })
 
-            leftShardTL.delay(crystalTL.duration() - .3)
+            lowerLeftShardTL.delay(crystalTL.duration() - 1.6)
+                .to(lowerLeftShard, { duration: 1.5, yPercent: '40', xPercent: '-45', rotateZ: '-6deg' })
+                .to(lowerLeftShard, { duration: 1.5, yPercent: '50', xPercent: '-35', rotateZ: '-2deg' })
+                .to(lowerLeftShard, { duration: 1.5, yPercent: '30', xPercent: '-22', rotateZ: '3deg' })
+                .to(lowerLeftShard, { duration: 1.5, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
+
+            leftShardTL.delay(crystalTL.duration() - 1.4)
                 .to(leftShard, { duration: 2.4, yPercent: '-40', xPercent: '-125', rotateZ: '-26deg' })
                 .to(leftShard, { duration: 2.4, yPercent: '-45', xPercent: '-100', rotateZ: '-16deg' })
                 .to(leftShard, { duration: 2.4, yPercent: '-40', xPercent: '-84', rotateZ: '-6deg' })
                 .to(leftShard, { duration: 2.4, yPercent: '-30', xPercent: '-95', rotateZ: '-18deg' })
 
-            tinyShardTL.delay(crystalTL.duration() - .5)
+            tinyShardTL.delay(crystalTL.duration() - 1.4)
                 .to(tinyShard, { duration: 1.2, xPercent: '-225', yPercent: '-30', rotateZ: '-5deg' })
                 .to(tinyShard, { duration: 1.2, xPercent: '-175', yPercent: '-4', rotateZ: '0deg' })
                 .to(tinyShard, { duration: 1.2, xPercent: '-155', yPercent: '40', rotateZ: '5deg' })
                 .to(tinyShard, { duration: 1.4, xPercent: '-175', yPercent: '60', rotateZ: '5deg' })
                 .to(tinyShard, { duration: 1.2, xPercent: '-195', yPercent: '0', rotateZ: '-5deg' })
 
-            lowerLeftShardTL.delay(crystalTL.duration() - .5)
-                .to(lowerLeftShard, { duration: 1.5, yPercent: '40', xPercent: '-45', rotateZ: '-6deg' })
-                .to(lowerLeftShard, { duration: 1.5, yPercent: '50', xPercent: '-35', rotateZ: '-2deg' })
-                .to(lowerLeftShard, { duration: 1.5, yPercent: '30', xPercent: '-22', rotateZ: '3deg' })
-                .to(lowerLeftShard, { duration: 1.5, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
         };
 
         gsap.timeline({

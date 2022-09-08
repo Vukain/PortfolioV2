@@ -64,7 +64,7 @@ export const Skills: React.FC = () => {
 
             const cardTriggerPosition = window.innerHeight / 2;
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
-            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.7 : cardTriggerPosition * 1.4}px`;
+            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.6 : cardTriggerPosition * 1.4}px`;
             const motionEnd = `+=${(isDesktop ? 1.4 : 1) * document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
@@ -81,7 +81,9 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd
+                    end: motionEnd,
+                    markers: true
+
                 }
             })));
 
@@ -151,7 +153,7 @@ export const Skills: React.FC = () => {
                         yPercent: 100,
                         duration: .2
                     });
-            }
+            };
 
             const breakCrystalTL = gsap.timeline({
                 defaults: { ease: "sine.out" },
@@ -298,11 +300,11 @@ export const Skills: React.FC = () => {
                         opacity: 1,
                         scale: 1,
                         duration: .9,
-                        delay: index * .3,
+                        delay: .3,
                         ease: 'back.out(1.0)',
                         scrollTrigger: {
                             trigger: '#skills',
-                            start: "30% bottom"
+                            start: `${20 + index * 20}% bottom`
                         }
                     });
                 });
