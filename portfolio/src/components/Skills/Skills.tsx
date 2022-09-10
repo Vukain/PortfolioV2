@@ -82,8 +82,7 @@ export const Skills: React.FC = () => {
                     scrub: 2,
                     start: motionStart,
                     end: motionEnd,
-                    markers: true
-
+                    // markers: true
                 }
             })));
 

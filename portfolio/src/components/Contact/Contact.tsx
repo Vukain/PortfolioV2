@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
+import { Button } from '../../layout/Button/Button';
 import { SectionName } from '../SectionName/SectionName';
 import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
@@ -92,6 +93,7 @@ export const Contact: React.FC = () => {
                         <input className={styles.input} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
                         <input className={styles.input} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
                         <textarea className={styles.text_area} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
+                        <Button name='wyślij' clickHandler={(e) => { e.preventDefault() }} />
                     </form>
                 </div>
             </div>

@@ -1,0 +1,81 @@
+@import '../../sass/mixins'
+
+.wrapper
+    position: relative
+    width: 40%
+    margin: 0
+    cursor: pointer
+    transition: 2s
+    align-self: center
+    height: 5vh
+    @include mobile-and-small
+        width: 50%
+        height: 5vw
+
+.button
+    @include flex-center
+    position: absolute
+    padding: 0
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    font-size: var(--font-size-bigger)
+    border: none
+    outline: 2px solid var(--color-main-2)
+    border-radius: var(--border-radius-small)
+    background-color: transparent
+    cursor: pointer
+    overflow: hidden
+    transition: .2s ease
+
+    &::before
+        @include before-after
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        z-index: 2
+        border: 1px solid transparent
+        border-radius: var(--border-radius-big) 0
+        background-image: radial-gradient(circle at center, var(--medium-gray), var(--darker-gray))
+        background-clip: padding-box
+        transition: .2s linear
+
+    &::after
+        @include before-after
+        z-index: 3
+        top: -21vh
+        left: 50%
+        width: 20vh
+        height: 20vh
+        transform: translateX(-50%) scale(1)
+        background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        border-radius: 50%
+        transition: .3s ease-in
+
+    &:hover
+        outline-offset: 1vh
+        span
+            color: var(--almost-white)
+        &::after
+            transform: translateX(-50%) scale(3)
+
+    &:active
+        outline-offset: .6vh
+        &::after
+            transform: translateX(-50%) scale(3)
+
+.text
+    background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+    position: absolute
+    display: block
+    z-index: 30
+    color: transparent
+    background-clip: text
+    background-size: 300% 100%
+    background-position-x: center
+    font-weight: bold
+    letter-spacing: var(--letter-spacing-normal)
+    text-transform: uppercase
+    transition: .5s
