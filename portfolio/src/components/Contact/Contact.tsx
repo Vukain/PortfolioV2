@@ -66,15 +66,20 @@ export const Contact: React.FC = () => {
             scrollTrigger: {
                 trigger: '#contact',
                 onEnter: () => {
-                    setCurrentSection('contact');
-                    window.history.pushState({}, '', '#contact');
+                    setTimeout(() => {
+                        setCurrentSection('contact');
+                        window.history.pushState({}, '', '#contact');
+                        console.log('contacti')
+                    }, 50)
                 },
                 onEnterBack: () => {
                     setCurrentSection('contact');
                     window.history.pushState({}, '', '#contact');
+                    console.log('contacte')
                 },
-                start: 'top center',
-                end: 'bottom center'
+                start: '5% center',
+                end: 'bottom center',
+                // markers: true
             }
         });
     }, [setCurrentSection]);
@@ -85,15 +90,15 @@ export const Contact: React.FC = () => {
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
             <SectionName>{isEnglish ? 'contact' : 'kontakt'}</SectionName>
-
+            {crystalsMapped}
             <div className={styles.wrapper}>
-                {crystalsMapped}
+
                 <div className={styles.form_card}>
                     <form className={styles.form} action="submit">
                         <input className={styles.input} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
                         <input className={styles.input} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
                         <textarea className={styles.text_area} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
-                        <Button name='wyślij' clickHandler={(e) => { e.preventDefault() }} />
+                        <Button name={isEnglish ? 'send' : 'wyślij'} clickHandler={(e) => { e.preventDefault() }} />
                     </form>
                 </div>
             </div>

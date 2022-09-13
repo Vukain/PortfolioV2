@@ -26,6 +26,7 @@ export const App = () => {
     const [, location] = window.location.href.split('#');
     if (['projects', 'skills', 'contact'].includes(location)) {
       window.location.href = `#${location}`
+      console.log('bebebebe')
     };
   }, [])
 

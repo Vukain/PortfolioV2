@@ -2,8 +2,10 @@
 
 .contact
     @include section
+    overflow: hidden
     @include mobile-and-small
         margin-top: 14vh
+        grid-template-rows: 24vh 1fr 12vh
 
 .wrapper
     @include flex-center
@@ -14,7 +16,8 @@
     grid-row: 1
     @include mobile-and-small
         grid-column: 1
-        grid-row: 1 / 3
+        grid-row: 2 / 3
+        height: unset
 
 .form_card
     width: 40vw
@@ -26,7 +29,7 @@
     border: 2px solid var(--border-color-transparent)
     @include mobile-and-small
         width: 80vw
-        height: 60vh
+        height: 120vw
 
 .form
     @include flex-center
@@ -37,7 +40,8 @@
     gap: 3vh
     padding: 4vh
     @include mobile-and-small
-        padding: 4vw
+        padding: 6vw
+        gap: 6vw
 
 .input, .text_area
     all: unset

@@ -1,0 +1,21 @@
+@import '../../../sass/mixins'
+
+.project
+    height: 100%
+    width: 100%
+    position: absolute
+    left: 0
+    font-size: 40px
+    &:not(:first-child)
+        @include desktop
+            left: 100%
+        @include mobile-and-small
+            top: 100%
+    &:nth-child(3n+1)
+        background-color: var(--color-main-1)
+    &:nth-child(3n+2)
+        background-color: var(--color-main-2)
+    &:nth-child(3n+3)
+        background-color: var(--color-main-3)
+    @include mobile-and-small
+        height: 100%

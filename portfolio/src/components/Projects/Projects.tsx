@@ -6,6 +6,7 @@ import styles from './Projects.module.sass';
 import { AppContext } from '../../store/AppContext';
 import { SectionName } from '../SectionName/SectionName';
 import { Menu } from './Menu/Menu';
+import { Project } from './Project/Project';
 
 export const Projects: React.FC = () => {
 
@@ -47,6 +48,7 @@ export const Projects: React.FC = () => {
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
+                    console.log('projii')
                 },
                 onEnterBack: () => {
                     setCurrentSection('projects');
@@ -92,16 +94,26 @@ export const Projects: React.FC = () => {
 
     const isEnglish = language === 'english';
 
+    type ProjectData = Record<'english' | 'polish', {
+        title: string,
+        description: string,
+        image?: React.FC<{ className?: string, title?: string }>,
+    }>;
+
+    const projects: ProjectData[] = [
+        { english: { title: 'project 1', description: 'test' }, polish: { title: 'projekt 1', description: 'test' } },
+        { english: { title: 'project 2', description: 'test' }, polish: { title: 'projekt 2', description: 'test' } },
+        { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } }
+    ];
+
+    const mappedProjects = projects.map((data) => (<Project data={data} />))
+
     return (
         <section className={styles.projects} ref={projectsRef} id="projects">
             <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
 
             <div className={styles.gallery}>
-                <article className={styles.project}>Project 1</article>
-                <article className={styles.project}>Project 2</article>
-                <article className={styles.project}>Project 3</article>
-                <article className={styles.project}>Project 4</article>
-                <article className={styles.project}>Project 5</article>
+                {mappedProjects}
             </div>
 
             <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} sectionHeight={sectionHeight} />

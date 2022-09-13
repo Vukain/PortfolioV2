@@ -239,13 +239,16 @@ export const Skills: React.FC = () => {
                     onEnter: () => {
                         setCurrentSection('skills');
                         window.history.pushState({}, '', '#skills');
+                        console.log('skilli')
                     },
                     onEnterBack: () => {
                         setCurrentSection('skills');
                         window.history.pushState({}, '', '#skills');
+                        console.log('skille')
                     },
                     start: 'top center',
-                    end: 'bottom center'
+                    end: 'bottom center',
+                    // markers: true
                 }
             });
 
