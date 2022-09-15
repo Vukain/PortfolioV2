@@ -94,21 +94,23 @@ export const Projects: React.FC = () => {
 
     const isEnglish = language === 'english';
 
-    type ProjectData = Record<'english' | 'polish', {
-        title: string,
-        description: string,
-        image?: React.FC<{ className?: string, title?: string }>,
-    }>;
+    type ProjectData = {
+        id: string, content: Record<'english' | 'polish', {
+            title: string,
+            description: string,
+            image?: React.FC<{ className?: string, title?: string }>,
+        }>
+    };
 
     const projects: ProjectData[] = [
-        { english: { title: 'project 1', description: 'test' }, polish: { title: 'projekt 1', description: 'test' } },
-        { english: { title: 'project 2', description: 'test' }, polish: { title: 'projekt 2', description: 'test' } },
-        { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } },
-        { english: { title: 'project 4', description: 'test' }, polish: { title: 'projekt 4', description: 'test' } },
-        { english: { title: 'project 5', description: 'test' }, polish: { title: 'projekt 5', description: 'test' } }
+        { id: 'test1', content: { english: { title: 'project 1', description: 'test' }, polish: { title: 'projekt 1', description: 'test' } } },
+        { id: 'test2', content: { english: { title: 'project 2', description: 'test' }, polish: { title: 'projekt 2', description: 'test' } } },
+        { id: 'test3', content: { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } } },
+        { id: 'test4', content: { english: { title: 'project 4', description: 'test' }, polish: { title: 'projekt 4', description: 'test' } } },
+        { id: 'test5', content: { english: { title: 'project 5', description: 'test' }, polish: { title: 'projekt 5', description: 'test' } } },
     ];
 
-    const mappedProjects = projects.map((data, index) => (<Project data={data} key={index} />))
+    const mappedProjects = projects.map((data) => (<Project data={data} key={data.id} />))
 
     return (
         <>
