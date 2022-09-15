@@ -5,6 +5,7 @@ import styles from './Projects.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 import { SectionName } from '../SectionName/SectionName';
+import { ColorEdge } from '../../layout/ColorEdge/ColorEdge';
 import { Menu } from './Menu/Menu';
 import { Project } from './Project/Project';
 
@@ -27,7 +28,7 @@ export const Projects: React.FC = () => {
         const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project_"]');
 
-        const height = document.getElementById('header')!.offsetHeight
+        const height = document.getElementById('projects')!.offsetTop;
         const size = isDesktop ? projects[0].offsetWidth : projects[0].offsetHeight;
         setSectionHeight(height);
         setProjectSize(size);
@@ -48,7 +49,6 @@ export const Projects: React.FC = () => {
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
-                    console.log('projii')
                 },
                 onEnterBack: () => {
                     setCurrentSection('projects');
@@ -103,21 +103,27 @@ export const Projects: React.FC = () => {
     const projects: ProjectData[] = [
         { english: { title: 'project 1', description: 'test' }, polish: { title: 'projekt 1', description: 'test' } },
         { english: { title: 'project 2', description: 'test' }, polish: { title: 'projekt 2', description: 'test' } },
-        { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } }
+        { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } },
+        { english: { title: 'project 4', description: 'test' }, polish: { title: 'projekt 4', description: 'test' } },
+        { english: { title: 'project 5', description: 'test' }, polish: { title: 'projekt 5', description: 'test' } }
     ];
 
-    const mappedProjects = projects.map((data) => (<Project data={data} />))
+    const mappedProjects = projects.map((data, index) => (<Project data={data} key={index} />))
 
     return (
-        <section className={styles.projects} ref={projectsRef} id="projects">
-            <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
+        <>
+            <ColorEdge direction='up' />
+            <section className={styles.projects} ref={projectsRef} id="projects">
+                <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
 
-            <div className={styles.gallery}>
-                {mappedProjects}
-            </div>
+                <div className={styles.gallery}>
+                    {mappedProjects}
+                </div>
 
-            <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} sectionHeight={sectionHeight} />
+                <Menu names={projectNames} currentProject={currentProject} projectSize={projectSize} sectionHeight={sectionHeight} />
 
-        </section>
+            </section>
+            <ColorEdge direction='down' />
+        </>
     );
 };

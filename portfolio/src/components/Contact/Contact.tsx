@@ -69,13 +69,11 @@ export const Contact: React.FC = () => {
                     setTimeout(() => {
                         setCurrentSection('contact');
                         window.history.pushState({}, '', '#contact');
-                        console.log('contacti')
                     }, 50)
                 },
                 onEnterBack: () => {
                     setCurrentSection('contact');
                     window.history.pushState({}, '', '#contact');
-                    console.log('contacte')
                 },
                 start: '5% center',
                 end: 'bottom center',

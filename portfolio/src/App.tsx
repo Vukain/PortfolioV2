@@ -25,15 +25,14 @@ export const App = () => {
 
     const [, location] = window.location.href.split('#');
     if (['projects', 'skills', 'contact'].includes(location)) {
-      window.location.href = `#${location}`
-      console.log('bebebebe')
+      window.location.href = `#${location}`;
     };
   }, [])
 
   return (
     <AppContextProvider >
 
-      <div className={`App ${lightTheme ? 'App--light' : null}`} id='app'>
+      <div className={`App${lightTheme ? ' App--light' : ''}`} id='app'>
 
         <ProgressBar />
         <Navigation />
