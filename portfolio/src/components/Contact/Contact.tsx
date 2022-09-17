@@ -1,5 +1,8 @@
 import { MouseEvent, useRef, useState, useContext, useEffect } from 'react';
+import { useValidate } from '../../hooks/useValidate';
+import { clsx } from 'clsx';
 import { gsap } from 'gsap';
+
 
 import styles from './Contact.module.sass';
 
@@ -25,6 +28,32 @@ export const Contact: React.FC = () => {
     const [cursorYPosition, setCursorYPosition] = useState(0);
     const [exitCursorXPosition, setExitCursorXPosition] = useState(0);
     const [exitCursorYPosition, setExitCursorYPosition] = useState(0);
+    const [inputsValidity, setInputsValidity] = useState({ name: false, email: false, message: false });
+    const [formTouched, setFormTouched] = useState(false);
+    const [messageSent, setMessageSent] = useState(false);
+
+    const { validate } = useValidate();
+
+    useEffect(() => {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#contact',
+                onEnter: () => {
+                    setTimeout(() => {
+                        setCurrentSection('contact');
+                        window.history.pushState({}, '', '#contact');
+                    }, 50)
+                },
+                onEnterBack: () => {
+                    setCurrentSection('contact');
+                    window.history.pushState({}, '', '#contact');
+                },
+                start: '5% center',
+                end: 'bottom center',
+                // markers: true
+            }
+        });
+    }, [setCurrentSection]);
 
     const mouseMoveHandler = (e: MouseEvent): void => {
         // e.preventDefault();
@@ -48,6 +77,37 @@ export const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
+    const onChangeHandler = () => {
+        setFormTouched(false);
+    };
+
+    const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        setFormTouched(true);
+
+        const [name, email, message] = [
+            { type: 'normal', value: nameInputRef.current!.value },
+            { type: 'email', value: emailInputRef.current!.value },
+            { type: 'normal', value: messageInputRef.current!.value }];
+
+        const [nameValidity, emailValidity, messageValidity] = [validate(name), validate(email), validate(message)];
+        setInputsValidity({ name: nameValidity, email: emailValidity, message: messageValidity });
+
+        if ([nameValidity, emailValidity, messageValidity].every(val => val)) {
+            console.log('yeyo')
+            setMessageSent(true);
+        } else {
+            console.log('nonmo')
+            if (!nameValidity) {
+                nameInputRef.current!.focus()
+            } else if (!emailValidity) {
+                emailInputRef.current!.focus()
+            } else {
+                messageInputRef.current!.focus()
+            };
+        };
+    };
+
     type Crystals = Array<{ crystalImage: React.FC, speed: number }>;
 
     const crystals: Crystals = [
@@ -61,27 +121,6 @@ export const Contact: React.FC = () => {
         );
     });
 
-    useEffect(() => {
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '#contact',
-                onEnter: () => {
-                    setTimeout(() => {
-                        setCurrentSection('contact');
-                        window.history.pushState({}, '', '#contact');
-                    }, 50)
-                },
-                onEnterBack: () => {
-                    setCurrentSection('contact');
-                    window.history.pushState({}, '', '#contact');
-                },
-                start: '5% center',
-                end: 'bottom center',
-                // markers: true
-            }
-        });
-    }, [setCurrentSection]);
-
     const isEnglish = language === 'english';
 
     return (
@@ -93,10 +132,10 @@ export const Contact: React.FC = () => {
 
                 <div className={styles.form_card}>
                     <form className={styles.form} action="submit">
-                        <input className={styles.input} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
-                        <input className={styles.input} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
-                        <textarea className={styles.text_area} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
-                        <Button name={isEnglish ? 'send' : 'wyślij'} clickHandler={(e) => { e.preventDefault() }} />
+                        <input className={clsx(styles.input, formTouched ? (inputsValidity.name ? styles.valid : styles.invalid) : null)} onChange={onChangeHandler} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
+                        <input className={clsx(styles.input, formTouched ? (inputsValidity.email ? styles.valid : styles.invalid) : null)} onChange={onChangeHandler} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
+                        <textarea className={clsx(styles.text_area, formTouched ? (inputsValidity.message ? styles.valid : styles.invalid) : null)} onChange={onChangeHandler} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
+                        <Button name={isEnglish ? 'send' : 'wyślij'} clickHandler={submitHandler} sent={messageSent} />
                     </form>
                 </div>
             </div>

@@ -29,8 +29,11 @@
     overflow: hidden
     transition: outline-offset .2s ease
 
-    // &::before
-    //     @include before-after
+    // filter: hue-rotate(80deg)
+
+    &::before
+        // @include before-after
+        // content: attr(data-test)
     //     top: 0
     //     left: 0
     //     width: 100%
@@ -53,6 +56,7 @@
         background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
         border-radius: 50%
         transition: transform .3s ease-in
+        // filter: hue-rotate(4deg)
 
     &:hover
         outline-offset: 1vh
@@ -65,6 +69,9 @@
         outline-offset: .6vh
         &::after
             transform: translateX(-50%) scale(3)
+
+.sent
+    filter: hue-rotate(80deg)
 
 .text
     background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
