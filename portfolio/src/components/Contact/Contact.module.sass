@@ -51,7 +51,7 @@
     font-size: var(--font-size-normal)
     font-weight: 300
     // border: 2px solid transparent
-    border-left: 2px dashed var(--grey-dark)
+
     transition: border .5s
     outline: none
     &:focus, &:hover
@@ -67,11 +67,17 @@
     padding: 1em
     // height: 12vh
 
-.invalid
-    border-left: 2px solid #c40f3c
+.untouched
+    border-left: 2px solid var(--grey-dark)
 
 .valid
     border-left: 2px solid var(--color-main-2)
+
+.error
+    border-left: 2px solid #c40f3c
+
+.sent
+    border-left: 2px solid var(--color-gradient-3)
 
 .crystal_wrapper
     position: absolute

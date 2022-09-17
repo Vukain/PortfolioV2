@@ -27,11 +27,11 @@
     background-color: transparent
     cursor: pointer
     overflow: hidden
-    transition: outline-offset .2s ease
+    transition: outline-offset .2s ease, filter .5s ease
 
     // filter: hue-rotate(80deg)
 
-    &::before
+    // &::before
         // @include before-after
         // content: attr(data-test)
     //     top: 0
@@ -72,6 +72,9 @@
 
 .sent
     filter: hue-rotate(80deg)
+
+.invalid
+    filter: grayscale(1)
 
 .text
     background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
