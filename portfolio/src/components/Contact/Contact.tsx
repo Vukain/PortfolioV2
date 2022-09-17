@@ -20,9 +20,9 @@ export const Contact: React.FC = () => {
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
     const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
     const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
-    const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
-    const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
-    const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
+    // const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
+    // const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
+    // const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
 
     const [cursorXPosition, setCursorXPosition] = useState(0);
     const [cursorYPosition, setCursorYPosition] = useState(0);
@@ -135,10 +135,10 @@ export const Contact: React.FC = () => {
 
                 <div className={styles.form_card}>
                     <form className={styles.form} action="submit">
-                        <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} onChange={changeHandler} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' ref={nameInputRef} />
-                        <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} onChange={changeHandler} aria-label="email" type="email" placeholder='EMAIL' name='email' ref={emailInputRef} />
-                        <textarea className={clsx(styles.text_area, styles[message.status], sent && styles.sent)} value={message.value} onChange={changeHandler} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' ref={messageInputRef} ></textarea>
-                        <Button name={isEnglish ? 'send' : 'wyślij'} clickHandler={submitHandler} status={formValidity} />
+                        <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} onChange={changeHandler} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' />
+                        <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} onChange={changeHandler} aria-label="email" type="email" placeholder='EMAIL' name='email' />
+                        <textarea className={clsx(styles.text_area, styles[message.status], sent && styles.sent)} value={message.value} onChange={changeHandler} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' />
+                        <Button name={isEnglish ? 'send' : 'wyślij'} alternativeText={isEnglish ? 'sent' : 'wysłane'} clickHandler={submitHandler} status={formValidity} />
                     </form>
                 </div>
             </div>
