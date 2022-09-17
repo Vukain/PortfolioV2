@@ -1,5 +1,15 @@
 @import '../../sass/mixins'
 
+@keyframes shake
+    0%
+        transform: translateY(0%)
+    25%
+        transform: translateY(14%)
+    75%
+        transform: translateY(-14%)
+    100%
+        transform: translateY(0%)
+
 .wrapper
     position: relative
     width: 40%
@@ -60,6 +70,7 @@
 
 .sent
     filter: hue-rotate(80deg)
+    animation: shake .3s ease
     &::before
         transform: translateY(0%)
     .text
@@ -80,4 +91,4 @@
     font-weight: bold
     letter-spacing: var(--letter-spacing-normal)
     text-transform: uppercase
-    transition: color .5s, transform .3s ease-out
+    transition: color .5s, transform .6s cubic-bezier(0.68, -0.6, 0.32, 1.6)
