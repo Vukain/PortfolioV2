@@ -18,10 +18,18 @@
         grid-column: 1
         grid-row: 2 / 3
         height: unset
+    &_input
+        flex-grow: 1
+        display: flex
+        position: relative
+    &_textarea
+        flex-grow: 8
+        display: flex
+        position: relative
 
 .form_card
     width: 40vw
-    height: 60vh
+    height: 66vh
     background-color: var(--background-color-transparent)
     backdrop-filter: blur(10px)
     z-index: 999
@@ -43,41 +51,72 @@
         padding: 6vw
         gap: 6vw
 
-.input, .text_area
+.label
+    position: absolute
+    top: 50%
+    left: .8vw
+    transform: translateY(-50%)
+    color: #e2e2e2
+    font-size: calc(0.8 * var(--font-size-normal))
+    font-weight: 300
+    text-transform: uppercase
+    transition: color .5s
+    overflow: hidden
+
+.text
+    display: inline-block
+    position: relative
+    transform: translateX(-100%)
+    transition: transform .3s ease-out
+
+.input, .textarea
     all: unset
     background-color: #22222281
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0
     color: #e2e2e2
     font-size: var(--font-size-normal)
     font-weight: 300
-    // border: 2px solid transparent
-
+    width: 100%
     transition: border .5s
     outline: none
+    border-left: 2px solid transparent
+    padding: 0em 3em 0em 3em
+    &::placeholder
+        text-transform: uppercase
     &:focus, &:hover
-        border-left: 2px solid var(--color-main-3)
+        border-left-color: var(--color-main-3)
+        & + .label
+            color: var(--color-main-3)
+    &:not(:placeholder-shown)
+        & + .label > .text
+            transform: translateX(0%)
 
-.input
-    // height: 4vh
-    flex-grow: 1
-
-.text_area
+.textarea
     resize: none
-    flex-grow: 6
-    padding: 1em
-    // height: 12vh
+    padding: 1em 1.8em 1em 1.8em
+    & + .label
+        writing-mode: vertical-rl
+        text-orientation: upright
+        margin-left: -.1vw
 
 .untouched
-    border-left: 2px solid var(--grey-dark)
-
+    border-left-color: var(--grey-dark)
+    & + .label
+        color: var(--grey-dark)
 .valid
-    border-left: 2px solid var(--color-main-2)
+    border-left-color: var(--color-main-2)
+    & + .label
+        color: var(--color-main-2)
 
 .error
-    border-left: 2px solid #c40f3c
+    border-left-color: var(--color-error)
+    & + .label
+        color: var(--color-error)
 
 .sent
-    border-left: 2px solid var(--color-gradient-3)
+    border-left-color: var(--color-gradient-3)
+    & + .label
+        color: var(--color-gradient-3)
 
 .crystal_wrapper
     position: absolute

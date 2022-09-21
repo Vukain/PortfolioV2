@@ -26,12 +26,15 @@ export const Skills: React.FC = () => {
 
     const [activeCard, setActiveCard] = useState('');
 
+    const isDesktop = window.matchMedia('(orientation: landscape)').matches;
     const isEnglish = language === 'english';
 
     // Had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
 
     type CardData = Record<string, {
-        data: { category: string, display: string, skills: string[] },
+        data: {
+            category: string, display: string, skills: string[]
+        },
         icon: React.FC<{ className?: string, title?: string }>,
         ref: React.MutableRefObject<null | HTMLDivElement>
     }>;
@@ -53,8 +56,6 @@ export const Skills: React.FC = () => {
             ref: graphicsRef
         }
     };
-
-    const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
     useEffect(() => {
         const [crystal, frontendCard, backendCard, graphicsCard] = [crystalRef.current, frontendRef.current, backendRef.current, graphicsRef.current];

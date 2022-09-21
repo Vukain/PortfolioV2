@@ -3,7 +3,6 @@ import { useForm } from '../../hooks/useForm';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 
-
 import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
@@ -81,19 +80,11 @@ export const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
-    // const onChangeHandler = () => {
-    //     setFormTouched(false);
-    // };
-
     const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         // setFormTouched(true);
         setFormValidity('sent');
         console.log('sent')
-
-
-        // const [nameValidity, emailValidity, messageValidity] = [validate(name), validate(email), validate(message)];
-        // setInputsValidity({ name: nameValidity, email: emailValidity, message: messageValidity });
 
         // if ([nameValidity, emailValidity, messageValidity].every(val => val)) {
         //     console.log('yeyo')
@@ -126,6 +117,9 @@ export const Contact: React.FC = () => {
     const isEnglish = language === 'english';
     const sent = formValidity === 'sent';
 
+    const textName = isEnglish ? 'name' : 'imię';
+    const textMessage = isEnglish ? 'message' : 'wiadomość';
+
     return (
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
@@ -135,9 +129,18 @@ export const Contact: React.FC = () => {
 
                 <div className={styles.form_card}>
                     <form className={styles.form} action="submit">
-                        <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} onChange={changeHandler} aria-label={isEnglish ? 'name' : 'imię'} type="text" placeholder={isEnglish ? 'NAME' : 'IMIĘ'} name='name' />
-                        <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} onChange={changeHandler} aria-label="email" type="email" placeholder='EMAIL' name='email' />
-                        <textarea className={clsx(styles.text_area, styles[message.status], sent && styles.sent)} value={message.value} onChange={changeHandler} aria-label={isEnglish ? 'message' : 'wiadomość'} placeholder={isEnglish ? 'MESSAGE' : 'WIADOMOŚĆ'} name='message' />
+                        <div className={styles.wrapper_input}>
+                            <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} onChange={changeHandler} aria-label={textName} type="text" placeholder={textName} name='name' />
+                            <label className={styles.label}><span className={styles.text}>{textName}</span></label>
+                        </div>
+                        <div className={styles.wrapper_input}>
+                            <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} onChange={changeHandler} aria-label="email" type="email" placeholder='email' name='email' />
+                            <label className={styles.label}><span className={styles.text}>email</span></label>
+                        </div>
+                        <div className={styles.wrapper_textarea}>
+                            <textarea className={clsx(styles.textarea, styles[message.status], sent && styles.sent)} value={message.value} onChange={changeHandler} aria-label={textMessage} placeholder={textMessage} name='message' />
+                            <label className={styles.label}><span className={styles.text}>{textMessage}</span></label>
+                        </div>
                         <Button name={isEnglish ? 'send' : 'wyślij'} alternativeText={isEnglish ? 'sent' : 'wysłane'} clickHandler={submitHandler} status={formValidity} />
                     </form>
                 </div>
