@@ -12,6 +12,10 @@ import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
 import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
 
+type Mutable<Type> = {
+    -readonly [Key in keyof Type]: Type[Key];
+};
+
 export const Contact: React.FC = () => {
 
     const { language, setCurrentSection } = useContext(AppContext);
@@ -19,6 +23,7 @@ export const Contact: React.FC = () => {
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
     const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
     const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
+    const errorTimeout: Mutable<React.RefObject<NodeJS.Timeout | null>> = useRef(null);
     // const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
     // const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
     // const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
@@ -28,9 +33,11 @@ export const Contact: React.FC = () => {
     const [exitCursorXPosition, setExitCursorXPosition] = useState(0);
     const [exitCursorYPosition, setExitCursorYPosition] = useState(0);
     const [formValidity, setFormValidity] = useState('invalid');
+    const [showError, setShowError] = useState(false);
 
-    const { inputValues: { name, email, message }, changeHandler } = useForm('name', 'email', 'message');
-    // console.log(email)
+
+    const { inputValues, setInputValues, changeHandler } = useForm('name', 'email', 'message');
+    const { name, email, message } = inputValues;
 
     useEffect(() => {
         gsap.timeline({
@@ -54,7 +61,6 @@ export const Contact: React.FC = () => {
     }, [setCurrentSection]);
 
     useEffect(() => {
-        // console.log(formValidity)
         setFormValidity([name.status, email.status, message.status].every(val => val === 'valid') ? 'valid' : 'invalid');
     }, [name, email, message])
 
@@ -80,11 +86,31 @@ export const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
+    // let errorTimeout: any;
+
     const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
+        setShowError(false);
+        for (const key of Object.keys(inputValues)) {
+            if (inputValues[key].status === 'untouched') {
+                setInputValues(prevState => ({ ...prevState, [key]: { ...prevState[key], status: 'error' } }));
+            };
+        };
         // setFormTouched(true);
-        setFormValidity('sent');
-        console.log('sent')
+        if (formValidity === 'valid') {
+            setFormValidity('sent');
+            console.log('sent');
+        } else if (formValidity === 'invalid') {
+            if (errorTimeout.current) {
+                clearTimeout(errorTimeout.current);
+            };
+            setTimeout(() => {
+                setShowError(true);
+            }, 50);
+            errorTimeout.current = setTimeout(() => {
+                setShowError(false);
+            }, 3000);
+        };
 
         // if ([nameValidity, emailValidity, messageValidity].every(val => val)) {
         //     console.log('yeyo')
@@ -132,14 +158,17 @@ export const Contact: React.FC = () => {
                         <div className={styles.wrapper_input}>
                             <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} onChange={changeHandler} aria-label={textName} type="text" placeholder={textName} name='name' />
                             <label className={styles.label}><span className={styles.text}>{textName}</span></label>
+                            {showError && name.status === 'error' && <div className={styles.error_message}>{name.error[language]}</div>}
                         </div>
                         <div className={styles.wrapper_input}>
                             <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} onChange={changeHandler} aria-label="email" type="email" placeholder='email' name='email' />
                             <label className={styles.label}><span className={styles.text}>email</span></label>
+                            {showError && email.status === 'error' && <div className={styles.error_message}>{email.error[language]}</div>}
                         </div>
                         <div className={styles.wrapper_textarea}>
                             <textarea className={clsx(styles.textarea, styles[message.status], sent && styles.sent)} value={message.value} onChange={changeHandler} aria-label={textMessage} placeholder={textMessage} name='message' />
                             <label className={styles.label}><span className={styles.text}>{textMessage}</span></label>
+                            {showError && message.status === 'error' && <div className={styles.error_message}>{message.error[language]}</div>}
                         </div>
                         <Button name={isEnglish ? 'send' : 'wyślij'} alternativeText={isEnglish ? 'sent' : 'wysłane'} clickHandler={submitHandler} status={formValidity} />
                     </form>

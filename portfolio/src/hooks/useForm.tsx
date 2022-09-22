@@ -6,10 +6,11 @@ export const useForm = (...fields: Fields) => {
 
     const initInputs = (fields: Fields) => {
 
-        const inputs: Record<string, { value: string, status: string }> = {};
+        const inputs: Record<string, { value: string, status: string, error: Record<string, string> }> = {};
 
         for (const field of fields) {
-            inputs[field] = { value: '', status: 'untouched' };
+            const error = field === 'email' ? { english: "Email can't be empty and must include a '@' sign!", polish: "Email nie może być pusty i musi zawierać znak '@'!" } : { english: "This field can't be empty!", polish: "To pole nie może być puste!" };
+            inputs[field] = { value: '', status: 'untouched', error: error };
         };
 
         return inputs;
@@ -32,11 +33,11 @@ export const useForm = (...fields: Fields) => {
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         const status = validate(name, value) ? 'valid' : 'error';
-        setInputValues({
-            ...inputValues,
-            [name]: { value: value, status: status }
-        });
+        setInputValues(prevState => ({
+            ...prevState,
+            [name]: { ...prevState[name], value: value, status: status }
+        }));
     };
 
-    return { inputValues, changeHandler }
+    return { inputValues, setInputValues, changeHandler }
 };

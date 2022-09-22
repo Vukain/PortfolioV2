@@ -21,6 +21,13 @@
     background-color: transparent
     cursor: pointer
     padding: 1em
+    outline: none
+    color: var(--color-font-2)
+    &--active, &:focus
+        color: var(--color-font-highlight)
+    &:hover
+        color: var(--color-main-2)
+
     @include mobile-and-small
         padding: 0.5em
         transform: rotateZ(-45deg)
@@ -29,8 +36,5 @@
     font-size: var(--font-size-heading-3)
     text-transform: uppercase
     transition: .5s color
-    color: var(--color-font-2)
-    &:hover, &--active
-        color: var(--color-font-highlight)
     @include mobile-and-small
         font-size: calc(0.6 * var(--font-size-heading-3))

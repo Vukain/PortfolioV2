@@ -41,8 +41,8 @@ export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, se
 
     const projectLinks = names.map((element, index) => (
         <div className={styles.wrapper} key={index}>
-            <button className={styles.button} onClick={(e) => { clickHandler(e, index) }} >
-                <span className={clsx(styles.text, currentProject === index && styles['text--active'])}>{element}</span>
+            <button className={clsx(styles.button, currentProject === index && styles['button--active'])} onClick={(e) => { clickHandler(e, index) }} >
+                <span className={styles.text}>{element}</span>
             </button>
         </div>));
 

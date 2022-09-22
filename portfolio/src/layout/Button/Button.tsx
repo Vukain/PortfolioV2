@@ -13,7 +13,7 @@ export const Button: React.FC<MyProps> = ({ name, status, alternativeText, click
 
     return (
         <div className={styles.wrapper}>
-            <button className={clsx(styles.button, styles[status])} onClick={clickHandler} data-alter={alternativeText} disabled={status !== 'valid'}>
+            <button className={clsx(styles.button, styles[status])} onClick={clickHandler} data-alter={alternativeText}>
                 <span className={styles.text}>{name}</span>
             </button>
         </div>
