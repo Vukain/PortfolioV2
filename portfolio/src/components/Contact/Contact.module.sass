@@ -1,5 +1,19 @@
 @import '../../sass/mixins'
 
+@keyframes show
+    0%
+        opacity: 0
+        transform: translate(-50%, -110%) scale(.9)
+    10%
+        opacity: 1
+        transform: translate(-50%, -110%) scale(1)
+    90%
+        opacity: 1
+        transform: translate(-50%, -110%) scale(1)
+    100%
+        opacity: 0
+        transform: translate(-50%, -110%) scale(.9)
+
 .contact
     @include section
     overflow: hidden
@@ -59,9 +73,47 @@
     color: #e2e2e2
     font-size: calc(0.8 * var(--font-size-normal))
     font-weight: 300
+    letter-spacing: var(--letter-spacing-small)
     text-transform: uppercase
     transition: color .5s
     overflow: hidden
+    @include mobile-and-small
+        left: 1.8vw
+        font-size: calc(0.9 * var(--font-size-normal))
+
+.error_message
+    top: 0vh
+    left: 50%
+    width: max-content
+    max-width: 100vw
+    transform: translate(-50%, -110%)
+    font-size: calc(0.8 * var(--font-size-normal))
+    font-weight: 400
+    letter-spacing: var(--letter-spacing-small)
+    text-transform: uppercase
+    position: absolute
+    color: var(--color-error)
+    background-color: var(--grey-light)
+    padding: .1em .4em
+    border-radius: var(--border-radius-normal)
+    border: 1px solid var(--color-error)
+    filter: drop-shadow(2px 2px 4px #00000050)
+    opacity: 0
+    animation: show 3s forwards
+    &::before
+        @include before-after
+        z-index: -1
+        height: .6vw
+        width: .6vw
+        background-color: var(--grey-light)
+        left: 50%
+        bottom: 0
+        transform: translate(-50%, 50%) rotateZ(45deg)
+        border-right: 1px solid var(--color-error)
+        border-bottom: 1px solid var(--color-error)
+        @include mobile-and-small
+            height: 2vw
+            width: 2vw
 
 .text
     display: inline-block
@@ -79,12 +131,12 @@
     width: 100%
     transition: border .5s
     outline: none
-    border-left: 2px solid transparent
+    border: 2px solid transparent
     padding: 0em 3em 0em 3em
     &::placeholder
         text-transform: uppercase
     &:focus, &:hover
-        border-left-color: var(--color-main-3)
+        border-color: var(--color-main-3)
         & + .label
             color: var(--color-main-3)
     &:not(:placeholder-shown)
@@ -98,6 +150,7 @@
         writing-mode: vertical-rl
         text-orientation: upright
         margin-left: -.1vw
+        letter-spacing: 0
 
 .untouched
     border-left-color: var(--grey-dark)
@@ -109,7 +162,7 @@
         color: var(--color-main-2)
 
 .error
-    border-left-color: var(--color-error)
+    border-color: var(--color-error)
     & + .label
         color: var(--color-error)
 
