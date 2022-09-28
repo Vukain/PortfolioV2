@@ -1,21 +1,41 @@
 @import '../../../sass/mixins'
 
+@keyframes shift
+    0%
+        transform: translate(50%, -50%)
+    100%
+        transform: translate(-150%, -50%)
+
 .project
     height: 100%
     width: 100%
     position: absolute
     left: 0
-    font-size: 40px
+    display: grid
+    grid-template-columns: 102vh 1fr
     &:not(:first-child)
         @include desktop
             left: 100%
         @include mobile-and-small
             top: 100%
-    &:nth-child(3n+1)
-        background-color: var(--color-main-1)
-    &:nth-child(3n+2)
-        background-color: var(--color-main-2)
-    &:nth-child(3n+3)
-        background-color: var(--color-main-3)
+    // &:nth-child(3n+1)
+    //     background-color: var(--color-main-1)
+    // &:nth-child(3n+2)
+    //     background-color: var(--color-main-2)
+    // &:nth-child(3n+3)
+    //     background-color: var(--color-main-3)
     @include mobile-and-small
         height: 100%
+
+.project_name
+    width: max-content
+    position: absolute
+    font-size: calc(2*var(--font-size-heading-1))
+    top: 5%
+    left: 50%
+    color: var(--color-main-2)
+    text-transform: uppercase
+    font-weight: 700
+    mix-blend-mode: exclusion
+    transform: translate(-50%, -50%)
+    // animation: shift 15s both linear

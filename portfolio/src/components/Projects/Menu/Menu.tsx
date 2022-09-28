@@ -22,21 +22,26 @@ export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, se
             window.scroll({
                 top: sectionHeight + 1,
                 left: 0,
+                behavior: 'smooth'
             });
         } else if (currentProject === names.length - 1) {
             window.scroll({
                 top: sectionHeight + 4 * projectSize - 1,
                 left: 0,
+                behavior: 'smooth'
             });
         };
 
-        gsap.to(window, {
-            scrollTo: {
-                y: sectionHeight + index * projectSize,
-                autoKill: false
-            }, ease: "power2",
-            duration: Math.abs(currentProject - index)
-        });
+        // Small delay needed for fix to work as intended
+        setTimeout(() => {
+            gsap.to(window, {
+                scrollTo: {
+                    y: sectionHeight + index * projectSize,
+                    autoKill: false
+                }, ease: "power2",
+                duration: Math.max(.3, Math.abs(currentProject - index))
+            });
+        }, 50)
     };
 
     const projectLinks = names.map((element, index) => (

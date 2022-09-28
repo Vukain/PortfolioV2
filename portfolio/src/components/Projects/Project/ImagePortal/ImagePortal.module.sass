@@ -1,0 +1,46 @@
+@import '../../../../sass/mixins'
+
+.image_portal
+    border-radius: var(--border-radius-big)
+    // background-image: radial-gradient(50% 50%, #525252, #464646 )
+    // background-color: #1d1e22
+    background-color: var(--background-color-1)
+    position: relative
+    overflow: hidden
+    &::before
+        @include before-after
+        width: 100%
+        height: 100%
+        // background-image: radial-gradient(circle at 80% 110%, #4fd39770, transparent 50%), radial-gradient(circle at 30% -70%, #4fd39770, transparent 50%)
+        // background-image: url('../../../media/test.svg')
+        background-size: cover
+
+.main_wrapper
+    width: 80%
+    aspect-ratio: 4/3
+    top: 150%
+    left: 50%
+    position: absolute
+    border-radius: var(--border-radius-big)
+    filter: drop-shadow(20px 20px 30px #131313)
+    overflow: hidden
+    transform: translate(-50%, -50%)
+
+.main_image
+    width: 100%
+    height: 100%
+    // top: 0%
+    // left: 0%
+    // position: absolute
+    object-fit: cover
+
+.mobile
+    top: 150%
+    left: 80%
+    position: absolute
+    width: 20%
+    aspect-ratio: 9/18
+    object-fit: cover
+    border-radius: calc(0.7 * var(--border-radius-big))
+    filter: drop-shadow(15px 15px 30px #131313)
+    transform: translate(-50%, -50%)

@@ -19,21 +19,18 @@ export const Projects: React.FC = () => {
     const [sectionHeight, setSectionHeight] = useState(0);
     const [currentProject, setCurrentProject] = useState(0);
 
-    // console.log('rerender')
-
     useEffect(() => {
         const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
         const projectsSection = projectsRef.current;
         const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project_"]');
+        // const projects = Array.prototype.slice.call(projectsRef.current?.querySelectorAll('[class*="project"]'));
 
         const height = document.getElementById('projects')!.offsetTop;
         const size = isDesktop ? projects[0].offsetWidth : projects[0].offsetHeight;
         setSectionHeight(height);
         setProjectSize(size);
-
-        // const projects = Array.prototype.slice.call(projectsRef.current?.querySelectorAll('[class*="project"]'));
 
         const slidingProjects = gsap.timeline({
             scrollTrigger: {
@@ -72,17 +69,38 @@ export const Projects: React.FC = () => {
         };
 
         projects.forEach((_, index) => {
+            // gsap.timeline({
+            //     scrollTrigger: {
+            //         trigger: '#app',
+            //         onEnter: () => {
+            //             setCurrentProject(index);
+            //         },
+            //         onEnterBack: () => {
+            //             setCurrentProject(index);
+            //         },
+            //         start: `${2 * height + (index - 1) * size}px ${height - 1}px`,
+            //         end: `${2 * height + index * size}px ${height - 1}px`,
+            //         markers: true
+            //     }
+            // });
+
             gsap.timeline({
                 scrollTrigger: {
                     trigger: '#app',
+                    onLeaveBack: () => {
+                        setCurrentProject(index === 0 ? 0 : index - 1);
+                    },
                     onEnter: () => {
                         setCurrentProject(index);
                     },
                     onEnterBack: () => {
                         setCurrentProject(index);
                     },
-                    start: `${2 * height + (index - 1) * size}px ${height - 1}px)`,
-                    end: `${2 * height + index * size}px ${height - 1}px`,
+                    onLeave: () => {
+                        setCurrentProject(index === projects.length - 1 ? projects.length - 1 : index + 1);
+                    },
+                    start: `${2 * height + (index) * size - 1}px ${height}px`,
+                    end: `${2 * height + index * size + 1}px ${height}px`,
                     // markers: true
                 }
             });
@@ -95,22 +113,26 @@ export const Projects: React.FC = () => {
     const isEnglish = language === 'english';
 
     type ProjectData = {
-        id: string, content: Record<'english' | 'polish', {
-            title: string,
-            description: string,
-            image?: React.FC<{ className?: string, title?: string }>,
-        }>
+        id: string,
+        title: string,
+        description: {
+            polish: string,
+            english: string,
+        },
+        image?: React.FC<{ className?: string, title?: string }>
     };
 
+    useEffect(() => { })
+
     const projects: ProjectData[] = [
-        { id: 'test1', content: { english: { title: 'project 1', description: 'test' }, polish: { title: 'projekt 1', description: 'test' } } },
-        { id: 'test2', content: { english: { title: 'project 2', description: 'test' }, polish: { title: 'projekt 2', description: 'test' } } },
-        { id: 'test3', content: { english: { title: 'project 3', description: 'test' }, polish: { title: 'projekt 3', description: 'test' } } },
-        { id: 'test4', content: { english: { title: 'project 4', description: 'test' }, polish: { title: 'projekt 4', description: 'test' } } },
-        { id: 'test5', content: { english: { title: 'project 5', description: 'test' }, polish: { title: 'projekt 5', description: 'test' } } },
+        { id: 'pizza_builder', title: 'Pizza Builder', description: { english: 'aaa', polish: 'aaa' } },
+        { id: 'pizza_vs', title: 'Pizza VS', description: { english: 'aaa', polish: 'aaa' } },
+        { id: 'dnails', title: 'DNAILS', description: { english: 'aaa', polish: 'aaa' } },
+        { id: 'atro', title: 'ATRO', description: { english: 'aaa', polish: 'aaa' } },
+        { id: 'portfolio_v1', title: 'Portfolio V1', description: { english: 'aaa', polish: 'aaa' } },
     ];
 
-    const mappedProjects = projects.map((data) => (<Project data={data} key={data.id} />))
+    const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} />))
 
     return (
         <>

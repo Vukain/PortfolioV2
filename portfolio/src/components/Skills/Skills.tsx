@@ -82,8 +82,7 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd,
-                    // markers: true
+                    end: motionEnd
                 }
             })));
 
@@ -208,8 +207,7 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd,
-                    // markers: true,
+                    end: motionEnd
                 }
             });
 
@@ -246,8 +244,7 @@ export const Skills: React.FC = () => {
                         window.history.pushState({}, '', '#skills');
                     },
                     start: 'top center',
-                    end: 'bottom center',
-                    // markers: true
+                    end: 'bottom center'
                 }
             });
 
@@ -259,8 +256,7 @@ export const Skills: React.FC = () => {
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
                     start: `-2% ${cardTriggerPosition}px`,
-                    end: `21% ${cardTriggerPosition}px`,
-                    // markers: true
+                    end: `21% ${cardTriggerPosition}px`
                 }
             });
 
@@ -271,9 +267,8 @@ export const Skills: React.FC = () => {
                     onEnterBack: () => { setActiveCard('backend') },
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
-                    start: `32% ${cardTriggerPosition}px`,
-                    end: `55% ${cardTriggerPosition}px`,
-                    // markers: true
+                    start: `33% ${cardTriggerPosition}px`,
+                    end: `56% ${cardTriggerPosition}px`
                 }
             });
 
@@ -285,8 +280,7 @@ export const Skills: React.FC = () => {
                     onLeave: () => { setActiveCard('') },
                     onLeaveBack: () => { setActiveCard('') },
                     start: `67% ${cardTriggerPosition}px`,
-                    end: `90% ${cardTriggerPosition}px`,
-                    // markers: true
+                    end: `90% ${cardTriggerPosition}px`
                 }
             });
 

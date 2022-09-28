@@ -18,7 +18,7 @@
     @include section
     overflow: hidden
     @include mobile-and-small
-        margin-top: 14vh
+        margin-top: 8vh
         grid-template-rows: 24vh 1fr 12vh
 
 .wrapper
@@ -95,7 +95,7 @@
     color: var(--color-error)
     background-color: var(--grey-light)
     padding: .1em .4em
-    border-radius: var(--border-radius-normal)
+    border-radius: var(--border-radius-small)
     border: 1px solid var(--color-error)
     filter: drop-shadow(2px 2px 4px #00000050)
     opacity: 0
@@ -109,8 +109,9 @@
         left: 50%
         bottom: 0
         transform: translate(-50%, 50%) rotateZ(45deg)
-        border-right: 1px solid var(--color-error)
-        border-bottom: 1px solid var(--color-error)
+        border: 1px solid transparent
+        border-right-color: var(--color-error)
+        border-bottom-color: var(--color-error)
         @include mobile-and-small
             height: 2vw
             width: 2vw
@@ -136,7 +137,7 @@
     &::placeholder
         text-transform: uppercase
     &:focus, &:hover
-        border-color: var(--color-main-3)
+        border-left-color: var(--color-main-3)
         & + .label
             color: var(--color-main-3)
     &:not(:placeholder-shown)

@@ -17,9 +17,10 @@
         transform: translateY(36vh) scale(1)
 
 .header
-    height: 100vh
-    position: relative
     @include flex-center
+    height: 100vh
+    transition: height var(--freeze)
+    position: relative
 
 .crystal
     will-change: filter, transform

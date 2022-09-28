@@ -25,7 +25,6 @@ export const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
     const [currentSection, setCurrentSection] = useState('header');
     const [language, setLanguage] = useState('polish');
 
-
     const contextValue: ContextType = { navigateTo, setNavigateTo, currentSection, setCurrentSection, language, setLanguage };
 
     return (
