@@ -21,6 +21,7 @@
     "normalize.css": "^8.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-fitty": "^1.0.1",
     "react-scripts": "5.0.1",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",

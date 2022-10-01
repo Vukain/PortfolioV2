@@ -119,18 +119,62 @@ export const Projects: React.FC = () => {
             polish: string,
             english: string,
         },
+        technologies: string[],
         image?: React.FC<{ className?: string, title?: string }>
     };
 
     useEffect(() => { })
 
     const projects: ProjectData[] = [
-        { id: 'pizza_builder', title: 'Pizza Builder', description: { english: 'aaa', polish: 'aaa' } },
-        { id: 'pizza_vs', title: 'Pizza VS', description: { english: 'aaa', polish: 'aaa' } },
-        { id: 'dnails', title: 'DNAILS', description: { english: 'aaa', polish: 'aaa' } },
-        { id: 'atro', title: 'ATRO', description: { english: 'aaa', polish: 'aaa' } },
-        { id: 'portfolio_v1', title: 'Portfolio V1', description: { english: 'aaa', polish: 'aaa' } },
+        {
+            id: 'pizza_builder',
+            title: 'Pizza Builder',
+            description: {
+                english: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders.",
+                polish: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders."
+            },
+            technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
+        },
+        {
+            id: 'pizza_vs',
+            title: 'Pizza VS',
+            description: {
+                english: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders.",
+                polish: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders."
+            },
+            technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
+        },
+        {
+            id: 'dnails',
+            title: 'DNAILS',
+            description: {
+                english: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database.',
+                polish: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database.'
+            },
+            technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas']
+        },
+        {
+            id: 'atro',
+            title: 'ATRO',
+            description: {
+                english: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item types.',
+                polish: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item types.'
+            },
+            technologies: ['python', 'oop', 'colorama']
+        },
+        {
+            id: 'portfolio_v1',
+            title: 'Portfolio V1',
+            description: {
+                english: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                polish: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            technologies: ['html', 'sass', 'javascript']
+        },
     ];
+
+
+
 
     const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} />))
 

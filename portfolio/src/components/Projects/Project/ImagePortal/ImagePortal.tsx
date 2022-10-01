@@ -20,11 +20,12 @@ export const ImagePortal: React.FC<MyProps> = ({ images }) => {
         const tl = gsap.timeline({ defaults: { transformOrigin: 'center' }, repeat: -1 });
 
         tl
-            .to(mainImage, { duration: 3, ease: 'Expo.easeInOut', top: '50%', scale: 1.1 })
-            .to(mainImage, { delay: 1, ease: 'Expo.easeInOut', duration: 3, top: '-50%', scale: 1 })
-            .to(mobileImages, { ease: 'Expo.easeIn', delay: -2, duration: 3, stagger: 3, top: '50%', scale: 1 })
+            .fromTo(mainImage, { top: '50%', scale: 1.1 }, { delay: 1, ease: 'Expo.easeInOut', duration: 3, top: '-50%', scale: 1 })
+            .to(mainImage, { top: '150%', scale: 1, duration: 0 })
+            .to(mobileImages, { ease: 'Expo.easeIn', delay: -3.5, duration: 3, stagger: 3, top: '50%', scale: 1 })
             .to(mobileImages, { ease: 'none', duration: 6, delay: -6, stagger: 3, left: '20%', })
             .to(mobileImages, { ease: 'Expo.easeOut', duration: 3, delay: -6, stagger: 3, top: '-150%', scale: 1 })
+            .to(mainImage, { delay: -4, duration: 3, ease: 'Expo.easeInOut', top: '50%', scale: 1.1 })
     }, []);
 
     return (

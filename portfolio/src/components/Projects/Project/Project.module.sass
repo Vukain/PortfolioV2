@@ -13,6 +13,9 @@
     left: 0
     display: grid
     grid-template-columns: 102vh 1fr
+    background-color: var(--background-color-2)
+    gap: 3vw
+    padding-right: 3vw
     &:not(:first-child)
         @include desktop
             left: 100%
@@ -27,15 +30,54 @@
     @include mobile-and-small
         height: 100%
 
-.project_name
-    width: max-content
-    position: absolute
-    font-size: calc(2*var(--font-size-heading-1))
-    top: 5%
-    left: 50%
-    color: var(--color-main-2)
+.info
+    display: flex
+    flex-direction: column
+    line-height: .7
+    gap: 2vh
+
+.name
+    text-align: left
     text-transform: uppercase
+    color: var(--color-main-2)
+    font-size: calc(1.08*var(--font-size-heading-1))
     font-weight: 700
-    mix-blend-mode: exclusion
-    transform: translate(-50%, -50%)
-    // animation: shift 15s both linear
+
+.description
+    text-align: left
+    color: var(--color-main-2)
+    font-size: var(--font-size-normal)
+    line-height: 1.2
+
+.label
+    text-align: left
+    text-transform: uppercase
+    color: var(--grey-dark)
+    font-weight: 700
+
+.capsules
+    display: flex
+    justify-content: start
+    gap: 1vw
+    flex-wrap: wrap
+
+.capsule
+    font-size: var(--font-size-normal)
+    text-transform: uppercase
+    color: var(--color-main-2)
+    background-color: var(--background-color-1)
+    border-radius: var(--border-radius-normal)
+    padding: .4em .6em
+
+// .project_name
+//     width: max-content
+//     position: absolute
+//     font-size: calc(2*var(--font-size-heading-1))
+//     top: 5%
+//     left: 50%
+//     color: var(--color-main-2)
+//     text-transform: uppercase
+//     font-weight: 700
+//     mix-blend-mode: exclusion
+//     transform: translate(-50%, -50%)
+//     animation: shift 15s both linear
