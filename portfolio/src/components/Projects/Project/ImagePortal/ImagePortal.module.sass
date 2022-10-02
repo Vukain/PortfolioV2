@@ -5,8 +5,10 @@
     // background-image: radial-gradient(50% 50%, #525252, #464646 )
     // background-color: #1d1e22
     background-color: var(--background-color-1)
+    background-color: var(--color-font-1)
     position: relative
     overflow: hidden
+    border: 1vh solid var(--color-main-2)
     &::before
         @include before-after
         width: 100%
@@ -22,7 +24,8 @@
     left: 50%
     position: absolute
     border-radius: var(--border-radius-big)
-    filter: drop-shadow(20px 20px 30px #131313)
+    filter: drop-shadow(15px 15px 30px #2c363f85)
+    // filter: drop-shadow(15px 15px 30px #3b3b3b8a)
     overflow: hidden
     transform: translate(-50%, -50%)
 
@@ -43,4 +46,6 @@
     object-fit: cover
     border-radius: calc(0.7 * var(--border-radius-big))
     filter: drop-shadow(15px 15px 30px #131313)
+    filter: drop-shadow(15px 15px 30px #d1ceb2)
+    filter: drop-shadow(15px 15px 30px #2c363f85)
     transform: translate(-50%, -50%)
