@@ -46,6 +46,10 @@ export const Projects: React.FC = () => {
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
+                    // document.body.style.overflow = "hidden";
+                    // setTimeout(() => {
+                    //     document.body.style.overflow = "scroll";
+                    // }, 200);
                 },
                 onEnterBack: () => {
                     setCurrentSection('projects');
@@ -172,9 +176,6 @@ export const Projects: React.FC = () => {
             technologies: ['html', 'sass', 'javascript']
         },
     ];
-
-
-
 
     const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} />))
 

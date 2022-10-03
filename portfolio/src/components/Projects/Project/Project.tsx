@@ -3,6 +3,7 @@ import { AppContext } from '../../../store/AppContext';
 import { gsap } from 'gsap';
 import { ReactFitty } from "react-fitty";
 
+
 import styles from './Project.module.sass';
 
 import log from '../../../media/test-img.png';
@@ -25,25 +26,28 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
 
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
+
+    const isEnglish = language === 'english';
+
     return (
         <article className={styles.project}>
             <ImagePortal images={log} />
             {/* <div className={styles.project_name} id='test_sub'>{title}</div> */}
             <div className={styles.info}>
                 <div className={styles.label}>
-                    <ReactFitty>project</ReactFitty>
+                    <ReactFitty>{isEnglish ? 'project' : 'projekt'}</ReactFitty>
                 </div>
                 <div className={styles.name}>
                     <ReactFitty>{title}</ReactFitty>
                 </div>
                 <div className={styles.label}>
-                    <ReactFitty>description</ReactFitty>
+                    <ReactFitty>{isEnglish ? 'description' : 'deskrypcja'}</ReactFitty>
                 </div>
                 <div className={styles.description}>
                     {description[language]}
                 </div>
                 <div className={styles.label}>
-                    <ReactFitty>tech stack</ReactFitty>
+                    <ReactFitty>{isEnglish ? 'tech stack' : 'technologie'}</ReactFitty>
                 </div>
                 <div className={styles.capsules}>
                     {techCapsules}

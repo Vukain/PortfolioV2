@@ -12,10 +12,11 @@
     position: absolute
     left: 0
     display: grid
-    grid-template-columns: 102vh 1fr
+    grid-template-columns: 46vw 1fr
     background-color: var(--background-color-2)
-    gap: 3vw
-    padding-right: 3vw
+    gap: 5vw
+    padding-right: 5vw
+    border-radius: var(--border-radius-big)
     &:not(:first-child)
         @include desktop
             left: 100%
@@ -29,19 +30,27 @@
     //     background-color: var(--color-main-3)
     @include mobile-and-small
         height: 100%
+        grid-template-rows: 36vh 1fr
+        grid-template-columns: 1fr
+        padding: 0 4vw
 
 .info
     display: flex
     flex-direction: column
     line-height: .7
-    gap: 2vh
+    gap: 1vw
+    justify-content: space-between
+    justify-content: center
+    @include mobile-and-small
+    justify-content: flex-start
 
 .name
     text-align: left
     text-transform: uppercase
     color: var(--color-main-2)
     font-size: calc(1.08*var(--font-size-heading-1))
-    font-weight: 700
+    // font-weight: 700
+    // letter-spacing: var(--letter-spacing-normal)
 
 .description
     text-align: left
@@ -54,16 +63,19 @@
     text-transform: uppercase
     color: var(--grey-dark)
     font-weight: 700
+    // letter-spacing: var(--letter-spacing-normal)
 
 .capsules
     display: flex
-    justify-content: start
+    justify-content: flex-start
     gap: 1vw
     flex-wrap: wrap
 
 .capsule
+    @include flex-center
     font-size: var(--font-size-normal)
     text-transform: uppercase
+    letter-spacing: var(--letter-spacing-small)
     color: var(--color-main-2)
     background-color: var(--background-color-1)
     border-radius: var(--border-radius-normal)
