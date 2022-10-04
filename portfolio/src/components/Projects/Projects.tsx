@@ -135,7 +135,7 @@ export const Projects: React.FC = () => {
             title: 'Pizza Builder',
             description: {
                 english: "Wanted to make a pizza, but it takes a lot of time and is a little bit messy? No worries, this app got what you need! FREE ingredients of various types and ZERO callories on top of that, woah!",
-                polish: "Chcieliście zrobić pizzę, ale to czasochłonne i powoduje niezły bajzel w kuchni? Bez obaw, ta apka ma czego potrzebujecie! DARMOWE składniki i ZERO kalorii na dodatek, wow!"
+                polish: "Chcielibyście zrobić pizzę, ale to czasochłonne i powoduje niezły bałagan w kuchni? Bez obaw, ta apka jest tym czego potrzebujecie! DARMOWE składniki i ZERO kalorii na dodatek, wow!"
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
         },
@@ -144,7 +144,7 @@ export const Projects: React.FC = () => {
             title: 'Pizza VS',
             description: {
                 english: "Have You ever wondered what's better to take while ordering pizzas? What will get you more food, what will yield better value? You didn't?! Ohh... but now you can check it anyway! App calculates order value and let's you choose the better option.",
-                polish: "Zastanawialiście się kiedyś co lepiej wybrać podczas zamawiania pizzy? Co da więcej jedzenia, co będzie miało lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
+                polish: "Zastanawialiście się kiedyś co lepiej wybrać podczas zamawiania pizzy? Którym wariantem się bardziej najecie, lub który ma lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
         },
@@ -152,8 +152,8 @@ export const Projects: React.FC = () => {
             id: 'dnails',
             title: 'DNAILS',
             description: {
-                english: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database. Includes a custom calendar with available visit dates and an ability to book your own.',
-                polish: 'Strona dla branży beauty z małym twistem - możliwością pomalowania paznokci przy pomocy kolorów pobranych z bazy danych. Posiada kalendarz ukazujący dostępne daty wizyt, wraz z możliwością rezerwacji własnej.'
+                english: 'Site for beauty services with a little twist, an ability to paint nails with colors fetched from database. Includes a custom calendar with available visit dates and an ability to book your own.',
+                polish: 'Strona dla branży beauty z małym twistem, czyli możliwością pomalowania paznokci przy pomocy kolorów pobranych z bazy danych. Posiada kalendarz ukazujący dostępne daty wizyt, wraz z możliwością rezerwacji własnej.'
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas']
         },

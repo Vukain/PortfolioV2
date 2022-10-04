@@ -341,13 +341,11 @@ export const Skills: React.FC = () => {
         <section className={styles.skills} id='skills'>
 
             <SectionName>{isEnglish ? 'skills' : 'umiejętności'}</SectionName>
-            {svgPath}
+
             <div className={styles.cards} id='cards'>
                 <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
-
+                {svgPath}
                 {cards}
-
-
             </div>
 
         </section>

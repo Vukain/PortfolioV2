@@ -7,13 +7,19 @@
     align-items: center
     @include mobile-and-small
         grid-row: 3
-        grid-column: 1 / 4
-        background-color: var(--background-color-2)
+        grid-column: 3
+        // background-color: var(--background-color-2)
         z-index: 999
+        flex-direction: column
+        justify-content: flex-start
+        // align-content: center
+        gap: 4vh
+        margin-top: 2vh
 
 .wrapper
     @include flex-center
-    flex-grow: 1
+    @include desktop
+        flex-grow: 1
 
 .button
     @include flex-center
@@ -27,14 +33,24 @@
         color: var(--color-font-1)
     &:hover, &:focus
         color: var(--color-main-2)
-
     @include mobile-and-small
-        padding: 0.5em
-        transform: rotateZ(-45deg)
+        padding: 0
+        width: 1.4vh
+        height: 1.4vh
+        border-radius: 50%
+        background-color: var(--grey-dark)
+        outline: .3vh solid transparent
+        transition: outline-color .2s, outline-offset .2s, background-color .2s
+        &--active
+            background-color: var(--color-main-2)
+            outline-color: var(--color-main-2)
+            outline-offset: .5vh
+        &:hover, &:focus
+            background-color: var(--color-font-1)
 
 .text
     font-size: var(--font-size-heading-3)
     text-transform: uppercase
     transition: .5s color
     @include mobile-and-small
-        font-size: calc(0.6 * var(--font-size-heading-3))
+        display: none
