@@ -13,8 +13,8 @@
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
     z-index: 2
-    height: 60vh
-    width: 44vh
+    aspect-ratio: 11 / 15
+    width: calc(min(44vh, 22vw))
     &:hover
         .frontside
             @include desktop
@@ -26,6 +26,7 @@
     @include mobile-and-small
         height: 50vh
         width: 70vw
+        aspect-ratio: unset
         perspective: 140vh
         margin: 0
         transition: height var(--freeze)

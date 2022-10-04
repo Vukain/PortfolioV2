@@ -14,8 +14,8 @@
     display: grid
     grid-template-columns: 46vw 1fr
     background-color: var(--background-color-2)
-    gap: 5vw
-    padding-right: 5vw
+    gap: 4vw
+    padding-right: 4vw
     border-radius: var(--border-radius-big)
     &:not(:first-child)
         @include desktop
@@ -30,9 +30,9 @@
     //     background-color: var(--color-main-3)
     @include mobile-and-small
         height: 100%
-        grid-template-rows: 36vh 1fr
+        grid-template-rows: 36vh 1fr 26vw
         grid-template-columns: 1fr
-        padding: 0 4vw
+        padding: 0
 
 .info
     display: flex
@@ -41,16 +41,41 @@
     gap: 1vw
     justify-content: space-between
     justify-content: center
+    // background-color: #fff
     @include mobile-and-small
-    justify-content: flex-start
+        justify-content: flex-start
+        gap: 1vh
 
 .name
     text-align: left
     text-transform: uppercase
     color: var(--color-main-2)
-    font-size: calc(1.08*var(--font-size-heading-1))
+    font-size: calc(1.1*var(--font-size-heading-1))
+    margin-left: -.06em
+    margin-right: -.2em
     // font-weight: 700
-    // letter-spacing: var(--letter-spacing-normal)
+    letter-spacing: var(--letter-spacing-normal)
+    @include mobile-and-small
+        font-weight: 700
+        font-size: calc(1.5*var(--font-size-heading-1))
+
+    &--pizza_builder
+        font-size: calc(1.244*var(--font-size-heading-1))
+
+    &--pizza_vs
+        font-size: calc(2.14 * var(--font-size-heading-1))
+
+    &--dnails
+        font-size: calc(2.62*var(--font-size-heading-1))
+
+    &--atro
+        font-size: calc(3.61*var(--font-size-heading-1))
+        margin-left: -.01em
+
+    &--portfolio_v1
+        font-size: calc(1.31*var(--font-size-heading-1))
+        margin-left: -.09em
+        margin-right: -.3em
 
 .description
     text-align: left
@@ -63,7 +88,25 @@
     text-transform: uppercase
     color: var(--grey-dark)
     font-weight: 700
+    font-size: calc(2.28*var(--font-size-heading-1))
+    margin-left: -.08em
+    @include mobile-and-small
+        margin-left: -.04em
+    &:nth-child(3)
+        font-size: calc(1.58*var(--font-size-heading-1))
+    &:nth-child(5)
+        font-size: calc(1.425*var(--font-size-heading-1))
+        margin-left: -.02em
     // letter-spacing: var(--letter-spacing-normal)
+    &--english
+        font-size: calc(2.31*var(--font-size-heading-1))
+        margin-right: -.1em
+        &:nth-child(3)
+            font-size: calc(1.548*var(--font-size-heading-1))
+            margin-right: -.1em
+        &:nth-child(5)
+            font-size: calc(1.71*var(--font-size-heading-1))
+            margin-right: -.1em
 
 .capsules
     display: flex
@@ -78,8 +121,10 @@
     letter-spacing: var(--letter-spacing-small)
     color: var(--color-main-2)
     background-color: var(--background-color-1)
-    border-radius: var(--border-radius-normal)
+    border-radius: calc(1.1 * var(--border-radius-normal))
     padding: .4em .6em
+    @include mobile-and-small
+        border-radius: calc(.7 * var(--border-radius-normal))
 
 // .project_name
 //     width: max-content

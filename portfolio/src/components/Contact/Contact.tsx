@@ -35,11 +35,32 @@ export const Contact: React.FC = () => {
     const [formValidity, setFormValidity] = useState('invalid');
     const [showError, setShowError] = useState(false);
 
-
     const { inputValues, setInputValues, changeHandler } = useForm('name', 'email', 'message');
     const { name, email, message } = inputValues;
 
     useEffect(() => {
+        const elementGetter = gsap.utils.selector(sectionRef.current);
+        const wrappers: HTMLElement[] = elementGetter('[class*="t_wrapper_"]');
+        wrappers.push(...elementGetter('[class*="n_wrapper_"]'));
+
+        gsap.set(wrappers, { transform: 'translate3d(0,40vh,0)', scale: .7 });
+        gsap.set(wrappers.slice(1), { transform: 'translate3d(0,4vh,0)', opacity: 0 })
+
+        wrappers.forEach((element, index) => {
+            gsap.to(element, {
+                transform: 'translate3d(0,0vh,0)',
+                opacity: 1,
+                scale: 1,
+                duration: index === 0 ? .8 : .4,
+                delay: .2 * index,
+                ease: 'Power1.easeOut',
+                scrollTrigger: {
+                    trigger: wrappers[0],
+                    start: `5% bottom`
+                }
+            });
+        });
+
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#contact',
@@ -85,8 +106,6 @@ export const Contact: React.FC = () => {
         setExitCursorXPosition(cursorXPosition);
         setExitCursorYPosition(cursorYPosition);
     };
-
-    // let errorTimeout: any;
 
     const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
@@ -150,9 +169,10 @@ export const Contact: React.FC = () => {
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
             <SectionName>{isEnglish ? 'contact' : 'kontakt'}</SectionName>
-            {crystalsMapped}
-            <div className={styles.wrapper}>
 
+            {crystalsMapped}
+
+            <div className={styles.wrapper}>
                 <div className={styles.form_card}>
                     <form className={styles.form} action="submit">
                         <div className={styles.wrapper_input}>

@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
 import { AppContext } from '../../../store/AppContext';
 import { gsap } from 'gsap';
-import { ReactFitty } from "react-fitty";
-
+import { clsx } from 'clsx';
 
 import styles from './Project.module.sass';
 
@@ -26,33 +25,39 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
 
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
-
+    const isDesktop = window.matchMedia('(orientation: landscape)').matches;
     const isEnglish = language === 'english';
 
     return (
         <article className={styles.project}>
+
             <ImagePortal images={log} />
-            {/* <div className={styles.project_name} id='test_sub'>{title}</div> */}
-            <div className={styles.info}>
-                <div className={styles.label}>
-                    <ReactFitty>{isEnglish ? 'project' : 'projekt'}</ReactFitty>
+
+            <article className={styles.info}>
+
+                <div className={clsx(styles.label, isEnglish && styles['label--english'])}>
+                    {isEnglish ? 'project' : 'projekt'}
                 </div>
-                <div className={styles.name}>
-                    <ReactFitty>{title}</ReactFitty>
+                <div className={clsx(styles.name, styles[`name--${id}`])}>
+                    {title}
                 </div>
-                <div className={styles.label}>
-                    <ReactFitty>{isEnglish ? 'description' : 'deskrypcja'}</ReactFitty>
+
+                <div className={clsx(styles.label, isEnglish && styles['label--english'])}>
+                    {isEnglish ? 'description' : 'deskrypcja'}
                 </div>
                 <div className={styles.description}>
                     {description[language]}
                 </div>
-                <div className={styles.label}>
-                    <ReactFitty>{isEnglish ? 'tech stack' : 'technologie'}</ReactFitty>
+
+                <div className={clsx(styles.label, isEnglish && styles['label--english'])}>
+                    {isEnglish ? 'tech stack' : 'technologie'}
                 </div>
                 <div className={styles.capsules}>
                     {techCapsules}
                 </div>
-            </div>
+
+            </article>
+
         </article>
     );
 };

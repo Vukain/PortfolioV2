@@ -287,7 +287,7 @@ export const Skills: React.FC = () => {
             const cards = [frontendCard, backendCard, graphicsCard];
 
             if (isDesktop) {
-                gsap.set(cards, { yPercent: 60, opacity: 0, scale: .7 });
+                gsap.set(cards, { yPercent: 40, opacity: 0, scale: .7 });
 
                 cards.forEach((element, index) => {
                     gsap.to(element, {
@@ -341,13 +341,13 @@ export const Skills: React.FC = () => {
         <section className={styles.skills} id='skills'>
 
             <SectionName>{isEnglish ? 'skills' : 'umiejętności'}</SectionName>
-
+            {svgPath}
             <div className={styles.cards} id='cards'>
                 <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
 
                 {cards}
 
-                {svgPath}
+
             </div>
 
         </section>

@@ -134,8 +134,8 @@ export const Projects: React.FC = () => {
             id: 'pizza_builder',
             title: 'Pizza Builder',
             description: {
-                english: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders.",
-                polish: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders."
+                english: "Wanted to make a pizza, but it takes a lot of time and is a little bit messy? No worries, this app got what you need! FREE ingredients of various types and ZERO callories on top of that, woah!",
+                polish: "Chcieliście zrobić pizzę, ale to czasochłonne i powoduje niezły bajzel w kuchni? Bez obaw, ta apka ma czego potrzebujecie! DARMOWE składniki i ZERO kalorii na dodatek, wow!"
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
         },
@@ -143,8 +143,8 @@ export const Projects: React.FC = () => {
             id: 'pizza_vs',
             title: 'Pizza VS',
             description: {
-                english: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders.",
-                polish: "Two sibling projects with pizza as a focal point. The first one lets you build your own pizza, the latter compares value of different pizza orders."
+                english: "Have You ever wondered what's better to take while ordering pizzas? What will get you more food, what will yield better value? You didn't?! Ohh... but now you can check it anyway! App calculates order value and let's you choose the better option.",
+                polish: "Zastanawialiście się kiedyś co lepiej wybrać podczas zamawiania pizzy? Co da więcej jedzenia, co będzie miało lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator']
         },
@@ -152,8 +152,8 @@ export const Projects: React.FC = () => {
             id: 'dnails',
             title: 'DNAILS',
             description: {
-                english: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database.',
-                polish: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database.'
+                english: 'Site for beauty services with a little twist - an ability to paint nails with colors fetched from database. Includes a custom calendar with available visit dates and an ability to book your own.',
+                polish: 'Strona dla branży beauty z małym twistem - możliwością pomalowania paznokci przy pomocy kolorów pobranych z bazy danych. Posiada kalendarz ukazujący dostępne daty wizyt, wraz z możliwością rezerwacji własnej.'
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas']
         },
@@ -162,7 +162,7 @@ export const Projects: React.FC = () => {
             title: 'ATRO',
             description: {
                 english: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item types.',
-                polish: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item types.'
+                polish: 'Hołd dla tekstowych gier RPG w stylu retro. Rozgrywka oparta o narrację, posiada kilka typów przeciwników, klas bahaterów, oraz różnorakie czary i przedmioty.'
             },
             technologies: ['python', 'oop', 'colorama']
         },
@@ -170,10 +170,10 @@ export const Projects: React.FC = () => {
             id: 'portfolio_v1',
             title: 'Portfolio V1',
             description: {
-                english: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                polish: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                english: 'First portfolio intended as an excercise and a playground. Features a light and dark mode. HTML paired with Sass, vanilla JavaScript used for scroll effects.',
+                polish: 'Pierwsza strona portfolio stworzona jako ćwiczenie i dla testowania różnych pomysłów. Posiada tryb jasny i ciemny. HTML połączony z Sassem i czystym JavaScriptem użytym do efektów scrollowania.'
             },
-            technologies: ['html', 'sass', 'javascript']
+            technologies: ['html', 'sass', 'javascript', 'illustrator']
         },
     ];
 
