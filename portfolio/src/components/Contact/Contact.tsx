@@ -43,7 +43,9 @@ export const Contact: React.FC = () => {
         const wrappers: HTMLElement[] = elementGetter('[class*="t_wrapper_"]');
         wrappers.push(...elementGetter('[class*="n_wrapper_"]'));
 
-        gsap.set(wrappers, { transform: 'translate3d(0,40vh,0)', scale: .7 });
+        const isDesktop = window.matchMedia('(orientation: landscape)').matches;
+
+        gsap.set(wrappers, { transform: `translate3d(0,${isDesktop ? 40 : 20}vh,0)`, scale: .7 });
         gsap.set(wrappers.slice(1), { transform: 'translate3d(0,4vh,0)', opacity: 0 })
 
         wrappers.forEach((element, index) => {
@@ -55,8 +57,8 @@ export const Contact: React.FC = () => {
                 delay: .2 * index,
                 ease: 'Power1.easeOut',
                 scrollTrigger: {
-                    trigger: wrappers[0],
-                    start: `5% bottom`
+                    trigger: '#contact',
+                    start: `60% bottom`
                 }
             });
         });

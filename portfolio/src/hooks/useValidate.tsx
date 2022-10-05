@@ -1,17 +1,19 @@
 type MyParams = {
-    type: string,
+    name: string,
     value: string
 };
 
-export const useValidate = (): { validate: ({ type, value }: MyParams) => boolean } => {
+export const useValidate = () => {
 
+    const validate = ({ name, value }: MyParams): boolean => {
 
-    const validate = ({ type, value }: MyParams) => {
-        if (type === 'email') {
+        const hasLength = value.trim().length > 0;
+
+        if (name === 'email') {
             const regEx = /.+@.+\.[A-Za-z]+$/;
-            return (regEx.test(value) && (value.length > 0));
+            return (regEx.test(value) && hasLength);
         } else {
-            return (value.length > 0);
+            return hasLength;
         };
     };
 

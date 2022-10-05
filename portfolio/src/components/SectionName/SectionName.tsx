@@ -23,8 +23,8 @@ export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
                 onEnterBack: () => { setVisible(true) },
                 // onLeave: () => { setActiveCard('') },
                 // onLeaveBack: () => { setActiveCard('') },
-                start: `top 90%`,
-                end: `bottom 90%`,
+                start: `top 80%`,
+                end: `bottom 80%`,
                 // markers: true
             }
         });

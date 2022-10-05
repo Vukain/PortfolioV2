@@ -22,7 +22,6 @@ export const App = () => {
   const [lightTheme, setLightTheme] = useState(false);
 
   useEffect(() => {
-
     const [, location] = window.location.href.split('#');
     if (['projects', 'skills', 'contact'].includes(location)) {
       window.location.href = `#${location}`;

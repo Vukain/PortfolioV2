@@ -42,10 +42,15 @@
     top: 0
     z-index: 1
 
+    @include mobile-and-small
+        grid-row: 2 / 3
+
 .sliding_crystal
     height: 30vh
     position: absolute
     z-index: 99
     overflow: visible
+
     @include mobile-and-small
         height: 40vw
+        z-index: 1

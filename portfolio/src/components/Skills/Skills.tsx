@@ -65,8 +65,8 @@ export const Skills: React.FC = () => {
 
             const cardTriggerPosition = window.innerHeight / 2;
             const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
-            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.6 : cardTriggerPosition * 1.4}px`;
-            const motionEnd = `+=${(isDesktop ? 1.4 : 1) * document.getElementById('skills')!.offsetHeight}px`;
+            const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.5 : cardTriggerPosition * 1.4}px`;
+            const motionEnd = `+=${(isDesktop ? 1.2 : 1) * document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
             const inner = elementGetter('[id*="inner"]');
@@ -158,7 +158,7 @@ export const Skills: React.FC = () => {
                 defaults: { ease: "sine.out" },
                 scrollTrigger: {
                     trigger: '#skills',
-                    start: '10% bottom',
+                    start: `${isDesktop ? 15 : 10}% bottom`,
                     // end: motionEnd,
                     // markers: true,
                 }
@@ -342,9 +342,11 @@ export const Skills: React.FC = () => {
 
             <SectionName>{isEnglish ? 'skills' : 'umiejętności'}</SectionName>
 
+            <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
+
+            {svgPath}
+
             <div className={styles.cards} id='cards'>
-                <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
-                {svgPath}
                 {cards}
             </div>
 

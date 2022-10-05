@@ -19,6 +19,8 @@
     @include desktop
         transform: translateY(-110%)
         animation: nav-slide 1.4s 6.2s cubic-bezier(0.65, 0, 0.35, 1) forwards
+        &--skip_delay
+            animation-delay: 0s
     &:nth-child(1)
         margin-right: auto
         @include mobile-and-small

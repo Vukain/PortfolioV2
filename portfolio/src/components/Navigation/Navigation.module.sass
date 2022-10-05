@@ -44,6 +44,8 @@
     @include desktop
         opacity: 0
         animation: nav-opacity 0s 4.7s forwards
+        &--skip_delay
+            animation-delay: 0s
     @include mobile-and-small
         backdrop-filter: unset
         flex-direction: column
@@ -102,6 +104,10 @@
             transform-origin: bottom center
             transform: scaleY(1)
 
+    &--skip_delay
+        &::after, &::before
+            animation-delay: 0s
+
     &--hidden
         @include desktop
             &::before
@@ -140,6 +146,8 @@
         grid-template-columns: 1fr
         justify-items: center
         gap: 2px
+        &--skip_delay
+            animation-delay: 0s
     @media (min-width: 320px)
         gap: 3px
     @media (min-width: 460px)

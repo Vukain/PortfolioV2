@@ -3,7 +3,7 @@
 .menu
     display: flex
     grid-row: 3
-    grid-column: 2
+    grid-column: 2/4
     align-items: center
     @include mobile-and-small
         grid-row: 3
@@ -11,10 +11,10 @@
         // background-color: var(--background-color-2)
         z-index: 999
         flex-direction: column
-        justify-content: flex-start
-        // align-content: center
+        justify-content: center
+        align-items: flex-end
         gap: 4vh
-        margin-top: 2vh
+        margin-top: -2vh
 
 .wrapper
     @include flex-center
@@ -41,12 +41,12 @@
         background-color: var(--grey-dark)
         outline: .3vh solid transparent
         transition: outline-color .2s, outline-offset .2s, background-color .2s
-        &--active
-            background-color: var(--color-main-2)
-            outline-color: var(--color-main-2)
-            outline-offset: .5vh
         &:hover, &:focus
             background-color: var(--color-font-1)
+        &--active
+            background-color: var(--color-font-1)
+            outline-color: var(--color-main-2)
+            outline-offset: .5vh
 
 .text
     font-size: var(--font-size-heading-3)
