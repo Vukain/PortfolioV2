@@ -3,13 +3,17 @@ import { clsx } from 'clsx';
 
 import styles from './Menu.module.sass';
 
-type MyProps = { names: string[], currentProject: number, projectSize: number, sectionHeight: number };
+type MyProps = {
+    names: string[],
+    currentProject: number,
+    projectSize: number,
+    sectionHeight: number
+};
 
 export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, sectionHeight }) => {
 
     const clickHandler = (e: React.MouseEvent<HTMLElement>, index: number) => {
         e.preventDefault()
-
         // Alternative scroll method without ability to adjust speed
         // window.scroll({
         //     top: sectionHeight + (index * projectWidth),

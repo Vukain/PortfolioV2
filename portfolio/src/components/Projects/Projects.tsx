@@ -72,43 +72,43 @@ export const Projects: React.FC = () => {
             });
         };
 
-        projects.forEach((_, index) => {
-            // gsap.timeline({
-            //     scrollTrigger: {
-            //         trigger: '#app',
-            //         onEnter: () => {
-            //             setCurrentProject(index);
-            //         },
-            //         onEnterBack: () => {
-            //             setCurrentProject(index);
-            //         },
-            //         start: `${2 * height + (index - 1) * size}px ${height - 1}px`,
-            //         end: `${2 * height + index * size}px ${height - 1}px`,
-            //         markers: true
-            //     }
-            // });
+        // projects.forEach((_, index) => {
+        // gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: '#app',
+        //         onEnter: () => {
+        //             setCurrentProject(index);
+        //         },
+        //         onEnterBack: () => {
+        //             setCurrentProject(index);
+        //         },
+        //         start: `${2 * height + (index - 1) * size}px ${height - 1}px`,
+        //         end: `${2 * height + index * size}px ${height - 1}px`,
+        //         markers: true
+        //     }
+        // });
 
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: '#app',
-                    onLeaveBack: () => {
-                        setCurrentProject(index === 0 ? 0 : index - 1);
-                    },
-                    onEnter: () => {
-                        setCurrentProject(index);
-                    },
-                    onEnterBack: () => {
-                        setCurrentProject(index);
-                    },
-                    onLeave: () => {
-                        setCurrentProject(index === projects.length - 1 ? projects.length - 1 : index + 1);
-                    },
-                    start: `${2 * height + (index) * size - 1}px ${height}px`,
-                    end: `${2 * height + index * size + 1}px ${height}px`,
-                    // markers: true
-                }
-            });
-        });
+        // gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: '#app',
+        //         onLeaveBack: () => {
+        //             setCurrentProject(index === 0 ? 0 : index - 1);
+        //         },
+        //         onEnter: () => {
+        //             setCurrentProject(index);
+        //         },
+        //         onEnterBack: () => {
+        //             setCurrentProject(index);
+        //         },
+        //         onLeave: () => {
+        //             setCurrentProject(index === projects.length - 1 ? projects.length - 1 : index + 1);
+        //         },
+        //         start: `${2 * height + (index) * size - 1}px ${height}px`,
+        //         end: `${2 * height + index * size + 1}px ${height}px`,
+        //         // markers: true
+        //     }
+        // });
+        // });
 
     }, [setCurrentSection])
 
@@ -177,7 +177,7 @@ export const Projects: React.FC = () => {
         },
     ];
 
-    const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} />))
+    const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} numberOfProjects={projects.length} currentProject={currentProject} setCurrentProject={setCurrentProject} projectSize={projectSize} sectionHeight={sectionHeight} />))
 
     return (
         <>
@@ -185,7 +185,7 @@ export const Projects: React.FC = () => {
             <section className={styles.projects} ref={projectsRef} id="projects">
                 <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
 
-                <div className={styles.gallery}>
+                <div className={styles.gallery} id="gallery">
                     {mappedProjects}
                 </div>
 

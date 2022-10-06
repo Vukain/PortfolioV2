@@ -17,9 +17,9 @@ export const ImagePortal: React.FC<MyProps> = ({ images }) => {
         const mainImage: HTMLElement[] = elementGetter('[class*="main_wrapper_"]');
         const mobileImages: HTMLElement[] = elementGetter('[class*="mobile_"]');
 
-        const tl = gsap.timeline({ defaults: { transformOrigin: 'center' }, repeat: -1 });
+        const imagesTL = gsap.timeline({ defaults: { transformOrigin: 'center' }, repeat: -1 });
 
-        tl
+        imagesTL
             .fromTo(mainImage, { top: '50%', scale: 1.1 }, { delay: 1, ease: 'Expo.easeInOut', duration: 3, top: '-50%', scale: 1 })
             .to(mainImage, { top: '150%', scale: 1, duration: 0 })
             .to(mobileImages, { ease: 'Expo.easeIn', delay: -3.5, duration: 3, stagger: 3, top: '50%', scale: 1 })
