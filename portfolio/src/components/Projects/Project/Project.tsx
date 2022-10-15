@@ -5,7 +5,6 @@ import { clsx } from 'clsx';
 
 import styles from './Project.module.sass';
 
-import log from '../../../media/test-img.png';
 import { ImagePortal } from './ImagePortal/ImagePortal';
 
 type myProps = {
@@ -14,7 +13,8 @@ type myProps = {
         title: string,
         description: Record<string, string>,
         image?: React.FC<{ className?: string, title?: string }>,
-        technologies: string[]
+        technologies: string[],
+        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] }
     },
     index: number,
     numberOfProjects: number,
@@ -24,13 +24,13 @@ type myProps = {
     sectionHeight: number
 };
 
-export const Project: React.FC<myProps> = ({ data: { id, title, description, technologies }, index, numberOfProjects, currentProject, setCurrentProject, projectSize, sectionHeight }) => {
+export const Project: React.FC<myProps> = ({ data: { id, title, description, technologies, images }, index, numberOfProjects, currentProject, setCurrentProject, projectSize, sectionHeight }) => {
 
     const { language } = useContext(AppContext);
 
     const infoRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const elements = useRef<{ text: null[] | HTMLElement[], capsules: null[] | HTMLElement[] }>({ text: [], capsules: [] });
-    const infoTL: any = useRef(null);
+    const infoTL: React.MutableRefObject<null | gsap.core.Timeline> = useRef(null);
 
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
@@ -85,7 +85,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                 onLeaveBack: () => {
                     setCurrentProject(index === 0 ? 0 : index - 1);
                     if (index !== 0) {
-                        infoTL.current
+                        infoTL.current!
                             .to(slidingText, { yPercent: '105', duration: .3, stagger: .3, opacity: 0 })
                             .to(slidingText, { opacity: 0, duration: 0 })
                             .to(slidingCapsules, { yPercent: '105', duration: .2, stagger: .1, opacity: 0 });
@@ -106,7 +106,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                 onLeave: () => {
                     setCurrentProject(index === numberOfProjects - 1 ? numberOfProjects - 1 : index + 1);
                     if (index !== numberOfProjects - 1) {
-                        infoTL.current
+                        infoTL.current!
                             .to(slidingText, { yPercent: '-105', duration: .3, stagger: .3, opacity: 0 })
                             .to(slidingText, { opacity: 0, duration: 0 })
                             .to(slidingCapsules, { yPercent: '-105', duration: .2, stagger: .1, opacity: 0 });
@@ -126,7 +126,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
 
         if (currentProject === index && text.length > 0) {
             animationTimeout = setTimeout(() => {
-                infoTL.current
+                infoTL.current!
                     // .to([text], { opacity: 1, duration: 0 })
                     .to(text, { yPercent: '0', duration: .7, stagger: .2, ease: 'sine.inOut', opacity: 1 })
                     .to(capsules, { yPercent: '0', duration: .4, stagger: .1, opacity: 1, ease: 'sine.inOut' })
@@ -143,7 +143,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     return (
         <article className={styles.project}>
 
-            <ImagePortal images={log} />
+            <ImagePortal images={images} />
 
             <article className={styles.info} ref={infoRef}>
 

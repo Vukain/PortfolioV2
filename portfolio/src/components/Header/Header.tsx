@@ -10,7 +10,7 @@ import { ReactComponent as Crystal } from '../../media/crystal_hero.svg';
 
 export const Header: React.FC = () => {
 
-    const { language, setCurrentSection, setLanguage } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 

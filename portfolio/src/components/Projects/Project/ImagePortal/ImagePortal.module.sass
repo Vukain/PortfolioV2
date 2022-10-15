@@ -17,35 +17,49 @@
         // background-image: url('../../../media/test.svg')
         background-size: cover
 
-.main_wrapper
-    width: 80%
-    aspect-ratio: 4/3
-    top: 50%
-    left: 50%
-    position: absolute
-    border-radius: var(--border-radius-big)
-    filter: drop-shadow(15px 15px 30px #2c363f85)
-    // filter: drop-shadow(15px 15px 30px #3b3b3b8a)
-    overflow: hidden
-    transform: translate(-50%, -50%)
+.wrapper
+    &_logo
+        width: 80%
+        aspect-ratio: 4/3
+        top: 50%
+        left: 50%
+        position: absolute
+        border-radius: var(--border-radius-big)
+        filter: drop-shadow(15px 15px 30px #2c363f85)
+        // filter: drop-shadow(15px 15px 30px #3b3b3b8a)
+        overflow: hidden
+        transform: translate(-50%, -50%)
+        @include mobile-and-small
+            border-radius: var(--border-radius-big)
+    &_mobile
+        width: 100%
+        height: 100%
 
-.main_image
+.image_logo
     width: 100%
     height: 100%
     // top: 0%
     // left: 0%
     // position: absolute
     object-fit: cover
+    // scale: 1.1
 
-.mobile
-    top: 150%
-    left: 80%
+.desktop
+    width: 70%
     position: absolute
-    width: 20%
-    aspect-ratio: 9/18
-    object-fit: cover
-    border-radius: calc(0.7 * var(--border-radius-big))
-    filter: drop-shadow(15px 15px 30px #131313)
-    filter: drop-shadow(15px 15px 30px #d1ceb2)
-    filter: drop-shadow(15px 15px 30px #2c363f85)
-    transform: translate(-50%, -50%)
+
+.screenshot
+    &_mobile
+        top: 150%
+        left: 80%
+        position: absolute
+        width: 25%
+        // aspect-ratio: 9/18
+        object-fit: cover
+        border-radius: calc(0.7 * var(--border-radius-big))
+        // filter: drop-shadow(15px 15px 30px #131313)
+        // filter: drop-shadow(15px 15px 30px #d1ceb2)
+        filter: drop-shadow(15px 15px 30px #2c363f85)
+        transform: translate(-50%, -50%)
+        @include mobile-and-small
+            border-radius: calc(0.8 * var(--border-radius-normal))
