@@ -2,6 +2,7 @@ import { MouseEvent, useRef, useState, useContext, useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
+import emailjs from '@emailjs/browser';
 
 import styles from './Contact.module.sass';
 
@@ -21,9 +22,11 @@ export const Contact: React.FC = () => {
     const { language, setCurrentSection } = useContext(AppContext);
 
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
+    const formRef: React.MutableRefObject<null | HTMLFormElement> = useRef(null);
     const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
     const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
     const errorTimeout: Mutable<React.RefObject<NodeJS.Timeout | null>> = useRef(null);
+
     // const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
     // const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
     // const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
@@ -35,8 +38,8 @@ export const Contact: React.FC = () => {
     const [formValidity, setFormValidity] = useState('invalid');
     const [showError, setShowError] = useState(false);
 
-    const { inputValues, setInputValues, changeHandler } = useForm('name', 'email', 'message');
-    const { name, email, message } = inputValues;
+    const { inputValues, setInputValues, changeHandler } = useForm('user_name', 'user_email', 'message');
+    const { user_name: name, user_email: email, message } = inputValues;
 
     useEffect(() => {
         const elementGetter = gsap.utils.selector(sectionRef.current);
@@ -117,10 +120,15 @@ export const Contact: React.FC = () => {
                 setInputValues(prevState => ({ ...prevState, [key]: { ...prevState[key], status: 'error' } }));
             };
         };
-        // setFormTouched(true);
+
         if (formValidity === 'valid') {
             setFormValidity('sent');
-            console.log('sent');
+            // emailjs.sendForm('service_5ln658l', 'template_c6tb0lf', formRef.current!, 'xxx')
+            //     .then((result) => {
+            //         console.log(result.text);
+            //     }, (error) => {
+            //         console.log(error.text);
+            //     });
         } else if (formValidity === 'invalid') {
             if (errorTimeout.current) {
                 clearTimeout(errorTimeout.current);
@@ -176,14 +184,14 @@ export const Contact: React.FC = () => {
 
             <div className={styles.wrapper}>
                 <div className={styles.form_card}>
-                    <form className={styles.form} action="submit">
+                    <form className={styles.form} action="submit" ref={formRef}>
                         <div className={styles.wrapper_input}>
-                            <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} required onChange={changeHandler} aria-label={textName} type="text" placeholder={textName} name='name' />
+                            <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} required onChange={changeHandler} aria-label={textName} type="text" placeholder={textName} name='user_name' />
                             <label className={styles.label}><span className={styles.text}>{textName}</span></label>
                             {showError && name.status === 'error' && <div className={styles.error_message}>{name.error[language]}</div>}
                         </div>
                         <div className={styles.wrapper_input}>
-                            <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} required onChange={changeHandler} aria-label="email" type="email" placeholder='email' name='email' />
+                            <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} required onChange={changeHandler} aria-label="email" type="email" placeholder='email' name='user_email' />
                             <label className={styles.label}><span className={styles.text}>email</span></label>
                             {showError && email.status === 'error' && <div className={styles.error_message}>{email.error[language]}</div>}
                         </div>
