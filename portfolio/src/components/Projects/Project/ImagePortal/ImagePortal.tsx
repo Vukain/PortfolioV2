@@ -33,14 +33,14 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const desktopScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_desktop"]');
         };
 
-        // if (mobile !== undefined) {
-        //     const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
+        if (mobile !== undefined) {
+            const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
 
-        //     imagesTL
-        //         .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -3.5, duration: 3, stagger: 3, top: '50%', scale: 1 })
-        //         .to(mobileScreenshots, { ease: 'none', duration: 6, delay: (mobileScreenshots.length - 1) * -3, stagger: 3, left: '20%', })
-        //         .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: 3, delay: (mobileScreenshots.length - 1) * -3, stagger: 3, top: '-150%', scale: 1 })
-        // };
+            imagesTL
+                .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -3.5, duration: 3, stagger: 3, top: '50%', scale: 1 })
+                .to(mobileScreenshots, { ease: 'none', duration: 6, delay: (mobileScreenshots.length - 1) * -3, stagger: 3, left: '20%', })
+                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: 3, delay: (mobileScreenshots.length - 1) * -3, stagger: 3, top: '-150%', scale: 1 })
+        };
 
         if (code !== undefined) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');

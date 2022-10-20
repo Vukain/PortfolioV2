@@ -9,7 +9,7 @@ export const useValidate = () => {
 
         const hasLength = value.trim().length > 0;
 
-        if (name === 'email') {
+        if (name === 'user_email') {
             const regEx = /.+@.+\.[A-Za-z]+$/;
             return (regEx.test(value) && hasLength);
         } else {

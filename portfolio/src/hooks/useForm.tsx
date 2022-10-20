@@ -24,7 +24,7 @@ export const useForm = (...fields: Fields): ReturnType => {
         const inputs: inputsData = {};
 
         for (const field of fields) {
-            const error = field === 'email' ? { english: "Email can't be empty and must include a '@' sign!", polish: "Email nie może być pusty i musi zawierać znak '@'!" } : { english: "This field can't be empty!", polish: "To pole nie może być puste!" };
+            const error = field === 'user_email' ? { english: "Email can't be empty and must include a '@' sign!", polish: "Email nie może być pusty i musi zawierać znak '@'!" } : { english: "This field can't be empty!", polish: "To pole nie może być puste!" };
             inputs[field] = { value: '', status: 'untouched', error: error };
         };
         return inputs;
