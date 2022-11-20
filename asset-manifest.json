@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.a15e912c.css",
-    "main.js": "/PortfolioV2/static/js/main.4df436d5.js",
+    "main.css": "/PortfolioV2/static/css/main.7a5fe013.css",
+    "main.js": "/PortfolioV2/static/js/main.d4fbf44c.js",
     "static/media/dnails_desktop_4.png": "/PortfolioV2/static/media/dnails_desktop_4.9f0a249bfe4ed539c738.png",
     "static/media/portfolio_v1_desktop_1.png": "/PortfolioV2/static/media/portfolio_v1_desktop_1.db7f2924fd8332d573c8.png",
     "static/media/portfolio_v1_logo.png": "/PortfolioV2/static/media/portfolio_v1_logo.508a13f03ad61fa57959.png",
@@ -52,11 +52,11 @@
     "static/media/motion_path_desktop.svg": "/PortfolioV2/static/media/motion_path_desktop.c0a855b58447e1170c0cac783a164f27.svg",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
     "static/media/romboid_edge.svg": "/PortfolioV2/static/media/romboid_edge.886336fd04321aadbe5b.svg",
-    "main.a15e912c.css.map": "/PortfolioV2/static/css/main.a15e912c.css.map",
-    "main.4df436d5.js.map": "/PortfolioV2/static/js/main.4df436d5.js.map"
+    "main.7a5fe013.css.map": "/PortfolioV2/static/css/main.7a5fe013.css.map",
+    "main.d4fbf44c.js.map": "/PortfolioV2/static/js/main.d4fbf44c.js.map"
   },
   "entrypoints": [
-    "static/css/main.a15e912c.css",
-    "static/js/main.4df436d5.js"
+    "static/css/main.7a5fe013.css",
+    "static/js/main.d4fbf44c.js"
   ]
 }
