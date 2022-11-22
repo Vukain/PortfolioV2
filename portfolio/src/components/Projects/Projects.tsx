@@ -48,6 +48,7 @@ import portfolioV1MobileImage4 from '../../media/project_images/portfolio_v1_mob
 import portfolioV1DesktopImage1 from '../../media/project_images/portfolio_v1_desktop_1.png';
 import portfolioV1DesktopImage2 from '../../media/project_images/portfolio_v1_desktop_2.png';
 import portfolioV1DesktopImage3 from '../../media/project_images/portfolio_v1_desktop_3.png';
+import portfolioV1DesktopImage4 from '../../media/project_images/portfolio_v1_desktop_4.png';
 
 export const Projects: React.FC = () => {
 
@@ -180,7 +181,7 @@ export const Projects: React.FC = () => {
                 polish: 'Pierwsza strona portfolio stworzona jako ćwiczenie i dla testowania różnych pomysłów. Posiada tryb jasny i ciemny. HTML połączony z Sassem i czystym JavaScriptem użytym do efektów scrollowania.'
             },
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
-            images: { logo: portfolioV1Logo, desktop: [portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3], mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4] }
+            images: { logo: portfolioV1Logo, desktop: [portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3, portfolioV1DesktopImage4], mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4] }
         },
     ];
 

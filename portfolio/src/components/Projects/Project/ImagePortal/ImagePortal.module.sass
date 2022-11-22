@@ -13,11 +13,10 @@
         @include before-after
         width: 100%
         height: 100%
-        // background-image: radial-gradient(circle at 80% 110%, #4fd39770, transparent 50%), radial-gradient(circle at 30% -70%, #4fd39770, transparent 50%)
-        // background-image: url('../../../media/test.svg')
         background-size: cover
 
 .wrapper
+
     &_logo
         width: 80%
         aspect-ratio: 4/3
@@ -25,12 +24,12 @@
         left: 50%
         position: absolute
         border-radius: var(--border-radius-big)
-        filter: drop-shadow(15px 15px 30px #2c363f85)
-        // filter: drop-shadow(15px 15px 30px #3b3b3b8a)
+        filter: var(--screenshot-shadow)
         overflow: hidden
         transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: var(--border-radius-big)
+
     &_screenshots
         width: 100%
         height: 100%
@@ -45,6 +44,27 @@
     // scale: 1.1
 
 .screenshot
+
+    &_code
+        top: 150%
+        width: 70%
+        position: absolute
+        border-radius: calc(0.7 * var(--border-radius-big))
+        filter: var(--screenshot-shadow)
+        transform: translate(-50%, -50%)
+
+    &_desktop
+        top: 140%
+        width: 60%
+        position: absolute
+        border-radius: calc(0.7 * var(--border-radius-big))
+        filter: var(--screenshot-shadow)
+        transform: translate(-50%, -50%)
+        &:nth-child(1n)
+            left: 40%
+        &:nth-child(2n)
+            left: 60%
+
     &_mobile
         top: 130%
         left: 80%
@@ -55,18 +75,7 @@
         border-radius: calc(0.7 * var(--border-radius-big))
         // filter: drop-shadow(15px 15px 30px #131313)
         // filter: drop-shadow(15px 15px 30px #d1ceb2)
-        filter: drop-shadow(15px 15px 30px #2c363f85)
+        filter: var(--screenshot-shadow)
         transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: calc(0.8 * var(--border-radius-normal))
-    &_desktop, &_code
-        top: 130%
-        width: 60%
-        position: absolute
-        border-radius: calc(0.7 * var(--border-radius-big))
-        filter: drop-shadow(15px 15px 30px #2c363f85)
-        transform: translate(-50%, -50%)
-        &:nth-child(1n)
-            left: 40%
-        &:nth-child(2n)
-            left: 60%
