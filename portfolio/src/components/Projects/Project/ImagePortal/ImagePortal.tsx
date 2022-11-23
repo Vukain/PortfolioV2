@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { clsx } from 'clsx';
 
 import styles from './ImagePortal.module.sass';
 
@@ -33,11 +34,11 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
         if (code !== undefined) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');
-            const staggerTime = 3.6;
-            const duration = 3.4;
+            const staggerTime = 3.1;
+            const duration = 3.5;
             imagesTL
                 .to(codeScreenshots, { ease: 'none', duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', scale: 1.1 })
-                .to(codeScreenshots, { ease: 'none', duration: duration, delay: (codeScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: 1 })
+                .to(codeScreenshots, { ease: 'none', duration: duration, delay: (codeScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-70%', scale: 1 })
         };
 
         if (desktop !== undefined) {
@@ -56,7 +57,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             imagesTL
                 .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -2.8, duration: duration, stagger: staggerTime, top: '50%', scale: 1 })
                 .to(mobileScreenshots, { ease: 'none', duration: 2 * duration, delay: (mobileScreenshots.length - 1) * -staggerTime, stagger: staggerTime, left: '20%', })
-                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration, delay: (mobileScreenshots.length - 1) * -3, stagger: staggerTime, top: '-130%', scale: 1 })
+                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration, delay: (mobileScreenshots.length - 1) * -3, stagger: staggerTime, top: '-140%', scale: 1 })
         };
 
         const logoSlideInDelay = mobile === undefined ? -1.8 : -4;
@@ -74,18 +75,24 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
     return (
         <div className={styles.image_portal} ref={portalRef}>
-            <div className={styles.wrapper_logo}>
-                <img className={styles.image_logo} src={logo} alt='project logo' />
+
+            <div className={styles.wrapper}>
+                <div className={styles.wrapper_logo}>
+                    <img className={styles.image_logo} src={logo} alt='project logo' />
+                </div>
+                <div className={styles.wrapper_screenshots}>
+                    {codeScreenshots}
+                </div>
+                <div className={styles.wrapper_screenshots}>
+                    {desktopScreenshots}
+                </div>
+                <div className={styles.wrapper_screenshots}>
+                    {mobileScreenshots}
+                </div>
             </div>
-            <div className={styles.wrapper_screenshots}>
-                {codeScreenshots}
-            </div>
-            <div className={styles.wrapper_screenshots}>
-                {desktopScreenshots}
-            </div>
-            <div className={styles.wrapper_screenshots}>
-                {mobileScreenshots}
-            </div>
+
+            <div className={clsx(styles.link, styles['link--left'])}></div>
+            <div className={clsx(styles.link, styles['link--right'])}></div>
         </div>
     );
 };

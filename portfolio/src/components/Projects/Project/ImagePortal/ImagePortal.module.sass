@@ -9,14 +9,38 @@
     position: relative
     overflow: hidden
     border: 1vh solid var(--color-main-2)
-    &::before
-        @include before-after
-        width: 100%
-        height: 100%
-        background-size: cover
+    // &::before
+    //     @include before-after
+    //     width: 100%
+    //     height: 100%
+    //     background-size: cover
+    &:hover .wrapper
+        filter: blur(2vh) grayscale(.7)
+
+.link
+    width: 5vh
+    height: 5vh
+    position: absolute
+    bottom: var(--project-link-pos)
+    background-color: var(--grey-medium)
+    border-radius: calc(1.4 * var(--border-radius-normal))
+    cursor: pointer
+    transition: .3s background-color
+    &:hover, &:active
+        background-color: var(--color-main-2)
+    &--left
+        left: var(--project-link-pos)
+    &--right
+        right: var(--project-link-pos)
+    @include mobile-and-small
+        width: 8vw
+        height: 8vw
+        border-radius: var(--border-radius-normal)
 
 .wrapper
-
+    width: 100%
+    height: 100%
+    transition: filter 1s
     &_logo
         width: 80%
         aspect-ratio: 4/3
@@ -29,6 +53,7 @@
         transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: var(--border-radius-big)
+            width: 70%
 
     &_screenshots
         width: 100%
@@ -46,7 +71,7 @@
 .screenshot
 
     &_code
-        top: 150%
+        top: 170%
         width: 70%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -66,7 +91,7 @@
             left: 60%
 
     &_mobile
-        top: 130%
+        top: 140%
         left: 80%
         position: absolute
         width: 25%
