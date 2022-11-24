@@ -13,7 +13,6 @@ type MyProps = {
         desktop?: string[],
         mobile?: string[],
         code?: string[],
-
     },
     links: {
         github: string,
@@ -27,7 +26,6 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
     useEffect(() => {
         const elementGetter = gsap.utils.selector(portalRef.current);
-
         const logoWrapper: HTMLElement[] = elementGetter('[class*="wrapper_logo"]');
         const logoImage: HTMLElement[] = elementGetter('[class*="image_logo"]');
 
@@ -104,11 +102,13 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                     <LinkIcon className={styles.icon} />
                 </div>
             </a>
+
             <a href={github} target="_blank" rel="noopener noreferrer" aria-label='project github link'>
                 <div className={clsx(styles.link, styles['link--right'])} data-text='github'>
                     <GithubIcon className={styles.icon} />
                 </div>
             </a>
+
         </div>
     );
 };
