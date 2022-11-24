@@ -27,7 +27,7 @@ export const Footer: React.FC<MyProps> = ({ theme, themeChanger }) => {
 
     return (
         <footer className={styles.footer}>
-            <div className={styles.theme} onClick={colorChanger}>{theme ? 'light' : 'dark'}</div>
+            {/* <div className={styles.theme} onClick={colorChanger}>{theme ? 'light' : 'dark'}</div> */}
             <div className={styles.lang} onClick={languageChanger}>{language === 'polish' ? 'pl' : 'en'}</div>
             <div className={styles.copy}>&copy; 2022 Vukain</div>
         </footer>

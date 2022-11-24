@@ -127,7 +127,8 @@ export const Projects: React.FC = () => {
             english: string,
         },
         technologies: string[],
-        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] }
+        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] },
+        links: { github: string, live: string }
     };
 
     useEffect(() => { })
@@ -141,7 +142,15 @@ export const Projects: React.FC = () => {
                 polish: "Chcielibyście zrobić pizzę, ale to czasochłonne i powoduje niezły bałagan w kuchni? Bez obaw, ta apka jest tym czego potrzebujecie! DARMOWE składniki i ZERO kalorii na dodatek, wow!"
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
-            images: { logo: pizzaBuilderLogo, desktop: [pizzaBuilderDesktopImage1, pizzaBuilderDesktopImage2, pizzaBuilderDesktopImage3], mobile: [pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3] }
+            images: {
+                logo: pizzaBuilderLogo,
+                desktop: [pizzaBuilderDesktopImage1, pizzaBuilderDesktopImage2, pizzaBuilderDesktopImage3],
+                mobile: [pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3]
+            },
+            links: {
+                github: 'https://github.com/Vukain/PizzaBuilder',
+                live: 'https://vukain.github.io/PizzaBuilder/'
+            }
         },
         {
             id: 'pizza_vs',
@@ -151,7 +160,15 @@ export const Projects: React.FC = () => {
                 polish: "Zastanawialiście się kiedyś co lepiej wybrać podczas zamawiania pizzy? Którym wariantem się bardziej najecie, lub który ma lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
-            images: { logo: pizzaVSLogo, desktop: [pizzaVSDesktopImage1, pizzaVSDesktopImage2, pizzaVSDesktopImage3], mobile: [pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3] }
+            images: {
+                logo: pizzaVSLogo,
+                desktop: [pizzaVSDesktopImage1, pizzaVSDesktopImage2, pizzaVSDesktopImage3],
+                mobile: [pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3]
+            },
+            links: {
+                github: 'https://github.com/Vukain/PizzaVS',
+                live: 'https://vukain.github.io/PizzaVS/'
+            }
         },
         {
             id: 'dnails',
@@ -161,7 +178,15 @@ export const Projects: React.FC = () => {
                 polish: 'Strona dla branży beauty z małym twistem, czyli możliwością pomalowania paznokci przy pomocy kolorów pobranych z bazy danych. Posiada kalendarz ukazujący dostępne daty wizyt, wraz z możliwością rezerwacji własnej.'
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas'],
-            images: { logo: dnailsLogo, desktop: [dnailsDesktopImage1, dnailsDesktopImage2, dnailsDesktopImage3, dnailsDesktopImage4], mobile: [dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4] }
+            images: {
+                logo: dnailsLogo,
+                desktop: [dnailsDesktopImage1, dnailsDesktopImage2, dnailsDesktopImage3, dnailsDesktopImage4],
+                mobile: [dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4]
+            },
+            links: {
+                github: 'https://github.com/Vukain/DNails',
+                live: 'https://vukain.github.io/DNails/'
+            }
         },
         {
             id: 'atro',
@@ -171,7 +196,14 @@ export const Projects: React.FC = () => {
                 polish: 'Hołd dla tekstowych gier RPG w stylu retro. Rozgrywka oparta o narrację, posiada kilka typów przeciwników, klas bahaterów, oraz różnorakie czary i przedmioty.'
             },
             technologies: ['python', 'oop', 'colorama'],
-            images: { logo: atroLogo, code: [atroCodeImage1, atroCodeImage2, atroCodeImage3] }
+            images: {
+                logo: atroLogo,
+                code: [atroCodeImage1, atroCodeImage2, atroCodeImage3]
+            },
+            links: {
+                github: 'https://github.com/Vukain/ATRO',
+                live: 'https://replit.com/@MichalPi/ATRO'
+            }
         },
         {
             id: 'portfolio_v1',
@@ -181,7 +213,15 @@ export const Projects: React.FC = () => {
                 polish: 'Pierwsza strona portfolio stworzona jako ćwiczenie i dla testowania różnych pomysłów. Posiada tryb jasny i ciemny. HTML połączony z Sassem i czystym JavaScriptem użytym do efektów scrollowania.'
             },
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
-            images: { logo: portfolioV1Logo, desktop: [portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3, portfolioV1DesktopImage4], mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4] }
+            images: {
+                logo: portfolioV1Logo,
+                desktop: [portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3, portfolioV1DesktopImage4],
+                mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4]
+            },
+            links: {
+                github: 'https://github.com/Vukain/PortfolioV1B',
+                live: 'https://vukain.github.io/PortfolioV1B/'
+            }
         },
     ];
 

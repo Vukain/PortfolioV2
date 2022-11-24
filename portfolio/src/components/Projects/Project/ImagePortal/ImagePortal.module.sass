@@ -4,7 +4,7 @@
     border-radius: var(--border-radius-big)
     // background-image: radial-gradient(50% 50%, #525252, #464646 )
     // background-color: #1d1e22
-    background-color: var(--background-color-1)
+    // background-color: var(--background-color-1)
     background-color: var(--color-font-1)
     position: relative
     overflow: hidden
@@ -18,24 +18,77 @@
         filter: blur(2vh) grayscale(.7)
 
 .link
-    width: 5vh
+    display: grid
+    grid-template-columns: min-content min-content
+    grid-template-rows: 1fr
+    // grid-gap: 1vw
+    padding: 0
+    // width: 9vw
     height: 5vh
     position: absolute
     bottom: var(--project-link-pos)
-    background-color: var(--grey-medium)
-    border-radius: calc(1.4 * var(--border-radius-normal))
     cursor: pointer
-    transition: .3s background-color
-    &:hover, &:active
+    align-items: center
+    justify-items: center
+    &::before
+        @include before-after
+        position: unset
         background-color: var(--color-main-2)
+        border-radius: calc(1.4 * var(--border-radius-normal))
+        width: 100%
+        height: 100%
+        grid-column: 1/4
+        grid-row: 1/2
+        transition: clip-path .4s ease-in-out
+    &::after
+        display: block
+        position: relative
+        content: attr(data-text)
+        grid-row: 1/2
+        text-transform: uppercase
+        font-size: var(--font-size-normal)
+        color: transparent
+        transition: color .3s 0s
+
     &--left
         left: var(--project-link-pos)
+        &::before
+            clip-path: circle(0% at 24% 50%)
+        &::after
+            grid-column: 2/4
+            margin-right: .9vw
+        &:hover, &:active
+            &::before
+                clip-path: circle(140% at 24% 50%)
+        & .icon
+            grid-column: 1/2
+
     &--right
         right: var(--project-link-pos)
+        &::before
+            clip-path: circle(0% at 81% 50%)
+        &::after
+            grid-column: 1/3
+            margin-left: .9vw
+        &:hover, &:active
+            &::before
+                clip-path: circle(140% at 81% 50%)
+        & .icon
+            grid-column: 3/4
+
+    &:hover, &:active
+        // background-color: var(--color-main-2)
+        & .icon
+            fill: var(--color-font-1)
+        &::after
+            color: var(--color-font-1)
+            transition: color .3s .2s
+
     @include mobile-and-small
-        width: 8vw
-        height: 8vw
+        height: 10vw
         border-radius: var(--border-radius-normal)
+        &::before
+            border-radius: var(--border-radius-normal)
 
 .wrapper
     width: 100%
@@ -104,3 +157,12 @@
         transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: calc(0.8 * var(--border-radius-normal))
+
+.icon
+    height: 4vh
+    width: 4vh
+    fill: var(--grey-medium)
+    position: relative
+    transition: .3s fill
+    margin: 0 .6vw
+    grid-row: 1/2

@@ -14,7 +14,8 @@ type myProps = {
         description: Record<string, string>,
         image?: React.FC<{ className?: string, title?: string }>,
         technologies: string[],
-        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] }
+        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] },
+        links: { github: string, live: string }
     },
     index: number,
     numberOfProjects: number,
@@ -24,7 +25,7 @@ type myProps = {
     sectionHeight: number
 };
 
-export const Project: React.FC<myProps> = ({ data: { id, title, description, technologies, images }, index, numberOfProjects, currentProject, setCurrentProject, projectSize, sectionHeight }) => {
+export const Project: React.FC<myProps> = ({ data: { id, title, description, technologies, images, links }, index, numberOfProjects, currentProject, setCurrentProject, projectSize, sectionHeight }) => {
 
     const { language } = useContext(AppContext);
 
@@ -143,7 +144,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     return (
         <article className={styles.project}>
 
-            <ImagePortal images={images} />
+            <ImagePortal images={images} links={links} />
 
             <article className={styles.info} ref={infoRef}>
 

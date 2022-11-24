@@ -4,16 +4,24 @@ import { clsx } from 'clsx';
 
 import styles from './ImagePortal.module.sass';
 
+import { ReactComponent as GithubIcon } from '../../../../media/icons/github_project.svg';
+import { ReactComponent as LinkIcon } from '../../../../media/icons/link.svg';
+
 type MyProps = {
     images: {
         logo: string,
         desktop?: string[],
         mobile?: string[],
-        code?: string[]
+        code?: string[],
+
+    },
+    links: {
+        github: string,
+        live: string
     };
 };
 
-export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile, code } }) => {
+export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile, code }, links: { github, live } }) => {
 
     const portalRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
@@ -91,8 +99,16 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 </div>
             </div>
 
-            <div className={clsx(styles.link, styles['link--left'])}></div>
-            <div className={clsx(styles.link, styles['link--right'])}></div>
+            <a href={live} target="_blank" rel="noopener noreferrer" aria-label='project live version'>
+                <div className={clsx(styles.link, styles['link--left'])} data-text='live'>
+                    <LinkIcon className={styles.icon} />
+                </div>
+            </a>
+            <a href={github} target="_blank" rel="noopener noreferrer" aria-label='project github link'>
+                <div className={clsx(styles.link, styles['link--right'])} data-text='github'>
+                    <GithubIcon className={styles.icon} />
+                </div>
+            </a>
         </div>
     );
 };
