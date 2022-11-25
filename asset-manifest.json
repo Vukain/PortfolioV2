@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.817d4136.css",
+    "main.css": "/PortfolioV2/static/css/main.13e90e48.css",
     "main.js": "/PortfolioV2/static/js/main.80536dba.js",
     "static/media/dnails_desktop_4.png": "/PortfolioV2/static/media/dnails_desktop_4.9f0a249bfe4ed539c738.png",
     "static/media/portfolio_v1_desktop_1.png": "/PortfolioV2/static/media/portfolio_v1_desktop_1.4c10df6f4af274641fc5.png",
@@ -58,11 +58,11 @@
     "static/media/facebook-with-circle.svg": "/PortfolioV2/static/media/facebook-with-circle.be2cf2d36c5479669524bd2173567cfc.svg",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
     "static/media/romboid_edge.svg": "/PortfolioV2/static/media/romboid_edge.886336fd04321aadbe5b.svg",
-    "main.817d4136.css.map": "/PortfolioV2/static/css/main.817d4136.css.map",
+    "main.13e90e48.css.map": "/PortfolioV2/static/css/main.13e90e48.css.map",
     "main.80536dba.js.map": "/PortfolioV2/static/js/main.80536dba.js.map"
   },
   "entrypoints": [
-    "static/css/main.817d4136.css",
+    "static/css/main.13e90e48.css",
     "static/js/main.80536dba.js"
   ]
 }
