@@ -1,0 +1,59 @@
+@import '../../../sass/mixins'
+
+.changer
+    justify-self: end
+    height: 4.4vh
+    width: 10.4vh
+    background-color: #fff
+    border-radius: 2.2vh
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 .2vh
+    position: relative
+    @include mobile-and-small
+        height: 10.4vh
+        width: 4.4vh
+        flex-direction: column
+        padding: .2vh 0
+
+.indicator
+    position: absolute
+    top: 50%
+    left: 0
+    width: 4vh
+    height: 4vh
+    background-color: var(--color-gradient-3)
+    border-radius: 50%
+    transform: translate(-50%, -50%)
+    z-index: 1
+    transition: .3s
+    &--english
+        transform: translate(calc(2.3vh - 50%), -50%)
+    &--polish
+        transform: translate(calc(8vh - 50%), -50%)
+    @include mobile-and-small
+        top: 0
+        left: 50%
+        &--english
+            left: 50%
+            transform: translate(-50%, calc(2.3vh - 50%))
+        &--polish
+            left: 50%
+            transform: translate(-50%, calc(8.2vh - 50%))
+
+.button
+    all: unset
+    cursor: pointer
+    width: 4vh
+    height: 4vh
+    border-radius: 50%
+    font-size: calc(.8 * var(--font-size-normal))
+    font-weight: bold
+    z-index: 2
+    color: var(--background-color-1)
+    transition: color .3s
+
+.selected
+    color: var(--color-font-1)
+    transition: color .3s .1s

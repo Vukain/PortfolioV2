@@ -7,28 +7,21 @@
         transform: translate(-150%, -50%)
 
 .project
+    position: absolute
     height: 100%
     width: 100%
-    position: absolute
     left: 0
+    padding-right: 5vw
     display: grid
     grid-template-columns: 46vw 1fr
-    background-color: var(--background-color-2)
     gap: 4vw
-    padding-right: 5vw
+    background-color: var(--background-color-2)
     border-radius: var(--border-radius-big)
-
     &:not(:first-child)
         @include desktop
             left: 100%
         @include mobile-and-small
             top: 100%
-    // &:nth-child(3n+1)
-    //     background-color: var(--color-main-1)
-    // &:nth-child(3n+2)
-    //     background-color: var(--color-main-2)
-    // &:nth-child(3n+3)
-    //     background-color: var(--color-main-3)
     @include mobile-and-small
         height: 100%
         grid-template-rows: var(--mobile-miniature-height) 1fr
@@ -38,12 +31,10 @@
 .info
     display: flex
     flex-direction: column
-    line-height: .8
     gap: 1vh
     justify-content: space-between
     justify-content: center
-    // background-color: #fff
-    // overflow: hidden
+    line-height: .8
     @include mobile-and-small
         justify-content: flex-start
         gap: 1.6vh
@@ -51,20 +42,20 @@
         padding-right: 5vw
 
 .name
+    color: var(--color-main-2)
     text-align: left
     text-transform: uppercase
-    color: var(--color-main-2)
-    font-size: calc(1.1*var(--font-size-heading-1))
+    font-size: calc(1.1 * var(--font-size-heading-1))
+    letter-spacing: var(--letter-spacing-normal)
     margin-left: -.06em
     margin-right: -.2em
-    letter-spacing: var(--letter-spacing-normal)
     overflow: hidden
     @include mobile-and-small
         font-weight: 700
-        font-size: calc(1.6*var(--font-size-heading-1))
+        font-size: calc(1.6 * var(--font-size-heading-1))
     @include desktop
         &--pizza_builder
-            font-size: calc(1.22*var(--font-size-heading-1))
+            font-size: calc(1.22 * var(--font-size-heading-1))
             margin-left: -.1em
 
         &--pizza_vs
@@ -72,21 +63,21 @@
             margin-left: -.1em
 
         &--dnails
-            font-size: calc(2.57*var(--font-size-heading-1))
+            font-size: calc(2.57 * var(--font-size-heading-1))
             margin-left: -.1em
 
         &--atro
-            font-size: calc(3.5*var(--font-size-heading-1))
+            font-size: calc(3.5 * var(--font-size-heading-1))
             margin-left: -.01em
 
         &--portfolio_v1
-            font-size: calc(1.27*var(--font-size-heading-1))
+            font-size: calc(1.27 * var(--font-size-heading-1))
             margin-left: -.09em
             margin-right: -.3em
 
 .description
-    text-align: left
     color: var(--color-main-2)
+    text-align: left
     font-size: var(--font-size-normal)
     line-height: 1.2
     overflow: hidden
@@ -94,9 +85,9 @@
         margin-top: -.1em
 
 .label
+    color: var(--grey-dark)
     text-align: left
     text-transform: uppercase
-    color: var(--grey-dark)
     font-weight: 700
     font-size: var(--font-size-heading-1)
     margin-left: -.08em
@@ -105,22 +96,22 @@
         margin-left: -.04em
     @include desktop
         &:nth-child(1)
-            font-size: calc(2.22*var(--font-size-heading-1))
+            font-size: calc(2.22 * var(--font-size-heading-1))
         &:nth-child(3)
-            font-size: calc(1.54*var(--font-size-heading-1))
+            font-size: calc(1.54 * var(--font-size-heading-1))
         &:nth-child(5)
-            font-size: calc(1.4*var(--font-size-heading-1))
+            font-size: calc(1.4 * var(--font-size-heading-1))
             margin-left: -.02em
 
         &--english
             &:nth-child(1)
-                font-size: calc(2.31*var(--font-size-heading-1))
+                font-size: calc(2.31 * var(--font-size-heading-1))
                 margin-right: -.1em
             &:nth-child(3)
-                font-size: calc(1.548*var(--font-size-heading-1))
+                font-size: calc(1.548 * var(--font-size-heading-1))
                 margin-right: -.1em
             &:nth-child(5)
-                font-size: calc(1.71*var(--font-size-heading-1))
+                font-size: calc(1.71 * var(--font-size-heading-1))
                 margin-right: -.1em
 
 .slide
@@ -132,7 +123,6 @@
     justify-content: flex-start
     gap: 1vw
     flex-wrap: wrap
-    // overflow: hidden
     @include mobile-and-small
         gap: 3vw
 
@@ -147,16 +137,3 @@
     padding: .4em .6em
     @include mobile-and-small
         border-radius: calc(.7 * var(--border-radius-normal))
-
-// .project_name
-//     width: max-content
-//     position: absolute
-//     font-size: calc(2*var(--font-size-heading-1))
-//     top: 5%
-//     left: 50%
-//     color: var(--color-main-2)
-//     text-transform: uppercase
-//     font-weight: 700
-//     mix-blend-mode: exclusion
-//     transform: translate(-50%, -50%)
-//     animation: shift 15s both linear

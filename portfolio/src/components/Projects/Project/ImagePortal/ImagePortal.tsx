@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 
 import styles from './ImagePortal.module.sass';
 
-import { ReactComponent as GithubIcon } from '../../../../media/icons/github_project.svg';
+import { ReactComponent as GithubIcon } from '../../../../media/icons/github-project.svg';
 import { ReactComponent as LinkIcon } from '../../../../media/icons/link.svg';
 
 type MyProps = {
