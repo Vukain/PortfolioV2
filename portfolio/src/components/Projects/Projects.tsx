@@ -192,7 +192,7 @@ export const Projects: React.FC = () => {
             id: 'atro',
             title: 'ATRO',
             description: {
-                english: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item types.',
+                english: 'A homage to retro text based RPGs. Narration driven gameplay with several enemy types, hero classes, spells and item categories.',
                 polish: 'Hołd dla tekstowych gier RPG w stylu retro. Rozgrywka oparta o narrację, posiada kilka typów przeciwników, klas bahaterów, oraz różnorakie czary i przedmioty.'
             },
             technologies: ['python', 'oop', 'colorama'],

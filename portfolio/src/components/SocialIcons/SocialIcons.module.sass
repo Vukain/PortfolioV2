@@ -1,0 +1,85 @@
+@import '../../sass/mixins'
+
+.icons
+    display: flex
+    gap: 1.5vw
+    justify-self: start
+    @include mobile-and-small
+        gap: 2vw
+
+    &--hero
+        position: absolute
+        z-index: 999999
+        flex-direction: column
+        right: 6%
+        transform: translateX(50%)
+        @include mobile-and-small
+            flex-direction: row
+            gap: 6vw
+            top: 13vw
+            left: 6vw
+            transform: translateY(-50%)
+
+.link
+    position: relative
+    width: 4vh
+    height: 4vh
+    &::before
+        @include before-after
+        background-color: var(--background-color-2)
+        border-radius: 50%
+        width: 3vh
+        height: 3vh
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        transition: background-color .4s, outline-offset .2s ease
+    &:hover
+        & .icon
+            fill: var(--color-gradient-3)
+        &::before
+            background-color: var(--color-font-1)
+    @include mobile-and-small
+        width: 8vw
+        height: 8vw
+        &::before
+            width: 6vw
+            height: 6vw
+        &:hover
+            & .icon
+                fill: var(--color-main-2)
+
+    &--hero
+        // width: 5vh
+        // height: 5vh
+        &::before
+            // width: 4vh
+            // height: 4vh
+            background-color: var(--color-font-1)
+            outline: .4vh solid var(--color-gradient-3)
+            outline-offset: .5vh
+        &:hover
+            &::before
+                outline-offset: 1vh
+        @include mobile-and-small
+            &::before
+                outline-offset: 1vw
+                outline: .4vh solid var(--color-main-2)
+            &:hover
+                &::before
+                    outline-offset: 2vw
+
+.icon
+    width: 4vh
+    height: 4vh
+    fill: var(--color-font-1)
+    transition: fill .4s
+    position: relative
+    @include mobile-and-small
+        width: 8vw
+        height: 8vw
+
+    &--hero
+        // width: 5vh
+        // height: 5vh
+        fill: var(--background-color-3)

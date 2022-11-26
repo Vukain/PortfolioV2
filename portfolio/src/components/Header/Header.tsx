@@ -6,6 +6,8 @@ import styles from './Header.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 
+import { SocialIcons } from '../SocialIcons/SocialIcons';
+
 import { ReactComponent as Crystal } from '../../media/crystal_hero.svg';
 
 export const Header: React.FC = () => {
@@ -101,6 +103,8 @@ export const Header: React.FC = () => {
                 <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><h1 className={styles.color} id='vukain'><span>v</span><span>u</span><span>k</span><span>a</span><span>i</span><span>n</span></h1></div>
                 <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
             </div>
+
+            <SocialIcons hero={true} />
 
         </header>
     );
