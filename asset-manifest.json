@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PortfolioV2/static/css/main.941d93de.css",
+    "main.css": "/PortfolioV2/static/css/main.f4571892.css",
     "main.js": "/PortfolioV2/static/js/main.6da3bfd3.js",
     "static/media/dnails_desktop_4.png": "/PortfolioV2/static/media/dnails_desktop_4.9f0a249bfe4ed539c738.png",
     "static/media/portfolio_v1_desktop_1.png": "/PortfolioV2/static/media/portfolio_v1_desktop_1.4c10df6f4af274641fc5.png",
@@ -58,11 +58,11 @@
     "static/media/facebook-with-circle.svg": "/PortfolioV2/static/media/facebook-with-circle.be2cf2d36c5479669524bd2173567cfc.svg",
     "static/media/romboid_small.svg": "/PortfolioV2/static/media/romboid_small.0689ddbd5d1ae7a48ec2.svg",
     "static/media/romboid_edge.svg": "/PortfolioV2/static/media/romboid_edge.886336fd04321aadbe5b.svg",
-    "main.941d93de.css.map": "/PortfolioV2/static/css/main.941d93de.css.map",
+    "main.f4571892.css.map": "/PortfolioV2/static/css/main.f4571892.css.map",
     "main.6da3bfd3.js.map": "/PortfolioV2/static/js/main.6da3bfd3.js.map"
   },
   "entrypoints": [
-    "static/css/main.941d93de.css",
+    "static/css/main.f4571892.css",
     "static/js/main.6da3bfd3.js"
   ]
 }
