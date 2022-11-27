@@ -1,5 +1,13 @@
 @import '../../sass/mixins'
 
+@keyframes icon-slide-right
+    100%
+        transform: translateX(0%)
+
+@keyframes icon-slide-top
+    100%
+        transform: translateY(0%)
+
 .icons
     display: flex
     gap: 1.5vw
@@ -11,7 +19,7 @@
         position: absolute
         z-index: 999999
         flex-direction: column
-        right: 6%
+        right: 5.3%
         transform: translateX(50%)
         @include mobile-and-small
             flex-direction: row
@@ -24,6 +32,7 @@
     position: relative
     width: 4vh
     height: 4vh
+
     &::before
         @include before-after
         background-color: var(--background-color-2)
@@ -52,6 +61,11 @@
     &--hero
         // width: 5vh
         // height: 5vh
+        transform: translateX(10vw)
+        animation: icon-slide-right 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards
+        @for $i from 1 to 4
+            &:nth-child(#{$i})
+                animation-delay: 6.0 + ($i * .2s)
         &::before
             // width: 4vh
             // height: 4vh
@@ -62,6 +76,11 @@
             &::before
                 outline-offset: 1vh
         @include mobile-and-small
+            transform: translateY(-10vh)
+            animation: icon-slide-top .8s cubic-bezier(0.65, 0, 0.35, 1) forwards
+            @for $i from 1 to 4
+                &:nth-child(#{$i})
+                    animation-delay: 5.6 + ($i * .2s)
             &::before
                 outline-offset: 1vw
                 outline: .4vh solid var(--color-main-2)

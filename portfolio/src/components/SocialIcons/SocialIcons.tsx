@@ -14,21 +14,25 @@ export const SocialIcons: React.FC<MyProps> = ({ hero }) => {
 
     return (
         <div className={clsx(styles.icons, hero && styles[`icons--hero`])}>
-            <a href='https://github.com/Vukain' target='_blank' rel='noopener noreferrer' aria-label=''>
-                <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+
+            <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+                <a href='https://github.com/Vukain' target='_blank' rel='noopener noreferrer' aria-label=''>
                     <GithubIcon className={clsx(styles.icon, hero && styles[`icon--hero`])} />
-                </div>
-            </a>
-            <a href='https://www.linkedin.com/in/michał-piechowiak-a6419124a/' target='_blank' rel='noopener noreferrer' aria-label=''>
-                <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+                </a>
+            </div>
+
+            <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+                <a href='https://www.linkedin.com/in/michał-piechowiak-a6419124a/' target='_blank' rel='noopener noreferrer' aria-label=''>
                     <LinkedIcon className={clsx(styles.icon, hero && styles[`icon--hero`])} />
-                </div>
-            </a>
-            <a href='https://www.facebook.com/ochjejku' target='_blank' rel='noopener noreferrer' aria-label=''>
-                <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+                </a>
+            </div>
+
+            <div className={clsx(styles.link, hero && styles[`link--hero`])} data-text='live'>
+                <a href='https://www.facebook.com/ochjejku' target='_blank' rel='noopener noreferrer' aria-label=''>
                     <FacebookIcon className={clsx(styles.icon, hero && styles[`icon--hero`])} />
-                </div>
-            </a>
+                </a>
+            </div>
+
         </div>
     );
 };
