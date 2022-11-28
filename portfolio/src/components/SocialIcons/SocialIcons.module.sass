@@ -8,6 +8,27 @@
     100%
         transform: translateY(0%)
 
+.link
+    &:hover, &:focus
+        outline: none
+        & .icon
+            fill: var(--color-gradient-3)
+        & .wrapper
+            &::before
+                background-color: var(--color-font-1)
+            &--hero
+                &::before
+                    outline-offset: 1vh
+
+        @include mobile-and-small
+            & .icon
+                fill: var(--color-main-2)
+            & .wrapper
+                &--hero
+                    &:hover, &:focus
+                        &::before
+                            outline-offset: 2vw
+
 .icons
     display: flex
     gap: 1.5vw
@@ -17,7 +38,7 @@
 
     &--hero
         position: absolute
-        z-index: 999999
+        z-index: 999
         flex-direction: column
         right: 5.3%
         transform: translateX(50%)
@@ -28,11 +49,10 @@
             left: 6vw
             transform: translateY(-50%)
 
-.link
+.wrapper
     position: relative
     width: 4vh
     height: 4vh
-
     &::before
         @include before-after
         background-color: var(--background-color-2)
@@ -43,38 +63,23 @@
         left: 50%
         transform: translate(-50%, -50%)
         transition: background-color .4s, outline-offset .2s ease
-    &:hover
-        & .icon
-            fill: var(--color-gradient-3)
-        &::before
-            background-color: var(--color-font-1)
     @include mobile-and-small
         width: 8vw
         height: 8vw
         &::before
             width: 6vw
             height: 6vw
-        &:hover
-            & .icon
-                fill: var(--color-main-2)
 
     &--hero
-        // width: 5vh
-        // height: 5vh
         transform: translateX(10vw)
         animation: icon-slide-right 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards
         @for $i from 1 to 4
             &:nth-child(#{$i})
                 animation-delay: 6.0 + ($i * .2s)
         &::before
-            // width: 4vh
-            // height: 4vh
             background-color: var(--color-font-1)
             outline: .4vh solid var(--color-gradient-3)
             outline-offset: .5vh
-        &:hover
-            &::before
-                outline-offset: 1vh
         @include mobile-and-small
             transform: translateY(-10vh)
             animation: icon-slide-top .8s cubic-bezier(0.65, 0, 0.35, 1) forwards
@@ -84,9 +89,6 @@
             &::before
                 outline-offset: 1vw
                 outline: .4vh solid var(--color-main-2)
-            &:hover
-                &::before
-                    outline-offset: 2vw
 
 .icon
     width: 4vh
@@ -99,6 +101,4 @@
         height: 8vw
 
     &--hero
-        // width: 5vh
-        // height: 5vh
         fill: var(--background-color-3)
