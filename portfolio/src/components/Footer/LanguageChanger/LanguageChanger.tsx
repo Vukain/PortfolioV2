@@ -9,14 +9,6 @@ export const LanguageChanger: React.FC = () => {
 
     const { language, setLanguage } = useContext(AppContext);
 
-    // const languageChanger = () => {
-    //     if (language === 'polish') {
-    //         setLanguage('english');
-    //     } else {
-    //         setLanguage('polish');
-    //     };
-    // };
-
     return (
         <div className={styles.changer}>
             <div className={clsx(styles.indicator, styles[`indicator--${language}`])}></div>

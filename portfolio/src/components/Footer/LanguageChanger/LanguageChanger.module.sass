@@ -4,7 +4,7 @@
     justify-self: end
     height: 4.4vh
     width: 10.4vh
-    background-color: #fff
+    background-color: var(--color-font-1)
     border-radius: 2.2vh
     display: flex
     justify-content: space-between
@@ -58,7 +58,11 @@
     font-weight: bold
     z-index: 2
     color: var(--background-color-2)
-    transition: color .3s
+    background-color: transparent
+    transition: color .3s, background-color .4s
+    &:hover, &:focus-visible
+        background-color: var(--color-main-1)
+        color: var(--color-font-1)
     @include mobile-and-small
         font-size: calc(.9 * var(--font-size-normal))
         width: 8vw
@@ -66,4 +70,4 @@
 
 .selected
     color: var(--color-font-1)
-    transition: color .3s .1s
+    transition: color .3s .1s, background-color .4s

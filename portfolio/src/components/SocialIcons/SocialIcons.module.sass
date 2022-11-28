@@ -8,27 +8,6 @@
     100%
         transform: translateY(0%)
 
-.link
-    &:hover, &:focus
-        outline: none
-        & .icon
-            fill: var(--color-gradient-3)
-        & .wrapper
-            &::before
-                background-color: var(--color-font-1)
-            &--hero
-                &::before
-                    outline-offset: 1vh
-
-        @include mobile-and-small
-            & .icon
-                fill: var(--color-main-2)
-            & .wrapper
-                &--hero
-                    &:hover, &:focus
-                        &::before
-                            outline-offset: 2vw
-
 .icons
     display: flex
     gap: 1.5vw
@@ -48,6 +27,26 @@
             top: 13vw
             left: 6vw
             transform: translateY(-50%)
+
+.link
+    &:hover, &:focus
+        outline: none
+        & .icon
+            fill: var(--color-gradient-3)
+        & .wrapper
+            &::before
+                background-color: var(--color-font-1)
+            &--hero
+                &::before
+                    outline-offset: 1vh
+        @include mobile-and-small
+            & .icon
+                fill: var(--color-main-2)
+            & .wrapper
+                &--hero
+                    &:hover, &:focus
+                        &::before
+                            outline-offset: 2vw
 
 .wrapper
     position: relative
