@@ -9,46 +9,46 @@ import { ColorEdge } from '../../layout/ColorEdge/ColorEdge';
 import { Menu } from './Menu/Menu';
 import { Project } from './Project/Project';
 
-import pizzaBuilderLogo from '../../media/project_images/pizza_builder_logo.png';
-import pizzaBuilderMobileImage1 from '../../media/project_images/pizza_builder_mobile_1.png';
-import pizzaBuilderMobileImage2 from '../../media/project_images/pizza_builder_mobile_2.png';
-import pizzaBuilderMobileImage3 from '../../media/project_images/pizza_builder_mobile_3.png';
-import pizzaBuilderDesktopImage1 from '../../media/project_images/pizza_builder_desktop_1.png';
-import pizzaBuilderDesktopImage2 from '../../media/project_images/pizza_builder_desktop_2.png';
-import pizzaBuilderDesktopImage3 from '../../media/project_images/pizza_builder_desktop_3.png';
+import pizzaBuilderLogo from '../../media/project_images/pizza_builder_logo.webp';
+import pizzaBuilderMobileImage1 from '../../media/project_images/pizza_builder_mobile_1.webp';
+import pizzaBuilderMobileImage2 from '../../media/project_images/pizza_builder_mobile_2.webp';
+import pizzaBuilderMobileImage3 from '../../media/project_images/pizza_builder_mobile_3.webp';
+import pizzaBuilderDesktopImage1 from '../../media/project_images/pizza_builder_desktop_1.webp';
+import pizzaBuilderDesktopImage2 from '../../media/project_images/pizza_builder_desktop_2.webp';
+import pizzaBuilderDesktopImage3 from '../../media/project_images/pizza_builder_desktop_3.webp';
 
-import pizzaVSLogo from '../../media/project_images/pizza_vs_logo.png';
-import pizzaVSMobileImage1 from '../../media/project_images/pizza_vs_mobile_1.png';
-import pizzaVSMobileImage2 from '../../media/project_images/pizza_vs_mobile_2.png';
-import pizzaVSMobileImage3 from '../../media/project_images/pizza_vs_mobile_3.png';
-import pizzaVSDesktopImage1 from '../../media/project_images/pizza_vs_desktop_1.png';
-import pizzaVSDesktopImage2 from '../../media/project_images/pizza_vs_desktop_2.png';
-import pizzaVSDesktopImage3 from '../../media/project_images/pizza_vs_desktop_3.png';
+import pizzaVSLogo from '../../media/project_images/pizza_vs_logo.webp';
+import pizzaVSMobileImage1 from '../../media/project_images/pizza_vs_mobile_1.webp';
+import pizzaVSMobileImage2 from '../../media/project_images/pizza_vs_mobile_2.webp';
+import pizzaVSMobileImage3 from '../../media/project_images/pizza_vs_mobile_3.webp';
+import pizzaVSDesktopImage1 from '../../media/project_images/pizza_vs_desktop_1.webp';
+import pizzaVSDesktopImage2 from '../../media/project_images/pizza_vs_desktop_2.webp';
+import pizzaVSDesktopImage3 from '../../media/project_images/pizza_vs_desktop_3.webp';
 
-import dnailsLogo from '../../media/project_images/dnails_logo.png';
-import dnailsMobileImage1 from '../../media/project_images/dnails_mobile_1.png';
-import dnailsMobileImage2 from '../../media/project_images/dnails_mobile_2.png';
-import dnailsMobileImage3 from '../../media/project_images/dnails_mobile_3.png';
-import dnailsMobileImage4 from '../../media/project_images/dnails_mobile_4.png';
-import dnailsDesktopImage1 from '../../media/project_images/dnails_desktop_1.png';
-import dnailsDesktopImage2 from '../../media/project_images/dnails_desktop_2.png';
-import dnailsDesktopImage3 from '../../media/project_images/dnails_desktop_3.png';
-import dnailsDesktopImage4 from '../../media/project_images/dnails_desktop_4.png';
+import dnailsLogo from '../../media/project_images/dnails_logo.webp';
+import dnailsMobileImage1 from '../../media/project_images/dnails_mobile_1.webp';
+import dnailsMobileImage2 from '../../media/project_images/dnails_mobile_2.webp';
+import dnailsMobileImage3 from '../../media/project_images/dnails_mobile_3.webp';
+import dnailsMobileImage4 from '../../media/project_images/dnails_mobile_4.webp';
+import dnailsDesktopImage1 from '../../media/project_images/dnails_desktop_1.webp';
+import dnailsDesktopImage2 from '../../media/project_images/dnails_desktop_2.webp';
+import dnailsDesktopImage3 from '../../media/project_images/dnails_desktop_3.webp';
+import dnailsDesktopImage4 from '../../media/project_images/dnails_desktop_4.webp';
 
-import atroLogo from '../../media/project_images/atro_logo.png';
-import atroCodeImage1 from '../../media/project_images/atro_code_1.png';
-import atroCodeImage2 from '../../media/project_images/atro_code_2.png';
-import atroCodeImage3 from '../../media/project_images/atro_code_3.png';
+import atroLogo from '../../media/project_images/atro_logo.webp';
+import atroCodeImage1 from '../../media/project_images/atro_code_1.webp';
+import atroCodeImage2 from '../../media/project_images/atro_code_2.webp';
+import atroCodeImage3 from '../../media/project_images/atro_code_3.webp';
 
-import portfolioV1Logo from '../../media/project_images/portfolio_v1_logo.png';
-import portfolioV1MobileImage1 from '../../media/project_images/portfolio_v1_mobile_1.png';
-import portfolioV1MobileImage2 from '../../media/project_images/portfolio_v1_mobile_2.png';
-import portfolioV1MobileImage3 from '../../media/project_images/portfolio_v1_mobile_3.png';
-import portfolioV1MobileImage4 from '../../media/project_images/portfolio_v1_mobile_4.png';
-import portfolioV1DesktopImage1 from '../../media/project_images/portfolio_v1_desktop_1.png';
-import portfolioV1DesktopImage2 from '../../media/project_images/portfolio_v1_desktop_2.png';
-import portfolioV1DesktopImage3 from '../../media/project_images/portfolio_v1_desktop_3.png';
-import portfolioV1DesktopImage4 from '../../media/project_images/portfolio_v1_desktop_4.png';
+import portfolioV1Logo from '../../media/project_images/portfolio_v1_logo.webp';
+import portfolioV1MobileImage1 from '../../media/project_images/portfolio_v1_mobile_1.webp';
+import portfolioV1MobileImage2 from '../../media/project_images/portfolio_v1_mobile_2.webp';
+import portfolioV1MobileImage3 from '../../media/project_images/portfolio_v1_mobile_3.webp';
+import portfolioV1MobileImage4 from '../../media/project_images/portfolio_v1_mobile_4.webp';
+import portfolioV1DesktopImage1 from '../../media/project_images/portfolio_v1_desktop_1.webp';
+import portfolioV1DesktopImage2 from '../../media/project_images/portfolio_v1_desktop_2.webp';
+import portfolioV1DesktopImage3 from '../../media/project_images/portfolio_v1_desktop_3.webp';
+import portfolioV1DesktopImage4 from '../../media/project_images/portfolio_v1_desktop_4.webp';
 
 export const Projects: React.FC = () => {
 
