@@ -11,7 +11,22 @@ import { Button } from '../../layout/Button/Button';
 import { SectionName } from '../SectionName/SectionName';
 import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
-import { ReactComponent as Crystal } from '../../media/main_crystal.svg';
+import { ReactComponent as HeroShard1 } from '../../media/parallax_shards/hero_1.svg';
+import { ReactComponent as HeroShard2 } from '../../media/parallax_shards/hero_2.svg';
+import { ReactComponent as HeroShard3 } from '../../media/parallax_shards/hero_3.svg';
+import { ReactComponent as HeroShard4 } from '../../media/parallax_shards/hero_4.svg';
+import { ReactComponent as HeroShard5 } from '../../media/parallax_shards/hero_5.svg';
+import { ReactComponent as HeroShard6 } from '../../media/parallax_shards/hero_6.svg';
+import { ReactComponent as HeroShard7 } from '../../media/parallax_shards/hero_7.svg';
+import { ReactComponent as ScrollShard1 } from '../../media/parallax_shards/scroll_1.svg';
+import { ReactComponent as ScrollShard2 } from '../../media/parallax_shards/scroll_2.svg';
+import { ReactComponent as ScrollShard3 } from '../../media/parallax_shards/scroll_3.svg';
+import { ReactComponent as ScrollShard4 } from '../../media/parallax_shards/scroll_4.svg';
+import { ReactComponent as ScrollShard5 } from '../../media/parallax_shards/scroll_5.svg';
+import { ReactComponent as ScrollShard6 } from '../../media/parallax_shards/scroll_6.svg';
+import { ReactComponent as ScrollShard7 } from '../../media/parallax_shards/scroll_7.svg';
+import { ReactComponent as SpikedShard1 } from '../../media/parallax_shards/spiked_1.svg';
+import { ReactComponent as SpikedShard2 } from '../../media/parallax_shards/spiked_2.svg';
 
 type Mutable<Type> = {
     -readonly [Key in keyof Type]: Type[Key];
@@ -159,9 +174,18 @@ export const Contact: React.FC = () => {
     type Crystals = Array<{ crystalImage: React.FC, speed: number }>;
 
     const crystals: Crystals = [
-        { crystalImage: Crystal, speed: 2 }, { crystalImage: Crystal, speed: 4 }, { crystalImage: Crystal, speed: 2 },
-        { crystalImage: Crystal, speed: 9 }, { crystalImage: Crystal, speed: 7 }, { crystalImage: Crystal, speed: 5 },
-        { crystalImage: Crystal, speed: 2 }];
+        { crystalImage: SpikedShard1, speed: 4 }, { crystalImage: SpikedShard2, speed: 3 },
+        { crystalImage: HeroShard1, speed: 4 },
+        { crystalImage: HeroShard2, speed: 3 },
+        { crystalImage: HeroShard3, speed: 2 },
+        // { crystalImage: HeroShard4, speed: 3 },
+        // { crystalImage: HeroShard5, speed: 3 }, { crystalImage: HeroShard6, speed: 3 }, { crystalImage: HeroShard7, speed: 3 },
+
+        // , { crystalImage: HeroShard2, speed: 4 }, { crystalImage: HeroShard2, speed: 4 }, { crystalImage: HeroShard2, speed: 4 }
+        // , { crystalImage: HeroShard1, speed: 2 },
+        // { crystalImage: HeroShard1, speed: 9 }, { crystalImage: HeroShard1, speed: 7 }, { crystalImage: HeroShard1, speed: 5 },
+        // { crystalImage: HeroShard1, speed: 2 }
+    ];
 
     const crystalsMapped = crystals.map((data, index) => {
         return (
