@@ -15,7 +15,9 @@ export const ParallaxCrystal: React.FC<MyProps> = ({ data: { speed, crystalImage
 
     return (
         <div className={styles.crystal_wrapper} style={{ transform: `translate(${speed * (window.innerWidth - cursorXPosition) / 100}px, ${speed * (window.innerHeight - cursorYPosition) / 100}px)` }}>
-            <Image className={styles.floating_crystal} />
+            <div className={styles.floating_crystal}>
+                <Image className={styles.crystal} />
+            </div>
         </div>
     );
 };

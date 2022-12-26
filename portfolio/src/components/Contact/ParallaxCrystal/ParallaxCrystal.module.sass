@@ -13,40 +13,48 @@
 .crystal_wrapper
     position: absolute
     &:nth-of-type(2)
-        top: 15%
-        left: 20%
-        width: 20vh
-        height: 20vh
+        top: 18%
+        left: 8%
+        width: 28vh
+
     &:nth-of-type(3)
-        top: 38%
-        left: 10%
-        width: 30vh
-        height: 30vh
+        top: 54%
+        left: 78%
+        width: 18vh
+        & .crystal
+            transform: rotateZ(210deg) scaleX(1)
+
     &:nth-child(4)
-        top: 15%
-        left: 5%
-        width: 10vh
-        height: 10vh
+        top: 4%
+        left: 63%
+        width: 25vh
+        & .crystal
+            transform: rotateZ(350deg) scaleX(1)
+
     &:nth-child(5)
-        top: 45%
-        left: 66%
-        width: 40vh
-        height: 40vh
+        top: 2%
+        left: 22%
+        width: 16vh
+        & .crystal
+            transform: rotateZ(296deg) scaleX(-1)
+
     &:nth-child(6)
-        top: 45%
-        left: 50%
-        width: 15vh
-        height: 15vh
+        top: 80%
+        left: 90%
+        width: 10vh
+        & .crystal
+            transform: rotateZ(180deg) scaleX(-1)
+
     &:nth-child(7)
         top: 16%
         left: 60%
         width: 10vh
-        height: 10vh
+
     &:nth-child(8)
         top: 6%
         left: 80%
-        width: 25vh
-        height: 25vh
+        width: 12vh
+
     @for $i from 2 to 8
         &:nth-child(#{$i}) .floating_crystal
             animation-duration: 3 + (($i - 1) * 1s)
