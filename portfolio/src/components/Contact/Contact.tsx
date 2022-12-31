@@ -171,13 +171,13 @@ export const Contact: React.FC = () => {
         // };
     };
 
-    type Crystals = Array<{ crystalImage: React.FC, speed: number }>;
+    type Crystals = Array<{ name: string, crystalImage: React.FC, speed: number }>;
 
     const crystals: Crystals = [
-        { crystalImage: SpikedShard1, speed: 4 }, { crystalImage: SpikedShard2, speed: 3 },
-        { crystalImage: HeroShard1, speed: 4 },
-        { crystalImage: HeroShard2, speed: 3 },
-        { crystalImage: HeroShard3, speed: 2 },
+        { name: 'spiked_1', crystalImage: SpikedShard1, speed: 4 }, { name: 'spiked_2', crystalImage: SpikedShard2, speed: 3 },
+        { name: 'hero_1', crystalImage: HeroShard1, speed: 4 },
+        { name: 'hero_2', crystalImage: HeroShard2, speed: 3 },
+        { name: 'hero_3', crystalImage: HeroShard3, speed: 2 },
         // { crystalImage: HeroShard4, speed: 3 },
         // { crystalImage: HeroShard5, speed: 3 }, { crystalImage: HeroShard6, speed: 3 }, { crystalImage: HeroShard7, speed: 3 },
 

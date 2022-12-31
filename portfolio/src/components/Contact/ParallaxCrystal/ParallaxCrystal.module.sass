@@ -12,50 +12,54 @@
 
 .crystal_wrapper
     position: absolute
-    &:nth-of-type(2)
+    &--spiked_1
         top: 18%
         left: 8%
         width: 28vh
-
-    &:nth-of-type(3)
+    &--spiked_2
         top: 54%
         left: 78%
         width: 18vh
         & .crystal
             transform: rotateZ(210deg) scaleX(1)
 
-    &:nth-child(4)
+    &--hero_1
         top: 4%
         left: 63%
         width: 25vh
         & .crystal
             transform: rotateZ(350deg) scaleX(1)
 
-    &:nth-child(5)
+    &--hero_2
         top: 2%
         left: 22%
         width: 16vh
         & .crystal
             transform: rotateZ(296deg) scaleX(-1)
 
-    &:nth-child(6)
+    &--hero_3
         top: 80%
         left: 90%
         width: 10vh
         & .crystal
             transform: rotateZ(180deg) scaleX(-1)
 
-    &:nth-child(7)
+    &--hero_4
         top: 16%
         left: 60%
         width: 10vh
 
-    &:nth-child(8)
+    &--hero_5
         top: 6%
         left: 80%
         width: 12vh
 
-    @for $i from 2 to 8
+    &--hero_6
+
+    &--hero_7
+
+    // Quicker way, but less control
+    @for $i from 2 to 17
         &:nth-child(#{$i}) .floating_crystal
             animation-duration: 3 + (($i - 1) * 1s)
 
