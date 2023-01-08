@@ -5,7 +5,7 @@ import styles from './Footer.module.sass';
 import { LanguageChanger } from './LanguageChanger/LanguageChanger';
 import { SocialIcons } from '../SocialIcons/SocialIcons';
 
-import { AppContext } from '../../store/AppContext';
+// import { AppContext } from '../../store/AppContext';
 
 type MyProps = {
     theme: boolean,
@@ -13,16 +13,6 @@ type MyProps = {
 };
 
 export const Footer: React.FC<MyProps> = ({ theme, themeChanger }) => {
-
-    const { language, setLanguage } = useContext(AppContext);
-
-    const languageChanger = () => {
-        if (language === 'polish') {
-            setLanguage('english');
-        } else {
-            setLanguage('polish');
-        };
-    };
 
     // const colorChanger = () => {
     //     themeChanger(!theme)

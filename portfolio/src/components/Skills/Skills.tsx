@@ -25,6 +25,7 @@ export const Skills: React.FC = () => {
     const graphicsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
     const [activeCard, setActiveCard] = useState('');
+    const [float, setFloat] = useState(false);
 
     const isDesktop = window.matchMedia('(orientation: landscape)').matches;
     const isEnglish = language === 'english';
@@ -82,7 +83,9 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd
+                    end: motionEnd,
+                    onLeave: () => { setFloat(true) },
+                    onEnterBack: () => { setFloat(false) },
                 }
             })));
 
@@ -207,7 +210,9 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd
+                    end: motionEnd,
+                    onLeave: () => { console.log('complete') },
+                    onEnterBack: () => { console.log('restart') }
                 }
             });
 
@@ -342,7 +347,7 @@ export const Skills: React.FC = () => {
 
             <SectionName>{isEnglish ? 'skills' : 'umiejętności'}</SectionName>
 
-            <CrystalMoving className={styles.sliding_crystal} ref={crystalRef} />
+            <CrystalMoving className={clsx(styles.sliding_crystal, float && styles.floating)} ref={crystalRef} />
 
             {svgPath}
 

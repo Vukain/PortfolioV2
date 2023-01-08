@@ -175,14 +175,14 @@ export const Contact: React.FC = () => {
         name: string,
         crystalImage: React.FC,
         moveSpeed: number,
-        rotateSpeed: number,
-        orbitSpeed: number,
+        orbitSpread: string
     }>;
 
     const crystals: Crystals = [
-        { name: 'spiked_1', crystalImage: SpikedShard1, moveSpeed: 4, rotateSpeed: 1, orbitSpeed: 300 }, { name: 'spiked_2', crystalImage: SpikedShard2, moveSpeed: 3, rotateSpeed: 1, orbitSpeed: 1 },
-        { name: 'hero_1', crystalImage: HeroShard1, moveSpeed: 4, rotateSpeed: 1, orbitSpeed: 1 }, { name: 'hero_2', crystalImage: HeroShard2, moveSpeed: 3, rotateSpeed: 1, orbitSpeed: 1 }, { name: 'hero_3', crystalImage: HeroShard3, moveSpeed: 2, rotateSpeed: 1, orbitSpeed: 1 },
-        { name: 'hero_4', crystalImage: HeroShard4, moveSpeed: 2, rotateSpeed: 1, orbitSpeed: 1 }, { name: 'hero_5', crystalImage: HeroShard5, moveSpeed: 2, rotateSpeed: 1, orbitSpeed: 1 }, { name: 'hero_6', crystalImage: HeroShard6, moveSpeed: 2, rotateSpeed: 1, orbitSpeed: 1 },
+        { name: 'spiked_1', crystalImage: SpikedShard1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShard2, moveSpeed: 3, orbitSpread: 'small' },
+        { name: 'hero_1', crystalImage: HeroShard1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShard2, moveSpeed: 3, orbitSpread: 'small' }, { name: 'hero_3', crystalImage: HeroShard3, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'hero_4', crystalImage: HeroShard4, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_5', crystalImage: HeroShard5, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShard6, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'hero_7', crystalImage: HeroShard7, moveSpeed: 2, orbitSpread: 'small' },
     ];
 
     const crystalsMapped = crystals.map((data, index) => {

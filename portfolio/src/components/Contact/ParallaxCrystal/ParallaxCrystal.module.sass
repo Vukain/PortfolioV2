@@ -34,6 +34,8 @@
         width: 18vh
         & .crystal
             transform: rotateZ(210deg) scaleX(1)
+    &::before
+        content: attr(data-background)
 
     &--hero_1
         top: 4%
@@ -47,7 +49,7 @@
         left: 22%
         width: 16vh
         & .crystal
-            transform: rotateZ(296deg) scaleX(-1)
+            transform: rotateZ(322deg) scaleX(-1)
 
     &--hero_3
         top: 80%
@@ -71,8 +73,16 @@
             transform: rotateZ(40deg)
 
     &--hero_6
+        top: 12%
+        left: 85%
+        width: 6vh
+        & .crystal
+            transform: rotateZ(-65deg) scaleX(-1)
 
     &--hero_7
+        top: 50%
+        left: 40%
+        width: 16vh
 
     // Quicker way, but less control
     @for $i from 2 to 17
