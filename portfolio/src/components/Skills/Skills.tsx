@@ -228,7 +228,7 @@ export const Skills: React.FC = () => {
                 }
             });
 
-            // Unused automatic crystal floating
+            // Unused automatic crystal floating, now floating is synced with scroll and then transitions into css floating animation
 
             // const floatingShardAuto = gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1, yoyo: true });
 

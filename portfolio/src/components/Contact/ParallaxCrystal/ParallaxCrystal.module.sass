@@ -84,6 +84,13 @@
         left: 40%
         width: 16vh
 
+    &--scroll_1
+        top: 16%
+        left: 85%
+        width: 18vh
+        & .crystal
+            transform: rotateZ(40deg) scaleX(1)
+
     // Quicker way, but less control
     @for $i from 2 to 17
         &:nth-child(#{$i}) .floating_crystal

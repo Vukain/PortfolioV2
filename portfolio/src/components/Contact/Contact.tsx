@@ -11,22 +11,22 @@ import { Button } from '../../layout/Button/Button';
 import { SectionName } from '../SectionName/SectionName';
 import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
-import { ReactComponent as HeroShard1 } from '../../media/parallax_shards/hero_1.svg';
-import { ReactComponent as HeroShard2 } from '../../media/parallax_shards/hero_2.svg';
-import { ReactComponent as HeroShard3 } from '../../media/parallax_shards/hero_3.svg';
-import { ReactComponent as HeroShard4 } from '../../media/parallax_shards/hero_4.svg';
-import { ReactComponent as HeroShard5 } from '../../media/parallax_shards/hero_5.svg';
-import { ReactComponent as HeroShard6 } from '../../media/parallax_shards/hero_6.svg';
-import { ReactComponent as HeroShard7 } from '../../media/parallax_shards/hero_7.svg';
-import { ReactComponent as ScrollShard1 } from '../../media/parallax_shards/scroll_1.svg';
-import { ReactComponent as ScrollShard2 } from '../../media/parallax_shards/scroll_2.svg';
-import { ReactComponent as ScrollShard3 } from '../../media/parallax_shards/scroll_3.svg';
-import { ReactComponent as ScrollShard4 } from '../../media/parallax_shards/scroll_4.svg';
-import { ReactComponent as ScrollShard5 } from '../../media/parallax_shards/scroll_5.svg';
-import { ReactComponent as ScrollShard6 } from '../../media/parallax_shards/scroll_6.svg';
-import { ReactComponent as ScrollShard7 } from '../../media/parallax_shards/scroll_7.svg';
-import { ReactComponent as SpikedShard1 } from '../../media/parallax_shards/spiked_1.svg';
-import { ReactComponent as SpikedShard2 } from '../../media/parallax_shards/spiked_2.svg';
+import { ReactComponent as HeroShardImg1 } from '../../media/parallax_shards/hero_1.svg';
+import { ReactComponent as HeroShardImg2 } from '../../media/parallax_shards/hero_2.svg';
+import { ReactComponent as HeroShardImg3 } from '../../media/parallax_shards/hero_3.svg';
+import { ReactComponent as HeroShardImg4 } from '../../media/parallax_shards/hero_4.svg';
+import { ReactComponent as HeroShardImg5 } from '../../media/parallax_shards/hero_5.svg';
+import { ReactComponent as HeroShardImg6 } from '../../media/parallax_shards/hero_6.svg';
+import { ReactComponent as HeroShardImg7 } from '../../media/parallax_shards/hero_7.svg';
+import { ReactComponent as ScrollShardImg1 } from '../../media/parallax_shards/scroll_1.svg';
+import { ReactComponent as ScrollShardImg2 } from '../../media/parallax_shards/scroll_2.svg';
+import { ReactComponent as ScrollShardImg3 } from '../../media/parallax_shards/scroll_3.svg';
+import { ReactComponent as ScrollShardImg4 } from '../../media/parallax_shards/scroll_4.svg';
+import { ReactComponent as ScrollShardImg5 } from '../../media/parallax_shards/scroll_5.svg';
+import { ReactComponent as ScrollShardImg6 } from '../../media/parallax_shards/scroll_6.svg';
+import { ReactComponent as ScrollShardImg7 } from '../../media/parallax_shards/scroll_7.svg';
+import { ReactComponent as SpikedShardImg1 } from '../../media/parallax_shards/spiked_1.svg';
+import { ReactComponent as SpikedShardImg2 } from '../../media/parallax_shards/spiked_2.svg';
 
 type Mutable<Type> = {
     -readonly [Key in keyof Type]: Type[Key];
@@ -138,7 +138,8 @@ export const Contact: React.FC = () => {
 
         if (formValidity === 'valid') {
             setFormValidity('sent');
-            // emailjs.sendForm('service_5ln658l', 'template_c6tb0lf', formRef.current!, 'xxx')
+            // Disabled sending while not live
+            // emailjs.sendForm('service_xxx', 'template_xxx', formRef.current!, 'xxx')
             //     .then((result) => {
             //         console.log(result.text);
             //     }, (error) => {
@@ -155,20 +156,6 @@ export const Contact: React.FC = () => {
                 setShowError(false);
             }, 3000);
         };
-
-        // if ([nameValidity, emailValidity, messageValidity].every(val => val)) {
-        //     console.log('yeyo')
-        //     setMessageSent(true);
-        // } else {
-        //     console.log('nonmo')
-        //     if (!nameValidity) {
-        //         nameInputRef.current!.focus()
-        //     } else if (!emailValidity) {
-        //         emailInputRef.current!.focus()
-        //     } else {
-        //         messageInputRef.current!.focus()
-        //     };
-        // };
     };
 
     type Crystals = Array<{
@@ -179,10 +166,11 @@ export const Contact: React.FC = () => {
     }>;
 
     const crystals: Crystals = [
-        { name: 'spiked_1', crystalImage: SpikedShard1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShard2, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'hero_1', crystalImage: HeroShard1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShard2, moveSpeed: 3, orbitSpread: 'small' }, { name: 'hero_3', crystalImage: HeroShard3, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'hero_4', crystalImage: HeroShard4, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_5', crystalImage: HeroShard5, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShard6, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'hero_7', crystalImage: HeroShard7, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'spiked_1', crystalImage: SpikedShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShardImg2, moveSpeed: 3, orbitSpread: 'small' },
+        { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitSpread: 'small' }, { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 2, orbitSpread: 'small' },
     ];
 
     const crystalsMapped = crystals.map((data, index) => {
