@@ -11,9 +11,10 @@
             filter: blur(2vh) grayscale(.7)
         & .icon
             fill: var(--color-main-2)
+            transform: scale(1.2)
 
 .link
-    height: 5vh
+    height: 6vh
     position: absolute
     display: grid
     grid-template-columns: min-content min-content
@@ -39,7 +40,7 @@
         content: attr(data-text)
         grid-row: 1/2
         text-transform: uppercase
-        font-size: var(--font-size-normal)
+        font-size: calc(1.1 * var(--font-size-normal))
         color: transparent
         transition: color .3s 0s
 
@@ -85,7 +86,7 @@
 .wrapper
     width: 100%
     height: 100%
-    transition: filter 1s
+    transition: filter .7s
 
     &_logo
         width: 80%
@@ -150,6 +151,6 @@
     width: 4vh
     fill: var(--grey-medium)
     position: relative
-    transition: .3s fill
+    transition: .3s fill, .4s transform ease-in
     margin: 0 var(--project-link-margin)
     grid-row: 1/2
