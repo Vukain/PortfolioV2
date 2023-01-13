@@ -24,18 +24,35 @@
 
 .crystal_wrapper
     position: absolute
+
     &--spiked_1
         top: 22%
         left: 8%
         width: 28vh
+
     &--spiked_2
         top: 54%
         left: 78%
         width: 18vh
         & .crystal
             transform: rotateZ(210deg) scaleX(1)
-    &::before
-        content: attr(data-background)
+
+    &--spiked_3
+        top: 8%
+        left: 54%
+        width: 13vh
+        & .crystal
+            transform: rotateZ(210deg) scaleX(1)
+            filter: hue-rotate(270deg)
+
+    &--spiked_4
+
+        top: 26%
+        left: 41%
+        width: 9vh
+        & .crystal
+            transform: rotateZ(45deg) scaleX(1)
+            filter: hue-rotate(326deg)
 
     &--hero_1
         top: 4%
@@ -89,7 +106,47 @@
         left: 85%
         width: 18vh
         & .crystal
-            transform: rotateZ(40deg) scaleX(1)
+            transform: rotateZ(40deg)
+
+    &--scroll_2
+        top: 72%
+        left: 24%
+        width: 5vh
+        & .crystal
+            transform: rotateZ(45deg)
+
+    &--scroll_3
+        top: 7%
+        left: 38%
+        width: 8vh
+        & .crystal
+            transform: rotateZ(5deg)
+
+    &--scroll_4
+        top: 61%
+        left: 65%
+        width: 12vh
+        & .crystal
+            transform: rotateZ(-5deg)
+
+    &--scroll_5
+        top: 31%
+        left: 55%
+        width: 10vh
+
+    &--scroll_6
+        top: 42%
+        left: 29%
+        width: 14vh
+        & .crystal
+            transform: rotateZ(30deg)
+
+    &--scroll_7
+        top: 61%
+        left: 55%
+        width: 5vh
+        & .crystal
+            transform: rotateZ(-35deg)
 
     // Quicker way, but less control
     @for $i from 2 to 17

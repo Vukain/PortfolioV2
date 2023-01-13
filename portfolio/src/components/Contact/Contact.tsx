@@ -167,10 +167,18 @@ export const Contact: React.FC = () => {
 
     const crystals: Crystals = [
         { name: 'spiked_1', crystalImage: SpikedShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShardImg2, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitSpread: 'small' }, { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'spiked_3', crystalImage: SpikedShardImg1, moveSpeed: 1, orbitSpread: 'small' }, { name: 'spiked_4', crystalImage: SpikedShardImg2, moveSpeed: .5, orbitSpread: 'small' },
+        { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitSpread: 'small' },
+        { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 1, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 1, orbitSpread: 'small' },
+        { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 3.4, orbitSpread: 'small' },
+        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 3, orbitSpread: 'small' },
+        { name: 'scroll_2', crystalImage: ScrollShardImg2, moveSpeed: 1, orbitSpread: 'small' },
+        { name: 'scroll_3', crystalImage: ScrollShardImg3, moveSpeed: 1.5, orbitSpread: 'small' },
+        { name: 'scroll_4', crystalImage: ScrollShardImg4, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'scroll_5', crystalImage: ScrollShardImg5, moveSpeed: 2, orbitSpread: 'small' },
+        { name: 'scroll_6', crystalImage: ScrollShardImg6, moveSpeed: 2.4, orbitSpread: 'small' },
+        { name: 'scroll_7', crystalImage: ScrollShardImg7, moveSpeed: 1, orbitSpread: 'small' },
     ];
 
     const crystalsMapped = crystals.map((data, index) => {
