@@ -27,6 +27,8 @@ import { ReactComponent as ScrollShardImg6 } from '../../media/parallax_shards/s
 import { ReactComponent as ScrollShardImg7 } from '../../media/parallax_shards/scroll_7.svg';
 import { ReactComponent as SpikedShardImg1 } from '../../media/parallax_shards/spiked_1.svg';
 import { ReactComponent as SpikedShardImg2 } from '../../media/parallax_shards/spiked_2.svg';
+import { ReactComponent as SpikedShardImg3 } from '../../media/parallax_shards/spiked_3.svg';
+import { ReactComponent as SpikedShardImg4 } from '../../media/parallax_shards/spiked_4.svg';
 
 type Mutable<Type> = {
     -readonly [Key in keyof Type]: Type[Key];
@@ -76,7 +78,7 @@ export const Contact: React.FC = () => {
                 ease: 'Power1.easeOut',
                 scrollTrigger: {
                     trigger: '#contact',
-                    start: `60% bottom`
+                    start: `${isDesktop ? 40 : 60}% bottom`
                 }
             });
         });
@@ -167,7 +169,7 @@ export const Contact: React.FC = () => {
 
     const crystals: Crystals = [
         { name: 'spiked_1', crystalImage: SpikedShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShardImg2, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'spiked_3', crystalImage: SpikedShardImg1, moveSpeed: 1, orbitSpread: 'small' }, { name: 'spiked_4', crystalImage: SpikedShardImg2, moveSpeed: .5, orbitSpread: 'small' },
+        { name: 'spiked_3', crystalImage: SpikedShardImg3, moveSpeed: 1, orbitSpread: 'small' }, { name: 'spiked_4', crystalImage: SpikedShardImg4, moveSpeed: .5, orbitSpread: 'small' },
         { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitSpread: 'small' },
         { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitSpread: 'small' },
         { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 1, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 1, orbitSpread: 'small' },
