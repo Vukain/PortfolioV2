@@ -1,32 +1,89 @@
-@keyframes crystal-move
-    0%
-        translate: 0 0
-    25%
-        translate: 10% 10%
-    50%
-        translate: 0 20%
-    75%
-        translate: -10% 10%
-    100%
-        translate: 0 0
+@import '../../../sass/mixins'
 
+// Eight move points   
+// @keyframes crystal-move
+//     0%
+//         translate: 0 0
+//     12.5%
+//         translate: 6.5% 3.5%
+//     25%
+//         translate: 10% 10%
+//     37.5%
+//         translate: 6.5% 16.5%
+//     50%
+//         translate: 0 20%
+//     62.5%
+//         translate: -6.5% 16.5%
+//     75%
+//         translate: -10% 10%
+//     87.5%
+//         translate: -6.5% 3.5%
+//     100%
+//         translate: 0 0
+
+// Twelve move points
+// @keyframes crystal-move
+//     0%
+//         translate: 0 0
+//     8.33%
+//         translate: 5% 1.3%
+//     16.66%
+//         translate: 8.7% 5%
+//     25%
+//         translate: 10% 10%
+//     33.33%
+//         translate: 8.7% 15%
+//     41.66%
+//         translate: 5% 18.7%
+//     50%
+//         translate: 0 20%
+//     58.33%
+//         translate: -5% 18.7%
+//     66.66%
+//         translate: -8.7% 15%
+//     75%
+//         translate: -10% 10%
+//     83.33%
+//         translate: -8.7% 5%
+//     91.66%
+//         translate: -5% 1.3%
+//     100%
+//         translate: 0 0
+
+// Sixteen move points
 @keyframes crystal-move
     0%
         translate: 0 0
+    6.25%
+        translate: 3.8% 0.7%
     12.5%
-        translate: 6.5% 3.5%
+        translate: 7.1% 2.9%
+    18.75%
+        translate: 9.3% 6.2%
     25%
         translate: 10% 10%
+    31.25%
+        translate: 9.3% 13.8%
     37.5%
-        translate: 6.5% 16.5%
+        translate: 7.1% 17.1%
+    43.75%
+        translate: 3.8% 19.3%
     50%
         translate: 0 20%
+    56.25%
+        translate: -3.8% 19.3%
     62.5%
-        translate: -6.5% 16.5%
+        translate: -7.1% 17.1%
+    68.75%
+        translate: -9.3% 13.8%
     75%
         translate: -10% 10%
+    81.25%
+        translate: -9.3% 6.2%
     87.5%
-        translate: -6.5% 3.5%
+        translate: -7.1% 2.9%
+    93.75%
+        translate: -3.8% 0.7%
     100%
         translate: 0 0
 
@@ -183,10 +240,34 @@
         & .crystal
             transform: rotateZ(-35deg)
 
+    @include mobile-and-small
+        display: none
+
+        &--spiked_1
+            display: block
+            top: 8%
+            left: 70%
+            width: 10vh
+
+        &--spiked_2
+            display: block
+            top: 74%
+            left: 66%
+            width: 10vh
+            & .crystal
+                transform: rotateZ(60deg) scaleX(1)
+
+        &--hero_1
+            display: block
+            top: 12%
+            left: 0%
+            width: 15vh
+            z-index: 5
+
     //Quicker way, but less control
     @for $i from 2 to 19
         &:nth-child(#{$i}) .floating_crystal
-            animation-duration: 4 + (($i - 1) * 1s), 4 + (($i - 1) * 1s)
+            animation-duration: 6 + (($i - 1) * 1s), 6 + (($i - 1) * 1s)
 
 .floating_crystal
     animation: crystal-move 8s linear infinite, crystal-rotate 8s linear infinite
