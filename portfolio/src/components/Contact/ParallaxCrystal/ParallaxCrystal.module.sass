@@ -87,6 +87,42 @@
     100%
         translate: 0 0
 
+@keyframes crystal-move-strong
+    0%
+        translate: 0 0
+    6.25%
+        translate: 7.6% 1.4%
+    12.5%
+        translate: 14.2% 5.8%
+    18.75%
+        translate: 18.6% 12.4%
+    25%
+        translate: 20% 20%
+    31.25%
+        translate: 18.6% 27.6%
+    37.5%
+        translate: 14.2% 34.2%
+    43.75%
+        translate: 7.6% 38.6%
+    50%
+        translate: 0 40%
+    56.25%
+        translate: -7.6% 38.6%
+    62.5%
+        translate: -14.2% 34.2%
+    68.75%
+        translate: -18.6% 27.6%
+    75%
+        translate: -20% 20%
+    81.25%
+        translate: -18.6% 12.4%
+    87.5%
+        translate: -14.2% 5.8%
+    93.75%
+        translate: -7.6% 1.4%
+    100%
+        translate: 0 0
+
 @keyframes crystal-rotate
     0%
         rotate: 0deg
@@ -251,18 +287,96 @@
 
         &--spiked_2
             display: block
-            top: 74%
-            left: 66%
-            width: 10vh
+            top: 57%
+            left: 3%
+            width: 17vh
             & .crystal
-                transform: rotateZ(60deg) scaleX(1)
+                transform: rotateZ(10deg) scaleX(-1)
+
+        &--spiked_4
+            display: block
+            top: 46%
+            left: 37%
+            width: 7vh
+            & .crystal
+                transform: rotateZ(17deg)
 
         &--hero_1
             display: block
             top: 12%
-            left: 0%
+            left: -1%
             width: 15vh
             z-index: 5
+
+        &--hero_2
+            display: block
+            top: 29%
+            left: 56%
+            width: 16vh
+            z-index: 5
+            & .crystal
+                transform: rotateZ(333deg) scaleX(-1)
+
+        &--hero_4
+            display: block
+            top: 48%
+            left: 2%
+            width: 4vh
+            z-index: 3
+
+        &--hero_7
+            display: block
+            top: 65%
+            left: 67%
+            width: 11vh
+            z-index: 5
+            & .crystal
+                transform: rotateZ(350deg) scaleX(1)
+
+        &--scroll_1
+            display: block
+            top: 14%
+            left: 42%
+            width: 7vh
+            z-index: 3
+            & .crystal
+                transform: rotateZ(319deg)
+
+        &--scroll_2
+            display: block
+            top: 6%
+            left: 6%
+            width: 3vh
+            z-index: 3
+            & .floating_crystal
+                animation: crystal-move-strong 8s linear infinite, crystal-rotate 8s linear infinite
+            & .crystal
+                transform: rotateZ(315deg)
+
+        &--scroll_4
+            display: block
+            top: 79%
+            left: 48%
+            width: 6vh
+            z-index: 3
+            & .crystal
+                transform: rotateZ(306deg) scaleX(-1)
+
+        &--scroll_6
+            display: block
+            top: 60%
+            left: 45%
+            width: 7vh
+            z-index: 3
+
+        &--scroll_7
+            display: block
+            top: 89%
+            left: 40%
+            width: 3vh
+            z-index: 3
+            & .crystal
+                transform: rotateZ(6deg)
 
     //Quicker way, but less control
     @for $i from 2 to 19
