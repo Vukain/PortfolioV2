@@ -32,6 +32,7 @@ export const Skills: React.FC = () => {
 
     // Had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
 
+    // Skill card data
     type CardData = Record<string, {
         data: {
             category: string, display: string, skills: string[]
@@ -58,6 +59,8 @@ export const Skills: React.FC = () => {
         }
     };
 
+    // Setting up all GSAP timelines and animations
+
     useEffect(() => {
         const [crystal, frontendCard, backendCard, graphicsCard] = [crystalRef.current, frontendRef.current, backendRef.current, graphicsRef.current];
 
@@ -65,7 +68,7 @@ export const Skills: React.FC = () => {
             const elementGetter = gsap.utils.selector(crystal);
 
             const cardTriggerPosition = window.innerHeight / 2;
-            const motionTrigger = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
+            const motionRoute = `#motion_path_${isDesktop ? 'desktop' : 'mobile'}_svg__motion-path`;
             const motionStart = `top ${isDesktop ? cardTriggerPosition * 1.5 : cardTriggerPosition * 1.4}px`;
             const motionEnd = `+=${(isDesktop ? 1.2 : 1) * document.getElementById('skills')!.offsetHeight}px`;
 
@@ -74,12 +77,14 @@ export const Skills: React.FC = () => {
 
             gsap.set([inner, crystal], { autoAlpha: 0 })
 
+            // Timelines for crystal shards scroll animation
+
             const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
                 repeat: (isDesktop ? 2 : 4) + 2 * (index < 5 ? index : 2),
                 yoyo: true,
                 scrollTrigger: {
-                    trigger: motionTrigger,
+                    trigger: motionRoute,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
@@ -88,6 +93,8 @@ export const Skills: React.FC = () => {
                     onEnterBack: () => { setFloat(false) },
                 }
             })));
+
+            // Animation of crystal shards moving while scrolling
 
             const crystalFloater = () => {
 
@@ -155,17 +162,27 @@ export const Skills: React.FC = () => {
                         yPercent: 100,
                         duration: .2
                     });
+
+                if (window.location.href.includes('#contact')) {
+                    const crystalShardsTL = [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL];
+                    for (const timeline of crystalShardsTL) {
+                        timeline.progress(1, false);
+                    };
+                };
             };
+
+            // Timeline for crystal dropping and breaking
 
             const breakCrystalTL = gsap.timeline({
                 defaults: { ease: "sine.out" },
                 scrollTrigger: {
                     trigger: '#skills',
                     start: `${isDesktop ? 15 : 10}% bottom`,
-                    // end: motionEnd,
-                    // markers: true,
+                    // end: motionEnd
                 }
             });
+
+            // Animation of crystal dropping and breaking
 
             breakCrystalTL.fromTo(crystal, { scale: 1.7 }, {
                 scale: 1, autoAlpha: 1, duration: .3
@@ -204,15 +221,15 @@ export const Skills: React.FC = () => {
                 onComplete: crystalFloater
             });
 
+            // Settibg up trigger and path for crystal move
+
             const floatingCrystalTL = gsap.timeline({
                 scrollTrigger: {
-                    trigger: motionTrigger,
+                    trigger: motionRoute,
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd,
-                    onLeave: () => { console.log('complete') },
-                    onEnterBack: () => { console.log('restart') }
+                    end: motionEnd
                 }
             });
 
@@ -220,8 +237,8 @@ export const Skills: React.FC = () => {
                 ease: "none",
                 immediateRender: true,
                 motionPath: {
-                    path: motionTrigger,
-                    align: motionTrigger,
+                    path: motionRoute,
+                    align: motionRoute,
                     alignOrigin: [.5, .5],
                     autoRotate: 90,
                     start: isDesktop ? .05 : .085
@@ -236,6 +253,8 @@ export const Skills: React.FC = () => {
             //   .to(lowerShard, { duration: 1, yPercent: '+=40', rotateZ: '-4deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=30', rotateZ: '3deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
+
+            // Set as active section
 
             gsap.timeline({
                 scrollTrigger: {
@@ -252,6 +271,8 @@ export const Skills: React.FC = () => {
                     end: 'bottom center'
                 }
             });
+
+            // Setting active card for mobile animation
 
             gsap.timeline({
                 scrollTrigger: {
@@ -288,6 +309,9 @@ export const Skills: React.FC = () => {
                     end: `90% ${cardTriggerPosition}px`
                 }
             });
+
+
+            // Card reveal animations for mobile and desktop variant
 
             const cards = [frontendCard, backendCard, graphicsCard];
 
@@ -329,7 +353,11 @@ export const Skills: React.FC = () => {
         };
     }, [setCurrentSection, isDesktop])
 
+    // Setting motion path according to screen aspect ratio
+
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
+
+    // Setting up skill cards
 
     const cards = Object.keys(cardData).map((element, index) => {
 

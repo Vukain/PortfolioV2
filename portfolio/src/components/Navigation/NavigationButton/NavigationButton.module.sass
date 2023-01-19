@@ -1,4 +1,5 @@
 @import '../../../sass/mixins'
+@import '../../../sass/variables'
 
 @keyframes nav-slide
     100%
@@ -18,7 +19,7 @@
         z-index: 99999
     @include desktop
         transform: translateY(-110%)
-        animation: nav-slide 1.4s 6.2s cubic-bezier(0.65, 0, 0.35, 1) forwards
+        animation: nav-slide 1.4s calc($ui-slide-delay * 1s) cubic-bezier(0.65, 0, 0.35, 1) forwards
         &--skip_delay
             animation-delay: 0s
     &:nth-child(1)
@@ -104,7 +105,6 @@
     font-weight: 400
     text-transform: uppercase
     letter-spacing: var(--letter-spacing-normal)
-    // transition: color .4s linear
     &::before
         @include before-after
         width: 100%

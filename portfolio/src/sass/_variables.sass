@@ -1,5 +1,7 @@
 @import './mixins'
 
+$ui-slide-delay: 6.1
+
 .App
     --background-color-1: #1d2020
     --background-color-2: #292c30
@@ -14,21 +16,11 @@
     --color-gradient-2: #2AD5A1
     --color-gradient-3: #8A78D5
 
-    // --color-font-1: #fefefe
-    // --color-font-1: #fbf9ef
     --color-font-1: #fbfdf0
     --color-font-2: #888
     --color-font-3: #ddd
     --color-error: #c40f3c
     --color-font-highlight: #ddd
-
-    // --color-main-1: # A9F46E
-    // --color-main-2: # 70e684
-    // --color-main-3: # 29b5c5
-
-    // --color-gradient-1: # d5f145
-    // --color-gradient-2: # 35deb9
-    // --color-gradient-3: # ae6ce1
 
     // #171A21, #2C363F, #2D2D2A, #4C4C47, #343434, #342E37, #4C5760, #414140, #494947, #617073, #706F6F, #8F8389, 
 
@@ -61,6 +53,7 @@
     --freeze: 9999999s
     --project-link-pos: 2vh
     --project-link-margin: .6vw
+    --crystal-move-distance: min(.8vh, .26vw)
 
     @media (min-width: 2800px)
         --card-mask-size: 2.6vw
@@ -84,6 +77,8 @@
         --screenshot-shadow: drop-shadow(1.5vw 1.5vw 3vw #2c363f85)
         --project-link-pos: 2vw
         --project-link-margin: 1.6vw
+        --crystal-move-distance: .8vh
+        --ui-slide-delay: 5.6
 
     &--light
         --background-color-1: #FBFBFB

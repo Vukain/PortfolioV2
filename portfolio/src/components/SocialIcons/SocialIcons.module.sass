@@ -1,4 +1,5 @@
 @import '../../sass/mixins'
+@import '../../sass/variables'
 
 @keyframes icon-slide-right
     100%
@@ -29,10 +30,8 @@
             transform: translateY(-50%)
 
 .link
-    // transition: transform .3s ease-in
     &:hover, &:focus
         outline: none
-        // transform: scale(1.1)
         & .icon
             fill: var(--color-gradient-3)
         & .wrapper
@@ -53,9 +52,9 @@
     @for $i from 1 to 4
         &:nth-child(#{$i})
             & .wrapper
-                animation-delay: 6.0 + ($i * .15s)
+                animation-delay: $ui-slide-delay + ($i * .15s)
                 @include mobile-and-small
-                    animation-delay: 5.6 + ($i * .15s)
+                    animation-delay: $ui-slide-delay + ($i * .15s)
 
 .wrapper
     position: relative
