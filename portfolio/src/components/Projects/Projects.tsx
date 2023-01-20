@@ -10,11 +10,25 @@ import { Menu } from './Menu/Menu';
 import { Project } from './Project/Project';
 
 import {
-    pizzaBuilderLogo, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3, pizzaBuilderDesktopImage1, pizzaBuilderDesktopImage2, pizzaBuilderDesktopImage3,
-    pizzaVSLogo, pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3, pizzaVSDesktopImage1, pizzaVSDesktopImage2, pizzaVSDesktopImage3,
-    dnailsLogo, dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4, dnailsDesktopImage1, dnailsDesktopImage2, dnailsDesktopImage3, dnailsDesktopImage4,
+    pizzaBuilderLogo, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,
+    pizzaBuilderDesktopImage1Small, pizzaBuilderDesktopImage1Medium, pizzaBuilderDesktopImage1Big, pizzaBuilderDesktopImage1,
+    pizzaBuilderDesktopImage2Small, pizzaBuilderDesktopImage2Medium, pizzaBuilderDesktopImage2Big, pizzaBuilderDesktopImage2,
+    pizzaBuilderDesktopImage3Small, pizzaBuilderDesktopImage3Medium, pizzaBuilderDesktopImage3Big, pizzaBuilderDesktopImage3,
+    pizzaVSLogo, pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3,
+    pizzaVSDesktopImage1Small, pizzaVSDesktopImage1Medium, pizzaVSDesktopImage1Big, pizzaVSDesktopImage1,
+    pizzaVSDesktopImage2Small, pizzaVSDesktopImage2Medium, pizzaVSDesktopImage2Big, pizzaVSDesktopImage2,
+    pizzaVSDesktopImage3Small, pizzaVSDesktopImage3Medium, pizzaVSDesktopImage3Big, pizzaVSDesktopImage3,
+    dnailsLogo, dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4,
+    dnailsDesktopImage1Small, dnailsDesktopImage1Medium, dnailsDesktopImage1Big, dnailsDesktopImage1,
+    dnailsDesktopImage2Small, dnailsDesktopImage2Medium, dnailsDesktopImage2Big, dnailsDesktopImage2,
+    dnailsDesktopImage3Small, dnailsDesktopImage3Medium, dnailsDesktopImage3Big, dnailsDesktopImage3,
+    dnailsDesktopImage4Small, dnailsDesktopImage4Medium, dnailsDesktopImage4Big, dnailsDesktopImage4,
     atroLogo, atroCodeImage1, atroCodeImage2, atroCodeImage3,
-    portfolioV1Logo, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4, portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3, portfolioV1DesktopImage4
+    portfolioV1Logo, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4,
+    portfolioV1DesktopImage1Small, portfolioV1DesktopImage1Medium, portfolioV1DesktopImage1Big, portfolioV1DesktopImage1,
+    portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2,
+    portfolioV1DesktopImage3Small, portfolioV1DesktopImage3Medium, portfolioV1DesktopImage3Big, portfolioV1DesktopImage3,
+    portfolioV1DesktopImage4Small, portfolioV1DesktopImage4Medium, portfolioV1DesktopImage4Big, portfolioV1DesktopImage4
 } from '../../media/project_images';
 
 export const Projects: React.FC = () => {
@@ -94,8 +108,16 @@ export const Projects: React.FC = () => {
             english: string,
         },
         technologies: string[],
-        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] },
-        links: { github: string, live: string }
+        images: {
+            logo: string,
+            desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
+            mobile?: string[],
+            code?: string[]
+        },
+        links: {
+            github: string,
+            live: string
+        }
     };
 
     useEffect(() => { })
@@ -111,7 +133,11 @@ export const Projects: React.FC = () => {
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
                 logo: pizzaBuilderLogo,
-                desktop: [pizzaBuilderDesktopImage1, pizzaBuilderDesktopImage2, pizzaBuilderDesktopImage3],
+                desktop: [
+                    { small: pizzaBuilderDesktopImage1Small, medium: pizzaBuilderDesktopImage1Medium, big: pizzaBuilderDesktopImage1Big, full: pizzaBuilderDesktopImage1 },
+                    { small: pizzaBuilderDesktopImage2Small, medium: pizzaBuilderDesktopImage2Medium, big: pizzaBuilderDesktopImage2Big, full: pizzaBuilderDesktopImage2 },
+                    { small: pizzaBuilderDesktopImage3Small, medium: pizzaBuilderDesktopImage3Medium, big: pizzaBuilderDesktopImage3Big, full: pizzaBuilderDesktopImage3 }
+                ],
                 mobile: [pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3]
             },
             links: {
@@ -129,7 +155,11 @@ export const Projects: React.FC = () => {
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
                 logo: pizzaVSLogo,
-                desktop: [pizzaVSDesktopImage1, pizzaVSDesktopImage2, pizzaVSDesktopImage3],
+                desktop: [
+                    { small: pizzaVSDesktopImage1Small, medium: pizzaVSDesktopImage1Medium, big: pizzaVSDesktopImage1Big, full: pizzaVSDesktopImage1 },
+                    { small: pizzaVSDesktopImage2Small, medium: pizzaVSDesktopImage2Medium, big: pizzaVSDesktopImage2Big, full: pizzaVSDesktopImage2 },
+                    { small: pizzaVSDesktopImage3Small, medium: pizzaVSDesktopImage3Medium, big: pizzaVSDesktopImage3Big, full: pizzaVSDesktopImage3 }
+                ],
                 mobile: [pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3]
             },
             links: {
@@ -147,7 +177,12 @@ export const Projects: React.FC = () => {
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas'],
             images: {
                 logo: dnailsLogo,
-                desktop: [dnailsDesktopImage1, dnailsDesktopImage2, dnailsDesktopImage3, dnailsDesktopImage4],
+                desktop: [
+                    { small: dnailsDesktopImage1Small, medium: dnailsDesktopImage1Medium, big: dnailsDesktopImage1Big, full: dnailsDesktopImage1 },
+                    { small: dnailsDesktopImage2Small, medium: dnailsDesktopImage2Medium, big: dnailsDesktopImage2Big, full: dnailsDesktopImage2 },
+                    { small: dnailsDesktopImage3Small, medium: dnailsDesktopImage3Medium, big: dnailsDesktopImage3Big, full: dnailsDesktopImage3 },
+                    { small: dnailsDesktopImage4Small, medium: dnailsDesktopImage4Medium, big: dnailsDesktopImage4Big, full: dnailsDesktopImage4 }
+                ],
                 mobile: [dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4]
             },
             links: {
@@ -182,7 +217,12 @@ export const Projects: React.FC = () => {
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
             images: {
                 logo: portfolioV1Logo,
-                desktop: [portfolioV1DesktopImage1, portfolioV1DesktopImage2, portfolioV1DesktopImage3, portfolioV1DesktopImage4],
+                desktop: [
+                    { small: portfolioV1DesktopImage1Small, medium: portfolioV1DesktopImage1Medium, big: portfolioV1DesktopImage1Big, full: portfolioV1DesktopImage1 },
+                    { small: portfolioV1DesktopImage2Small, medium: portfolioV1DesktopImage2Medium, big: portfolioV1DesktopImage2Big, full: portfolioV1DesktopImage2 },
+                    { small: portfolioV1DesktopImage3Small, medium: portfolioV1DesktopImage3Medium, big: portfolioV1DesktopImage3Big, full: portfolioV1DesktopImage3 },
+                    { small: portfolioV1DesktopImage4Small, medium: portfolioV1DesktopImage4Medium, big: portfolioV1DesktopImage4Big, full: portfolioV1DesktopImage4 }
+                ],
                 mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4]
             },
             links: {

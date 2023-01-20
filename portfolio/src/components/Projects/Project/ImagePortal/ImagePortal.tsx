@@ -10,7 +10,7 @@ import { ReactComponent as LinkIcon } from '../../../../media/icons/link.svg';
 type MyProps = {
     images: {
         logo: string,
-        desktop?: string[],
+        desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
         mobile?: string[],
         code?: string[],
     },
@@ -75,9 +75,20 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             .to(logoImage, { delay: logoSlideDelayFix, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'right bottom', scale: 1 })
     }, []);
 
-    const desktopScreenshots = desktop ? desktop.map((image, index) => (<img className={styles.screenshot_desktop} key={`desktop_${index}`} src={image} alt={`project desktop screenshot ${index}`} />)) : null;
-    const codeScreenshots = code ? code.map((image, index) => (<img className={styles.screenshot_code} key={`code_${index}`} src={image} alt={`project code screenshot ${index}`} />)) : null;
-    const mobileScreenshots = mobile ? mobile.map((image, index) => (<img className={styles.screenshot_mobile} key={`mobile_${index}`} src={image} alt={`project mobile screenshot ${index}`} />)) : null;
+    const desktopScreenshots = desktop ? desktop.map((image, index) => (
+        <img className={styles.screenshot_desktop} key={`desktop_${index}`}
+            srcSet={`${image.small} 800w, ${image.medium} 1200w, ${image.big} 1600w`}
+            sizes={'(min-width: 4000px) 1600px, (min-width: 2000px) 1200px, 800px'}
+            src={image.full} alt={`project desktop screenshot ${index}`} />
+
+        // <img className={styles.screenshot_desktop} key={`desktop_${index}`} src={image.full} alt={`project desktop screenshot ${index}`} />
+    )) : null;
+    const codeScreenshots = code ? code.map((image, index) => (
+        <img className={styles.screenshot_code} key={`code_${index}`} src={image} alt={`project code screenshot ${index}`} />
+    )) : null;
+    const mobileScreenshots = mobile ? mobile.map((image, index) => (
+        <img className={styles.screenshot_mobile} key={`mobile_${index}`} src={image} alt={`project mobile screenshot ${index}`} />
+    )) : null;
 
     return (
         <div className={styles.image_portal} ref={portalRef}>

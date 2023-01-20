@@ -14,7 +14,7 @@ type myProps = {
         description: Record<string, string>,
         image?: React.FC<{ className?: string, title?: string }>,
         technologies: string[],
-        images: { logo: string, desktop?: string[], mobile?: string[], code?: string[] },
+        images: { logo: string, desktop?: Array<{ small: string, medium: string, big: string, full: string }>, mobile?: string[], code?: string[] },
         links: { github: string, live: string }
     },
     index: number,
