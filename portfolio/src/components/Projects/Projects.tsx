@@ -57,7 +57,7 @@ export const Projects: React.FC = () => {
         setSectionHeight(height);
         setProjectSize(size);
 
-        const slidingProjects = gsap.timeline({
+        const slidingProjectsTL = gsap.timeline({
             scrollTrigger: {
                 trigger: projectsSection,
                 toggleActions: 'restart pause reverse pause',
@@ -83,17 +83,53 @@ export const Projects: React.FC = () => {
             }
         });
 
+        const fadingProjectsTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: projectsSection,
+                toggleActions: 'restart pause reverse pause',
+                scrub: .5,
+                start: '10px 10px',
+                end: height + (projects.length - 1) * size,
+                snap: 1 / (projects.length - 1),
+                // markers: true,
+            }
+        });
+
+
         if (isDesktop) {
-            slidingProjects.to(projects.slice(1), {
-                xPercent: -100,
+            gsap.set(projects.slice(1), { scale: 1, rotateY: '30deg', xPercent: 120, })
+
+            slidingProjectsTL.to(projects.slice(1), {
+                xPercent: 0,
+                rotateY: 0,
                 stagger: .5,
-                ease: "none"
+                ease: "sine.inOut"
             });
-        } else {
-            slidingProjects.to(projects.slice(1), {
-                yPercent: -100,
+
+            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+                rotateY: '20deg',
+                scale: .7,
                 stagger: .5,
-                ease: "none"
+                ease: "sine.inOut",
+                opacity: 0
+            });
+
+        } else {
+            gsap.set(projects.slice(1), { scale: 1, rotateX: '-30deg', yPercent: 120 })
+
+            slidingProjectsTL.to(projects.slice(1), {
+                yPercent: 0,
+                rotateX: 0,
+                stagger: .5,
+                ease: 'sine.inOut'
+            });
+
+            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+                rotateX: '-20deg',
+                scale: .7,
+                stagger: .5,
+                ease: "sine.inOut",
+                opacity: 0
             });
         };
 
@@ -122,8 +158,6 @@ export const Projects: React.FC = () => {
             live: string
         }
     };
-
-    useEffect(() => { })
 
     const projects: ProjectData[] = [
         {

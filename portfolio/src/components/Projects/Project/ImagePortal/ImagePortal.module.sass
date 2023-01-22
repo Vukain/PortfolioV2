@@ -11,6 +11,7 @@
     &:hover
         & .wrapper
             filter: blur(1.4vh) grayscale(.5)
+            transition-delay: 3s
         & .icon
             fill: var(--color-main-2)
             transform: scale(1.2)
@@ -94,9 +95,9 @@
 .wrapper
     width: 100%
     height: 100%
-    transition: filter .7s
-
+    transition: filter .7s 0s
     &_logo
+        perspective: 100vw
         width: 80%
         aspect-ratio: 4/3
         top: 50%
@@ -111,6 +112,10 @@
             width: 70%
 
     &_screenshots
+        position: absolute
+        top: 0
+        left: 0
+        perspective: 100vw
         width: 100%
         height: 100%
 
@@ -120,17 +125,13 @@
     object-fit: cover
 
 .screenshot
-
     &_code
-        top: 170%
         width: 70%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
         transform: translate(-50%, -50%)
-
     &_desktop
-        top: 140%
         width: 60%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -140,9 +141,7 @@
             left: 40%
         &:nth-child(2n)
             left: 60%
-
     &_mobile
-        top: 140%
         left: 80%
         position: absolute
         width: 25%

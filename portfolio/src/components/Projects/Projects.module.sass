@@ -11,6 +11,7 @@
     height: 100vh
     grid-template-rows: 12vh 1fr 12vh
     overflow: hidden
+
     @include mobile-and-small
         transition: height var(--freeze)
         grid-template-rows: 26vw var(--mobile-miniature-height) 1fr
@@ -21,30 +22,8 @@
     display: flex
     grid-column: 2 / 4
     grid-row: 2
+    perspective: 100vw
     @include mobile-and-small
+        perspective: 100vh
         grid-row: 2 / 5
         grid-column: 2 / 4
-
-.project
-    height: 100%
-    width: 100%
-    position: absolute
-    left: 0
-    font-size: 40px
-    &:not(:first-child)
-        @include desktop
-            left: 100%
-        @include mobile-and-small
-            top: 100%
-    &:nth-child(3n+1)
-        background-color: var(--color-main-1)
-    &:nth-child(3n+2)
-        background-color: var(--color-main-2)
-    &:nth-child(3n+3)
-        background-color: var(--color-main-3)
-    @include mobile-and-small
-        height: 100%
-    // &:nth-child(5n+4)
-    //     background-color: var(--color-main-3)
-    // &:nth-child(5n+5)
-    //     background-color: var(--color-main-5)

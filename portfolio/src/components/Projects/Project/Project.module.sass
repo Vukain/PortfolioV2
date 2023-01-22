@@ -12,17 +12,18 @@
     height: 100%
     width: 100%
     left: 0
+    top: 0
     padding-right: 5vw
     display: grid
     grid-template-columns: 46vw 1fr
     gap: 4vw
     background-color: var(--background-color-2)
     border-radius: var(--border-radius-big)
-    &:not(:first-child)
-        @include desktop
-            left: 100%
-        @include mobile-and-small
-            top: 100%
+    // &:not(:first-child)
+    //     @include desktop
+    //         left: 100%
+    //     @include mobile-and-small
+    //         top: 100%
     @include mobile-and-small
         height: 100%
         grid-template-rows: var(--mobile-miniature-height) 1fr

@@ -120,7 +120,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         if (currentProject === index && text.length > 0) {
             animationTimeout = setTimeout(() => {
                 infoTL.current!
-                    .to(text, { xPercent: '0', yPercent: '0', duration: isDesktop ? .6 : .8, stagger: isDesktop ? .1 : .2, ease: 'sine.inOut', opacity: 1 })
+                    .to(text, { xPercent: '0', yPercent: '0', duration: isDesktop ? .7 : .8, stagger: isDesktop ? .1 : .2, ease: 'sine.inOut', opacity: 1 })
                     .to(capsules, { delay: isDesktop ? -.1 : -.2, yPercent: '0', duration: .3, stagger: .1, opacity: 1, ease: 'sine.inOut' })
             }, 1200);
         };

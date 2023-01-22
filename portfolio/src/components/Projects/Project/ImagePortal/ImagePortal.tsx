@@ -46,17 +46,18 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const staggerTime = 3.1;
             const duration = 3.5;
             imagesTL.current
-                .to(codeScreenshots, { ease: 'none', duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', scale: 1.1 })
+                .to(codeScreenshots, { ease: 'none', duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', yPercent: -50, scale: 1.1 })
                 .to(codeScreenshots, { ease: 'none', duration: duration, delay: (codeScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-70%', scale: 1 })
         };
 
         if (desktop !== undefined) {
             const desktopScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_desktop"]');
-            const staggerTime = 2.2;
+            const staggerTime = 1.6;
             const duration = 3.4;
+            gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', rotateX: '-20deg', scale: .9 })
             imagesTL.current
-                .to(desktopScreenshots, { ease: 'none', duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', scale: 1.2 })
-                .to(desktopScreenshots, { ease: 'none', duration: duration, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-40%', scale: 1 })
+                .to(desktopScreenshots, { ease: 'none', duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
+                .to(desktopScreenshots, { ease: 'none', duration: duration, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '20deg' })
         };
 
         if (mobile !== undefined) {
