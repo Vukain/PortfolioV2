@@ -55,8 +55,17 @@ import dnailsDesktopImage4Big from './dnails_desktop_4_big.webp';
 import dnailsDesktopImage4 from './dnails_desktop_4.webp';
 
 import atroLogo from './atro_logo.webp';
+import atroCodeImage1Small from './atro_code_1_small.webp';
+import atroCodeImage1Medium from './atro_code_1_medium.webp';
+import atroCodeImage1Big from './atro_code_1_big.webp';
 import atroCodeImage1 from './atro_code_1.webp';
+import atroCodeImage2Small from './atro_code_2_small.webp';
+import atroCodeImage2Medium from './atro_code_2_medium.webp';
+import atroCodeImage2Big from './atro_code_2_big.webp';
 import atroCodeImage2 from './atro_code_2.webp';
+import atroCodeImage3Small from './atro_code_3_small.webp';
+import atroCodeImage3Medium from './atro_code_3_medium.webp';
+import atroCodeImage3Big from './atro_code_3_big.webp';
 import atroCodeImage3 from './atro_code_3.webp';
 
 import portfolioV1Logo from './portfolio_v1_logo.webp';
@@ -66,19 +75,19 @@ import portfolioV1MobileImage3 from './portfolio_v1_mobile_3.webp';
 import portfolioV1MobileImage4 from './portfolio_v1_mobile_4.webp';
 import portfolioV1DesktopImage1Small from './portfolio_v1_desktop_1_small.webp';
 import portfolioV1DesktopImage1Medium from './portfolio_v1_desktop_1_medium.webp';
-import portfolioV1DesktopImage1Big from './portfolio_v1_desktop_1.webp';
+import portfolioV1DesktopImage1Big from './portfolio_v1_desktop_1_big.webp';
 import portfolioV1DesktopImage1 from './portfolio_v1_desktop_1.webp';
 import portfolioV1DesktopImage2Small from './portfolio_v1_desktop_2_small.webp';
 import portfolioV1DesktopImage2Medium from './portfolio_v1_desktop_2_medium.webp';
-import portfolioV1DesktopImage2Big from './portfolio_v1_desktop_2.webp';
+import portfolioV1DesktopImage2Big from './portfolio_v1_desktop_2_big.webp';
 import portfolioV1DesktopImage2 from './portfolio_v1_desktop_2.webp';
 import portfolioV1DesktopImage3Small from './portfolio_v1_desktop_3_small.webp';
 import portfolioV1DesktopImage3Medium from './portfolio_v1_desktop_3_medium.webp';
-import portfolioV1DesktopImage3Big from './portfolio_v1_desktop_3.webp';
+import portfolioV1DesktopImage3Big from './portfolio_v1_desktop_3_big.webp';
 import portfolioV1DesktopImage3 from './portfolio_v1_desktop_3.webp';
 import portfolioV1DesktopImage4Small from './portfolio_v1_desktop_4_small.webp';
 import portfolioV1DesktopImage4Medium from './portfolio_v1_desktop_4_medium.webp';
-import portfolioV1DesktopImage4Big from './portfolio_v1_desktop_4.webp';
+import portfolioV1DesktopImage4Big from './portfolio_v1_desktop_4_big.webp';
 import portfolioV1DesktopImage4 from './portfolio_v1_desktop_4.webp';
 
 export {
@@ -95,7 +104,10 @@ export {
     dnailsDesktopImage2Small, dnailsDesktopImage2Medium, dnailsDesktopImage2Big, dnailsDesktopImage2, 
     dnailsDesktopImage3Small, dnailsDesktopImage3Medium, dnailsDesktopImage3Big, dnailsDesktopImage3, 
     dnailsDesktopImage4Small, dnailsDesktopImage4Medium, dnailsDesktopImage4Big, dnailsDesktopImage4, 
-    atroLogo, atroCodeImage1, atroCodeImage2, atroCodeImage3,
+    atroLogo, 
+    atroCodeImage1Small, atroCodeImage1Medium, atroCodeImage1Big, atroCodeImage1,
+    atroCodeImage2Small, atroCodeImage2Medium,  atroCodeImage2Big, atroCodeImage2, 
+    atroCodeImage3Small, atroCodeImage3Medium, atroCodeImage3Big, atroCodeImage3,
     portfolioV1Logo, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4, 
     portfolioV1DesktopImage1Small, portfolioV1DesktopImage1Medium, portfolioV1DesktopImage1Big, portfolioV1DesktopImage1, 
     portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2, 

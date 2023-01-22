@@ -23,7 +23,10 @@ import {
     dnailsDesktopImage2Small, dnailsDesktopImage2Medium, dnailsDesktopImage2Big, dnailsDesktopImage2,
     dnailsDesktopImage3Small, dnailsDesktopImage3Medium, dnailsDesktopImage3Big, dnailsDesktopImage3,
     dnailsDesktopImage4Small, dnailsDesktopImage4Medium, dnailsDesktopImage4Big, dnailsDesktopImage4,
-    atroLogo, atroCodeImage1, atroCodeImage2, atroCodeImage3,
+    atroLogo,
+    atroCodeImage1Small, atroCodeImage1Medium, atroCodeImage1Big, atroCodeImage1,
+    atroCodeImage2Small, atroCodeImage2Medium, atroCodeImage2Big, atroCodeImage2,
+    atroCodeImage3Small, atroCodeImage3Medium, atroCodeImage3Big, atroCodeImage3,
     portfolioV1Logo, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4,
     portfolioV1DesktopImage1Small, portfolioV1DesktopImage1Medium, portfolioV1DesktopImage1Big, portfolioV1DesktopImage1,
     portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2,
@@ -112,7 +115,7 @@ export const Projects: React.FC = () => {
             logo: string,
             desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
             mobile?: string[],
-            code?: string[]
+            code?: Array<{ small: string, medium: string, big: string, full: string }>
         },
         links: {
             github: string,
@@ -200,7 +203,11 @@ export const Projects: React.FC = () => {
             technologies: ['python', 'oop', 'colorama'],
             images: {
                 logo: atroLogo,
-                code: [atroCodeImage1, atroCodeImage2, atroCodeImage3]
+                code: [
+                    { small: atroCodeImage1Small, medium: atroCodeImage1Medium, big: atroCodeImage1Big, full: atroCodeImage1 },
+                    { small: atroCodeImage2Small, medium: atroCodeImage2Medium, big: atroCodeImage2Big, full: atroCodeImage2 },
+                    { small: atroCodeImage3Small, medium: atroCodeImage3Medium, big: atroCodeImage3Big, full: atroCodeImage3 }
+                ]
             },
             links: {
                 github: 'https://github.com/Vukain/ATRO',

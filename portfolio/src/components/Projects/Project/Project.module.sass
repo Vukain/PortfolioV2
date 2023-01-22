@@ -1,12 +1,13 @@
 @import '../../../sass/mixins'
 
-@keyframes shift
-    0%
-        transform: translate(50%, -50%)
-    100%
-        transform: translate(-150%, -50%)
+// @keyframes shift
+//     0%
+//         transform: translate(50%, -50%)
+//     100%
+//         transform: translate(-150%, -50%)
 
 .project
+    perspective: 100vw
     position: absolute
     height: 100%
     width: 100%
@@ -35,6 +36,7 @@
     justify-content: space-between
     justify-content: center
     line-height: .8
+    background-color: var(--background-color-2)
     @include mobile-and-small
         justify-content: flex-start
         gap: 1.6vh

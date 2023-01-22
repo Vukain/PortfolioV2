@@ -8,7 +8,6 @@
     @include mobile-and-small
         grid-row: 3
         grid-column: 3
-        // background-color: var(--background-color-2)
         z-index: 999
         flex-direction: column
         justify-content: center
@@ -26,13 +25,18 @@
     border: none
     background-color: transparent
     cursor: pointer
-    padding: 1em
+    padding: 0em .4em
     outline: none
     color: var(--grey-dark)
+    outline: .5vh solid transparent
+    transition: outline-color .3s, outline-offset .3s
+    border-radius: 1em
+    &:hover, &:focus
+        color: var(--color-font-1)
     &--active
         color: var(--color-font-1)
-    &:hover, &:focus
-        color: var(--color-main-2)
+        outline-color: var(--color-main-2)
+        outline-offset: .5vh
     @include mobile-and-small
         padding: 0
         width: 1.4vh

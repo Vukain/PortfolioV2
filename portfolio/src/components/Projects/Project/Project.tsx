@@ -14,7 +14,12 @@ type myProps = {
         description: Record<string, string>,
         image?: React.FC<{ className?: string, title?: string }>,
         technologies: string[],
-        images: { logo: string, desktop?: Array<{ small: string, medium: string, big: string, full: string }>, mobile?: string[], code?: string[] },
+        images: {
+            logo: string,
+            desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
+            mobile?: string[],
+            code?: Array<{ small: string, medium: string, big: string, full: string }>
+        },
         links: { github: string, live: string }
     },
     index: number,
@@ -36,9 +41,10 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
     const isEnglish = language === 'english';
+    const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
     useEffect(() => {
-        const isDesktop = window.matchMedia('(orientation: landscape)').matches;
+
 
         const sectionHeight = document.getElementById('projects')!.offsetTop;
         const projectSize = isDesktop ? document.getElementById('gallery')!.offsetWidth : document.getElementById('gallery')!.offsetHeight;
@@ -47,38 +53,12 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         const slidingText: HTMLElement[] = elementGetter('[class*="slide_"]');
         const slidingCapsules: HTMLElement[] = elementGetter('[class*="capsule_"]');
 
-        elements.current = { text: slidingText, capsules: slidingCapsules }
+        elements.current = { text: slidingText, capsules: slidingCapsules };
 
         infoTL.current = gsap.timeline({ defaults: { transformOrigin: 'center', ease: 'sine.inOut' } });
 
-        gsap.set([slidingText, slidingCapsules], { yPercent: '105', opacity: 0 });
-
-        // if (true) {
-        //     gsap.timeline({
-        //         scrollTrigger: {
-        //             trigger: '#app',
-        //             onLeaveBack: () => {
-        //                 setCurrentProject(index === 0 ? 0 : index - 1);
-        //                 // infoTL.to(slidingText, { yPercent: '110', duration: .2, stagger: .3 })
-        //             },
-        //             onEnter: () => {
-        //                 setCurrentProject(index);
-        //                 // infoTL.to(slidingText, { yPercent: '0', duration: 1.3, stagger: .2 })
-        //             },
-        //             onEnterBack: () => {
-        //                 setCurrentProject(index);
-        //                 // infoTL.to(slidingText, { yPercent: '0', duration: 1.3, stagger: .2 })
-        //             },
-        //             onLeave: () => {
-        //                 setCurrentProject(index === numberOfProjects - 1 ? numberOfProjects - 1 : index + 1);
-        //                 // infoTL.to(slidingText, { yPercent: '110', duration: .2, stagger: .3 })
-        //             },
-        //             start: `${sectionHeight + (index * projectSize)}px ${projectSize}px`,
-        //             end: `${sectionHeight + (index + 1) * projectSize}px ${projectSize}px`,
-        //             markers: true
-        //         }
-        //     });
-        // }
+        gsap.set([slidingCapsules], { yPercent: '105', opacity: 0 });
+        isDesktop ? gsap.set([slidingText], { xPercent: '105', opacity: 0 }) : gsap.set([slidingText], { yPercent: '105', opacity: 0 });
 
         gsap.timeline({
             scrollTrigger: {
@@ -86,31 +66,43 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                 onLeaveBack: () => {
                     setCurrentProject(index === 0 ? 0 : index - 1);
                     if (index !== 0) {
-                        infoTL.current!
-                            .to(slidingText, { yPercent: '105', duration: .3, stagger: .3, opacity: 0 })
-                            .to(slidingText, { opacity: 0, duration: 0 })
-                            .to(slidingCapsules, { yPercent: '105', duration: .2, stagger: .1, opacity: 0 });
+                        if (isDesktop) {
+                            infoTL.current!
+                                .to(slidingText, { xPercent: '105', duration: .6, stagger: .1, opacity: 0 })
+                                .to(slidingText, { opacity: 0, duration: 0 })
+                                .to([...slidingCapsules].reverse(), { delay: -1, yPercent: '105', duration: .3, stagger: .1, opacity: 0 });
+                        } else {
+                            infoTL.current!
+                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: '105', duration: .3, stagger: .1, opacity: 0 })
+                                .to([...slidingText].reverse(), { yPercent: '105', duration: .5, stagger: .1, opacity: 0 })
+                                .to(slidingText, { opacity: 0, duration: 0 });
+                        }
                     };
                 },
                 onEnter: () => {
                     if (currentProject !== index) {
                         setCurrentProject(index);
                     };
-                    // infoTL.to(slidingText, { yPercent: '0', duration: 1.3, stagger: .2 })
                 },
                 onEnterBack: () => {
                     if (currentProject !== index) {
                         setCurrentProject(index);
                     };
-                    // infoTL.to(slidingText, { yPercent: '0', duration: 1.3, stagger: .2 })
                 },
                 onLeave: () => {
                     setCurrentProject(index === numberOfProjects - 1 ? numberOfProjects - 1 : index + 1);
                     if (index !== numberOfProjects - 1) {
-                        infoTL.current!
-                            .to(slidingText, { yPercent: '-105', duration: .3, stagger: .3, opacity: 0 })
-                            .to(slidingText, { opacity: 0, duration: 0 })
-                            .to(slidingCapsules, { yPercent: '-105', duration: .2, stagger: .1, opacity: 0 });
+                        if (isDesktop) {
+                            infoTL.current!
+                                .to(slidingText, { xPercent: '-105', duration: .6, stagger: .1, opacity: 0 })
+                                .to(slidingText, { opacity: 0, duration: 0 })
+                                .to([...slidingCapsules].reverse(), { delay: -1, yPercent: '105', duration: .3, stagger: .1, opacity: 0 });
+                        } else {
+                            infoTL.current!
+                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: '-105', duration: .2, stagger: .05, opacity: 0 })
+                                .to([...slidingText].reverse(), { delay: slidingCapsules.length * -.05 + .2, yPercent: '-105', duration: .5, stagger: .1, opacity: 0 })
+                                .to(slidingText, { opacity: 0, duration: 0 });
+                        };
                     };
                 },
                 start: `${2 * sectionHeight + index * projectSize - 1}px ${sectionHeight}px`,
@@ -128,9 +120,8 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         if (currentProject === index && text.length > 0) {
             animationTimeout = setTimeout(() => {
                 infoTL.current!
-                    // .to([text], { opacity: 1, duration: 0 })
-                    .to(text, { yPercent: '0', duration: .7, stagger: .2, ease: 'sine.inOut', opacity: 1 })
-                    .to(capsules, { yPercent: '0', duration: .4, stagger: .1, opacity: 1, ease: 'sine.inOut' })
+                    .to(text, { xPercent: '0', yPercent: '0', duration: isDesktop ? .6 : .8, stagger: isDesktop ? .1 : .2, ease: 'sine.inOut', opacity: 1 })
+                    .to(capsules, { delay: isDesktop ? -.1 : -.2, yPercent: '0', duration: .3, stagger: .1, opacity: 1, ease: 'sine.inOut' })
             }, 1200);
         };
 
@@ -144,7 +135,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     return (
         <article className={styles.project}>
 
-            <ImagePortal images={images} links={links} />
+            <ImagePortal images={images} links={links} isActive={currentProject === index} />
 
             <article className={styles.info} ref={infoRef}>
 
