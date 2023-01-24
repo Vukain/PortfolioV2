@@ -170,7 +170,7 @@
 
     &--hero_1
         top: 4%
-        left: 63%
+        left: 65%
         width: 25vh
         z-index: 5
         & .crystal
@@ -178,7 +178,7 @@
 
     &--hero_2
         top: 2%
-        left: 22%
+        left: 21%
         width: 16vh
         z-index: 3
         & .crystal
@@ -231,9 +231,9 @@
             transform: rotateZ(40deg)
 
     &--scroll_2
-        top: 72%
-        left: 24%
-        width: 5vh
+        top: 76%
+        left: 28%
+        width: 6vh
         z-index: 2
         & .crystal
             transform: rotateZ(45deg)
@@ -385,3 +385,5 @@
 
 .floating_crystal
     animation: crystal-move 8s linear infinite, crystal-rotate 8s linear infinite
+    &:-ms-fullscreen
+        animation: crystal-move-strong 8s linear infinite, crystal-rotate 8s linear infinite

@@ -16,12 +16,6 @@
             fill: var(--color-main-2)
             transform: scale(1.2)
 
-    &--hidden
-        // opacity: 1
-        // transform: rotateY(10deg)
-        // scale: 0
-        // transition-delay: 0s, 0s, 0s
-
 .link
     height: 6vh
     position: absolute
@@ -96,12 +90,11 @@
     width: 100%
     height: 100%
     transition: filter .7s 0s
-    &_logo
+
+    &_logos
         perspective: 100vw
         width: 80%
         aspect-ratio: 4/3
-        top: 50%
-        left: 50%
         position: absolute
         border-radius: var(--border-radius-big)
         filter: var(--screenshot-shadow)
@@ -115,22 +108,24 @@
         position: absolute
         top: 0
         left: 0
-        perspective: 100vw
         width: 100%
         height: 100%
+        perspective: 100vw
 
-.image_logo
+.logo
     width: 100%
     height: 100%
     object-fit: cover
 
 .screenshot
+
     &_code
-        width: 70%
+        width: 75%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
         transform: translate(-50%, -50%)
+
     &_desktop
         width: 60%
         position: absolute
@@ -141,6 +136,7 @@
             left: 40%
         &:nth-child(2n)
             left: 60%
+
     &_mobile
         left: 80%
         position: absolute

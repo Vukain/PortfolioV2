@@ -124,7 +124,7 @@ export const Projects: React.FC = () => {
                 ease: 'sine.inOut'
             });
 
-            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+            fadingProjectsTL.to(projects.slice(0, -1), {
                 rotateX: '-20deg',
                 scale: .7,
                 stagger: .5,
