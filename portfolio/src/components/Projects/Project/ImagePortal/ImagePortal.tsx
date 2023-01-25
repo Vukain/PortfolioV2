@@ -33,56 +33,63 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
         // Used with ref for multiple useEffects
         imagesTL.current = gsap.timeline({ defaults: { transformOrigin: 'center', ease: 'none' }, repeat: -1 });
+        gsap.set(logoWrapper, { top: '50%', left: '50%', scale: 1 })
 
         const logoSlideDuration = 3.5;
-        gsap.set(logoWrapper, { top: '50%', left: '50%', scale: 1.1 })
-        imagesTL.current
-            .to(logoWrapper, { delay: 0, ease: 'Expo.easeInOut', duration: logoSlideDuration, top: '-50%', scale: 1 })
-            .to(logoImage, { delay: -logoSlideDuration, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'center bottom', scale: 1.2, })
-            .to(logoWrapper, { top: '150%', duration: 0, scale: 1, })
+        const logoSlideInDelay = mobile ? -4.6 : -2.4;
+        // Fix for weird GSAP delay desync when negative delay is longer than animation duration
+        const logoSlideDelayFix = logoSlideInDelay < -logoSlideDuration ? logoSlideInDelay : -logoSlideDuration;
+
+        if ([code, desktop, mobile].some(el => el)) {
+            imagesTL.current
+                .to(logoWrapper, { delay: 5, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '-50%', scale: .85 })
+                .to(logoImage, { delay: -logoSlideDuration, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'center bottom', scale: 1.25, })
+                .to(logoWrapper, { top: '150%', duration: 0 })
+        };
 
         if (code) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');
-            const staggerTime = 3.1;
-            const duration = 3.5;
+            const freezeTime = 1;
+            const staggerTime = 3.7 + freezeTime;
+            const duration = 3;
+
+            gsap.set(codeScreenshots, { top: '170%', yPercent: '-50', rotateX: '-3deg', scale: .9 })
             imagesTL.current
-                .to(codeScreenshots, { duration: duration, delay: -2.2, stagger: staggerTime, top: '50%', yPercent: -50, scale: 1 })
-                .to(codeScreenshots, { duration: duration, delay: (codeScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-70%', scale: .9 })
+                .to(codeScreenshots, { ease: 'Sine.easeOut', duration: duration, delay: -2.5, stagger: staggerTime, top: '50%', yPercent: -50, scale: 1, rotateX: 0 })
+                .to(codeScreenshots, { ease: 'Sine.easeIn', duration: duration, delay: -(codeScreenshots.length - 1) * staggerTime + freezeTime, stagger: staggerTime, top: '-70%', scale: .9, rotateX: '3deg' })
         };
 
         if (desktop) {
             const desktopScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_desktop"]');
             const staggerTime = 3.2;
             const duration = 2;
+
             gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', rotateX: '-10deg', scale: .9 })
             imagesTL.current
-                // .to(desktopScreenshots, { ease: 'none', delay: -3.5, duration: duration, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
-                // .to(desktopScreenshots, { ease: 'none', duration: duration, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '20deg' })
-                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.75, duration: duration, stagger: staggerTime, top: '80%', scale: .95, rotateX: '-7deg' })
+                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.75, duration: duration * 1.1, stagger: staggerTime, top: '80%', scale: .95, rotateX: '-7deg' })
                 .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
                 .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '20%', scale: .95, rotateX: '7deg' })
-                .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '10deg' })
+                .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '10deg' })
         };
 
         if (mobile) {
             const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
             const staggerTime = 3;
             const duration = 3;
+
             gsap.set(mobileScreenshots, { top: '150%', yPercent: '-50', scale: .8, rotateX: '-10deg', rotateY: '6deg' })
             imagesTL.current
-                .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -5, duration: duration * 1.15, stagger: staggerTime, top: '50%', scale: .95, rotateX: 0, rotateY: '6deg' })
+                .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -5.2, duration: duration * 1.1, stagger: staggerTime, top: '50%', scale: .95, rotateX: 0, rotateY: '6deg' })
                 .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1, rotateY: 0 })
                 .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '20%', scale: .95, rotateY: '-6deg' })
-                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.15, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8, rotateX: '10deg', rotateY: '-6deg' })
+                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8, rotateX: '10deg', rotateY: '-6deg' })
         };
 
-        const logoSlideInDelay = mobile === undefined ? -1.8 : -4;
-        // Fix for weird GSAP delay desync when mobile screenshots are available
-        const logoSlideDelayFix = mobile === undefined ? -logoSlideDuration : -4;
-
-        imagesTL.current
-            .to(logoWrapper, { delay: logoSlideInDelay, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '50%', scale: 1.1 })
-            .to(logoImage, { delay: logoSlideDelayFix, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'right bottom', scale: 1 })
+        if ([code, desktop, mobile].some(el => el)) {
+            imagesTL.current
+                .to(logoWrapper, { delay: logoSlideInDelay, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '50%', scale: 1 })
+                .to(logoImage, { delay: logoSlideDelayFix, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'right bottom', scale: 1 })
+        }
     }, []);
 
     useEffect(() => {
