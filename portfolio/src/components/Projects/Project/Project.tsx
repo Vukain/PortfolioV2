@@ -63,20 +63,32 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#app',
+                onLeave: () => {
+                    setCurrentProject(index === numberOfProjects - 1 ? numberOfProjects - 1 : index + 1);
+                    if (index !== numberOfProjects - 1) {
+                        if (isDesktop) {
+                            infoTL.current!
+                                .to(slidingText, { xPercent: '-105', duration: .6, stagger: .15, opacity: 0 })
+                                .to([...slidingCapsules].reverse(), { delay: -1, yPercent: '105', duration: .3, stagger: .1, opacity: 0 });
+                        } else {
+                            infoTL.current!
+                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: '-105', duration: .2, stagger: .05, opacity: 0 })
+                                .to([...slidingText].reverse(), { delay: slidingCapsules.length * -.05 + .2, yPercent: '-105', duration: .5, stagger: .1, opacity: 0 })
+                        };
+                    };
+                },
                 onLeaveBack: () => {
                     setCurrentProject(index === 0 ? 0 : index - 1);
                     if (index !== 0) {
                         if (isDesktop) {
                             infoTL.current!
                                 .to(slidingText, { xPercent: '105', duration: .6, stagger: .1, opacity: 0 })
-                                .to(slidingText, { opacity: 0, duration: 0 })
                                 .to([...slidingCapsules].reverse(), { delay: -1, yPercent: '105', duration: .3, stagger: .1, opacity: 0 });
                         } else {
                             infoTL.current!
                                 .to([...slidingCapsules].reverse(), { delay: 0, yPercent: '105', duration: .3, stagger: .1, opacity: 0 })
                                 .to([...slidingText].reverse(), { yPercent: '105', duration: .5, stagger: .1, opacity: 0 })
-                                .to(slidingText, { opacity: 0, duration: 0 });
-                        }
+                        };
                     };
                 },
                 onEnter: () => {
@@ -87,22 +99,6 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                 onEnterBack: () => {
                     if (currentProject !== index) {
                         setCurrentProject(index);
-                    };
-                },
-                onLeave: () => {
-                    setCurrentProject(index === numberOfProjects - 1 ? numberOfProjects - 1 : index + 1);
-                    if (index !== numberOfProjects - 1) {
-                        if (isDesktop) {
-                            infoTL.current!
-                                .to(slidingText, { xPercent: '-105', duration: .6, stagger: .1, opacity: 0 })
-                                .to(slidingText, { opacity: 0, duration: 0 })
-                                .to([...slidingCapsules].reverse(), { delay: -1, yPercent: '105', duration: .3, stagger: .1, opacity: 0 });
-                        } else {
-                            infoTL.current!
-                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: '-105', duration: .2, stagger: .05, opacity: 0 })
-                                .to([...slidingText].reverse(), { delay: slidingCapsules.length * -.05 + .2, yPercent: '-105', duration: .5, stagger: .1, opacity: 0 })
-                                .to(slidingText, { opacity: 0, duration: 0 });
-                        };
                     };
                 },
                 start: `${2 * sectionHeight + index * projectSize - 1}px ${sectionHeight}px`,
@@ -120,7 +116,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         if (currentProject === index && text.length > 0) {
             animationTimeout = setTimeout(() => {
                 infoTL.current!
-                    .to(text, { xPercent: '0', yPercent: '0', duration: isDesktop ? .7 : .8, stagger: isDesktop ? .1 : .2, ease: 'sine.inOut', opacity: 1 })
+                    .to(text, { xPercent: '0', yPercent: '0', duration: isDesktop ? .7 : .8, stagger: isDesktop ? .09 : .2, ease: 'sine.inOut', opacity: 1 })
                     .to(capsules, { delay: isDesktop ? -.1 : -.2, yPercent: '0', duration: .3, stagger: .1, opacity: 1, ease: 'sine.inOut' })
             }, 1200);
         };

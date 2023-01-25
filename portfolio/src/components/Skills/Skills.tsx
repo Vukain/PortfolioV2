@@ -60,7 +60,6 @@ export const Skills: React.FC = () => {
     };
 
     // Setting up all GSAP timelines and animations
-
     useEffect(() => {
         const [crystal, frontendCard, backendCard, graphicsCard] = [crystalRef.current, frontendRef.current, backendRef.current, graphicsRef.current];
 
@@ -78,7 +77,6 @@ export const Skills: React.FC = () => {
             gsap.set([inner, crystal], { autoAlpha: 0 })
 
             // Timelines for crystal shards scroll animation
-
             const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
                 defaults: { ease: 'none', transformOrigin: 'center' },
                 repeat: (isDesktop ? 2 : 4) + 2 * (index < 5 ? index : 2),
@@ -89,13 +87,17 @@ export const Skills: React.FC = () => {
                     scrub: 2,
                     start: motionStart,
                     end: motionEnd,
-                    onLeave: () => { setFloat(true) },
+                    onLeave: () => {
+                        // Condition to prevent visual Firefox bug
+                        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
+                            setFloat(true)
+                        };
+                    },
                     onEnterBack: () => { setFloat(false) },
                 }
             })));
 
             // Animation of crystal shards moving while scrolling
-
             const crystalFloater = () => {
 
                 leftBottomShardTL
@@ -172,18 +174,15 @@ export const Skills: React.FC = () => {
             };
 
             // Timeline for crystal dropping and breaking
-
             const breakCrystalTL = gsap.timeline({
                 defaults: { ease: "sine.out" },
                 scrollTrigger: {
                     trigger: '#skills',
-                    start: `${isDesktop ? 15 : 10}% bottom`,
-                    // end: motionEnd
+                    start: `${isDesktop ? 15 : 10}% bottom`
                 }
             });
 
             // Animation of crystal dropping and breaking
-
             breakCrystalTL.fromTo(crystal, { scale: 1.7 }, {
                 scale: 1, autoAlpha: 1, duration: .3
             }).to(inner, {
@@ -221,8 +220,7 @@ export const Skills: React.FC = () => {
                 onComplete: crystalFloater
             });
 
-            // Settibg up trigger and path for crystal move
-
+            // Setting up trigger and path for crystal move
             const floatingCrystalTL = gsap.timeline({
                 scrollTrigger: {
                     trigger: motionRoute,
@@ -246,7 +244,6 @@ export const Skills: React.FC = () => {
             });
 
             // Unused automatic crystal floating, now floating is synced with scroll and then transitions into css floating animation
-
             // const floatingShardAuto = gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1, yoyo: true });
 
             // floatingShardAuto.to(lowerShard, { duration: 1, yPercent: '+=35', rotateZ: '2deg' })
@@ -255,7 +252,6 @@ export const Skills: React.FC = () => {
             //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
 
             // Set as active section
-
             gsap.timeline({
                 scrollTrigger: {
                     trigger: '#cards',
@@ -273,7 +269,6 @@ export const Skills: React.FC = () => {
             });
 
             // Setting active card for mobile animation
-
             gsap.timeline({
                 scrollTrigger: {
                     trigger: '#cards',
@@ -312,7 +307,6 @@ export const Skills: React.FC = () => {
 
 
             // Card reveal animations for mobile and desktop variant
-
             const cards = [frontendCard, backendCard, graphicsCard];
 
             if (isDesktop) {
@@ -354,11 +348,9 @@ export const Skills: React.FC = () => {
     }, [setCurrentSection, isDesktop])
 
     // Setting motion path according to screen aspect ratio
-
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
 
     // Setting up skill cards
-
     const cards = Object.keys(cardData).map((element, index) => {
 
         const Icon = cardData[element].icon;
