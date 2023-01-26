@@ -1,7 +1,7 @@
 @import '../../../sass/mixins'
 
 // Eight move points   
-// @keyframes crystal-move
+// @keyframes crystal-orbit-small
 //     0%
 //         translate: 0 0
 //     12.5%
@@ -22,7 +22,7 @@
 //         translate: 0 0
 
 // Twelve move points
-// @keyframes crystal-move
+// @keyframes crystal-orbit-small
 //     0%
 //         translate: 0 0
 //     8.33%
@@ -51,7 +51,7 @@
 //         translate: 0 0
 
 // Sixteen move points
-@keyframes crystal-move
+@keyframes crystal-orbit-small
     0%
         translate: 0 0
     6.25%
@@ -87,7 +87,7 @@
     100%
         translate: 0 0
 
-@keyframes crystal-move-strong
+@keyframes crystal-orbit-big
     0%
         translate: 0 0
     6.25%
@@ -349,7 +349,7 @@
             width: 3vh
             z-index: 3
             & .floating_crystal
-                animation: crystal-move-strong 8s linear infinite, crystal-rotate 8s linear infinite
+                animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite
             & .crystal
                 transform: rotateZ(342deg)
 
@@ -378,12 +378,15 @@
             & .crystal
                 transform: rotateZ(6deg)
 
-    //Quicker way, but less control
+    //Quicker way than separate durations, but less control
     @for $i from 2 to 19
         &:nth-child(#{$i}) .floating_crystal
             animation-duration: 6 + (($i - 1) * 1s), 6 + (($i - 1) * 1s)
 
 .floating_crystal
-    animation: crystal-move 8s linear infinite, crystal-rotate 8s linear infinite
-    &:-ms-fullscreen
-        animation: crystal-move-strong 8s linear infinite, crystal-rotate 8s linear infinite
+
+    &--small
+        animation: crystal-orbit-small 8s linear infinite, crystal-rotate 8s linear infinite
+
+    &--strong
+        animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite

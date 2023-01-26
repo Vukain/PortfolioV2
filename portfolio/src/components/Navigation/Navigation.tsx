@@ -10,7 +10,6 @@ export const Navigation: React.FC = () => {
 
     const { language, navigateTo, setLanguage } = useContext(AppContext);
 
-
     const [mobileNavigationVisibility, setMobileNavigationVisibility] = useState(false);
     const [skipAnimationDelay, setSkipAnimationDelay] = useState(false);
 

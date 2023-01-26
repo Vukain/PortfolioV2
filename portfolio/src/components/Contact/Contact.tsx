@@ -30,9 +30,10 @@ import { ReactComponent as SpikedShardImg2 } from '../../media/parallax_shards/s
 import { ReactComponent as SpikedShardImg3 } from '../../media/parallax_shards/spiked_3.svg';
 import { ReactComponent as SpikedShardImg4 } from '../../media/parallax_shards/spiked_4.svg';
 
-type Mutable<Type> = {
-    -readonly [Key in keyof Type]: Type[Key];
-};
+// Could be used as Mutable<React.RefObject<T>> instead of React.MutableRefObject
+// type Mutable<Type> = {
+//     -readonly [Key in keyof Type]: Type[Key];
+// };
 
 export const Contact: React.FC = () => {
 
@@ -42,11 +43,7 @@ export const Contact: React.FC = () => {
     const formRef: React.MutableRefObject<null | HTMLFormElement> = useRef(null);
     const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
     const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
-    const errorTimeout: Mutable<React.RefObject<NodeJS.Timeout | null>> = useRef(null);
-
-    // const nameInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
-    // const emailInputRef: React.MutableRefObject<null | HTMLInputElement> = useRef(null);
-    // const messageInputRef: React.MutableRefObject<null | HTMLTextAreaElement> = useRef(null);
+    const errorTimeout: React.MutableRefObject<null | NodeJS.Timeout> = useRef(null);
 
     const [cursorXPosition, setCursorXPosition] = useState(0);
     const [cursorYPosition, setCursorYPosition] = useState(0);
@@ -55,7 +52,9 @@ export const Contact: React.FC = () => {
     const [formValidity, setFormValidity] = useState('invalid');
     const [showError, setShowError] = useState(false);
 
+    // Create form with given fields
     const { inputValues, setInputValues, changeHandler } = useForm('user_name', 'user_email', 'message');
+    // user_ used as required for emailjs compatibility
     const { user_name: name, user_email: email, message } = inputValues;
 
     useEffect(() => {
@@ -87,20 +86,17 @@ export const Contact: React.FC = () => {
             scrollTrigger: {
                 trigger: '#contact',
                 onEnter: () => {
-                    setTimeout(() => {
-                        setCurrentSection('contact');
-                        window.history.pushState({}, '', '#contact');
-                    }, 50)
+                    setCurrentSection('contact');
+                    window.history.pushState({}, '', '#contact');
                 },
                 onEnterBack: () => {
                     setCurrentSection('contact');
                     window.history.pushState({}, '', '#contact');
                 },
-                start: '5% center',
-                end: 'bottom center',
-                // markers: true
+                start: 'top center',
+                end: 'bottom center'
             }
-        });
+        })
     }, [setCurrentSection]);
 
     useEffect(() => {
@@ -108,7 +104,6 @@ export const Contact: React.FC = () => {
     }, [name, email, message])
 
     const mouseMoveHandler = (e: MouseEvent): void => {
-        // e.preventDefault();
         if (sectionRef.current) {
             setCursorXPosition(e.clientX - sectionRef.current?.getBoundingClientRect().left - initialCursorXPositionRef.current + exitCursorXPosition)
             setCursorYPosition(e.clientY - sectionRef.current?.getBoundingClientRect().top - initialCursorYPositionRef.current + exitCursorYPosition)
@@ -116,7 +111,6 @@ export const Contact: React.FC = () => {
     };
 
     const mouseEnterHandler = (e: MouseEvent): void => {
-        // e.preventDefault();
         if (sectionRef.current) {
             initialCursorXPositionRef.current = e.clientX - sectionRef.current.getBoundingClientRect().left
             initialCursorYPositionRef.current = e.clientY - sectionRef.current.getBoundingClientRect().top
@@ -124,7 +118,6 @@ export const Contact: React.FC = () => {
     };
 
     const mouseLeaveHandler = (e: MouseEvent): void => {
-        // e.preventDefault();
         setExitCursorXPosition(cursorXPosition);
         setExitCursorYPosition(cursorYPosition);
     };
@@ -141,7 +134,7 @@ export const Contact: React.FC = () => {
         if (formValidity === 'valid') {
             setFormValidity('sent');
             // Disabled sending while not live
-            // emailjs.sendForm('service_xxx', 'template_xxx', formRef.current!, 'xxx')
+            // emailjs.sendForm('service_xxx', 'template_xxx', formRef.current!, 'key_xxx')
             //     .then((result) => {
             //         console.log(result.text);
             //     }, (error) => {
@@ -164,28 +157,28 @@ export const Contact: React.FC = () => {
         name: string,
         crystalImage: React.FC,
         moveSpeed: number,
-        orbitSpread: string
+        orbitRange: string
     }>;
 
     const crystals: Crystals = [
-        { name: 'spiked_1', crystalImage: SpikedShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'spiked_2', crystalImage: SpikedShardImg2, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'spiked_3', crystalImage: SpikedShardImg3, moveSpeed: 1, orbitSpread: 'small' }, { name: 'spiked_4', crystalImage: SpikedShardImg4, moveSpeed: .5, orbitSpread: 'small' },
-        { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitSpread: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitSpread: 'small' }, { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 1, orbitSpread: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 1, orbitSpread: 'small' },
-        { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 3.4, orbitSpread: 'small' },
-        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 3, orbitSpread: 'small' },
-        { name: 'scroll_2', crystalImage: ScrollShardImg2, moveSpeed: 1, orbitSpread: 'small' },
-        { name: 'scroll_3', crystalImage: ScrollShardImg3, moveSpeed: 1.5, orbitSpread: 'small' },
-        { name: 'scroll_4', crystalImage: ScrollShardImg4, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'scroll_5', crystalImage: ScrollShardImg5, moveSpeed: 2, orbitSpread: 'small' },
-        { name: 'scroll_6', crystalImage: ScrollShardImg6, moveSpeed: 2.4, orbitSpread: 'small' },
-        { name: 'scroll_7', crystalImage: ScrollShardImg7, moveSpeed: 1, orbitSpread: 'small' },
+        { name: 'spiked_1', crystalImage: SpikedShardImg1, moveSpeed: 4, orbitRange: 'small' }, { name: 'spiked_2', crystalImage: SpikedShardImg2, moveSpeed: 3, orbitRange: 'small' },
+        { name: 'spiked_3', crystalImage: SpikedShardImg3, moveSpeed: 1, orbitRange: 'small' }, { name: 'spiked_4', crystalImage: SpikedShardImg4, moveSpeed: .5, orbitRange: 'small' },
+        { name: 'hero_1', crystalImage: HeroShardImg1, moveSpeed: 4, orbitRange: 'small' }, { name: 'hero_2', crystalImage: HeroShardImg2, moveSpeed: 3, orbitRange: 'small' },
+        { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitRange: 'small' }, { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitRange: 'small' },
+        { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 1, orbitRange: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 1, orbitRange: 'small' },
+        { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 3.4, orbitRange: 'small' },
+        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 3, orbitRange: 'small' },
+        { name: 'scroll_2', crystalImage: ScrollShardImg2, moveSpeed: 1, orbitRange: 'small' },
+        { name: 'scroll_3', crystalImage: ScrollShardImg3, moveSpeed: 1.5, orbitRange: 'small' },
+        { name: 'scroll_4', crystalImage: ScrollShardImg4, moveSpeed: 2, orbitRange: 'small' },
+        { name: 'scroll_5', crystalImage: ScrollShardImg5, moveSpeed: 2, orbitRange: 'small' },
+        { name: 'scroll_6', crystalImage: ScrollShardImg6, moveSpeed: 2.4, orbitRange: 'small' },
+        { name: 'scroll_7', crystalImage: ScrollShardImg7, moveSpeed: 1, orbitRange: 'small' },
     ];
 
     const crystalsMapped = crystals.map((data, index) => {
         return (
-            <ParallaxCrystal key={index} data={data} cursorXPosition={cursorXPosition} cursorYPosition={cursorYPosition} />
+            <ParallaxCrystal key={index + data.name} data={data} cursorXPosition={cursorXPosition} cursorYPosition={cursorYPosition} />
         );
     });
 

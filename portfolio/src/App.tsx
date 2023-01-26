@@ -17,6 +17,7 @@ import { Skills } from './components/Skills/Skills';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
+// Fix for animation jump when address bar toggles on mobile
 ScrollTrigger.config({
   ignoreMobileResize: true
 });
@@ -24,13 +25,28 @@ ScrollTrigger.config({
 export const App = () => {
 
   const [lightTheme, setLightTheme] = useState(false);
+  const [, location] = window.location.href.split('#');
 
   useEffect(() => {
-    const [, location] = window.location.href.split('#');
-    if (['projects', 'skills', 'contact'].includes(location)) {
-      window.location.href = `#${location}`;
-    };
-  }, [])
+    // Scroll to section, when direct linking, after page load
+
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState == 'complete') {
+        console.log('timeouto')
+        setTimeout(() => {
+          if (['projects', 'skills', 'contact'].includes(location)) {
+            window.location.href = `#${location}`;
+          };
+        }, 100)
+      }
+    });
+    // setTimeout(() => {
+    //   if (['projects', 'skills', 'contact'].includes(location)) {
+    //     window.location.href = `#${location}`;
+    //   };
+
+    // }, 500)
+  }, []);
 
   return (
     <AppContextProvider >
@@ -49,7 +65,6 @@ export const App = () => {
 
     </AppContextProvider>
   );
-}
-
+};
 
 export default App;

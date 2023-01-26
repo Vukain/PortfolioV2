@@ -71,10 +71,6 @@ export const Projects: React.FC = () => {
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
-                    // document.body.style.overflow = "hidden";
-                    // setTimeout(() => {
-                    //     document.body.style.overflow = "scroll";
-                    // }, 200);
                 },
                 onEnterBack: () => {
                     setCurrentSection('projects');

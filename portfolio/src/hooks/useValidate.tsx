@@ -18,5 +18,4 @@ export const useValidate = () => {
     };
 
     return { validate }
-
 };

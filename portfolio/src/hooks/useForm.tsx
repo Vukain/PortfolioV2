@@ -3,15 +3,15 @@ import { useValidate } from './useValidate';
 
 type Fields = string[];
 
-type inputsData = Record<string, {
+type InputsData = Record<string, {
     value: string;
     status: string;
     error: Record<string, string>;
 }>;
 
 type ReturnType = {
-    inputValues: inputsData,
-    setInputValues: React.Dispatch<React.SetStateAction<inputsData>>,
+    inputValues: InputsData,
+    setInputValues: React.Dispatch<React.SetStateAction<InputsData>>,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 };
 
@@ -21,10 +21,12 @@ export const useForm = (...fields: Fields): ReturnType => {
 
     const initInputs = (fields: Fields) => {
 
-        const inputs: inputsData = {};
+        const inputs: InputsData = {};
 
         for (const field of fields) {
-            const error = field === 'user_email' ? { english: "Email can't be empty and must include a '@' sign!", polish: "Email nie może być pusty i musi zawierać znak '@'!" } : { english: "This field can't be empty!", polish: "To pole nie może być puste!" };
+            const error = field === 'user_email' ?
+                { english: "Email can't be empty and must include a '@' sign!", polish: "Email nie może być pusty i musi zawierać znak '@'!" } :
+                { english: "This field can't be empty!", polish: "To pole nie może być puste!" };
             inputs[field] = { value: '', status: 'untouched', error: error };
         };
         return inputs;

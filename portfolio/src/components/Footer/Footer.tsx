@@ -1,11 +1,9 @@
-import { useContext } from 'react';
+import { useEffect } from 'react';
 
 import styles from './Footer.module.sass';
 
 import { LanguageChanger } from './LanguageChanger/LanguageChanger';
 import { SocialIcons } from '../SocialIcons/SocialIcons';
-
-// import { AppContext } from '../../store/AppContext';
 
 type MyProps = {
     theme: boolean,

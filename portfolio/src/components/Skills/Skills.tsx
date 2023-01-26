@@ -251,23 +251,6 @@ export const Skills: React.FC = () => {
             //   .to(lowerShard, { duration: 1, yPercent: '+=30', rotateZ: '3deg' })
             //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
 
-            // Set as active section
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: '#cards',
-                    onEnter: () => {
-                        setCurrentSection('skills');
-                        window.history.pushState({}, '', '#skills');
-                    },
-                    onEnterBack: () => {
-                        setCurrentSection('skills');
-                        window.history.pushState({}, '', '#skills');
-                    },
-                    start: 'top center',
-                    end: 'bottom center'
-                }
-            });
-
             // Setting active card for mobile animation
             gsap.timeline({
                 scrollTrigger: {
@@ -304,7 +287,6 @@ export const Skills: React.FC = () => {
                     end: `90% ${cardTriggerPosition}px`
                 }
             });
-
 
             // Card reveal animations for mobile and desktop variant
             const cards = [frontendCard, backendCard, graphicsCard];
@@ -345,7 +327,24 @@ export const Skills: React.FC = () => {
                 });
             };
         };
-    }, [setCurrentSection, isDesktop])
+
+        // Set as active section
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#cards',
+                onEnter: () => {
+                    setCurrentSection('skills');
+                    window.history.pushState({}, '', '#skills');
+                },
+                onEnterBack: () => {
+                    setCurrentSection('skills');
+                    window.history.pushState({}, '', '#skills');
+                },
+                start: '5% center',
+                end: 'bottom center'
+            }
+        });
+    }, [isDesktop, setCurrentSection])
 
     // Setting motion path according to screen aspect ratio
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
