@@ -17,6 +17,10 @@ import { Skills } from './components/Skills/Skills';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
+ScrollTrigger.config({
+  ignoreMobileResize: true
+});
+
 export const App = () => {
 
   const [lightTheme, setLightTheme] = useState(false);

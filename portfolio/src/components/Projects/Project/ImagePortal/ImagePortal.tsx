@@ -36,7 +36,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         gsap.set(logoWrapper, { top: '50%', left: '50%', scale: 1 })
 
         const logoSlideDuration = 3.5;
-        const logoSlideInDelay = mobile ? -4.6 : -2.4;
+        const logoSlideInDelay = mobile ? -4.6 : -2.3;
         // Fix for weird GSAP delay desync when negative delay is longer than animation duration
         const logoSlideDelayFix = logoSlideInDelay < -logoSlideDuration ? logoSlideInDelay : -logoSlideDuration;
 
@@ -49,13 +49,13 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
         if (code) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');
-            const freezeTime = 1;
-            const staggerTime = 3.7 + freezeTime;
-            const duration = 3;
+            const freezeTime = 1.5;
+            const staggerTime = 2.5 + freezeTime;
+            const duration = 2;
 
-            gsap.set(codeScreenshots, { top: '170%', yPercent: '-50', rotateX: '-3deg', scale: .9 })
+            gsap.set(codeScreenshots, { top: '170%', left: '50%', yPercent: '-50', xPercent: '-50', rotateX: '-3deg', scale: .9 })
             imagesTL.current
-                .to(codeScreenshots, { ease: 'Sine.easeOut', duration: duration, delay: -2.5, stagger: staggerTime, top: '50%', yPercent: -50, scale: 1, rotateX: 0 })
+                .to(codeScreenshots, { ease: 'Sine.easeOut', duration: duration, delay: -2.4, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
                 .to(codeScreenshots, { ease: 'Sine.easeIn', duration: duration, delay: -(codeScreenshots.length - 1) * staggerTime + freezeTime, stagger: staggerTime, top: '-70%', scale: .9, rotateX: '3deg' })
         };
 
@@ -64,9 +64,9 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const staggerTime = 3.2;
             const duration = 2;
 
-            gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', rotateX: '-10deg', scale: .9 })
+            gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', xPercent: '-50', rotateX: '-10deg', scale: .9 })
             imagesTL.current
-                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.75, duration: duration * 1.1, stagger: staggerTime, top: '80%', scale: .95, rotateX: '-7deg' })
+                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.8, duration: duration * 1.1, stagger: staggerTime, top: '80%', scale: .95, rotateX: '-7deg' })
                 .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
                 .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '20%', scale: .95, rotateX: '7deg' })
                 .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '10deg' })
@@ -76,12 +76,11 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
             const staggerTime = 3;
             const duration = 3;
-
-            gsap.set(mobileScreenshots, { top: '150%', yPercent: '-50', scale: .8, rotateX: '-10deg', rotateY: '6deg' })
+            gsap.set(mobileScreenshots, { top: '150%', left: '80%', yPercent: '-50', xPercent: '-50', rotateX: '-10deg', rotateY: '6deg', scale: .8, })
             imagesTL.current
                 .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -5.2, duration: duration * 1.1, stagger: staggerTime, top: '50%', scale: .95, rotateX: 0, rotateY: '6deg' })
-                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1, rotateY: 0 })
-                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '20%', scale: .95, rotateY: '-6deg' })
+                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1, rotateX: 0, rotateY: 0 })
+                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '20%', scale: .95, rotateX: 0, rotateY: '-6deg' })
                 .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8, rotateX: '10deg', rotateY: '-6deg' })
         };
 
@@ -124,14 +123,14 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 <div className={styles.wrapper_logos}>
                     <img className={styles.logo} src={logo} alt='project logo' loading="lazy" />
                 </div>
-                <div className={styles.wrapper_screenshots} id='code'>
-                    {codeScreenshots}
-                </div>
-                <div className={styles.wrapper_screenshots} id='desktop'>
+                <div className={styles.wrapper_screenshots}>
                     {desktopScreenshots}
                 </div>
-                <div className={styles.wrapper_screenshots} id='mobile'>
+                <div className={styles.wrapper_screenshots}>
                     {mobileScreenshots}
+                </div>
+                <div className={styles.wrapper_screenshots}>
+                    {codeScreenshots}
                 </div>
             </div>
 

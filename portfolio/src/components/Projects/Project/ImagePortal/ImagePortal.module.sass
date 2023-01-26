@@ -99,7 +99,7 @@
         transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: var(--border-radius-big)
-            width: 70%
+            width: 76%
 
     &_screenshots
         position: absolute
@@ -108,6 +108,8 @@
         width: 100%
         height: 100%
         perspective: 100vw
+        @include mobile-and-small
+            perspective: 100vh
 
 .logo
     width: 100%
@@ -121,28 +123,26 @@
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
-        transform: translate(-50%, -50%)
+        @include mobile-and-small
+            width: 68%
 
     &_desktop
         width: 60%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
-        transform: translate(-50%, -50%)
         &:nth-child(1n)
             left: 40%
         &:nth-child(2n)
             left: 60%
 
     &_mobile
-        left: 80%
         position: absolute
         width: 25%
         // aspect-ratio: 9/18
         // object-fit: cover
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
-        transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: calc(0.8 * var(--border-radius-normal))
 
