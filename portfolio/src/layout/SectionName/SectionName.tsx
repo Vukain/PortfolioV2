@@ -7,13 +7,12 @@ import styles from './SectionName.module.sass';
 type MyProps = {
     children: string
     lighter?: boolean
-}
+};
 
 export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
 
     const [visible, setVisible] = useState(false);
     const nameRef = useRef(null);
-
 
     useEffect(() => {
         gsap.timeline({
@@ -21,11 +20,8 @@ export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
                 trigger: nameRef.current,
                 onEnter: () => { setVisible(true) },
                 onEnterBack: () => { setVisible(true) },
-                // onLeave: () => { setActiveCard('') },
-                // onLeaveBack: () => { setActiveCard('') },
                 start: `top 80%`,
                 end: `bottom 80%`,
-                // markers: true
             }
         });
     });

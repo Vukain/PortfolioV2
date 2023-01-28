@@ -6,7 +6,7 @@ import styles from './Skills.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 import { SkillCard } from './SkillCard/SkillCard';
-import { SectionName } from '../SectionName/SectionName';
+import { SectionName } from '../../layout/SectionName/SectionName';
 
 import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.svg';
 import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
@@ -29,35 +29,6 @@ export const Skills: React.FC = () => {
 
     const isDesktop = window.matchMedia('(orientation: landscape)').matches;
     const isEnglish = language === 'english';
-
-    // Had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
-
-    // Skill card data
-    type CardData = Record<string, {
-        data: {
-            category: string, display: string, skills: string[]
-        },
-        icon: React.FC<{ className?: string, title?: string }>,
-        ref: React.MutableRefObject<null | HTMLDivElement>
-    }>;
-
-    const cardData: CardData = {
-        frontend: {
-            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
-            icon: FrontendIcon,
-            ref: frontendRef
-        },
-        backend: {
-            data: { category: 'backend', display: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'firebase', 'mongodb', 'sqlite'] },
-            icon: BackendIcon,
-            ref: backendRef
-        },
-        graphics: {
-            data: { category: 'graphics', display: isEnglish ? 'graphics' : 'grafika', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] },
-            icon: GraphicIcon,
-            ref: graphicsRef
-        }
-    };
 
     // Setting up all GSAP timelines and animations
     useEffect(() => {
@@ -349,13 +320,40 @@ export const Skills: React.FC = () => {
     // Setting motion path according to screen aspect ratio
     const svgPath = isDesktop ? <MotionPathDesktop className={styles.path_svg} preserveAspectRatio='none' /> : <MotionPathMobile className={styles.path_svg} preserveAspectRatio='none' />;
 
+    // Skill card data, had to replace record key type ('frontend' | 'backend' | 'graphics' => string) to get cards mapped properly
+    type CardData = Record<string, {
+        data: {
+            category: string, display: string, skills: string[]
+        },
+        icon: React.FC<{ className?: string, title?: string }>,
+        ref: React.MutableRefObject<null | HTMLDivElement>
+    }>;
+
+    const cardData: CardData = {
+        frontend: {
+            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
+            icon: FrontendIcon,
+            ref: frontendRef
+        },
+        backend: {
+            data: { category: 'backend', display: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'firebase', 'mongodb', 'sqlite'] },
+            icon: BackendIcon,
+            ref: backendRef
+        },
+        graphics: {
+            data: { category: 'graphics', display: isEnglish ? 'graphics' : 'grafika', skills: ['adobe photoshop', 'adobe illustrator', 'adobe xd', 'autocad'] },
+            icon: GraphicIcon,
+            ref: graphicsRef
+        }
+    };
+
     // Setting up skill cards
     const cards = Object.keys(cardData).map((element, index) => {
 
         const Icon = cardData[element].icon;
 
         return (
-            <SkillCard data={cardData[element].data} activeCard={activeCard} ref={cardData[element].ref} key={index}>
+            <SkillCard data={cardData[element].data} activeCard={activeCard} ref={cardData[element].ref} key={index + cardData[element].data.category}>
                 <Icon className={clsx(styles.icon, styles[`icon_${element}`])} title={`${element} icon`} />
             </SkillCard>
         );

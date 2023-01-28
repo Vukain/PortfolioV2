@@ -25,28 +25,31 @@ ScrollTrigger.config({
 export const App = () => {
 
   const [lightTheme, setLightTheme] = useState(false);
-  const [, location] = window.location.href.split('#');
 
   useEffect(() => {
-    // Scroll to section, when direct linking, after page load
 
-    document.addEventListener('readystatechange', () => {
-      if (document.readyState == 'complete') {
-        console.log('timeouto')
-        setTimeout(() => {
-          if (['projects', 'skills', 'contact'].includes(location)) {
-            window.location.href = `#${location}`;
-          };
-        }, 100)
-      }
-    });
-    // setTimeout(() => {
-    //   if (['projects', 'skills', 'contact'].includes(location)) {
-    //     window.location.href = `#${location}`;
-    //   };
+    // Get initial section
+    const [, location] = window.location.href.split('#');
 
-    // }, 500)
-  }, []);
+    // Scroll to section, when direct linking, after complete page load
+    if (document.readyState === 'complete') {
+      setTimeout(() => {
+        if (['projects', 'skills', 'contact'].includes(location)) {
+          window.location.href = `#${location}`;
+        };
+      }, 0);
+    } else {
+      document.addEventListener('readystatechange', () => {
+        if (document.readyState === 'complete') {
+          setTimeout(() => {
+            if (['projects', 'skills', 'contact'].includes(location)) {
+              window.location.href = `#${location}`;
+            };
+          }, 0);
+        };
+      });
+    };
+  }, [])
 
   return (
     <AppContextProvider >
@@ -59,7 +62,7 @@ export const App = () => {
         <Projects />
         <Skills />
         <Contact />
-        <Footer theme={lightTheme} themeChanger={setLightTheme} />
+        <Footer theme={lightTheme} themeToggle={setLightTheme} />
 
       </div >
 

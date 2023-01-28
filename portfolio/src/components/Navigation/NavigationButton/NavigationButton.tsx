@@ -18,6 +18,8 @@ export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibi
     const { setNavigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
     const onClickHandler = () => {
+
+        // Scroll to location and play navigation animation
         setCurrentSection(id)
         if (window.matchMedia('(orientation: landscape)').matches) {
             setNavigateTo(name);

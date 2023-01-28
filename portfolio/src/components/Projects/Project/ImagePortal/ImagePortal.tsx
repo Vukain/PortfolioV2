@@ -24,22 +24,27 @@ type MyProps = {
 export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile, code }, links: { github, live }, isActive }) => {
 
     const portalRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    // Ref used to work within several useEffects
     const imagesTL: React.MutableRefObject<null | gsap.core.Timeline> = useRef(null);
 
     useEffect(() => {
+
+        // Get all elements
         const elementGetter = gsap.utils.selector(portalRef.current);
         const logoWrapper: HTMLElement[] = elementGetter('[class*="wrapper_logos"]');
         const logoImage: HTMLElement[] = elementGetter('[class*="logo_"]');
 
-        // Used with ref for multiple useEffects
+        // Setup timeline and initial parameters
         imagesTL.current = gsap.timeline({ defaults: { transformOrigin: 'center', ease: 'none' }, repeat: -1 });
         gsap.set(logoWrapper, { top: '50%', left: '50%', scale: 1 })
 
         const logoSlideDuration = 3.5;
         const logoSlideInDelay = mobile ? -4.6 : -2.3;
+
         // Fix for weird GSAP delay desync when negative delay is longer than animation duration
         const logoSlideDelayFix = logoSlideInDelay < -logoSlideDuration ? logoSlideInDelay : -logoSlideDuration;
 
+        // Logo slide up animation
         if ([code, desktop, mobile].some(el => el)) {
             imagesTL.current
                 .to(logoWrapper, { delay: 5, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '-50%', scale: .85 })
@@ -47,6 +52,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 .to(logoWrapper, { top: '150%', duration: 0 })
         };
 
+        // Animation for code screenshots
         if (code) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');
             const freezeTime = 1.5;
@@ -59,6 +65,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 .to(codeScreenshots, { ease: 'Sine.easeIn', duration: duration, delay: -(codeScreenshots.length - 1) * staggerTime + freezeTime, stagger: staggerTime, top: '-70%', scale: .9, rotateX: '3deg' })
         };
 
+        // Animation for desktop screenshots
         if (desktop) {
             const desktopScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_desktop"]');
             const staggerTime = 3.2;
@@ -72,6 +79,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '10deg' })
         };
 
+        // Animation for mobile screenshots
         if (mobile) {
             const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
             const staggerTime = 3;
@@ -84,6 +92,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8, rotateX: '10deg', rotateY: '-6deg' })
         };
 
+        // Logo slide to center animation
         if ([code, desktop, mobile].some(el => el)) {
             imagesTL.current
                 .to(logoWrapper, { delay: logoSlideInDelay, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '50%', scale: 1 })
@@ -91,6 +100,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         }
     }, []);
 
+    // Reset animation progress when changing project
     useEffect(() => {
         if (isActive) {
             imagesTL.current!.progress(0, false)
@@ -98,6 +108,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
     },
         [isActive]);
 
+    // Create project screenshots
     const codeScreenshots = code ? code.map((image, index) => (
         <img className={styles.screenshot_code} key={`code_${index}`}
             srcSet={`${image.full} 600w, ${image.full} 800w, ${image.full} 1000w, ${image.full} 1100w`}
@@ -105,6 +116,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             src={image.full} alt={`project code screenshot ${index + 1}`}
         />
     )) : null;
+
     const desktopScreenshots = desktop ? desktop.map((image, index) => (
         <img className={styles.screenshot_desktop} key={`desktop_${index}`}
             srcSet={`${image.small} 800w, ${image.medium} 1200w, ${image.big} 1600w, ${image.full} 1900w`}
@@ -112,6 +124,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             src={image.full} alt={`project desktop screenshot ${index + 1}`}
         />
     )) : null;
+
     const mobileScreenshots = mobile ? mobile.map((image, index) => (
         <img className={styles.screenshot_mobile} key={`mobile_${index}`} src={image} alt={`project mobile screenshot ${index + 1}`} />
     )) : null;

@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import styles from './Projects.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { SectionName } from '../SectionName/SectionName';
+import { SectionName } from '../../layout/SectionName/SectionName';
 import { ColorEdge } from '../../layout/ColorEdge/ColorEdge';
 import { Menu } from './Menu/Menu';
 import { Project } from './Project/Project';
@@ -44,9 +44,12 @@ export const Projects: React.FC = () => {
     const [sectionHeight, setSectionHeight] = useState(0);
     const [currentProject, setCurrentProject] = useState(0);
 
+    const isEnglish = language === 'english';
+
     useEffect(() => {
         const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
+        // Get elements
         const projectsSection = projectsRef.current;
         const elementGetter = gsap.utils.selector(projectsSection);
         const projects: HTMLElement[] = elementGetter('[class*="project_"]');
@@ -57,6 +60,7 @@ export const Projects: React.FC = () => {
         setSectionHeight(height);
         setProjectSize(size);
 
+        // Create timeline for sliding projects, must be separate from fading
         const slidingProjectsTL = gsap.timeline({
             scrollTrigger: {
                 trigger: projectsSection,
@@ -67,7 +71,6 @@ export const Projects: React.FC = () => {
                 start: '10px 10px',
                 end: height + (projects.length - 1) * size,
                 snap: 1 / (projects.length - 1),
-                // markers: true,
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
@@ -79,6 +82,7 @@ export const Projects: React.FC = () => {
             }
         });
 
+        // Create timeline for projects fading and warping
         const fadingProjectsTL = gsap.timeline({
             scrollTrigger: {
                 trigger: projectsSection,
@@ -86,12 +90,11 @@ export const Projects: React.FC = () => {
                 scrub: .5,
                 start: '10px 10px',
                 end: height + (projects.length - 1) * size,
-                snap: 1 / (projects.length - 1),
-                // markers: true,
+                snap: 1 / (projects.length - 1)
             }
         });
 
-
+        // Set correct animations for screen orientation
         if (isDesktop) {
             gsap.set(projects.slice(1), { scale: 1, rotateY: '30deg', xPercent: 120, })
 
@@ -131,9 +134,8 @@ export const Projects: React.FC = () => {
 
     }, [setCurrentSection])
 
+    // Project data with mapping
     const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];
-
-    const isEnglish = language === 'english';
 
     type ProjectData = {
         id: string,
@@ -269,7 +271,7 @@ export const Projects: React.FC = () => {
         },
     ];
 
-    const mappedProjects = projects.map((data, index) => (<Project data={data} key={data.id} index={index} numberOfProjects={projects.length} currentProject={currentProject} setCurrentProject={setCurrentProject} projectSize={projectSize} sectionHeight={sectionHeight} />))
+    const mappedProjects = projects.map((data, index) => (<Project data={data} key={index + data.id} index={index} numberOfProjects={projects.length} currentProject={currentProject} setCurrentProject={setCurrentProject} projectSize={projectSize} sectionHeight={sectionHeight} />))
 
     return (
         <>

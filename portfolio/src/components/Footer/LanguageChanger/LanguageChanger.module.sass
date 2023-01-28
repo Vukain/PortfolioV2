@@ -9,15 +9,10 @@
     display: flex
     justify-content: space-between
     align-items: center
-    // padding: .2vh .2vh
     position: relative
     @include mobile-and-small
         height: 8.8vw
         width: 20.8vw
-    //     height: 10.4vh
-    //     width: 4.4vh
-    //     flex-direction: column
-    //     padding: .2vh 0
 
 .indicator
     position: absolute
@@ -27,7 +22,6 @@
     left: .2vh
     border-radius: 2vh
     overflow: hidden
-    // background-color: red
     z-index: 1
     transition: .3s
     &::before
@@ -37,55 +31,28 @@
         border-radius: 2vh
         background-color: var(--color-gradient-3)
         transition: .3s transform
-    &--english
-        &::before
-            transform: translate(-6vh, 0%)
-    &--polish
-        &::before
-            transform: translate(6vh, 0%)
     @include mobile-and-small
         top: .4vw
         right: .4vw
         bottom: .4vw
         left: .4vw
         border-radius: 4vw
+
         &--english
             &::before
                 transform: translate(-12vw, 0%)
+
         &--polish
             &::before
                 transform: translate(12vw, 0%)
 
-// Indicator with just a dot
+    &--english
+        &::before
+            transform: translate(-6vh, 0%)
 
-// .indicator
-//     position: absolute
-//     top: 50%
-//     left: 0
-//     width: 4vh
-//     height: 4vh
-//     background-color: var(--color-gradient-3)
-//     border-radius: 50%
-//     transform: translate(-50%, -50%)
-//     z-index: 1
-//     transition: .3s transform
-//     &--english
-//         transform: translate(calc(2.2vh - 50%), -50%)
-//     &--polish
-//         transform: translate(calc(8.2vh - 50%), -50%)
-//     @include mobile-and-small
-//         width: 8vw
-//         height: 8vw
-//         &--english
-//             transform: translate(calc(4.4vw - 50%), -50%)
-//         &--polish
-//             transform: translate(calc(16.4vw - 50%), -50%)
-    //     top: 0
-    //     left: 50%
-    //     &--english
-    //         transform: translate(-50%, calc(2.2vh - 50%))
-    //     &--polish
-    //         transform: translate(-50%, calc(8.2vh - 50%))
+    &--polish
+        &::before
+            transform: translate(6vh, 0%)
 
 .button
     all: unset

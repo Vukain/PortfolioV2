@@ -81,7 +81,6 @@
             box-shadow: 0 0 var(--shadow-radius) rgba(0, 0, 0, 0.2)
             opacity: 0
             animation: nav-opacity .6s calc($ui-slide-delay * 1s + .3s) cubic-bezier(0.65, 0, 0.35, 1) forwards
-
     &::after
         @include before-after
         position: fixed
@@ -230,6 +229,7 @@
         animation: bottom-slide-wrap .8s .3s cubic-bezier(0.65, 0, 0.35, 1) both
     @include mobile-and-small
         visibility: hidden
+
     &--hidden
         transition: visibility 0s 1s
         visibility: hidden

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { AppContext } from '../../../store/AppContext';
 import { gsap } from 'gsap';
 import { clsx } from 'clsx';
@@ -35,31 +35,30 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     const { language } = useContext(AppContext);
 
     const infoRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-    const elements = useRef<{ text: null[] | HTMLElement[], capsules: null[] | HTMLElement[] }>({ text: [], capsules: [] });
     const infoTL: React.MutableRefObject<null | gsap.core.Timeline> = useRef(null);
-
-    const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
+    const elements = useRef<{ text: null[] | HTMLElement[], capsules: null[] | HTMLElement[] }>({ text: [], capsules: [] });
 
     const isEnglish = language === 'english';
     const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
     useEffect(() => {
 
-
-        const sectionHeight = document.getElementById('projects')!.offsetTop;
-        const projectSize = isDesktop ? document.getElementById('gallery')!.offsetWidth : document.getElementById('gallery')!.offsetHeight;
-
         const elementGetter = gsap.utils.selector(infoRef.current);
         const slidingText: HTMLElement[] = elementGetter('[class*="slide_"]');
         const slidingCapsules: HTMLElement[] = elementGetter('[class*="capsule_"]');
 
+        const sectionHeight = document.getElementById('projects')!.offsetTop;
+        const projectSize = isDesktop ? document.getElementById('gallery')!.offsetWidth : document.getElementById('gallery')!.offsetHeight;
+
+        // Ref used for multiple useEffects
         elements.current = { text: slidingText, capsules: slidingCapsules };
 
+        // Setup timeline and initial parameters
         infoTL.current = gsap.timeline({ defaults: { transformOrigin: 'center', ease: 'sine.inOut' } });
-
         gsap.set([slidingCapsules], { yPercent: '105', opacity: 0 });
         isDesktop ? gsap.set([slidingText], { xPercent: '105', opacity: 0 }) : gsap.set([slidingText], { yPercent: '105', opacity: 0 });
 
+        // Create timeline detecting which project is active
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#app',
@@ -102,13 +101,13 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                     };
                 },
                 start: `${2 * sectionHeight + index * projectSize - 1}px ${sectionHeight}px`,
-                end: `${2 * sectionHeight + index * projectSize + 1}px ${sectionHeight}px`,
-                // markers: true
+                end: `${2 * sectionHeight + index * projectSize + 1}px ${sectionHeight}px`
             }
         });
-    }, [setCurrentProject, index, numberOfProjects])
+    }, [setCurrentProject, index, numberOfProjects, isDesktop])
 
     useEffect(() => {
+        // Delay info text animation when scrolling
         let animationTimeout: NodeJS.Timeout;
 
         const { text, capsules } = elements.current;
@@ -125,8 +124,9 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
             clearTimeout(animationTimeout);
         };
 
-    }, [currentProject, index])
+    }, [currentProject, index, isDesktop])
 
+    const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
     return (
         <article className={styles.project}>

@@ -8,7 +8,7 @@ import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 import { Button } from '../../layout/Button/Button';
-import { SectionName } from '../SectionName/SectionName';
+import { SectionName } from '../../layout/SectionName/SectionName';
 import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
 
 import { ReactComponent as HeroShardImg1 } from '../../media/parallax_shards/hero_1.svg';
@@ -52,21 +52,28 @@ export const Contact: React.FC = () => {
     const [formValidity, setFormValidity] = useState('invalid');
     const [showError, setShowError] = useState(false);
 
+    const isEnglish = language === 'english';
+    const sent = formValidity === 'sent';
+
     // Create form with given fields
     const { inputValues, setInputValues, changeHandler } = useForm('user_name', 'user_email', 'message');
     // user_ used as required for emailjs compatibility
     const { user_name: name, user_email: email, message } = inputValues;
 
     useEffect(() => {
+
+        // Grab all elements
         const elementGetter = gsap.utils.selector(sectionRef.current);
         const wrappers: HTMLElement[] = elementGetter('[class*="t_wrapper_"]');
         wrappers.push(...elementGetter('[class*="n_wrapper_"]'));
 
         const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
+        // Set initial properties
         gsap.set(wrappers, { transform: `translate3d(0,${isDesktop ? 40 : 20}vh,0)`, scale: .7 });
         gsap.set(wrappers.slice(1), { transform: 'translate3d(0,4vh,0)', opacity: 0 })
 
+        // Initialize triggers for reveal
         wrappers.forEach((element, index) => {
             gsap.to(element, {
                 transform: 'translate3d(0,0vh,0)',
@@ -82,6 +89,7 @@ export const Contact: React.FC = () => {
             });
         });
 
+        // Set as active section
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#contact',
@@ -100,9 +108,11 @@ export const Contact: React.FC = () => {
     }, [setCurrentSection]);
 
     useEffect(() => {
+        // Changing form status
         setFormValidity([name.status, email.status, message.status].every(val => val === 'valid') ? 'valid' : 'invalid');
     }, [name, email, message])
 
+    // Handlers for parallax shards move
     const mouseMoveHandler = (e: MouseEvent): void => {
         if (sectionRef.current) {
             setCursorXPosition(e.clientX - sectionRef.current?.getBoundingClientRect().left - initialCursorXPositionRef.current + exitCursorXPosition)
@@ -122,6 +132,7 @@ export const Contact: React.FC = () => {
         setExitCursorYPosition(cursorYPosition);
     };
 
+    // Form submit and status changing
     const submitHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         setShowError(false);
@@ -181,9 +192,6 @@ export const Contact: React.FC = () => {
             <ParallaxCrystal key={index + data.name} data={data} cursorXPosition={cursorXPosition} cursorYPosition={cursorYPosition} />
         );
     });
-
-    const isEnglish = language === 'english';
-    const sent = formValidity === 'sent';
 
     const textName = isEnglish ? 'name' : 'imię';
     const textMessage = isEnglish ? 'message' : 'wiadomość';
