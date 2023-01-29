@@ -9,13 +9,14 @@
         background-position: 0% 0%
 
 .card
+    outline: none
     perspective: 75vw
     cursor: pointer
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
     z-index: 2
     aspect-ratio: 11 / 15
     width: calc(min(44vh, 22vw))
-    &:hover, &:active
+    &:hover, &:focus
         .frontside
             @include desktop
                 transform: rotateY(-180deg)

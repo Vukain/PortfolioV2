@@ -14,7 +14,7 @@ type MyProps = {
 export const SkillCard = forwardRef<HTMLDivElement, MyProps>(({ data: { category, display, skills }, activeCard, children }, ref) => {
 
     return (
-        <article className={styles.card} ref={ref}>
+        <article className={styles.card} ref={ref} tabIndex={0}>
 
             <div className={clsx(styles.frontside, styles[`frontside_${category}`])}>
                 <CardCrystal className={styles.crystal} />

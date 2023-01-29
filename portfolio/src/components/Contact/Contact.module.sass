@@ -129,7 +129,7 @@
     all: unset
     background-color: #22222281
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0
-    color: #e2e2e2
+    color: var(--almost-white)
     font-size: var(--font-size-normal)
     letter-spacing: var(--letter-spacing-tiny)
     font-weight: 300
@@ -140,6 +140,7 @@
     padding: 0em 3em 0em 3em
     &::placeholder
         text-transform: uppercase
+        color: var(--grey-medium)
     &:focus, &:hover
         border-left-color: var(--color-main-3)
         & + .label
@@ -158,9 +159,9 @@
         letter-spacing: 0
 
 .untouched
-    border-left-color: var(--grey-dark)
+    border-left-color: var(--grey-medium)
     & + .label
-        color: var(--grey-dark)
+        color: var(--grey-medium)
 .valid
     border-left-color: var(--color-main-2)
     & + .label
