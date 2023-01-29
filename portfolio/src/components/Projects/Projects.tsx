@@ -71,6 +71,7 @@ export const Projects: React.FC = () => {
                 start: '10px 10px',
                 end: height + (projects.length - 1) * size,
                 snap: 1 / (projects.length - 1),
+                invalidateOnRefresh: true,
                 onEnter: () => {
                     setCurrentSection('projects');
                     window.history.pushState({}, '', '#projects');
@@ -89,6 +90,7 @@ export const Projects: React.FC = () => {
                 toggleActions: 'restart pause reverse pause',
                 scrub: .5,
                 start: '10px 10px',
+                invalidateOnRefresh: true,
                 end: height + (projects.length - 1) * size,
                 snap: 1 / (projects.length - 1)
             }

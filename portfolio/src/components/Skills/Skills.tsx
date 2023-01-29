@@ -58,6 +58,7 @@ export const Skills: React.FC = () => {
                     scrub: 2,
                     start: motionStart,
                     end: motionEnd,
+                    invalidateOnRefresh: true,
                     onLeave: () => {
                         // Condition to prevent visual Firefox bug
                         if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
@@ -198,7 +199,8 @@ export const Skills: React.FC = () => {
                     toggleActions: 'restart pause reverse pause',
                     scrub: 2,
                     start: motionStart,
-                    end: motionEnd
+                    end: motionEnd,
+                    invalidateOnRefresh: true,
                 }
             });
 

@@ -101,7 +101,8 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                     };
                 },
                 start: `${2 * sectionHeight + index * projectSize - 1}px ${sectionHeight}px`,
-                end: `${2 * sectionHeight + index * projectSize + 1}px ${sectionHeight}px`
+                end: `${2 * sectionHeight + index * projectSize + 1}px ${sectionHeight}px`,
+                invalidateOnRefresh: true
             }
         });
     }, [setCurrentProject, index, numberOfProjects, isDesktop])

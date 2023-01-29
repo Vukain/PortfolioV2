@@ -36,7 +36,7 @@
     --border-radius-big: 3vh
     --border-radius-normal: 1vh
     --border-radius-small: .7vh
-    --card-mask-size: 62px
+    --card-mask-size: 32px
     --card-border-size: 6px
     --screenshot-shadow: drop-shadow(1.5vh 1.5vh 3vh #2c363f85)
     --skew: -6deg
@@ -45,13 +45,16 @@
     --project-link-margin: .6vw
     --crystal-move-distance: min(.8vh, .26vw)
 
+    @media (min-width: 1600px)
+        --card-mask-size: 62px
+
     @media (min-width: 2800px)
         --card-mask-size: 2.6vw
 
     @include mobile-and-small
         --font-size-heading-1: 5.4vw
         --font-size-heading-2: 11.4vw
-        --font-size-heading-3: 6.6vw
+        --font-size-heading-3: 6.8vw
         --font-size-biggest: 7.6vw
         --font-size-big: 5.6vw
         --font-size-normal: 4.2vw
@@ -63,7 +66,7 @@
         --border-radius-normal: 3vw
         --border-radius-small: 1.5vw
         --screenshot-shadow: drop-shadow(1.5vw 1.5vw 3vw #2c363f85)
-        --project-link-pos: 1.6vw
+        --project-link-pos: 1.5vw
         --project-link-margin: 1.4vw
         --crystal-move-distance: .8vh
         --ui-slide-delay: 5.6
