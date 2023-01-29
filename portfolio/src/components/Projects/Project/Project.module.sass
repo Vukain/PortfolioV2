@@ -1,6 +1,7 @@
 @import '../../../sass/mixins'
 
 .project
+    will-change: opacity, transform, rotate, rotateX, rotateY
     perspective: 100vw
     position: absolute
     height: 100%
@@ -13,11 +14,6 @@
     gap: 4vw
     background-color: var(--background-color-2)
     border-radius: var(--border-radius-big)
-    // &:not(:first-child)
-    //     @include desktop
-    //         left: 100%
-    //     @include mobile-and-small
-    //         top: 100%
     @include mobile-and-small
         height: 100%
         grid-template-rows: var(--mobile-miniature-height) 1fr
@@ -115,8 +111,10 @@
                 margin-right: -.1em
 
 .slide
+    will-change: transform
     display: inline-block
     position: relative
+    will-change: transform
 
 .capsules
     display: flex
@@ -127,6 +125,7 @@
         gap: 2vw
 
 .capsule
+    will-change: transform
     @include flex-center
     font-size: var(--font-size-normal)
     text-transform: uppercase

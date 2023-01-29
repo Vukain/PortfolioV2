@@ -24,6 +24,6 @@ export const ProgressBar: React.FC = () => {
     });
 
     return (
-        <progress className={styles.progress} max="100" value="0" />
+        <progress className={styles.progress} max="100" value="0" aria-hidden='true' />
     );
 };

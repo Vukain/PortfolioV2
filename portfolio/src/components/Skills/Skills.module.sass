@@ -76,6 +76,7 @@
         grid-row: 2 / 3
 
 .sliding_crystal
+    will-change: transform
     height: 30vh
     position: absolute
     z-index: 99
@@ -83,6 +84,8 @@
     @include mobile-and-small
         height: 40vw
         z-index: 1
+    & g
+        will-change: transform
 
 .floating > g
     animation: crystal-move 4s linear infinite, crystal-rotate 6s linear infinite

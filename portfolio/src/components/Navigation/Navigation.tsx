@@ -17,11 +17,6 @@ export const Navigation: React.FC = () => {
 
     useEffect(() => {
 
-        // Set initial language based on browser preferences
-        if (window.navigator.language !== 'pl-PL') {
-            setLanguage('english')
-        };
-
         // Skip delay on revealing navigation, if starting section is different than header
         const [, location] = window.location.href.split('#');
         if (['projects', 'skills', 'contact'].includes(location)) {
