@@ -15,7 +15,7 @@ export const LanguageChanger: React.FC = () => {
             setLanguage('polish');
             document.documentElement.setAttribute("lang", 'pl');
         };
-    }, []);
+    }, [setLanguage]);
 
     const onClickHandler = (lang: string) => {
         document.documentElement.setAttribute("lang", lang);

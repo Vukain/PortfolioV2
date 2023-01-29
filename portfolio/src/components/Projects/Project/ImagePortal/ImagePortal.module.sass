@@ -16,6 +16,25 @@
             fill: var(--color-main-2)
             transform: scale(1.2)
 
+.hyperlink
+    outline: none
+    display: block
+    bottom: var(--project-link-pos)
+    position: relative
+    &:hover, &:active, &:focus
+        .link
+            &::after
+                color: var(--color-font-1)
+                transition: color .3s .2s
+            & .icon
+                fill: var(--color-font-1)
+            &--left
+                &::before
+                    clip-path: circle(120% at 24% 50%)
+            &--right
+                &::before
+                    clip-path: circle(120% at 81% 50%)
+
 .link
     height: 6vh
     position: absolute
@@ -46,12 +65,6 @@
         font-size: calc(1.1 * var(--font-size-normal))
         color: transparent
         transition: color .3s 0s
-    &:hover, &:active
-        &::after
-            color: var(--color-font-1)
-            transition: color .3s .2s
-        & .icon
-            fill: var(--color-font-1)
     @include mobile-and-small
         height: 10vw
         border-radius: var(--border-radius-normal)

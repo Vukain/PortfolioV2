@@ -130,7 +130,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
 
     return (
-        <article className={styles.project}>
+        <article className={styles.project} aria-hidden={currentProject !== index}>
 
             <ImagePortal images={images} links={links} isActive={currentProject === index} />
 

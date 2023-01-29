@@ -147,13 +147,13 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 </div>
             </div>
 
-            <a href={live} target="_blank" rel="noopener noreferrer" aria-label='project live version'>
+            <a href={live} className={styles.hyperlink} target="_blank" rel="noopener noreferrer" aria-label='project live version' tabIndex={isActive ? 0 : -1}>
                 <div className={clsx(styles.link, styles['link--left'])} data-text='live'>
                     <LinkIcon className={styles.icon} />
                 </div>
             </a>
 
-            <a href={github} target="_blank" rel="noopener noreferrer" aria-label='project github link'>
+            <a href={github} className={styles.hyperlink} target="_blank" rel="noopener noreferrer" aria-label='project github link' tabIndex={isActive ? 0 : -1}>
                 <div className={clsx(styles.link, styles['link--right'])} data-text='github'>
                     <GithubIcon className={styles.icon} />
                 </div>
