@@ -163,7 +163,7 @@ export const Projects: React.FC = () => {
             title: 'Pizza Builder',
             description: {
                 english: "Wanted to make a pizza, but it takes a lot of time and is a little bit messy? No worries, this app got what you need! FREE ingredients of various types and ZERO callories on top of that, woah!",
-                polish: "Chcielibyście zrobić pizzę, ale to czasochłonne i powoduje niezły bałagan w kuchni? Bez obaw, ta apka jest tym czego potrzebujecie! DARMOWE składniki i ZERO kalorii na dodatek, wow!"
+                polish: "Chcielibyście zrobić pizzę, ale to czasochłonne i powoduje niezły bałagan w kuchni? Bez obaw, ta apka jest tym czego potrzebujecie! Na dodatek DARMOWE składniki i ZERO kalorii!"
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {

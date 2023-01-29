@@ -34,7 +34,7 @@
     background-color: var(--background-color-2)
     @include mobile-and-small
         justify-content: flex-start
-        gap: 1.6vh
+        gap: 3vw
         padding-left: 2px
         padding-right: 5vw
 
@@ -76,6 +76,7 @@
     color: var(--color-main-2)
     text-align: left
     font-size: var(--font-size-normal)
+    letter-spacing: var(--letter-spacing-tiny)
     line-height: 1.2
     overflow: hidden
     @include mobile-and-small
@@ -91,6 +92,8 @@
     overflow: hidden
     @include mobile-and-small
         margin-left: -.04em
+        letter-spacing: var(--letter-spacing-tiny)
+        font-size: calc(1.2 * var(--font-size-heading-1))
     @include desktop
         &:nth-child(1)
             font-size: calc(2.22 * var(--font-size-heading-1))
@@ -118,10 +121,10 @@
 .capsules
     display: flex
     justify-content: flex-start
-    gap: 1vw
+    gap: 1.2vh
     flex-wrap: wrap
     @include mobile-and-small
-        gap: 3vw
+        gap: 2vw
 
 .capsule
     @include flex-center
