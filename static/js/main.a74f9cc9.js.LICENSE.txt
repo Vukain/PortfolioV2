@@ -1,5 +1,5 @@
 /*!
- * GSAP 3.10.4
+ * GSAP 3.11.4
  * https://greensock.com
  *
  * @license Copyright 2008-2022, GreenSock. All rights reserved.
@@ -9,7 +9,7 @@
 */
 
 /*!
- * MotionPathPlugin 3.10.4
+ * MotionPathPlugin 3.11.4
  * https://greensock.com
  *
  * @license Copyright 2008-2022, GreenSock. All rights reserved.
@@ -19,7 +19,7 @@
 */
 
 /*!
- * Observer 3.10.4
+ * Observer 3.11.4
  * https://greensock.com
  *
  * @license Copyright 2008-2022, GreenSock. All rights reserved.
@@ -29,7 +29,7 @@
 */
 
 /*!
- * ScrollToPlugin 3.10.4
+ * ScrollToPlugin 3.11.4
  * https://greensock.com
  *
  * @license Copyright 2008-2022, GreenSock. All rights reserved.
@@ -39,7 +39,7 @@
 */
 
 /*!
- * ScrollTrigger 3.10.4
+ * ScrollTrigger 3.11.4
  * https://greensock.com
  *
  * @license Copyright 2008-2022, GreenSock. All rights reserved.
@@ -49,7 +49,7 @@
 */
 
 /*!
- * matrix 3.10.4
+ * matrix 3.11.4
  * https://greensock.com
  *
  * Copyright 2008-2022, GreenSock. All rights reserved.
@@ -59,7 +59,7 @@
 */
 
 /*!
- * paths 3.10.4
+ * paths 3.11.4
  * https://greensock.com
  *
  * Copyright 2008-2022, GreenSock. All rights reserved.
