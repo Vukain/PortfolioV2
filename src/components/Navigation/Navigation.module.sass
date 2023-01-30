@@ -1,0 +1,252 @@
+@import '../../sass/mixins'
+@import '../../sass/variables'
+
+@keyframes nav-opacity
+    100%
+        opacity: 1
+
+@keyframes bottom-slide
+    0%
+        transform: translateY(-100%)
+    100%
+        transform: translateY(0%)
+
+@keyframes bottom-slide-wrap
+    0%
+        transform: translate(-40%, 50%)
+    100%
+        transform: translate(-50%, -50%)
+
+@keyframes slide-top
+    0%
+        transform: translateY(0%)
+    100%
+        transform: translateY(100%)
+
+@keyframes slide-top-wrap
+    0%
+        transform: translate(-50%, -50%)
+    100%
+        transform: translate(-60%, -150%)
+
+.navigation
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 10vh
+    gap: 5vw
+    padding: 0 5vw
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    z-index: 9991
+    backdrop-filter: blur(2vh) hue-rotate(0deg)
+    @include desktop
+        opacity: 0
+        animation: nav-opacity 0s 4.7s forwards
+        &--skip_delay
+            animation-delay: 0s
+    @include mobile-and-small
+        backdrop-filter: unset
+        flex-direction: column
+        justify-content: center
+        gap: 8vh
+        width: 100%
+        height: 100%
+        padding: calc(8vw + 2 * var(--color-border-width))
+    &::before
+        @include before-after
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 99996
+        transition: 1s transform ease
+        transform-origin: bottom center
+        width: 100vw
+        height: 100vh
+        transform: scaleY(1)
+        transition-delay: 0s
+        background-image: linear-gradient(90deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        @include desktop
+            background-size: 110% 100%
+            background-position-x: 50%
+        @include mobile-and-small
+            background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+            left: unset
+            right: 0
+            clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%)
+            transition: 1s cubic-bezier(0.83, 0, 0.17, 1)
+            transition-delay: 0s
+            box-shadow: 0 0 var(--shadow-radius) rgba(0, 0, 0, 0.2)
+            opacity: 0
+            animation: nav-opacity .6s calc($ui-slide-delay * 1s + .3s) cubic-bezier(0.65, 0, 0.35, 1) forwards
+    &::after
+        @include before-after
+        position: fixed
+        top: 0
+        left: 0
+        width: 100vw
+        height: 100vh
+        transition: 1s transform ease
+        transition-delay: .2s
+        background-color: var(--background-color-2)
+        z-index: 99997
+        @include mobile-and-small
+            left: unset
+            right: 0
+            clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%)
+            transition: 1s cubic-bezier(0.83, 0, 0.17, 1)
+            transition-delay: .2s
+            opacity: 0
+            animation: nav-opacity .6s calc($ui-slide-delay * 1s + .3s) cubic-bezier(0.65, 0, 0.35, 1) forwards
+        @include desktop
+            transform-origin: bottom center
+            transform: scaleY(1)
+
+    &--skip_delay
+        &::after, &::before
+            animation-delay: 0s
+
+    &--hidden
+        @include desktop
+            &::before
+                transform-origin: top center
+                transform: scaleY(0)
+                transition-delay: .4s
+            &::after
+                transform-origin: top center
+                transform: scaleY(0)
+                transition-delay: .2s
+        @include mobile-and-small
+            padding: 0
+            height: 100%
+            width: 0%
+            transition: 0s 1s
+            &::before
+                clip-path: polygon(85vw 13vw, 90vw 5vw, 95vw 13vw, 90vw 21vw)
+                transition-delay: .2s
+            &::after
+                clip-path: polygon(86vw 13vw, 90vw 6.6vw, 94vw 13vw, 90vw 19.4vw)
+                transition-delay: 0s
+
+.hamburger
+    position: fixed
+    @include mobile-and-small
+        top: 13vw
+        right: 10vw
+        width: 8vw
+        height: 12vw
+        transform: translate(50%, -50%)
+        z-index: 99998
+        opacity: 0
+        animation: nav-opacity .9s calc($ui-slide-delay * 1s + .3s) cubic-bezier(0.65, 0, 0.35, 1) forwards
+        display: grid
+        grid-template-rows: 2.32vw 2.48vw 2.48vw 2.32vw
+        grid-template-columns: 1fr
+        justify-items: center
+        gap: 2px
+        &--skip_delay
+            animation-delay: 0s
+    @media (min-width: 320px)
+        gap: 3px
+    @media (min-width: 460px)
+        gap: 4px
+    @media (min-width: 600px)
+        gap: .8vw
+
+    &--active
+        & .hamburger_segment
+            @include mobile-and-small
+                &:nth-child(1)
+                    align-self: end
+                    width: 0px
+                    border-bottom: 1.3vw solid var(--color-gradient-1)
+                    border-left: 1vw solid transparent
+                    border-right: 1vw solid transparent
+                    transition-delay: .9s
+                &:nth-child(2)
+                    align-self: end
+                    width: 5.8vw
+                    border-bottom: 2.48vw solid var(--color-gradient-2)
+                    border-left: 1.58vw solid transparent
+                    border-right: 1.58vw solid transparent
+                    transition-delay: .6s
+                &:nth-child(3)
+                    width: 5.8vw
+                    border-top: 1.15vw solid var(--color-gradient-3)
+                    border-left: .9vw solid transparent
+                    border-right: .9vw solid transparent
+                    transition-delay: .3s
+                &:nth-child(4)
+                    align-self: start
+                    width: 0px
+                    border-top: 0px solid var(--color-font-1)
+                    border-left: 1vw solid transparent
+                    border-right: 1vw solid transparent
+                    transition-delay: 0s
+
+.hamburger_segment
+    @include mobile-and-small
+        transition: .3s linear
+        z-index: 99999
+        &:nth-child(1)
+            align-self: end
+            width: 0px
+            border-bottom: 0px solid var(--color-font-1)
+            border-left: 1vw solid transparent
+            border-right: 1vw solid transparent
+            transition-delay: 0s
+        &:nth-child(2)
+            width: 5.8vw
+            border-bottom: 1.15vw solid var(--color-font-1)
+            border-left: .9vw solid transparent
+            border-right: .9vw solid transparent
+            align-self: end
+            transition-delay: .3s
+        &:nth-child(3)
+            width: 5.8vw
+            border-top: 2.48vw solid var(--color-font-1)
+            border-left: 1.58vw solid transparent
+            border-right: 1.58vw solid transparent
+            transition-delay: .6s
+        &:nth-child(4)
+            align-self: start
+            width: 0px
+            border-top: 1.3vw solid var(--color-font-1)
+            border-left: 1vw solid transparent
+            border-right: 1vw solid transparent
+            transition-delay: .9s
+
+.destination
+    position: fixed
+    @include desktop
+        top: 50vh
+        left: 50%
+        transform: translate(-50%, -50%)
+        z-index: 99998
+        overflow: hidden
+        animation: bottom-slide-wrap .8s .3s cubic-bezier(0.65, 0, 0.35, 1) both
+    @include mobile-and-small
+        visibility: hidden
+
+    &--hidden
+        transition: visibility 0s 1s
+        visibility: hidden
+        animation: slide-top-wrap .8s 0s cubic-bezier(0.65, 0, 0.35, 1) both
+        & .destination_text
+            @include desktop
+                animation: slide-top .8s 0s cubic-bezier(0.65, 0, 0.35, 1) both
+
+.destination_text
+    @include desktop
+        transform: translateY(120%)
+        z-index: 99999
+        display: inline-block
+        color: transparent
+        font-size: calc(3 * var(--font-size-heading-1))
+        font-weight: 700
+        text-transform: uppercase
+        background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+        background-clip: text
+        animation: bottom-slide .8s .3s cubic-bezier(0.65, 0, 0.35, 1) both

@@ -1,0 +1,35 @@
+@import '../../sass/mixins'
+
+.footer
+    display: grid
+    grid-template-columns: 1fr max-content 1fr
+    gap: 3vw
+    align-items: center
+    height: 10vh
+    background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
+    padding: 0 3vw
+    overflow: hidden
+    @include mobile-and-small
+        padding: 0 3vw
+        height: 9vh
+        grid-template-columns: 1fr max-content 1fr
+
+.copy
+    color: var(--color-font-1)
+    font-size: var(--font-size-big)
+    letter-spacing: var(--letter-spacing-tiny)
+    @include mobile-and-small
+        font-size: calc(1.1 * var(--font-size-normal))
+
+// .theme
+//     @include flex-center
+//     cursor: pointer
+//     text-transform: uppercase
+//     color: var(--color-main-3)
+//     font-size: calc(.8 * var(--font-size-normal))
+//     background-color: var(--color-font-1)
+//     justify-self: end
+//     width: 4vh
+//     height: 4vh
+//     border-radius: 50%
+//     user-select: none

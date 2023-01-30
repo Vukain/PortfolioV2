@@ -1,0 +1,206 @@
+@import '../../../sass/mixins'
+
+@keyframes background-position
+    0%
+        background-position: 0% 0%
+    50%
+        background-position: 100% 0%
+    100%
+        background-position: 0% 0%
+
+.card
+    will-change: transform
+    outline: none
+    perspective: 75vw
+    cursor: pointer
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, .2))
+    z-index: 2
+    aspect-ratio: 11 / 15
+    width: calc(min(44vh, 22vw))
+    &:hover, &:focus
+        .frontside
+            @include desktop
+                transform: rotateY(-180deg)
+        .backside
+            @include desktop
+                transform: rotateY(0deg)
+
+    @include mobile-and-small
+        height: 50vh
+        width: 70vw
+        aspect-ratio: unset
+        perspective: 140vh
+        margin: 0
+        transition: height var(--freeze)
+        &:nth-of-type(2)
+            align-self: end
+
+%side
+    will-change: transform, rotate, rotateY, rotateX
+    @include zero-hundred
+    position: absolute
+    z-index: 3
+    backface-visibility: hidden
+    overflow: hidden
+    border-radius: var(--border-radius-normal)
+    transition: transform .6s ease-in-out, clip-path .9s ease-in-out
+    // @media screen and (prefers-reduced-motion: reduce)
+    //     transition: transform 0s ease-in-out, clip-path 0s ease-in-out
+
+.frontside
+    @extend %side
+    @include flex-center
+    flex-direction: column
+    &::before
+        @include before-after
+        @include zero-hundred
+        z-index: 1
+        border-radius: var(--border-radius-normal)
+        background-size: 400%
+        animation: background-position 10s ease infinite
+    &::after
+        @include before-after
+        z-index: 2
+        top: var(--card-border-size)
+        left: var(--card-border-size)
+        bottom: var(--card-border-size)
+        right: var(--card-border-size)
+        border-radius: calc(var(--border-radius-normal) * 3/5)
+        background-color: var(--background-color-2)
+        mask-image: url('../../../media/romboid_small.svg')
+        mask-size: var(--card-mask-size)
+        mask-position: center
+
+    &_frontend
+        &::before
+            background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-1), var(--grey-medium))
+
+    &_backend
+        &::before
+            background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-2), var(--grey-medium))
+
+    &_graphics
+        &::before
+            background-image: linear-gradient(-45deg, var(--grey-medium), var(--color-main-3), var(--grey-medium))
+
+.backside
+    @extend %side
+    display: block
+    @include desktop
+        transform: rotateY(180deg)
+    @include mobile-and-small
+        clip-path: circle(0% at 50% 50%)
+    &::before
+        @include before-after
+        @include zero-hundred
+        z-index: -2
+        border-radius: var(--border-radius-normal)
+        background-size: 80%
+        background-position: 50% 25%
+
+    &_frontend
+        &::before
+            background-image: url('../../../media/card_background_1.svg'), linear-gradient(var(--color-main-1), var(--color-main-1))
+
+    &_backend
+        &::before
+            background-image: url('../../../media/card_background_2.svg'), linear-gradient(var(--color-main-2), var(--color-main-2))
+
+    &_graphics
+        &::before
+            background-image: url('../../../media/card_background_3.svg'), linear-gradient(var(--color-main-3), var(--color-main-3))
+
+    &--active
+        @include mobile-and-small
+            clip-path: circle(100% at 50% 50%)
+
+.skew_wrapper
+    position: absolute
+    display: flex
+    flex-direction: column
+    overflow: hidden
+    top: var(--card-border-size)
+    left: var(--card-border-size)
+    bottom: var(--card-border-size)
+    right: var(--card-border-size)
+    border-radius: calc(var(--border-radius-normal) * 3/5)
+
+.title
+    @include flex-center
+    z-index: 4
+    font-size: var(--font-size-heading-3)
+    text-transform: uppercase
+    background-color: var(--background-color-2)
+    letter-spacing: var(--letter-spacing-small)
+    border-radius: var(--border-radius-big)
+    width: 30vh
+    height: 7vh
+    @include mobile-and-small
+        width: 50vw
+        height: 12vw
+
+    &_frontend
+        color: var(--color-main-1)
+
+    &_backend
+        color: var(--color-main-2)
+
+    &_graphics
+        color: var(--color-main-3)
+
+    &_skewed
+        border-radius: 0
+        margin: 5vh 0 var(--card-border-size) 0
+        transform: skewY(var(--skew))
+        width: 100%
+
+.crystal
+    position: absolute
+    z-index: 4
+    height: 60vh
+    @include mobile-and-small
+        height: 50vh
+
+.skills
+    @include flex-center
+    flex-direction: column
+    flex-grow: 1
+    position: relative
+    padding: 0
+    color: var(--color-font-1)
+    list-style-type: none
+    &::before
+        @include before-after
+        @include zero-hundred
+        z-index: -1
+        height: 120%
+        background-color: var(--background-color-2)
+        transform: skewY(var(--skew))
+
+.skill
+    font-size: var(--font-size-normal)
+    letter-spacing: var(--letter-spacing-tiny)
+    text-transform: uppercase
+    line-height: 1.8em
+    padding: 0 1vh 0 1vh
+    &:not(:last-child)
+        border-width: 2px
+        border-bottom-style: solid
+
+    &_frontend
+        composes: skill
+        border-color: var(--color-main-1)
+
+    &_backend
+        composes: skill
+        border-color: var(--color-main-2)
+
+    &_graphics
+        composes: skill
+        border-color: var(--color-main-3)
+
+.icon
+    position: absolute
+    bottom: 2vh
+    right: 2vh
+    z-index: 4
