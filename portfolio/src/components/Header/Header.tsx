@@ -39,14 +39,14 @@ export const Header: React.FC = () => {
             gsap.set(crystal, { autoAlpha: 0 });
 
             // Crystal drop and shatter animation, with shard float
-            crystalTL.fromTo(crystal, { scale: 3, filter: ' grayscale(0) blur(10px)' }, { ease: 'bounce.out', duration: 1.6, scale: 1, delay: 3.1, filter: 'grayscale(0) blur(0px)', autoAlpha: 1 })
+            crystalTL.fromTo(crystal, { scale: 3, filter: 'grayscale(0)' }, { ease: 'bounce.out', duration: 1.6, scale: 1, delay: 3.1, filter: 'grayscale(0)', autoAlpha: 1 })
                 .to(lowerShard, { duration: .4, delay: -.2, yPercent: '25', rotateZ: '-3deg' })
                 .to(lowerLeftShard, { duration: .4, delay: -.4, yPercent: '20', xPercent: '-30', rotateZ: '-5deg' })
                 .to(leftShard, { duration: .4, delay: -.4, yPercent: '-30', xPercent: '-95', rotateZ: '-18deg' })
                 .to(tinyShard, { duration: .4, delay: -.4, xPercent: '-195', rotateZ: '-5deg' })
-                .to([...shards, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.5, filter: 'grayscale(1)' })
-                .to(['#vukain'], { ease: 'bounce.out', duration: 3, delay: .4, filter: 'grayscale(0)' })
-                .to([...shards], { ease: 'bounce.out', duration: 2, delay: -3, stagger: .2, filter: 'grayscale(0)' });
+                .to([crystal, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.4, filter: 'grayscale(1)' })
+                .to(['#vukain', crystal], { ease: 'bounce.out', duration: 3, delay: .4, filter: 'grayscale(0)' })
+            // .to([crystal], { ease: 'bounce.out', duration: 2, delay: -3, filter: 'grayscale(0)' });
 
             mainShardTL.delay(crystalTL.duration() - 2.2)
                 .to(mainShard, { duration: 2, xPercent: '-5', yPercent: '-4', rotateZ: '-2deg' })

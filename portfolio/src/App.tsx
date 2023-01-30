@@ -17,9 +17,13 @@ import { Skills } from './components/Skills/Skills';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
+gsap.config({
+  force3D: false
+});
+
 // Fix for animation jump when address bar toggles on mobile
 ScrollTrigger.config({
-  ignoreMobileResize: true
+  ignoreMobileResize: true,
 });
 
 export const App = () => {

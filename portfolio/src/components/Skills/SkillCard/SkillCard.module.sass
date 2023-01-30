@@ -9,6 +9,7 @@
         background-position: 0% 0%
 
 .card
+    will-change: transform
     outline: none
     perspective: 75vw
     cursor: pointer
@@ -35,6 +36,7 @@
             align-self: end
 
 %side
+    will-change: transform, rotate, rotateY, rotateX
     @include zero-hundred
     position: absolute
     z-index: 3
@@ -42,6 +44,8 @@
     overflow: hidden
     border-radius: var(--border-radius-normal)
     transition: transform .6s ease-in-out, clip-path .9s ease-in-out
+    // @media screen and (prefers-reduced-motion: reduce)
+    //     transition: transform 0s ease-in-out, clip-path 0s ease-in-out
 
 .frontside
     @extend %side

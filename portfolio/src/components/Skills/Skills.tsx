@@ -333,12 +333,12 @@ export const Skills: React.FC = () => {
 
     const cardData: CardData = {
         frontend: {
-            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css', 'sass', 'bootstrap', 'javascript', 'typescript', 'react', 'redux'] },
+            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css / sass', 'bootstrap', 'javascript', 'typescript', 'react', 'next.js', 'redux'] },
             icon: FrontendIcon,
             ref: frontendRef
         },
         backend: {
-            data: { category: 'backend', display: 'backend', skills: ['node.js', 'next.js', 'python', 'django', 'firebase', 'mongodb', 'sqlite'] },
+            data: { category: 'backend', display: 'backend', skills: ['node.js', 'python', 'django', 'firebase', 'mongodb', 'sqlite'] },
             icon: BackendIcon,
             ref: backendRef
         },

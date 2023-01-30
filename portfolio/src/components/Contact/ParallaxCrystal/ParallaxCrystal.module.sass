@@ -349,7 +349,8 @@
             width: 3vh
             z-index: 3
             & .floating_crystal
-                animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite
+                @media not screen and(prefers-reduced-motion: reduce)
+                    animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite
             & .crystal
                 transform: rotateZ(342deg)
 
@@ -386,7 +387,9 @@
 .floating_crystal
 
     &--small
-        animation: crystal-orbit-small 8s linear infinite, crystal-rotate 8s linear infinite
+        @media not screen and (prefers-reduced-motion: reduce)
+            animation: crystal-orbit-small 8s linear infinite, crystal-rotate 8s linear infinite
 
     &--strong
-        animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite
+        @media not screen and (prefers-reduced-motion: reduce)
+            animation: crystal-orbit-big 8s linear infinite, crystal-rotate 8s linear infinite

@@ -36,7 +36,7 @@ import {
 
 export const Projects: React.FC = () => {
 
-    const { language, setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection, motionNotReduced } = useContext(AppContext);
 
     const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
 
@@ -98,7 +98,7 @@ export const Projects: React.FC = () => {
 
         // Set correct animations for screen orientation
         if (isDesktop) {
-            gsap.set(projects.slice(1), { scale: 1, rotateY: '30deg', xPercent: 120, })
+            gsap.set(projects.slice(1), { scale: 1, xPercent: 120 })
 
             slidingProjectsTL.to(projects.slice(1), {
                 xPercent: 0,
@@ -107,16 +107,18 @@ export const Projects: React.FC = () => {
                 ease: "sine.inOut"
             });
 
-            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
-                rotateY: '20deg',
-                scale: .7,
-                stagger: .5,
-                ease: "sine.inOut",
-                opacity: 0
-            });
+            if (motionNotReduced) {
+                fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+                    rotateY: '20deg',
+                    scale: .7,
+                    stagger: .5,
+                    ease: "sine.inOut",
+                    opacity: 0
+                });
+            };
 
         } else {
-            gsap.set(projects.slice(1), { scale: 1, rotateX: '-30deg', yPercent: 120 })
+            gsap.set(projects.slice(1), { scale: 1, yPercent: 120 })
 
             slidingProjectsTL.to(projects.slice(1), {
                 yPercent: 0,
@@ -125,13 +127,15 @@ export const Projects: React.FC = () => {
                 ease: 'sine.inOut'
             });
 
-            fadingProjectsTL.to(projects.slice(0, -1), {
-                rotateX: '-20deg',
-                scale: .7,
-                stagger: .5,
-                ease: "sine.inOut",
-                opacity: 0
-            });
+            if (motionNotReduced) {
+                fadingProjectsTL.to(projects.slice(0, -1), {
+                    rotateX: '-20deg',
+                    scale: .7,
+                    stagger: .5,
+                    ease: "sine.inOut",
+                    opacity: 0
+                });
+            };
         };
 
     }, [setCurrentSection])

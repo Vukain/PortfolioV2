@@ -23,7 +23,7 @@
     position: relative
 
 .crystal
-    will-change: filter, transform
+    will-change: filter, transform, translate
     position: absolute
     top: 50%
     left: 25%
@@ -36,11 +36,12 @@
     @include mobile-and-small
         top: 40%
         left: 60%
+        transition: height var(--freeze)
     & g
         will-change: filter, transform
 
 .hello
-    will-change: transform
+    will-change: transform, scale
     transform: scale(1.8)
     color: var(--color-font-1)
     display: grid
@@ -84,7 +85,6 @@
             letter-spacing: .18em
             font-weight: 400
             animation: bottom-slide .8s 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards
-            @include mobile-and-small
 
     &--english
         &:nth-child(1)

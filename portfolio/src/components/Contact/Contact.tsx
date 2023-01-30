@@ -37,7 +37,7 @@ import { ReactComponent as SpikedShardImg4 } from '../../media/parallax_shards/s
 
 export const Contact: React.FC = () => {
 
-    const { language, setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection, motionNotReduced } = useContext(AppContext);
 
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
     const formRef: React.MutableRefObject<null | HTMLFormElement> = useRef(null);
@@ -114,22 +114,24 @@ export const Contact: React.FC = () => {
 
     // Handlers for parallax shards move
     const mouseMoveHandler = (e: MouseEvent): void => {
-        if (sectionRef.current) {
+        if (motionNotReduced && sectionRef.current) {
             setCursorXPosition(e.clientX - sectionRef.current?.getBoundingClientRect().left - initialCursorXPositionRef.current + exitCursorXPosition)
             setCursorYPosition(e.clientY - sectionRef.current?.getBoundingClientRect().top - initialCursorYPositionRef.current + exitCursorYPosition)
         };
     };
 
     const mouseEnterHandler = (e: MouseEvent): void => {
-        if (sectionRef.current) {
+        if (motionNotReduced && sectionRef.current) {
             initialCursorXPositionRef.current = e.clientX - sectionRef.current.getBoundingClientRect().left
             initialCursorYPositionRef.current = e.clientY - sectionRef.current.getBoundingClientRect().top
         };
     };
 
     const mouseLeaveHandler = (e: MouseEvent): void => {
-        setExitCursorXPosition(cursorXPosition);
-        setExitCursorYPosition(cursorYPosition);
+        if (motionNotReduced) {
+            setExitCursorXPosition(cursorXPosition);
+            setExitCursorYPosition(cursorYPosition);
+        };
     };
 
     // Form submit and status changing

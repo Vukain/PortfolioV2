@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { gsap } from 'gsap';
 import { clsx } from 'clsx';
 
 import styles from './ImagePortal.module.sass';
+
+import { AppContext } from '../../../../store/AppContext';
 
 import { ReactComponent as GithubIcon } from '../../../../media/icons/github-project.svg';
 import { ReactComponent as LinkIcon } from '../../../../media/icons/link.svg';
@@ -22,6 +24,8 @@ type MyProps = {
 };
 
 export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile, code }, links: { github, live }, isActive }) => {
+
+    const { motionNotReduced } = useContext(AppContext);
 
     const portalRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     // Ref used to work within several useEffects
@@ -44,6 +48,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         // Fix for weird GSAP delay desync when negative delay is longer than animation duration
         const logoSlideDelayFix = logoSlideInDelay < -logoSlideDuration ? logoSlideInDelay : -logoSlideDuration;
 
+
         // Logo slide up animation
         if ([code, desktop, mobile].some(el => el)) {
             imagesTL.current
@@ -59,10 +64,10 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const staggerTime = 2.5 + freezeTime;
             const duration = 2;
 
-            gsap.set(codeScreenshots, { top: '170%', left: '50%', yPercent: '-50', xPercent: '-50', rotateX: '-3deg', scale: .9 })
+            gsap.set(codeScreenshots, { top: '170%', left: '50%', yPercent: '-50', xPercent: '-50', scale: .9 })
             imagesTL.current
-                .to(codeScreenshots, { ease: 'Sine.easeOut', duration: duration, delay: -2.4, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
-                .to(codeScreenshots, { ease: 'Sine.easeIn', duration: duration, delay: -(codeScreenshots.length - 1) * staggerTime + freezeTime, stagger: staggerTime, top: '-70%', scale: .9, rotateX: '3deg' })
+                .to(codeScreenshots, { ease: 'Sine.easeOut', duration: duration, delay: -2.4, stagger: staggerTime, top: '50%', scale: 1 })
+                .to(codeScreenshots, { ease: 'Sine.easeIn', duration: duration, delay: -(codeScreenshots.length - 1) * staggerTime + freezeTime, stagger: staggerTime, top: '-70%', scale: .9 })
         };
 
         // Animation for desktop screenshots
@@ -71,12 +76,12 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const staggerTime = 3.2;
             const duration = 2;
 
-            gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', xPercent: '-50', rotateX: '-10deg', scale: .9 })
+            gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', xPercent: '-50', scale: .9 })
             imagesTL.current
-                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.8, duration: duration * 1.1, stagger: staggerTime, top: '80%', scale: .95, rotateX: '-7deg' })
-                .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '50%', scale: 1, rotateX: 0 })
-                .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '20%', scale: .95, rotateX: '7deg' })
-                .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, rotateX: '10deg' })
+                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.8, duration: duration * 1.1, stagger: staggerTime, top: '80%', scale: .95, })
+                .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '50%', scale: 1, })
+                .to(desktopScreenshots, { ease: 'none', duration: duration / 1, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, top: '20%', scale: .95, })
+                .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, top: '-50%', scale: .9, })
         };
 
         // Animation for mobile screenshots
@@ -84,12 +89,12 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const mobileScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_mobile"]');
             const staggerTime = 3;
             const duration = 3;
-            gsap.set(mobileScreenshots, { top: '150%', left: '80%', yPercent: '-50', xPercent: '-50', rotateX: '-10deg', rotateY: '6deg', scale: .8, })
+            gsap.set(mobileScreenshots, { top: '150%', left: '80%', yPercent: '-50', xPercent: '-50', scale: .8, })
             imagesTL.current
-                .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -5.2, duration: duration * 1.1, stagger: staggerTime, top: '50%', scale: .95, rotateX: 0, rotateY: '6deg' })
-                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1, rotateX: 0, rotateY: 0 })
-                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '20%', scale: .95, rotateX: 0, rotateY: '-6deg' })
-                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8, rotateX: '10deg', rotateY: '-6deg' })
+                .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -5.2, duration: duration * 1.1, stagger: staggerTime, top: '50%', scale: .95 })
+                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1 })
+                .to(mobileScreenshots, { duration: duration, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '20%', scale: .95 })
+                .to(mobileScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: -(mobileScreenshots.length - 1) * 3, stagger: staggerTime, top: '-50%', scale: .8 })
         };
 
         // Logo slide to center animation
@@ -97,13 +102,23 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             imagesTL.current
                 .to(logoWrapper, { delay: logoSlideInDelay, duration: logoSlideDuration, ease: 'Expo.easeInOut', top: '50%', scale: 1 })
                 .to(logoImage, { delay: logoSlideDelayFix, duration: logoSlideDuration, ease: 'Expo.easeInOut', transformOrigin: 'right bottom', scale: 1 })
-        }
+        };
+
+        if (!motionNotReduced) {
+            imagesTL.current.pause()
+        };
+
     }, []);
 
     // Reset animation progress when changing project
     useEffect(() => {
         if (isActive) {
             imagesTL.current!.progress(0, false)
+            imagesTL.current!.play(0)
+        } else {
+            setTimeout(() => {
+                imagesTL.current!.pause()
+            }, 3000);
         };
     },
         [isActive]);
