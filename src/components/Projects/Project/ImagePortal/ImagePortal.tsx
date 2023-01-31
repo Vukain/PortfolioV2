@@ -48,7 +48,6 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         // Fix for weird GSAP delay desync when negative delay is longer than animation duration
         const logoSlideDelayFix = logoSlideInDelay < -logoSlideDuration ? logoSlideInDelay : -logoSlideDuration;
 
-
         // Logo slide up animation
         if ([code, desktop, mobile].some(el => el)) {
             imagesTL.current
@@ -109,7 +108,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
     useEffect(() => {
         if (motionNotReduced && currentSection === 'projects') {
-            // Reset animation progress when changing project and disable when becomes inactive
+            // Reset animation progress when changing project and disable when it becomes inactive
             if (isActive) {
                 imagesTL.current!.progress(0, false)
                 imagesTL.current!.play(0)
@@ -122,7 +121,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             imagesTL.current!.pause()
         };
     },
-        [isActive, currentSection]);
+        [isActive, currentSection, motionNotReduced]);
 
     // Create project screenshots
     const codeScreenshots = code ? code.map((image, index) => (

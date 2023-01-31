@@ -34,7 +34,8 @@ export const Header: React.FC = () => {
             const [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard] = ['main', 'lower', 'lower-left', 'middle-left', 'middle-tiny',].map((element) => (
                 elementGetter(`[id="crystal_hero_svg__${element}"]`))
             );
-            const shards = [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard];
+
+            // const shards = [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard];
             const shardTimelines = [mainShardTL, lowerShardTL, leftShardTL, tinyShardTL, lowerLeftShardTL];
 
             gsap.set(crystal, { autoAlpha: 0 });
@@ -47,7 +48,6 @@ export const Header: React.FC = () => {
                 .to(tinyShard, { duration: .4, delay: -.4, xPercent: '-195', rotateZ: '-5deg' })
                 .to([crystal, '#vukain'], { ease: 'Expo.easeOut', duration: 1, delay: -.4, filter: 'grayscale(1)' })
                 .to(['#vukain', crystal], { ease: 'bounce.out', duration: 3, delay: .4, filter: 'grayscale(0)' })
-            // .to([crystal], { ease: 'bounce.out', duration: 2, delay: -3, filter: 'grayscale(0)' });
 
             mainShardTL.delay(crystalTL.duration() - 2.2)
                 .to(mainShard, { duration: 2, xPercent: '-5', yPercent: '-4', rotateZ: '-2deg' })
@@ -89,6 +89,7 @@ export const Header: React.FC = () => {
             };
         };
 
+        // Set section as active
         gsap.timeline({
             scrollTrigger: {
                 trigger: '#header',
@@ -107,7 +108,7 @@ export const Header: React.FC = () => {
             }
         });
 
-    }, [setCurrentSection]);
+    }, [motionNotReduced, setCurrentSection]);
 
     return (
         <header className={styles.header} id="header">

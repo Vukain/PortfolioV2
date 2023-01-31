@@ -131,7 +131,7 @@ export const Projects: React.FC = () => {
             });
         };
 
-    }, [setCurrentSection])
+    }, [motionNotReduced, setCurrentSection])
 
     // Project data with mapping
     const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];
