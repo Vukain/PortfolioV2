@@ -41,12 +41,13 @@
     justify-content: flex-end
     align-items: center
     z-index: 9991
-    backdrop-filter: blur(2vh) hue-rotate(0deg)
+    backdrop-filter: blur(2vh)
     @include desktop
-        opacity: 0
-        animation: nav-opacity 0s 4.7s forwards
-        &--skip_delay
-            animation-delay: 0s
+        @media not screen and (prefers-reduced-motion: reduce)
+            opacity: 0
+            animation: nav-opacity 0s 4.7s forwards
+            &--skip_delay
+                animation-delay: 0s
     @include mobile-and-small
         backdrop-filter: unset
         flex-direction: column

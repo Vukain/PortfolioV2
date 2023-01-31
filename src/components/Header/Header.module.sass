@@ -42,7 +42,6 @@
 
 .hello
     will-change: transform, scale
-    transform: scale(1.8)
     color: var(--color-font-1)
     display: grid
     width: 48vw
@@ -50,13 +49,17 @@
     grid-template-rows: min-content min-content min-content
     align-items: end
     justify-items: start
-    animation: zoom-out .8s 2.3s cubic-bezier(0.65, 0, 0.35, 1) both
     cursor: default
+    transform: translateX(34%) scale(1)
+    @media not screen and (prefers-reduced-motion: reduce)
+        transform: scale(1.8)
+        animation: zoom-out .8s 2.3s cubic-bezier(0.65, 0, 0.35, 1) both
     @include mobile-and-small
         margin-left: 1vw
         width: 79vw
-        transform: scale(1.2)
-        animation: zoom-out-mobile .8s 2.3s cubic-bezier(0.65, 0, 0.35, 1) forwards
+        @media not screen and (prefers-reduced-motion: reduce)
+            transform: scale(1.2)
+            animation: zoom-out-mobile .8s 2.3s cubic-bezier(0.65, 0, 0.35, 1) forwards
 
 .overflow_wrapper
     height: max-content
@@ -67,24 +70,31 @@
         @include mobile-and-small
             margin-bottom: -3vw
         & .line
-            animation: bottom-slide .6s .3s cubic-bezier(0.65, 0, 0.35, 1) forwards
+            @media not screen and (prefers-reduced-motion: reduce)
+                animation: bottom-slide .6s .3s cubic-bezier(0.65, 0, 0.35, 1) forwards
+
     &:nth-child(2)
         & .line
             line-height: .9em
-            animation: bottom-slide .6s .6s cubic-bezier(0.65, 0, 0.35, 1) forwards
+            @media not screen and (prefers-reduced-motion: reduce)
+                animation: bottom-slide .6s .6s cubic-bezier(0.65, 0, 0.35, 1) forwards
+
     &:nth-child(3)
         grid-row: 1 / 3
         grid-column: 2
         justify-self: end
+
     &:nth-child(4)
         grid-column: span 2
+        margin-right: -10vw
         @include mobile-and-small
             margin-right: -5vw
         & .line
             font-size: calc(0.84 * var(--font-size-heading-1))
             letter-spacing: .18em
             font-weight: 400
-            animation: bottom-slide .8s 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards
+            @media not screen and (prefers-reduced-motion: reduce)
+                animation: bottom-slide .8s 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards
 
     &--english
         &:nth-child(1)
@@ -96,12 +106,13 @@
             letter-spacing: .11em
 
 .line
-    transform: translateY(120%)
     display: block
     font-size: var(--font-size-heading-1)
     font-weight: 400
     text-transform: uppercase
     font-size: calc(0.7 * var(--font-size-heading-1))
+    @media not screen and (prefers-reduced-motion: reduce)
+        transform: translateY(120%)
 
 .color
     // transform: translateX(100%)
@@ -120,9 +131,10 @@
         background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3) 94%)
         background-size: 400%
         background-clip: text
-        transform: translateX(90vh)
-        animation: right-slide .8s cubic-bezier(0, 0.55, 0.45, 1) forwards
-        @for $i from 1 to 7
-            &:nth-child(#{$i})
-                background-position: $i * 16%
-                animation-delay: .9s + ($i - 1) * .1s
+        @media not screen and (prefers-reduced-motion: reduce)
+            transform: translateX(90vh)
+            animation: right-slide .8s cubic-bezier(0, 0.55, 0.45, 1) forwards
+            @for $i from 1 to 7
+                &:nth-child(#{$i})
+                    background-position: $i * 16%
+                    animation-delay: .9s + ($i - 1) * .1s

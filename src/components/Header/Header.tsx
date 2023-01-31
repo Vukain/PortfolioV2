@@ -11,12 +11,11 @@ import { ReactComponent as Crystal } from '../../images/crystal_hero.svg';
 
 export const Header: React.FC = () => {
 
-    const { language, setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection, motionNotReduced } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
-
-    let isEnglish = language !== 'polish';
+    const isEnglish = language !== 'polish';
 
     useEffect(() => {
 
@@ -36,6 +35,7 @@ export const Header: React.FC = () => {
                 elementGetter(`[id="crystal_hero_svg__${element}"]`))
             );
             const shards = [mainShard, lowerShard, lowerLeftShard, leftShard, tinyShard];
+            const shardTimelines = [mainShardTL, lowerShardTL, leftShardTL, tinyShardTL, lowerLeftShardTL];
 
             gsap.set(crystal, { autoAlpha: 0 });
 
@@ -79,6 +79,14 @@ export const Header: React.FC = () => {
                 .to(tinyShard, { duration: 1.2, xPercent: '-155', yPercent: '40', rotateZ: '5deg' })
                 .to(tinyShard, { duration: 1.4, xPercent: '-175', yPercent: '60', rotateZ: '5deg' })
                 .to(tinyShard, { duration: 1.2, xPercent: '-195', yPercent: '0', rotateZ: '-5deg' });
+
+            // Skip and freeze animation if motion is reduced
+            if (!motionNotReduced) {
+                for (const timeline of [crystalTL, ...shardTimelines]) {
+                    timeline.progress(1, false);
+                    timeline.kill();
+                };
+            };
         };
 
         gsap.timeline({
@@ -99,7 +107,6 @@ export const Header: React.FC = () => {
             }
         });
 
-        isEnglish = language !== 'polish';
     }, [setCurrentSection]);
 
     return (

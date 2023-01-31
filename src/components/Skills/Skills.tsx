@@ -17,7 +17,7 @@ import { ReactComponent as MotionPathMobile } from '../../images/motion_path_mob
 
 export const Skills: React.FC = () => {
 
-    const { language, setCurrentSection } = useContext(AppContext);
+    const { language, motionNotReduced, setCurrentSection } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
     const frontendRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
@@ -43,9 +43,12 @@ export const Skills: React.FC = () => {
             const motionEnd = `+=${(isDesktop ? 1.2 : 1) * document.getElementById('skills')!.offsetHeight}px`;
 
             const [leftBottomShard, leftShard, rightBottomShard, topShard, rightShard, bottomShard] = ['left-bottom', 'left', 'right-bottom', 'top', 'right', 'bottom'].map((element) => (elementGetter(`[id="crystal_scroll_svg__${element}"]`)));
+
             const inner = elementGetter('[id*="inner"]');
 
             gsap.set([inner, crystal], { autoAlpha: 0 })
+
+            if (motionNotReduced) { }
 
             // Timelines for crystal shards scroll animation
             const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
@@ -62,12 +65,14 @@ export const Skills: React.FC = () => {
                     onLeave: () => {
                         // Condition to prevent visual Firefox bug
                         if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
-                            setFloat(true);
+                            if (motionNotReduced) { setFloat(true) }
                         };
                     },
                     onEnterBack: () => { if (isDesktop) { setFloat(false) } }
                 }
             })));
+
+            const crystalShardsTL = [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL];
 
             // Animation of crystal shards moving while scrolling
             const crystalFloater = () => {
@@ -139,12 +144,12 @@ export const Skills: React.FC = () => {
                         });
 
                     if (window.location.href.includes('#contact')) {
-                        const crystalShardsTL = [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL];
+
                         for (const timeline of crystalShardsTL) {
                             timeline.progress(1, false);
                         };
                     };
-                }
+                };
             };
 
             // Timeline for crystal dropping and breaking
@@ -159,7 +164,8 @@ export const Skills: React.FC = () => {
             // Animation of crystal dropping and breaking
             breakCrystalTL.fromTo(crystal, { scale: 1.7 }, {
                 scale: 1, autoAlpha: 1, duration: .3
-            })
+            });
+
             if (isDesktop) {
                 breakCrystalTL.to(inner, {
                     autoAlpha: 1,
@@ -229,8 +235,12 @@ export const Skills: React.FC = () => {
                     yPercent: 100,
                     duration: .2,
                     delay: -.2,
-                    onComplete: () => { setFloat(true) }
+                    onComplete: () => { if (motionNotReduced) { setFloat(true) } }
                 })
+            };
+
+            if (!motionNotReduced) {
+                breakCrystalTL.progress(1, false);
             };
 
             // Setting up trigger and path for crystal move
@@ -256,6 +266,15 @@ export const Skills: React.FC = () => {
                     start: isDesktop ? .05 : .085
                 }
             });
+
+            if (!motionNotReduced) {
+                breakCrystalTL.progress(1, false);
+                floatingCrystalTL.progress(1, false);
+                floatingCrystalTL.kill()
+                for (const timeline of crystalShardsTL) {
+                    timeline.kill();
+                };
+            };
 
             // Unused automatic crystal floating, now floating is synced with scroll and then transitions into css floating animation
             // const floatingShardAuto = gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1, yoyo: true });
@@ -304,43 +323,45 @@ export const Skills: React.FC = () => {
 
             // Card reveal animations for mobile and desktop variant
             const cards = [frontendCard, backendCard, graphicsCard];
+            if (motionNotReduced) {
+                if (isDesktop) {
+                    gsap.set(cards, { yPercent: 40, opacity: 0, scale: .7 });
 
-            if (isDesktop) {
-                gsap.set(cards, { yPercent: 40, opacity: 0, scale: .7 });
-
-                cards.forEach((element, index) => {
-                    gsap.to(element, {
-                        yPercent: 0,
-                        opacity: 1,
-                        scale: 1,
-                        duration: .9,
-                        delay: .3,
-                        ease: 'back.out(1.0)',
-                        scrollTrigger: {
-                            trigger: '#skills',
-                            start: `${20 + index * 20}% bottom`
-                        }
+                    cards.forEach((element, index) => {
+                        gsap.to(element, {
+                            yPercent: 0,
+                            opacity: 1,
+                            scale: 1,
+                            duration: .9,
+                            delay: .3,
+                            ease: 'back.out(1.0)',
+                            scrollTrigger: {
+                                trigger: '#skills',
+                                start: `${20 + index * 20}% bottom`
+                            }
+                        });
                     });
-                });
-            } else {
-                gsap.set(cards, { xPercent: -100, opacity: 0, scale: .6 });
-                gsap.set(backendCard, { xPercent: 100 });
+                } else {
+                    gsap.set(cards, { xPercent: -100, opacity: 0, scale: .6 });
+                    gsap.set(backendCard, { xPercent: 100 });
 
-                cards.forEach((element) => {
-                    gsap.to(element, {
-                        xPercent: 0,
-                        opacity: 1,
-                        scale: 1,
-                        duration: .6,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "10% bottom"
-                        }
+                    cards.forEach((element) => {
+                        gsap.to(element, {
+                            xPercent: 0,
+                            opacity: 1,
+                            scale: 1,
+                            duration: .6,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: element,
+                                start: "10% bottom"
+                            }
+                        });
                     });
-                });
+                };
             };
         };
+
 
         // Set as active section
         gsap.timeline({

@@ -56,6 +56,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         // Setup timeline and initial parameters
         infoTL.current = gsap.timeline({ defaults: { transformOrigin: 'center', ease: 'sine.inOut' } });
         gsap.set([slidingCapsules], { yPercent: motionReducerSwitch('105'), opacity: 0 });
+
         isDesktop ? gsap.set([slidingText], { xPercent: motionReducerSwitch('105'), opacity: 0 }) : gsap.set([slidingText], { yPercent: motionReducerSwitch('105'), opacity: 0 });
 
         // Create timeline detecting which project is active
@@ -68,10 +69,10 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                         if (isDesktop) {
                             infoTL.current!
                                 .to(slidingText, { xPercent: motionReducerSwitch('-105'), duration: .6, stagger: motionReducerSwitch(.15), opacity: 0 })
-                                .to([...slidingCapsules].reverse(), { delay: motionReducerSwitch(-1, slidingText.length * -.15 - .6), yPercent: motionReducerSwitch('105'), duration: .3, stagger: motionReducerSwitch(.1), opacity: 0 });
+                                .to([...slidingCapsules].reverse(), { delay: motionReducerSwitch(slidingText.length * -.15 - .6, -.6), yPercent: motionReducerSwitch('105'), duration: motionReducerSwitch(.3, .6), stagger: motionReducerSwitch(.1), opacity: 0 });
                         } else {
                             infoTL.current!
-                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: motionReducerSwitch('-105'), duration: .2, stagger: motionReducerSwitch(.05), opacity: 0 })
+                                .to([...slidingCapsules].reverse(), { delay: 0, yPercent: motionReducerSwitch('-105'), duration: motionReducerSwitch(.2, .5), stagger: motionReducerSwitch(.05), opacity: 0 })
                                 .to([...slidingText].reverse(), { delay: slidingCapsules.length * -.05 + .2, yPercent: motionReducerSwitch('-105'), duration: .5, stagger: motionReducerSwitch(.1), opacity: 0 })
                         };
                     };
@@ -82,7 +83,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                         if (isDesktop) {
                             infoTL.current!
                                 .to(slidingText, { xPercent: motionReducerSwitch('105'), duration: .6, stagger: motionReducerSwitch(.1), opacity: 0 })
-                                .to([...slidingCapsules].reverse(), { delay: motionReducerSwitch(-1, slidingText.length * -.1 - .6), yPercent: motionReducerSwitch('105'), duration: motionNotReduced ? .3 : .6, stagger: motionReducerSwitch(.1), opacity: 0 });
+                                .to([...slidingCapsules].reverse(), { delay: motionReducerSwitch(slidingText.length * -.1 - .6, -.6), yPercent: motionReducerSwitch('105'), duration: motionReducerSwitch(.3, .6), stagger: motionReducerSwitch(.1), opacity: 0 });
                         } else {
                             infoTL.current!
                                 .to([...slidingCapsules].reverse(), { delay: 0, yPercent: motionReducerSwitch('105'), duration: .3, stagger: motionReducerSwitch(.1), opacity: 0 })
@@ -120,7 +121,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
             animationTimeout = setTimeout(() => {
                 infoTL.current!
                     .to(text, { xPercent: '0', yPercent: '0', duration: duration, stagger: motionReducerSwitch((isDesktop ? .09 : .2)), ease: 'sine.inOut', opacity: 1 })
-                    .to(capsules, { delay: motionReducerSwitch(-(duration - .6), -duration), yPercent: '0', duration: motionReducerSwitch(.3, duration / 2), stagger: motionReducerSwitch(.1), opacity: 1, ease: 'sine.inOut' })
+                    .to(capsules, { delay: motionReducerSwitch(-(duration - .6), -duration), yPercent: '0', duration: motionReducerSwitch(.3, duration), stagger: motionReducerSwitch(.1), opacity: 1, ease: 'sine.inOut' })
             }, 1200);
         };
 

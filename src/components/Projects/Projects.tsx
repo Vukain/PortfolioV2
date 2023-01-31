@@ -106,15 +106,13 @@ export const Projects: React.FC = () => {
                 ease: "sine.inOut"
             });
 
-            if (motionNotReduced) {
-                fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
-                    rotateY: '20deg',
-                    scale: .7,
-                    stagger: .5,
-                    ease: "sine.inOut",
-                    opacity: 0
-                });
-            };
+            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+                rotateY: motionNotReduced ? '20deg' : 0,
+                scale: motionNotReduced ? .7 : 1,
+                stagger: .5,
+                ease: "sine.inOut",
+                opacity: 0
+            });
 
         } else {
             gsap.set(projects.slice(1), { scale: 1, yPercent: 120 })
@@ -125,15 +123,12 @@ export const Projects: React.FC = () => {
                 ease: 'sine.inOut'
             });
 
-            if (motionNotReduced) {
-                fadingProjectsTL.to(projects.slice(0, -1), {
-                    // rotateX: '-20deg',
-                    scale: .7,
-                    stagger: .5,
-                    ease: "sine.inOut",
-                    opacity: 0
-                });
-            };
+            fadingProjectsTL.to(projects.slice(0, -1), {
+                scale: motionNotReduced ? .7 : 1,
+                stagger: .5,
+                ease: "sine.inOut",
+                opacity: 0
+            });
         };
 
     }, [setCurrentSection])

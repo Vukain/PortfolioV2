@@ -21,7 +21,8 @@
         z-index: 999
         flex-direction: column
         right: 5.3%
-        transform: translateX(50%)
+        @media not screen and (prefers-reduced-motion: reduce)
+            transform: translateX(50%)
         @include mobile-and-small
             flex-direction: row
             gap: 6vw
@@ -49,12 +50,13 @@
                         &::before
                             outline-offset: 2vw
 
-    @for $i from 1 to 4
-        &:nth-child(#{$i})
-            & .wrapper
-                animation-delay: $ui-slide-delay + ($i * .15s)
-                @include mobile-and-small
+    @media not screen and (prefers-reduced-motion: reduce)
+        @for $i from 1 to 4
+            &:nth-child(#{$i})
+                & .wrapper
                     animation-delay: $ui-slide-delay + ($i * .15s)
+                    @include mobile-and-small
+                        animation-delay: $ui-slide-delay + ($i * .15s)
 
 .wrapper
     position: relative
@@ -78,15 +80,17 @@
             height: 6vw
 
     &--hero
-        transform: translateX(10vw)
-        animation: icon-slide-right 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards
+        @media not screen and (prefers-reduced-motion: reduce)
+            transform: translateX(10vw)
+            animation: icon-slide-right 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards
         &::before
             background-color: var(--color-font-1)
             outline: .4vh solid var(--color-gradient-3)
             outline-offset: .5vh
         @include mobile-and-small
-            transform: translateY(-10vh)
-            animation: icon-slide-top .8s cubic-bezier(0.65, 0, 0.35, 1) forwards
+            @media not screen and (prefers-reduced-motion: reduce)
+                transform: translateY(-10vh)
+                animation: icon-slide-top .8s cubic-bezier(0.65, 0, 0.35, 1) forwards
             &::before
                 outline-offset: 1vw
                 outline: .4vh solid var(--color-main-2)

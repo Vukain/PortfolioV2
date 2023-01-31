@@ -69,25 +69,27 @@ export const Contact: React.FC = () => {
 
         const isDesktop = window.matchMedia('(orientation: landscape)').matches;
 
-        // Set initial properties
-        gsap.set(wrappers, { transform: `translate3d(0,${isDesktop ? 40 : 20}vh,0)`, scale: .7 });
-        gsap.set(wrappers.slice(1), { transform: 'translate3d(0,4vh,0)', opacity: 0 })
+        if (motionNotReduced) {
+            // Set initial properties
+            gsap.set(wrappers, { translateY: `${isDesktop ? 40 : 20}vh`, scale: .7 });
+            gsap.set(wrappers.slice(1), { translateY: `4vh`, opacity: 0 })
 
-        // Initialize triggers for reveal
-        wrappers.forEach((element, index) => {
-            gsap.to(element, {
-                transform: 'translate3d(0,0vh,0)',
-                opacity: 1,
-                scale: 1,
-                duration: index === 0 ? .8 : .4,
-                delay: .2 * index,
-                ease: 'Power1.easeOut',
-                scrollTrigger: {
-                    trigger: '#contact',
-                    start: `${isDesktop ? 40 : 60}% bottom`
-                }
+            // Initialize triggers for reveal
+            wrappers.forEach((element, index) => {
+                gsap.to(element, {
+                    translateY: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: index === 0 ? .8 : .4,
+                    delay: .2 * index,
+                    ease: 'Power1.easeOut',
+                    scrollTrigger: {
+                        trigger: '#contact',
+                        start: `${isDesktop ? 40 : 60}% bottom`
+                    }
+                });
             });
-        });
+        };
 
         // Set as active section
         gsap.timeline({
