@@ -32,7 +32,7 @@ import {
     portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2,
     portfolioV1DesktopImage3Small, portfolioV1DesktopImage3Medium, portfolioV1DesktopImage3Big, portfolioV1DesktopImage3,
     portfolioV1DesktopImage4Small, portfolioV1DesktopImage4Medium, portfolioV1DesktopImage4Big, portfolioV1DesktopImage4
-} from '../../media/project_images';
+} from '../../images/project_images';
 
 export const Projects: React.FC = () => {
 
@@ -102,7 +102,6 @@ export const Projects: React.FC = () => {
 
             slidingProjectsTL.to(projects.slice(1), {
                 xPercent: 0,
-                rotateY: 0,
                 stagger: .5,
                 ease: "sine.inOut"
             });
@@ -122,7 +121,6 @@ export const Projects: React.FC = () => {
 
             slidingProjectsTL.to(projects.slice(1), {
                 yPercent: 0,
-                rotateX: 0,
                 stagger: .5,
                 ease: 'sine.inOut'
             });

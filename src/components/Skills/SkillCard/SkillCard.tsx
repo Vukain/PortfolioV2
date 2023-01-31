@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 
 import styles from './SkillCard.module.sass';
 
-import { ReactComponent as CardCrystal } from '../../../media/crystal_card.svg';
+import { ReactComponent as CardCrystal } from '../../../images/crystal_card.svg';
 
 type MyProps = {
     data: { category: string, display: string, skills: string[] },

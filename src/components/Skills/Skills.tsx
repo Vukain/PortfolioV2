@@ -8,12 +8,12 @@ import { AppContext } from '../../store/AppContext';
 import { SkillCard } from './SkillCard/SkillCard';
 import { SectionName } from '../../layout/SectionName/SectionName';
 
-import { ReactComponent as FrontendIcon } from '../../media/icons/adjustments.svg';
-import { ReactComponent as BackendIcon } from '../../media/icons/tools-2.svg';
-import { ReactComponent as GraphicIcon } from '../../media/icons/tools.svg';
-import { ReactComponent as CrystalMoving } from '../../media/crystal_scroll.svg';
-import { ReactComponent as MotionPathDesktop } from '../../media/motion_path_desktop.svg';
-import { ReactComponent as MotionPathMobile } from '../../media/motion_path_mobile.svg';
+import { ReactComponent as FrontendIcon } from '../../images/icons/adjustments.svg';
+import { ReactComponent as BackendIcon } from '../../images/icons/tools-2.svg';
+import { ReactComponent as GraphicIcon } from '../../images/icons/tools.svg';
+import { ReactComponent as CrystalMoving } from '../../images/crystal_scroll.svg';
+import { ReactComponent as MotionPathDesktop } from '../../images/motion_path_desktop.svg';
+import { ReactComponent as MotionPathMobile } from '../../images/motion_path_mobile.svg';
 
 export const Skills: React.FC = () => {
 
@@ -62,10 +62,10 @@ export const Skills: React.FC = () => {
                     onLeave: () => {
                         // Condition to prevent visual Firefox bug
                         if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
-                            setFloat(true)
+                            setFloat(true);
                         };
                     },
-                    onEnterBack: () => { setFloat(false) }
+                    onEnterBack: () => { if (isDesktop) { setFloat(false) } }
                 }
             })));
 
@@ -228,7 +228,8 @@ export const Skills: React.FC = () => {
                     xPercent: -25,
                     yPercent: 100,
                     duration: .2,
-                    delay: -.2
+                    delay: -.2,
+                    onComplete: () => { setFloat(true) }
                 })
             };
 

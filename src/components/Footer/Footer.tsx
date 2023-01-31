@@ -20,7 +20,7 @@ export const Footer: React.FC<MyProps> = ({ theme, themeToggle }) => {
 
             {/* <div className={styles.theme} onClick={onThemeToggle}>{theme ? 'light' : 'dark'}</div> */}
             <SocialIcons />
-            <div className={styles.copy}>&copy; 2022 Vukain.</div>
+            <div className={styles.copy}>&copy; 2022 Vukain</div>
             <LanguageChanger />
 
         </footer>

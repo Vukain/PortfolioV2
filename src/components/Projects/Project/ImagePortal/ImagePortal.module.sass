@@ -10,11 +10,12 @@
     transition: opacity .4s 1.8s, scale .4s 1.8s, transform .4s 1s ease
     &:hover
         & .wrapper
-            filter: blur(1.4vh) grayscale(.5)
-            transition-delay: 3s
+            @include desktop
+                filter: blur(1.4vh) grayscale(.5)
+                transition-delay: 3s
         & .icon
             fill: var(--color-main-2)
-            transform: scale(1.2)
+            transform: scale(1.14)
 
 .hyperlink
     outline: none

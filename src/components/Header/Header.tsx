@@ -7,7 +7,7 @@ import styles from './Header.module.sass';
 import { AppContext } from '../../store/AppContext';
 import { SocialIcons } from '../SocialIcons/SocialIcons';
 
-import { ReactComponent as Crystal } from '../../media/crystal_hero.svg';
+import { ReactComponent as Crystal } from '../../images/crystal_hero.svg';
 
 export const Header: React.FC = () => {
 
@@ -15,7 +15,8 @@ export const Header: React.FC = () => {
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
 
-    const isEnglish = language === 'english';
+
+    let isEnglish = language !== 'polish';
 
     useEffect(() => {
 
@@ -98,6 +99,7 @@ export const Header: React.FC = () => {
             }
         });
 
+        isEnglish = language !== 'polish';
     }, [setCurrentSection]);
 
     return (
@@ -106,8 +108,8 @@ export const Header: React.FC = () => {
             <Crystal className={styles.crystal} ref={crystalRef} />
 
             <div className={styles.hello}>
-                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language === 'polish' ? 'cześć!' : 'Hi'}</p></div>
-                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language === 'polish' ? 'jestem' : 'I am'}</p></div>
+                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language !== 'polish' ? 'Hi' : 'cześć!'}</p></div>
+                <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><p className={styles.line}>{language !== 'polish' ? 'I am' : 'jestem'}</p></div>
                 <div className={clsx(styles.overflow_wrapper, isEnglish && styles['overflow_wrapper--english'])}><h1 className={styles.color} id='vukain'><span>v</span><span>u</span><span>k</span><span>a</span><span>i</span><span>n</span></h1></div>
                 <div className={styles.overflow_wrapper}><p className={styles.line}>fullstack webdeveloper</p></div>
             </div>

@@ -6,8 +6,8 @@ import styles from './ImagePortal.module.sass';
 
 import { AppContext } from '../../../../store/AppContext';
 
-import { ReactComponent as GithubIcon } from '../../../../media/icons/github-project.svg';
-import { ReactComponent as LinkIcon } from '../../../../media/icons/link.svg';
+import { ReactComponent as GithubIcon } from '../../../../images/icons/github-project.svg';
+import { ReactComponent as LinkIcon } from '../../../../images/icons/link.svg';
 
 type MyProps = {
     images: {
@@ -109,7 +109,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
     useEffect(() => {
 
         if (motionNotReduced && currentSection === 'projects') {
-            // Reset animation progress when changing project
+            // Reset animation progress when changing project and disable when becomes inactive
             if (isActive) {
                 imagesTL.current!.progress(0, false)
                 imagesTL.current!.play(0)

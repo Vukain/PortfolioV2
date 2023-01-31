@@ -67,7 +67,7 @@
         right: var(--card-border-size)
         border-radius: calc(var(--border-radius-normal) * 3/5)
         background-color: var(--background-color-2)
-        mask-image: url('../../../media/romboid_small.svg')
+        mask-image: url('../../../images/romboid_small.svg')
         mask-size: var(--card-mask-size)
         mask-position: center
 
@@ -100,15 +100,15 @@
 
     &_frontend
         &::before
-            background-image: url('../../../media/card_background_1.svg'), linear-gradient(var(--color-main-1), var(--color-main-1))
+            background-image: url('../../../images/card_background_1.svg'), linear-gradient(var(--color-main-1), var(--color-main-1))
 
     &_backend
         &::before
-            background-image: url('../../../media/card_background_2.svg'), linear-gradient(var(--color-main-2), var(--color-main-2))
+            background-image: url('../../../images/card_background_2.svg'), linear-gradient(var(--color-main-2), var(--color-main-2))
 
     &_graphics
         &::before
-            background-image: url('../../../media/card_background_3.svg'), linear-gradient(var(--color-main-3), var(--color-main-3))
+            background-image: url('../../../images/card_background_3.svg'), linear-gradient(var(--color-main-3), var(--color-main-3))
 
     &--active
         @include mobile-and-small

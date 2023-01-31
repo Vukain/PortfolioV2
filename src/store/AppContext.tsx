@@ -25,7 +25,7 @@ export const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
 
     const [navigateTo, setNavigateTo] = useState('');
     const [currentSection, setCurrentSection] = useState('header');
-    const [language, setLanguage] = useState('english');
+    const [language, setLanguage] = useState('polish');
     const [motionNotReduced] = useState(!(window.matchMedia("(prefers-reduced-motion: reduce)") && window.matchMedia("(prefers-reduced-motion: reduce)").matches));
 
     const contextValue: ContextType = { navigateTo, setNavigateTo, currentSection, setCurrentSection, language, setLanguage, motionNotReduced };

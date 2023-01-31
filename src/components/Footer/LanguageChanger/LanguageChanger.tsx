@@ -11,9 +11,9 @@ export const LanguageChanger: React.FC = () => {
 
     useEffect(() => {
         // Set initial language based on browser preferences
-        if (window.navigator.language === 'pl-PL') {
-            setLanguage('polish');
-            document.documentElement.setAttribute("lang", 'pl');
+        if (window.navigator.language !== 'pl-PL') {
+            setLanguage('english');
+            document.documentElement.setAttribute("lang", 'en');
         };
     }, [setLanguage]);
 

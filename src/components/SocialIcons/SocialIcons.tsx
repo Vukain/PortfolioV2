@@ -2,9 +2,9 @@ import { clsx } from 'clsx';
 
 import styles from './SocialIcons.module.sass';
 
-import { ReactComponent as FacebookIcon } from '../../media/icons/facebook-with-circle.svg';
-import { ReactComponent as GithubIcon } from '../../media/icons/github-with-circle.svg';
-import { ReactComponent as LinkedIcon } from '../../media/icons/linkedin-with-circle.svg';
+import { ReactComponent as FacebookIcon } from '../../images/icons/facebook-with-circle.svg';
+import { ReactComponent as GithubIcon } from '../../images/icons/github-with-circle.svg';
+import { ReactComponent as LinkedIcon } from '../../images/icons/linkedin-with-circle.svg';
 
 type MyProps = {
     hero?: boolean

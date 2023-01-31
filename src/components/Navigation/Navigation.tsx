@@ -22,13 +22,7 @@ export const Navigation: React.FC = () => {
         if (['projects', 'skills', 'contact'].includes(location)) {
             setSkipAnimationDelay(true);
         };
-
-        if (window.navigator.language === 'pl-PL') {
-            setLanguage('polish');
-            document.documentElement.setAttribute("lang", 'pl');
-        };
-
-    }, [setLanguage]);
+    }, []);
 
     const onNavigationToggleHandler = () => {
         setNavigationVisibility(!navigationVisibility);
