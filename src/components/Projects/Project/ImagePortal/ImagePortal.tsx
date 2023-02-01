@@ -114,11 +114,13 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
                 imagesTL.current!.play(0)
             } else {
                 setTimeout(() => {
-                    imagesTL.current!.pause()
+                    imagesTL.current!.pause();
                 }, 2500);
+
             };
         } else {
-            imagesTL.current!.pause()
+            imagesTL.current!.progress(0, false)
+            imagesTL.current!.pause();
         };
     },
         [isActive, currentSection, motionNotReduced]);

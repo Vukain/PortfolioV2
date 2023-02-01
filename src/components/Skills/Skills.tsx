@@ -366,7 +366,6 @@ export const Skills: React.FC = () => {
             };
         };
 
-
         // Set as active section
         gsap.timeline({
             scrollTrigger: {
@@ -382,7 +381,7 @@ export const Skills: React.FC = () => {
                 onLeaveBack: () => {
                     setCurrentSection('projects');
                 },
-                start: '5% center',
+                start: '2% center',
                 end: 'bottom center'
             }
         });
