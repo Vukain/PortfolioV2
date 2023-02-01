@@ -72,7 +72,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         // Animation for desktop screenshots
         if (desktop) {
             const desktopScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_desktop"]');
-            const staggerTime = 1.5;
+            const staggerTime = 1.6;
             const duration = 2;
 
             gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', xPercent: '-50', scale: .9 })
@@ -89,7 +89,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
             const duration = 2;
             const staggerTime = 1.5;
 
-            gsap.set(mobileScreenshots, { top: '150%', left: '80%', yPercent: '-50', xPercent: '-50', scale: .8, })
+            gsap.set(mobileScreenshots, { top: '150%', left: '80%', yPercent: '-50', xPercent: '-50', scale: .8 })
             imagesTL.current
                 .to(mobileScreenshots, { ease: 'Expo.easeIn', delay: -4.0, duration: duration, stagger: staggerTime, top: '50%', scale: .95 })
                 .to(mobileScreenshots, { duration: duration * 0.7, delay: -(mobileScreenshots.length - 1) * staggerTime, stagger: staggerTime, left: '50%', scale: 1 })

@@ -63,9 +63,9 @@ export const Skills: React.FC = () => {
                     end: motionEnd,
                     invalidateOnRefresh: true,
                     onLeave: () => {
-                        // Condition to prevent visual Firefox bug
-                        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1) {
-                            if (motionNotReduced) { setFloat(true) }
+                        // Condition to prevent visual Firefox bug and respect motion reduced settings
+                        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1 && motionNotReduced) {
+                            setFloat(true);
                         };
                     },
                     onEnterBack: () => { if (isDesktop) { setFloat(false) } }
@@ -235,8 +235,12 @@ export const Skills: React.FC = () => {
                     yPercent: 100,
                     duration: .2,
                     delay: -.2,
-                    onComplete: () => { if (motionNotReduced) { setFloat(true) } }
-                })
+                    onComplete: () => {
+                        if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1 && motionNotReduced) {
+                            setFloat(true);
+                        };
+                    }
+                });
             };
 
             if (!motionNotReduced) {

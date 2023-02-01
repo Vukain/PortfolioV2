@@ -67,7 +67,7 @@
         color: transparent
         transition: color .3s 0s
     @include mobile-and-small
-        height: 10vw
+        height: 11vw
         border-radius: var(--border-radius-normal)
         &::before
             border-radius: var(--border-radius-normal)
@@ -104,6 +104,7 @@
     transition: filter .7s 0s
 
     &_logos
+        will-change: filter
         width: 86%
         aspect-ratio: 4/3
         position: absolute
@@ -114,6 +115,8 @@
         @include mobile-and-small
             border-radius: var(--border-radius-big)
             width: 76%
+            filter: unset
+            // filter: blur(0)
 
     &_screenshots
         position: absolute
@@ -128,19 +131,22 @@
 .logo
     width: 100%
     height: 100%
-    object-fit: cover
+    // object-fit: cover
 
 .screenshot
 
     &_code
+        will-change: filter
         width: 75%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
         filter: var(--screenshot-shadow)
         @include mobile-and-small
             width: 68%
+            filter: unset
 
     &_desktop
+        will-change: filter
         width: 60%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -149,8 +155,11 @@
             left: 40%
         &:nth-child(2n)
             left: 60%
+        @include mobile-and-small
+            filter: unset
 
     &_mobile
+        will-change: filter
         position: absolute
         width: 25%
         // aspect-ratio: 9/18
@@ -159,6 +168,7 @@
         filter: var(--screenshot-shadow)
         @include mobile-and-small
             border-radius: calc(0.8 * var(--border-radius-normal))
+            filter: unset
 
 .icon
     height: 4vh
@@ -168,3 +178,6 @@
     transition: .3s fill, .3s transform ease-in
     margin: 0 var(--project-link-margin)
     grid-row: 1/2
+    @include mobile-and-small
+        height: 8vw
+        width: 8vw
