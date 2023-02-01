@@ -104,14 +104,13 @@
     transition: filter .7s 0s
 
     &_logos
-        will-change: filter
+        will-change: translate
         width: 86%
         aspect-ratio: 4/3
         position: absolute
         border-radius: var(--border-radius-big)
         filter: var(--screenshot-shadow)
         overflow: hidden
-        transform: translate(-50%, -50%)
         @include mobile-and-small
             border-radius: var(--border-radius-big)
             width: 76%
@@ -136,7 +135,7 @@
 .screenshot
 
     &_code
-        will-change: filter
+        will-change: top, left, scale
         width: 75%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -146,7 +145,7 @@
             filter: unset
 
     &_desktop
-        will-change: filter
+        will-change: top, left, scale
         width: 60%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -159,7 +158,7 @@
             filter: unset
 
     &_mobile
-        will-change: filter
+        will-change: top, left, scale
         position: absolute
         width: 25%
         // aspect-ratio: 9/18

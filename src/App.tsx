@@ -17,6 +17,7 @@ import { Skills } from './components/Skills/Skills';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
+// Disable forced translate3D, should work better on devices without hardware acceleration
 gsap.config({
   force3D: false
 });
