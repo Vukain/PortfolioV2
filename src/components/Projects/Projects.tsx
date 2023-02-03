@@ -10,24 +10,24 @@ import { Menu } from './Menu/Menu';
 import { Project } from './Project/Project';
 
 import {
-    pizzaBuilderLogo, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,
+    pizzaBuilderLogo, pizzaBuilderLogoSmall, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,
     pizzaBuilderDesktopImage1Small, pizzaBuilderDesktopImage1Medium, pizzaBuilderDesktopImage1Big, pizzaBuilderDesktopImage1,
     pizzaBuilderDesktopImage2Small, pizzaBuilderDesktopImage2Medium, pizzaBuilderDesktopImage2Big, pizzaBuilderDesktopImage2,
     pizzaBuilderDesktopImage3Small, pizzaBuilderDesktopImage3Medium, pizzaBuilderDesktopImage3Big, pizzaBuilderDesktopImage3,
-    pizzaVSLogo, pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3,
+    pizzaVSLogo, pizzaVSLogoSmall, pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3,
     pizzaVSDesktopImage1Small, pizzaVSDesktopImage1Medium, pizzaVSDesktopImage1Big, pizzaVSDesktopImage1,
     pizzaVSDesktopImage2Small, pizzaVSDesktopImage2Medium, pizzaVSDesktopImage2Big, pizzaVSDesktopImage2,
     pizzaVSDesktopImage3Small, pizzaVSDesktopImage3Medium, pizzaVSDesktopImage3Big, pizzaVSDesktopImage3,
-    dnailsLogo, dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4,
+    dnailsLogo, dnailsLogoSmall, dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4,
     dnailsDesktopImage1Small, dnailsDesktopImage1Medium, dnailsDesktopImage1Big, dnailsDesktopImage1,
     dnailsDesktopImage2Small, dnailsDesktopImage2Medium, dnailsDesktopImage2Big, dnailsDesktopImage2,
     dnailsDesktopImage3Small, dnailsDesktopImage3Medium, dnailsDesktopImage3Big, dnailsDesktopImage3,
     dnailsDesktopImage4Small, dnailsDesktopImage4Medium, dnailsDesktopImage4Big, dnailsDesktopImage4,
-    atroLogo,
+    atroLogo, atroLogoSmall,
     atroCodeImage1Small, atroCodeImage1Medium, atroCodeImage1Big, atroCodeImage1,
     atroCodeImage2Small, atroCodeImage2Medium, atroCodeImage2Big, atroCodeImage2,
     atroCodeImage3Small, atroCodeImage3Medium, atroCodeImage3Big, atroCodeImage3,
-    portfolioV1Logo, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4,
+    portfolioV1Logo, portfolioV1LogoSmall, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4,
     portfolioV1DesktopImage1Small, portfolioV1DesktopImage1Medium, portfolioV1DesktopImage1Big, portfolioV1DesktopImage1,
     portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2,
     portfolioV1DesktopImage3Small, portfolioV1DesktopImage3Medium, portfolioV1DesktopImage3Big, portfolioV1DesktopImage3,
@@ -98,7 +98,7 @@ export const Projects: React.FC = () => {
 
         // Set correct animations for screen orientation
         if (isDesktop) {
-            gsap.set(projects.slice(1), { scale: 1, xPercent: 120 })
+            gsap.set(projects.slice(1), { xPercent: 120 })
 
             slidingProjectsTL.to(projects.slice(1), {
                 xPercent: 0,
@@ -106,16 +106,16 @@ export const Projects: React.FC = () => {
                 ease: "sine.inOut"
             });
 
-            fadingProjectsTL.to(projects.slice(0, projects.length - 1), {
+            fadingProjectsTL.to(projects.slice(0, -1), {
                 rotateY: motionNotReduced ? '20deg' : 0,
                 scale: motionNotReduced ? .7 : 1,
-                stagger: .5,
                 ease: "sine.inOut",
-                opacity: 0
+                stagger: .5,
+                autoAlpha: 0
             });
 
         } else {
-            gsap.set(projects.slice(1), { scale: 1, yPercent: 120 })
+            gsap.set(projects.slice(1), { yPercent: 120 })
 
             slidingProjectsTL.to(projects.slice(1), {
                 yPercent: 0,
@@ -125,9 +125,10 @@ export const Projects: React.FC = () => {
 
             fadingProjectsTL.to(projects.slice(0, -1), {
                 scale: motionNotReduced ? .7 : 1,
-                stagger: .5,
                 ease: "sine.inOut",
-                opacity: 0
+                stagger: .5,
+                opacity: 0,
+                autoAlpha: 0
             });
         };
 
@@ -145,7 +146,7 @@ export const Projects: React.FC = () => {
         },
         technologies: string[],
         images: {
-            logo: string,
+            logo: { small: string, normal: string },
             desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
             mobile?: string[],
             code?: Array<{ small: string, medium: string, big: string, full: string }>
@@ -166,7 +167,7 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
-                logo: pizzaBuilderLogo,
+                logo: { small: pizzaBuilderLogoSmall, normal: pizzaBuilderLogo },
                 desktop: [
                     { small: pizzaBuilderDesktopImage1Small, medium: pizzaBuilderDesktopImage1Medium, big: pizzaBuilderDesktopImage1Big, full: pizzaBuilderDesktopImage1 },
                     { small: pizzaBuilderDesktopImage2Small, medium: pizzaBuilderDesktopImage2Medium, big: pizzaBuilderDesktopImage2Big, full: pizzaBuilderDesktopImage2 },
@@ -188,7 +189,7 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
-                logo: pizzaVSLogo,
+                logo: { small: pizzaVSLogoSmall, normal: pizzaVSLogo },
                 desktop: [
                     { small: pizzaVSDesktopImage1Small, medium: pizzaVSDesktopImage1Medium, big: pizzaVSDesktopImage1Big, full: pizzaVSDesktopImage1 },
                     { small: pizzaVSDesktopImage2Small, medium: pizzaVSDesktopImage2Medium, big: pizzaVSDesktopImage2Big, full: pizzaVSDesktopImage2 },
@@ -210,7 +211,7 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas'],
             images: {
-                logo: dnailsLogo,
+                logo: { small: dnailsLogoSmall, normal: dnailsLogo },
                 desktop: [
                     { small: dnailsDesktopImage1Small, medium: dnailsDesktopImage1Medium, big: dnailsDesktopImage1Big, full: dnailsDesktopImage1 },
                     { small: dnailsDesktopImage2Small, medium: dnailsDesktopImage2Medium, big: dnailsDesktopImage2Big, full: dnailsDesktopImage2 },
@@ -233,7 +234,7 @@ export const Projects: React.FC = () => {
             },
             technologies: ['python', 'oop', 'colorama'],
             images: {
-                logo: atroLogo,
+                logo: { small: atroLogoSmall, normal: atroLogo },
                 code: [
                     { small: atroCodeImage1Small, medium: atroCodeImage1Medium, big: atroCodeImage1Big, full: atroCodeImage1 },
                     { small: atroCodeImage2Small, medium: atroCodeImage2Medium, big: atroCodeImage2Big, full: atroCodeImage2 },
@@ -254,7 +255,7 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
             images: {
-                logo: portfolioV1Logo,
+                logo: { small: portfolioV1LogoSmall, normal: portfolioV1Logo },
                 desktop: [
                     { small: portfolioV1DesktopImage1Small, medium: portfolioV1DesktopImage1Medium, big: portfolioV1DesktopImage1Big, full: portfolioV1DesktopImage1 },
                     { small: portfolioV1DesktopImage2Small, medium: portfolioV1DesktopImage2Medium, big: portfolioV1DesktopImage2Big, full: portfolioV1DesktopImage2 },

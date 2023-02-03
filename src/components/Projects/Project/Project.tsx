@@ -15,7 +15,7 @@ type myProps = {
         image?: React.FC<{ className?: string, title?: string }>,
         technologies: string[],
         images: {
-            logo: string,
+            logo: { small: string, normal: string },
             desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
             mobile?: string[],
             code?: Array<{ small: string, medium: string, big: string, full: string }>
@@ -135,7 +135,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
         return motionNotReduced ? valueWithoutMotionReduce : (valueWithMotionReduce ? valueWithMotionReduce : 0);
     };
 
-    const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>))
+    const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>));
 
     return (
         <article className={styles.project} aria-hidden={currentProject !== index}>

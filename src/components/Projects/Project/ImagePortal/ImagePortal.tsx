@@ -11,7 +11,7 @@ import { ReactComponent as LinkIcon } from '../../../../images/icons/link.svg';
 
 type MyProps = {
     images: {
-        logo: string,
+        logo: { small: string, normal: string },
         desktop?: Array<{ small: string, medium: string, big: string, full: string }>,
         mobile?: string[],
         code?: Array<{ small: string, medium: string, big: string, full: string }>,
@@ -173,7 +173,11 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
             <div className={styles.wrapper}>
                 <div className={styles.wrapper_logos}>
-                    <img className={styles.logo} src={logo} alt='project logo' loading="lazy" />
+                    <img className={styles.logo}
+                        srcSet={`${logo.small} 800w, ${logo.normal} 1200w`}
+                        sizes={'(orientation: portrait) 70vw, 45vw'}
+                        src={logo.normal} alt='project logo' loading="lazy"
+                    />
                 </div>
                 <div className={styles.wrapper_screenshots}>
                     {desktopScreenshots}

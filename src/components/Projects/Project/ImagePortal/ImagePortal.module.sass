@@ -1,13 +1,11 @@
 @import '../../../../sass/mixins'
 
 .image_portal
-    opacity: 1
     border-radius: var(--border-radius-big)
     background-color: var(--color-font-1)
     position: relative
     overflow: hidden
     border: 1vh solid var(--color-main-2)
-    transition: opacity .4s 1.8s, scale .4s 1.8s, transform .4s 1s ease
     &:hover
         & .wrapper
             @include desktop
@@ -104,7 +102,7 @@
     transition: filter .7s 0s
 
     &_logos
-        // will-change: translate
+        will-change: transform
         width: 86%
         aspect-ratio: 4/3
         position: absolute
@@ -115,7 +113,6 @@
             border-radius: var(--border-radius-big)
             width: 76%
             filter: unset
-            // filter: blur(0)
 
     &_screenshots
         position: absolute
@@ -135,6 +132,7 @@
 .screenshot
 
     &_code
+        // will-change: translate
         width: 75%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -144,6 +142,7 @@
             filter: unset
 
     &_desktop
+        // will-change: translate
         width: 60%
         position: absolute
         border-radius: calc(0.7 * var(--border-radius-big))
@@ -156,6 +155,7 @@
             filter: unset
 
     &_mobile
+        // will-change: translate
         position: absolute
         width: 25%
         // aspect-ratio: 9/18
