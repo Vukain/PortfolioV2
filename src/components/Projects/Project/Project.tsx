@@ -122,7 +122,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
                 infoTL.current!
                     .to(text, { xPercent: '0', yPercent: '0', duration: duration, stagger: motionReducerSwitch((isDesktop ? .09 : .2)), ease: 'sine.inOut', opacity: 1 })
                     .to(capsules, { delay: motionReducerSwitch(-(duration - .6), -duration), yPercent: '0', duration: motionReducerSwitch(.3, duration), stagger: motionReducerSwitch(.1), opacity: 1, ease: 'sine.inOut' })
-            }, 1200);
+            }, 1300);
         };
 
         return () => {

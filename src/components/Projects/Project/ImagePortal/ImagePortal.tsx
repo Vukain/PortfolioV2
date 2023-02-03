@@ -84,9 +84,9 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
 
             gsap.set(desktopScreenshots, { top: '50%', yPercent: '-50', xPercent: '-50', translateY: isDesktop ? '65vh' : '30vh', scale: .9 })
             imagesTL.current
-                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.9, duration: duration * 1.1, stagger: staggerTime, translateY: isDesktop ? '23vh' : '10vh', scale: .95, })
+                .to(desktopScreenshots, { ease: 'Expo.easeIn', delay: -3.9, duration: duration * 1.1, stagger: staggerTime, translateY: isDesktop ? '23vh' : '11vh', scale: .95, })
                 .to(desktopScreenshots, { ease: 'none', duration: duration / 2, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, translateY: '0vh', scale: 1, })
-                .to(desktopScreenshots, { ease: 'none', duration: duration / 2, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, translateY: isDesktop ? '-23vh' : '-10vh', scale: .95, })
+                .to(desktopScreenshots, { ease: 'none', duration: duration / 2, delay: -(desktopScreenshots.length - 1) * staggerTime, stagger: staggerTime, translateY: isDesktop ? '-23vh' : '-11vh', scale: .95, })
                 .to(desktopScreenshots, { ease: 'Expo.easeOut', duration: duration * 1.1, delay: (desktopScreenshots.length - 1) * -1 * staggerTime, stagger: staggerTime, translateY: isDesktop ? '-65vh' : '-30vh', scale: .9, })
 
             // gsap.set(desktopScreenshots, { top: '150%', yPercent: '-50', xPercent: '-50', scale: .9 })
