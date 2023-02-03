@@ -4,11 +4,12 @@
 
 A new portfolio version, based on custom vector graphics paired with scroll animations.
 
-
 ## Features
 
--
-
+- build with React and Typescript, vector graphics created in Illustrator, animations made via GSAP
+- initial language is browser based, but it can be changed in footer (english / polish)
+- supports prefers-reduced-motion, tab navigation and direct section linking
+- most animations are connected scroll, tho contact section features parallax effect based on cursor movement
 
 ## Live version
 
