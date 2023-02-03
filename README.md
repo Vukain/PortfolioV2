@@ -2,11 +2,13 @@
 
 ## PortfolioV2
 
-Work in progress...
+A new portfolio version, based on custom vector graphics paired with scroll animations.
+
 
 ## Features
 
-...
+-
+
 
 ## Live version
 
