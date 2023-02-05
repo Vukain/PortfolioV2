@@ -25,7 +25,7 @@
     @include flex-center
     height: 100vh
     position: relative
-    overflow: hidden
+    // overflow: hidden
     grid-column: 1 / 4
     grid-row: 1
     z-index: 99
@@ -38,11 +38,15 @@
         flex-grow: 1
         display: flex
         position: relative
+        border-radius: var(--border-radius-small)
+        background-color: #22222281
 
     &_textarea
         flex-grow: 8
         display: flex
         position: relative
+        border-radius: var(--border-radius-small)
+        background-color: #22222281
 
 .form_card
     width: 40vw
@@ -84,6 +88,24 @@
         left: 1.8vw
         font-size: calc(0.9 * var(--font-size-normal))
 
+.status_bar
+    width: 100%
+    height: 100%
+    position: absolute
+    border-radius: var(--border-radius-small)
+    overflow: hidden
+    &::before, &::after
+        @include before-after
+        width: calc(var(--border-radius-small) * .6)
+        height: 100%
+        background-color: var(--grey-medium)
+        top: 0
+        left: 0
+        transition: background-color .5s
+    &::after
+        left: unset
+        right: 0
+
 .error_message
     position: absolute
     opacity: 0
@@ -113,8 +135,6 @@
         bottom: 0
         transform: translate(-50%, 50%) rotateZ(45deg)
         border: 1px solid transparent
-        border-right-color: var(--color-error)
-        border-bottom-color: var(--color-error)
         @include mobile-and-small
             height: 2vw
             width: 2vw
@@ -127,8 +147,7 @@
 
 .input, .textarea
     all: unset
-    background-color: #22222281
-    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0
+    border-radius: var(--border-radius-small)
     color: var(--almost-white)
     font-size: var(--font-size-normal)
     letter-spacing: var(--letter-spacing-tiny)
@@ -136,15 +155,18 @@
     width: 100%
     transition: border .5s
     outline: none
-    border: 2px solid transparent
+    // border: 2px solid transparent
     padding: 0em 3em 0em 3em
+    z-index: 1
+    &:focus, &:hover, &:active
+        & + .label
+            color: var(--color-main-3)
+        & ~ .status_bar::before
+            background-color: var(--color-main-3)
     &::placeholder
         text-transform: uppercase
         color: var(--grey-medium)
-    &:focus, &:hover
-        border-left-color: var(--color-main-3)
-        & + .label
-            color: var(--color-main-3)
+        // color: #8d8d8d
     &:not(:placeholder-shown)
         & + .label > .text
             transform: translateX(0%)
@@ -159,20 +181,36 @@
         letter-spacing: 0
 
 .untouched
-    border-left-color: var(--grey-medium)
+    &::before
+        background-color: var(--grey-dark)
     & + .label
-        color: var(--grey-medium)
+        color: var(--grey-dark)
+    & ~ .status_bar
+        &::before, &::after
+            background-color: var(--grey-dark)
+
 .valid
-    border-left-color: var(--color-main-2)
+    &::before
+        background-color: var(--color-main-2)
     & + .label
         color: var(--color-main-2)
-
+    & ~ .status_bar
+        &::before, &::after
+            background-color: var(--color-main-2)
 .error
-    border-color: var(--color-error)
+    &::before
+        background-color: var(--color-error)
     & + .label
         color: var(--color-error)
+    & ~ .status_bar
+        &::before, &::after
+            background-color: var(--color-error)
 
 .sent
-    border-left-color: var(--color-gradient-3)
+    &::before
+        background-color: var(--color-gradient-3)
     & + .label
         color: var(--color-gradient-3)
+    & ~ .status_bar
+        &::before, &::after
+            background-color: var(--color-gradient-3)

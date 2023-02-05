@@ -213,16 +213,20 @@ export const Contact: React.FC = () => {
                         <div className={styles.wrapper_input}>
                             <input className={clsx(styles.input, styles[name.status], sent && styles.sent)} value={name.value} required onChange={changeHandler} aria-label={textName} type="text" placeholder={textName} name='user_name' />
                             <label className={styles.label}><span className={styles.text}>{textName}</span></label>
+                            <div className={styles.status_bar} />
                             {showError && name.status === 'error' && <div className={styles.error_message}>{name.error[language]}</div>}
                         </div>
                         <div className={styles.wrapper_input}>
                             <input className={clsx(styles.input, styles[email.status], sent && styles.sent)} value={email.value} required onChange={changeHandler} aria-label="email" type="email" placeholder='email' name='user_email' />
                             <label className={styles.label}><span className={styles.text}>email</span></label>
+                            <div className={styles.status_bar} />
                             {showError && email.status === 'error' && <div className={styles.error_message}>{email.error[language]}</div>}
                         </div>
                         <div className={styles.wrapper_textarea}>
+
                             <textarea className={clsx(styles.textarea, styles[message.status], sent && styles.sent)} value={message.value} required onChange={changeHandler} aria-label={textMessage} placeholder={textMessage} name='message' />
                             <label className={styles.label}><span className={styles.text}>{textMessage}</span></label>
+                            <div className={styles.status_bar} />
                             {showError && message.status === 'error' && <div className={styles.error_message}>{message.error[language]}</div>}
                         </div>
                         <Button name={isEnglish ? 'send' : 'wyślij'} alternativeText={isEnglish ? 'sent' : 'wysłane'} clickHandler={submitHandler} status={formValidity} />

@@ -133,7 +133,7 @@
     background-color: var(--background-color-2)
     letter-spacing: var(--letter-spacing-small)
     border-radius: var(--border-radius-big)
-    width: 30vh
+    width: min(30vh, 80%)
     height: 7vh
     @include mobile-and-small
         width: 50vw
@@ -157,9 +157,9 @@
 .crystal
     position: absolute
     z-index: 4
-    height: 60vh
+    height: min(60vh, 100%)
     @include mobile-and-small
-        height: 50vh
+        height: min(50vh, 100%)
 
 .skills
     @include flex-center
