@@ -4,10 +4,7 @@ import { gsap } from 'gsap';
 import styles from './Projects.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { SectionName } from '../../layout/SectionName/SectionName';
-import { ColorEdge } from '../../layout/ColorEdge/ColorEdge';
-import { Menu } from './Menu/Menu';
-import { Project } from './Project/Project';
+import { ColorEdge, Menu, Project, SectionName } from '../';
 
 import {
     pizzaBuilderLogo, pizzaBuilderLogoSmall, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,

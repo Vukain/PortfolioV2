@@ -1,7 +1,6 @@
 import styles from './Footer.module.sass';
 
-import { LanguageChanger } from './LanguageChanger/LanguageChanger';
-import { SocialIcons } from '../SocialIcons/SocialIcons';
+import { LanguageChanger, SocialIcons } from '../';
 
 type MyProps = {
     theme: boolean,

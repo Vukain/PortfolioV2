@@ -5,8 +5,7 @@ import { gsap } from 'gsap';
 import styles from './Skills.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { SkillCard } from './SkillCard/SkillCard';
-import { SectionName } from '../../layout/SectionName/SectionName';
+import { SkillCard, SectionName } from '../';
 
 import { ReactComponent as FrontendIcon } from '../../images/icons/adjustments.svg';
 import { ReactComponent as BackendIcon } from '../../images/icons/tools-2.svg';

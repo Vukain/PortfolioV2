@@ -4,11 +4,11 @@ import { clsx } from 'clsx';
 import styles from './Navigation.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { NavigationButton } from './NavigationButton/NavigationButton';
+import { NavigationButton } from '../';
 
 export const Navigation: React.FC = () => {
 
-    const { language, navigateTo, setLanguage } = useContext(AppContext);
+    const { language, navigateTo } = useContext(AppContext);
 
     const [navigationVisibility, setNavigationVisibility] = useState(false);
     const [skipAnimationDelay, setSkipAnimationDelay] = useState(false);
@@ -16,7 +16,6 @@ export const Navigation: React.FC = () => {
     const isEnglish = language === 'english';
 
     useEffect(() => {
-
         // Skip delay on revealing navigation, if starting section is different than header
         const [, location] = window.location.href.split('#');
         if (['projects', 'skills', 'contact'].includes(location)) {

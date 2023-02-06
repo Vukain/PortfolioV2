@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import styles from './Header.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { SocialIcons } from '../SocialIcons/SocialIcons';
+import { SocialIcons } from '../';
 
 import { ReactComponent as Crystal } from '../../images/crystal_hero.svg';
 

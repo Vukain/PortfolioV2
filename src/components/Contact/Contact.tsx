@@ -7,28 +7,13 @@ import emailjs from '@emailjs/browser';
 import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
-import { Button } from '../../layout/Button/Button';
-import { SectionName } from '../../layout/SectionName/SectionName';
-import { ParallaxCrystal } from './ParallaxCrystal/ParallaxCrystal';
+import { Button, SectionName, ParallaxCrystal } from '../';
 
-import { ReactComponent as HeroShardImg1 } from '../../images/parallax_shards/hero_1.svg';
-import { ReactComponent as HeroShardImg2 } from '../../images/parallax_shards/hero_2.svg';
-import { ReactComponent as HeroShardImg3 } from '../../images/parallax_shards/hero_3.svg';
-import { ReactComponent as HeroShardImg4 } from '../../images/parallax_shards/hero_4.svg';
-import { ReactComponent as HeroShardImg5 } from '../../images/parallax_shards/hero_5.svg';
-import { ReactComponent as HeroShardImg6 } from '../../images/parallax_shards/hero_6.svg';
-import { ReactComponent as HeroShardImg7 } from '../../images/parallax_shards/hero_7.svg';
-import { ReactComponent as ScrollShardImg1 } from '../../images/parallax_shards/scroll_1.svg';
-import { ReactComponent as ScrollShardImg2 } from '../../images/parallax_shards/scroll_2.svg';
-import { ReactComponent as ScrollShardImg3 } from '../../images/parallax_shards/scroll_3.svg';
-import { ReactComponent as ScrollShardImg4 } from '../../images/parallax_shards/scroll_4.svg';
-import { ReactComponent as ScrollShardImg5 } from '../../images/parallax_shards/scroll_5.svg';
-import { ReactComponent as ScrollShardImg6 } from '../../images/parallax_shards/scroll_6.svg';
-import { ReactComponent as ScrollShardImg7 } from '../../images/parallax_shards/scroll_7.svg';
-import { ReactComponent as SpikedShardImg1 } from '../../images/parallax_shards/spiked_1.svg';
-import { ReactComponent as SpikedShardImg2 } from '../../images/parallax_shards/spiked_2.svg';
-import { ReactComponent as SpikedShardImg3 } from '../../images/parallax_shards/spiked_3.svg';
-import { ReactComponent as SpikedShardImg4 } from '../../images/parallax_shards/spiked_4.svg';
+import {
+    HeroShardImg1, HeroShardImg2, HeroShardImg3, HeroShardImg4, HeroShardImg5, HeroShardImg6, HeroShardImg7,
+    ScrollShardImg1, ScrollShardImg2, ScrollShardImg3, ScrollShardImg4, ScrollShardImg5, ScrollShardImg6, ScrollShardImg7,
+    SpikedShardImg1, SpikedShardImg2, SpikedShardImg3, SpikedShardImg4
+} from '../../images/parallax_shards';
 
 // Could be used as Mutable<React.RefObject<T>> instead of React.MutableRefObject
 // type Mutable<Type> = {

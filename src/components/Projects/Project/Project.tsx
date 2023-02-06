@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 
 import styles from './Project.module.sass';
 
-import { ImagePortal } from './ImagePortal/ImagePortal';
+import { ImagePortal } from '../../';
 
 type myProps = {
     data: {
