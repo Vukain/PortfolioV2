@@ -1,0 +1,14 @@
+@import '../../../sass/mixins'
+
+.edge
+    width: 100%
+    height: var(--card-mask-size)
+    background-color: var(--background-color-2)
+    mask-image: url('../../../images/romboid_edge_1.svg')
+    // mask-image: url('../../../images/romboid_edge_2.svg')
+    // mask-image: url('../../../images/romboid_edge_3.svg')
+    mask-size: contain
+    mask-position: bottom
+
+    &--down
+        transform: rotateZ(180deg)

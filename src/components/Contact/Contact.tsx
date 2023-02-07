@@ -167,12 +167,9 @@ export const Contact: React.FC = () => {
         { name: 'hero_3', crystalImage: HeroShardImg3, moveSpeed: 2, orbitRange: 'small' }, { name: 'hero_4', crystalImage: HeroShardImg4, moveSpeed: 2, orbitRange: 'small' },
         { name: 'hero_5', crystalImage: HeroShardImg5, moveSpeed: 1, orbitRange: 'small' }, { name: 'hero_6', crystalImage: HeroShardImg6, moveSpeed: 1, orbitRange: 'small' },
         { name: 'hero_7', crystalImage: HeroShardImg7, moveSpeed: 3.4, orbitRange: 'small' },
-        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 3, orbitRange: 'small' },
-        { name: 'scroll_2', crystalImage: ScrollShardImg2, moveSpeed: 1, orbitRange: 'small' },
-        { name: 'scroll_3', crystalImage: ScrollShardImg3, moveSpeed: 1.5, orbitRange: 'small' },
-        { name: 'scroll_4', crystalImage: ScrollShardImg4, moveSpeed: 2, orbitRange: 'small' },
-        { name: 'scroll_5', crystalImage: ScrollShardImg5, moveSpeed: 2, orbitRange: 'small' },
-        { name: 'scroll_6', crystalImage: ScrollShardImg6, moveSpeed: 2.4, orbitRange: 'small' },
+        { name: 'scroll_1', crystalImage: ScrollShardImg1, moveSpeed: 3, orbitRange: 'small' }, { name: 'scroll_2', crystalImage: ScrollShardImg2, moveSpeed: 1, orbitRange: 'small' },
+        { name: 'scroll_3', crystalImage: ScrollShardImg3, moveSpeed: 1.5, orbitRange: 'small' }, { name: 'scroll_4', crystalImage: ScrollShardImg4, moveSpeed: 2, orbitRange: 'small' },
+        { name: 'scroll_5', crystalImage: ScrollShardImg5, moveSpeed: 2, orbitRange: 'small' }, { name: 'scroll_6', crystalImage: ScrollShardImg6, moveSpeed: 2.4, orbitRange: 'small' },
         { name: 'scroll_7', crystalImage: ScrollShardImg7, moveSpeed: 1, orbitRange: 'small' },
     ];
 
