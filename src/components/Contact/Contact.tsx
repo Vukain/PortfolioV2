@@ -1,5 +1,4 @@
 import { MouseEvent, useRef, useState, useContext, useEffect } from 'react';
-import { useForm } from '../../hooks/useForm';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import emailjs from '@emailjs/browser';
@@ -8,6 +7,7 @@ import styles from './Contact.module.sass';
 
 import { AppContext } from '../../store/AppContext';
 import { Button, SectionName, ParallaxCrystal } from '../';
+import { useForm } from '../../hooks/useForm';
 
 import {
     HeroShardImg1, HeroShardImg2, HeroShardImg3, HeroShardImg4, HeroShardImg5, HeroShardImg6, HeroShardImg7,
