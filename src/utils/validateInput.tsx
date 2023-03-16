@@ -3,7 +3,7 @@ type MyParams = {
     value: string
 };
 
-export const useValidate = () => {
+export const validateInput = () => {
 
     const validate = ({ name, value }: MyParams): boolean => {
 

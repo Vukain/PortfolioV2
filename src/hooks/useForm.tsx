@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useValidate } from './useValidate';
+import { validateInput } from '../utils/validateInput';
 
 type Fields = string[];
 
@@ -17,7 +17,7 @@ type ReturnType = {
 
 export const useForm = (...fields: Fields): ReturnType => {
 
-    const { validate } = useValidate();
+    const { validate } = validateInput();
 
     const initInputs = (fields: Fields) => {
 

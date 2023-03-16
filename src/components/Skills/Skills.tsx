@@ -400,7 +400,7 @@ export const Skills: React.FC = () => {
 
     const cardData: CardData = {
         frontend: {
-            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css / sass', 'bootstrap', 'javascript', 'typescript', 'react', 'next.js', 'redux'] },
+            data: { category: 'frontend', display: 'frontend', skills: ['html', 'css / sass', 'bootstrap', 'javascript', 'typescript', 'react / redux', 'next.js'] },
             icon: FrontendIcon,
             ref: frontendRef
         },
