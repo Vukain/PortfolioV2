@@ -274,7 +274,7 @@ export const Projects: React.FC = () => {
         <>
             <ColorEdge direction='up' />
             <section className={styles.projects} ref={projectsRef} id="projects">
-                <SectionName lighter={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
+                <SectionName lightBackground={true}>{isEnglish ? 'projects' : 'projekty'}</SectionName>
 
                 <div className={styles.gallery} id="gallery">
                     {mappedProjects}

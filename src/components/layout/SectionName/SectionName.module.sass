@@ -26,6 +26,7 @@
     position: relative
     cursor: default
     z-index: 9
+
     @include mobile-and-small
         background-image: linear-gradient(-45deg, var(--color-gradient-3), var(--color-gradient-2), var(--color-gradient-1))
         writing-mode: unset
@@ -50,6 +51,11 @@
             @include mobile-and-small
                 transform: translateY(102%)
 
-    &--lighter
+    &--light
         &::before
             background-color: var(--background-color-2)
+
+    &--blur
+        @include desktop
+            border-radius: var(--border-radius-normal)
+            backdrop-filter: blur(var(--blur-amount))

@@ -185,7 +185,7 @@ export const Contact: React.FC = () => {
     return (
         <section className={styles.contact} id="contact" onMouseEnter={mouseEnterHandler} onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} ref={sectionRef}>
 
-            <SectionName>{isEnglish ? 'contact' : 'kontakt'}</SectionName>
+            <SectionName blurBackground={true}>{isEnglish ? 'contact' : 'kontakt'}</SectionName>
 
             {crystalsMapped}
 

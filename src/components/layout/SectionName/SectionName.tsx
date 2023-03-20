@@ -6,10 +6,11 @@ import styles from './SectionName.module.sass';
 
 type MyProps = {
     children: string
-    lighter?: boolean
+    lightBackground?: boolean
+    blurBackground?: boolean
 };
 
-export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
+export const SectionName: React.FC<MyProps> = ({ lightBackground, blurBackground, children }) => {
 
     const [visible, setVisible] = useState(false);
     const nameRef = useRef(null);
@@ -30,8 +31,8 @@ export const SectionName: React.FC<MyProps> = ({ lighter, children }) => {
     }, []);
 
     return (
-        <div className={clsx(styles.wrapper, lighter && styles['wrapper--projects'])}>
-            <h2 className={clsx(styles.section_name, visible && styles['section_name--visible'], lighter && styles['section_name--lighter'])} ref={nameRef}>
+        <div className={clsx(styles.wrapper, lightBackground && styles['wrapper--projects'])}>
+            <h2 className={clsx(styles.section_name, visible && styles['section_name--visible'], lightBackground && styles['section_name--light'], blurBackground && styles['section_name--blur'])} ref={nameRef}>
                 {children}
             </h2>
         </div>
