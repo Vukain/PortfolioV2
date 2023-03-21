@@ -2,7 +2,7 @@
   "name": "portfolio",
   "homepage": ".",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
     "@testing-library/jest-dom": "^5.16.4",
