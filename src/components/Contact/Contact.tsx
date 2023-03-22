@@ -131,15 +131,17 @@ export const Contact: React.FC = () => {
             };
         };
 
+
+        console.log(process.env.EMAIL_JS_TEMPLATE)
         if (formValidity === 'valid') {
             setFormValidity('sent');
-            // Disabled sending while not live
-            // emailjs.sendForm('service_xxx', 'template_xxx', formRef.current!, 'key_xxx')
-            //     .then((result) => {
-            //         console.log(result.text);
-            //     }, (error) => {
-            //         console.log(error.text);
-            //     });
+
+            emailjs.sendForm(`${process.env.REACT_APP_EMAIL_JS_SERVICE}`, `${process.env.REACT_APP_EMAIL_JS_TEMPLATE}`, formRef.current!, `${process.env.REACT_APP_EMAIL_JS_KEY}`)
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
         } else if (formValidity === 'invalid') {
             if (errorTimeout.current) {
                 clearTimeout(errorTimeout.current);
