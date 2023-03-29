@@ -5,10 +5,23 @@
     100%
         transform: translateY(0%)
 
+.logo
+    width: 5.4vw
+    transition: opacity .3s ease, filter .7s ease
+    @include mobile-and-small
+        width: 30vw
+        transition: transform .8s ease, opacity .3s ease, filter .7s ease
+        transform: translateY(0%)
+    &--main
+        filter: saturate(0)
+    &--hover
+        position: absolute
+        opacity: 0
+
 .button
     @include flex-center
     z-index: 9999
-    padding: 2vh
+    padding: 2vh 0
     border: none
     background-color: transparent
     cursor: pointer
@@ -38,6 +51,9 @@
                 margin: unset
                 background-position-x: unset
                 background-position-y: 0%
+                transition-delay: .92s
+        & .logo
+            @include mobile-and-small
                 transition-delay: .92s
     &:nth-child(2)
         & .text
@@ -82,7 +98,7 @@
             transition: 0s 2s
             visibility: hidden
             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
-                & .text
+                & .text, & .logo
                     transition: transform .3s 0s ease
                     transform: translateY(100%)
 
@@ -92,6 +108,15 @@
             &::before
                 transform: scaleX(1)
                 transform-origin: center left
+    &--active
+        .logo
+            filter: saturate(1)
+            @include desktop
+                transition: opacity .3s ease, filter .7s ease
+    &:hover, &:focus
+        .logo--hover
+            @include desktop
+                opacity: 1
 
 .text
     display: inline-block
@@ -102,7 +127,7 @@
     background-size: 100vw 100%
     color: transparent
     padding: .5vh 0 .5vh .1vh
-    font-size: var(--font-size-biggest)
+    font-size: calc(1.1 * var(--font-size-biggest))
     font-weight: 400
     text-transform: uppercase
     letter-spacing: var(--letter-spacing-normal)

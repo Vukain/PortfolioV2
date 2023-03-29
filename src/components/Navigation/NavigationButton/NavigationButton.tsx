@@ -11,9 +11,10 @@ type MyProps = {
     navigationVisibility: boolean,
     skipDelay: boolean,
     navigationVisibilitySetter: React.Dispatch<React.SetStateAction<boolean>>
+    image?: Record<"main" | "hover", React.FC<{ className?: string, title?: string }>>,
 };
 
-export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, skipDelay, navigationVisibilitySetter }) => {
+export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, skipDelay, navigationVisibilitySetter, image }) => {
 
     const { setNavigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
@@ -38,9 +39,20 @@ export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibi
         }
     };
 
+    let logo;
+
+    if (image) {
+        const Logo = image.main;
+        const LogoHover = image.hover;
+        logo = <>
+            <Logo className={clsx(styles.logo, styles['logo--main'])} />
+            <LogoHover className={clsx(styles.logo, styles['logo--hover'])} />
+        </>;
+    };
+
     return (
         <button className={clsx(styles.button, !navigationVisibility && styles['button--hidden'], currentSection === id && styles['button--active'], skipDelay && styles['button--skip_delay'])} onClick={onClickHandler}>
-            <span className={styles.text}>{name}</span>
+            {image ? logo : <span className={styles.text}>{name}</span>}
         </button >
     );
 };
