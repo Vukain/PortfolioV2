@@ -13,4 +13,4 @@ A new portfolio version, based on custom vector graphics paired with scroll anim
 
 ## Live version
 
-https://vukain.github.io/PortfolioV2/
+https://portfolio-v2-vukain.vercel.app/
