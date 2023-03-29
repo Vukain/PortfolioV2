@@ -160,7 +160,7 @@ export const Projects: React.FC = () => {
             title: 'Pizza Builder',
             description: {
                 english: "Wanted to make a pizza, but it takes a lot of time and is a little bit messy? No worries, this app got what you need! FREE ingredients of various types and ZERO callories on top of that, woah!",
-                polish: "Chcielibyście zrobić pizzę, ale to czasochłonne i powoduje niezły bałagan w kuchni? Bez obaw, ta apka jest tym czego potrzebujecie! Na dodatek DARMOWE składniki i ZERO kalorii!"
+                polish: "Chcielibyście zrobić pizzę, ale sporo z tym roboty, a dodatkowo ma tyle kalorii... Bez obaw, ta apka jest tym czego potrzebujecie! DARMOWE składniki i ZERO kalorii, czego chcieć więcej?"
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
@@ -181,8 +181,8 @@ export const Projects: React.FC = () => {
             id: 'pizza_vs',
             title: 'Pizza VS',
             description: {
-                english: "Have You ever wondered what's better to take while ordering pizzas? What will get you more food, what will yield better value? You didn't?! Ohh... but now you can check it anyway! App calculates order value and let's you choose the better option.",
-                polish: "Zastanawialiście się kiedyś co lepiej wybrać podczas zamawiania pizzy? Którym wariantem się bardziej najecie, lub który ma lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
+                english: "Have you ever wondered what's better to take while ordering pizzas? What will get you more food, what will yield better value? You didn't?! Ohh... but now you can check it anyway! App calculates order value and let's you choose the better option.",
+                polish: "Mieliście kiedyś dylematy podczas zamawiania pizzy? Którym wariantem się bardziej najecie, lub który ma lepszą wartość? Nie?! No cóż... teraz możecie to sprawdzić i tak! Apka oblicza opłacalność zamówienia i pozwala wybrać lepszą opcję."
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
@@ -248,7 +248,7 @@ export const Projects: React.FC = () => {
             title: 'Portfolio V1',
             description: {
                 english: 'First portfolio intended as an excercise and a playground. Features a light and dark mode. HTML paired with Sass, vanilla JavaScript used for scroll effects.',
-                polish: 'Pierwsza strona portfolio stworzona jako ćwiczenie i dla testowania różnych pomysłów. Posiada tryb jasny i ciemny. HTML połączony z Sassem i czystym JavaScriptem użytym do efektów scrollowania.'
+                polish: 'Pierwsze portfolio stworzone jako ćwiczenie i dla testowania różnych pomysłów. Posiada tryb jasny i ciemny. HTML połączony z Sassem i czystym JavaScriptem użytym do efektów scrollowania.'
             },
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
             images: {
