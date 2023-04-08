@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
@@ -7,13 +7,14 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import './App.sass';
 
 import { AppContextProvider } from './store/AppContext';
+import { checkLocation } from './utils/checkLocation';
 import { Contact, Footer, Header, Navigation, Projects, ProgressBar, Skills } from './components';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
-// Disable forced translate3D, should work better on devices without hardware acceleration
+// Affects performance
 gsap.config({
-  force3D: false
+  force3D: true
 });
 
 // Fix for animation jump when address bar toggles on mobile
@@ -23,12 +24,9 @@ ScrollTrigger.config({
 
 export const App = () => {
 
-  const [lightTheme, setLightTheme] = useState(false);
-
   useEffect(() => {
 
-    // Get initial section
-    const [, location] = window.location.href.split('#');
+    const location = checkLocation();
 
     // Scroll to section, when direct linking, after complete page load
     if (document.readyState === 'complete') {
@@ -53,7 +51,7 @@ export const App = () => {
   return (
     <AppContextProvider >
 
-      <div className={`App${lightTheme ? ' App--light' : ''}`} id='app'>
+      <div className='App' id='app'>
 
         <ProgressBar />
         <Navigation />
@@ -61,7 +59,7 @@ export const App = () => {
         <Projects />
         <Skills />
         <Contact />
-        <Footer theme={lightTheme} themeToggle={setLightTheme} />
+        <Footer />
 
       </div >
 

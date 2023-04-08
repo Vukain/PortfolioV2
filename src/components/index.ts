@@ -14,6 +14,6 @@ export * from './Skills/Skills';
 export * from './Skills/SkillCard/SkillCard';
 export * from './SocialIcons/SocialIcons';
 
-export * from './layout/Button/Button';
-export * from './layout/ColorEdge/ColorEdge';
-export * from './layout/SectionName/SectionName';
+export * from './ui/Button/Button';
+export * from './ui/ColorEdge/ColorEdge';
+export * from './ui/SectionName/SectionName';

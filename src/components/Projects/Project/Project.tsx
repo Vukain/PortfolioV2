@@ -6,6 +6,7 @@ import { clsx } from 'clsx';
 import styles from './Project.module.sass';
 
 import { ImagePortal } from '../../';
+import { checkMotionReduce } from '../../../utils/checkMotionReduce';
 
 type myProps = {
     data: {
@@ -32,7 +33,7 @@ type myProps = {
 
 export const Project: React.FC<myProps> = ({ data: { id, title, description, technologies, images, links }, index, numberOfProjects, currentProject, setCurrentProject, projectSize, sectionHeight }) => {
 
-    const { language, motionNotReduced } = useContext(AppContext);
+    const { language } = useContext(AppContext);
 
     const infoRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const infoTL: React.MutableRefObject<null | gsap.core.Timeline> = useRef(null);
@@ -132,7 +133,7 @@ export const Project: React.FC<myProps> = ({ data: { id, title, description, tec
     }, [currentProject, index, isDesktop]);
 
     const motionReducerSwitch = <T,>(valueWithoutMotionReduce: T | number, valueWithMotionReduce?: T | number): T | number => {
-        return motionNotReduced ? valueWithoutMotionReduce : (valueWithMotionReduce ? valueWithMotionReduce : 0);
+        return !checkMotionReduce() ? valueWithoutMotionReduce : (valueWithMotionReduce ? valueWithMotionReduce : 0);
     };
 
     const techCapsules = technologies.map((element, index) => (<div className={styles.capsule} key={element + index}>{element}</div>));

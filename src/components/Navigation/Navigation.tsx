@@ -4,35 +4,36 @@ import { clsx } from 'clsx';
 import styles from './Navigation.module.sass';
 
 import { AppContext } from '../../store/AppContext';
+import { checkLocation } from '../../utils/checkLocation';
+import { useLanguageSwitch } from '../../hooks/useLanguageSwitch';
 import { NavigationButton } from '../';
 import { ReactComponent as VukainLogoGreen } from '../../images/vuk_sygnet_green.svg';
 import { ReactComponent as VukainLogoPurple } from '../../images/vuk_sygnet_purple.svg';
 
+
 export const Navigation: React.FC = () => {
 
-    const { language, navigateTo } = useContext(AppContext);
+    const { navigateTo } = useContext(AppContext);
+    const { languageSwitch } = useLanguageSwitch();
 
     const [navigationVisibility, setNavigationVisibility] = useState(false);
     const [skipAnimationDelay, setSkipAnimationDelay] = useState(false);
 
-    const isEnglish = language === 'english';
-
     useEffect(() => {
         // Skip delay on revealing navigation, if starting section is different than header
-        const [, location] = window.location.href.split('#');
-        if (['projects', 'skills', 'contact'].includes(location)) {
+        if (['projects', 'skills', 'contact'].includes(checkLocation())) {
             setSkipAnimationDelay(true);
         };
     }, []);
 
-    const onNavigationToggleHandler = () => {
+    const onClickHandler = () => {
         setNavigationVisibility(!navigationVisibility);
     };
 
     type ButtonData = { name: string, id: string, image?: Record<"main" | "hover", React.FC<{ className?: string, title?: string }>> };
 
-    const buttonsData: ButtonData[] = [{ name: 'vukain', id: 'header', image: { main: VukainLogoGreen, hover: VukainLogoPurple } }, { name: isEnglish ? 'projects' : 'projekty', id: 'projects' },
-    { name: isEnglish ? 'skills' : 'umiejętności', id: 'skills' }, { name: isEnglish ? 'contact' : 'kontakt', id: 'contact' }];
+    const buttonsData: ButtonData[] = [{ name: 'vukain', id: 'header', image: { main: VukainLogoGreen, hover: VukainLogoPurple } }, { name: languageSwitch('projects', 'projekty'), id: 'projects' },
+    { name: languageSwitch('skills', 'umiejętności'), id: 'skills' }, { name: languageSwitch('contact', 'kontakt'), id: 'contact' }];
 
     const buttonsList = buttonsData.map((item, index) => (
         <NavigationButton
@@ -40,19 +41,17 @@ export const Navigation: React.FC = () => {
             name={item.name} id={item.id} key={index} image={item.image} />
     ));
 
-    const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index}></div>));
+    const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index} />));
 
     return (
         <nav className={clsx(styles.navigation, !navigationVisibility && styles['navigation--hidden'], skipAnimationDelay && styles['navigation--skip_delay'])}>
-            {/* <VukainLogo className={styles.logo} /> */}
             {buttonsList}
 
-            <div className={clsx(styles.hamburger, navigationVisibility && styles['hamburger--active'], skipAnimationDelay && styles['hamburger--skip_delay'])} onClick={onNavigationToggleHandler}>
+            <div className={clsx(styles.hamburger, navigationVisibility && styles['hamburger--active'], skipAnimationDelay && styles['hamburger--skip_delay'])} onClick={onClickHandler}>
                 {burgerSegments}
             </div>
 
             <div className={clsx(styles.destination, !navigationVisibility && styles['destination--hidden'])}><span className={styles.destination_text}>{navigateTo}</span></div>
-
         </nav>
     );
 };

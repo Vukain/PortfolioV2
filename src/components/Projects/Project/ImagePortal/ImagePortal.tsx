@@ -8,6 +8,7 @@ import { AppContext } from '../../../../store/AppContext';
 
 import { ReactComponent as GithubIcon } from '../../../../images/icons/github-project.svg';
 import { ReactComponent as LinkIcon } from '../../../../images/icons/link.svg';
+import { checkMotionReduce } from '../../../../utils/checkMotionReduce';
 
 type MyProps = {
     images: {
@@ -25,7 +26,7 @@ type MyProps = {
 
 export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile, code }, links: { github, live }, isActive }) => {
 
-    const { currentSection, motionNotReduced } = useContext(AppContext);
+    const { currentSection, } = useContext(AppContext);
 
     const portalRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     // Ref used to work within several useEffects
@@ -107,6 +108,8 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
     }, []);
 
     useEffect(() => {
+        const motionNotReduced = !checkMotionReduce();
+
         if (motionNotReduced && currentSection === 'projects') {
             // Reset animation progress when changing project and disable when it becomes inactive
             if (isActive) {
@@ -124,7 +127,7 @@ export const ImagePortal: React.FC<MyProps> = ({ images: { logo, desktop, mobile
         };
         // imagesTL.current!.play(0)
     },
-        [isActive, currentSection, motionNotReduced]);
+        [isActive, currentSection]);
 
     // Create project screenshots
     const codeScreenshots = code ? code.map((image, index) => (

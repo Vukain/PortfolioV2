@@ -4,13 +4,13 @@ import { clsx } from 'clsx';
 
 import styles from './SectionName.module.sass';
 
-type MyProps = {
+type Props = {
     children: string
     lightBackground?: boolean
     blurBackground?: boolean
 };
 
-export const SectionName: React.FC<MyProps> = ({ lightBackground, blurBackground, children }) => {
+export const SectionName: React.FC<Props> = ({ lightBackground, blurBackground, children }) => {
 
     const [visible, setVisible] = useState(false);
     const nameRef = useRef(null);

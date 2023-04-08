@@ -95,7 +95,7 @@ import portfolioV1DesktopImage4Medium from './portfolio_v1_desktop_4_medium.webp
 import portfolioV1DesktopImage4Big from './portfolio_v1_desktop_4_big.webp';
 import portfolioV1DesktopImage4 from './portfolio_v1_desktop_4.webp';
 
-export {
+export const projectImages = {
     pizzaBuilderLogo, pizzaBuilderLogoSmall, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,
     pizzaBuilderDesktopImage1Small, pizzaBuilderDesktopImage1Medium, pizzaBuilderDesktopImage1Big, pizzaBuilderDesktopImage1,
     pizzaBuilderDesktopImage2Small, pizzaBuilderDesktopImage2Medium, pizzaBuilderDesktopImage2Big, pizzaBuilderDesktopImage2,

@@ -6,36 +6,14 @@ import styles from './Projects.module.sass';
 import { AppContext } from '../../store/AppContext';
 import { ColorEdge, Menu, Project, SectionName } from '../';
 
-import {
-    pizzaBuilderLogo, pizzaBuilderLogoSmall, pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3,
-    pizzaBuilderDesktopImage1Small, pizzaBuilderDesktopImage1Medium, pizzaBuilderDesktopImage1Big, pizzaBuilderDesktopImage1,
-    pizzaBuilderDesktopImage2Small, pizzaBuilderDesktopImage2Medium, pizzaBuilderDesktopImage2Big, pizzaBuilderDesktopImage2,
-    pizzaBuilderDesktopImage3Small, pizzaBuilderDesktopImage3Medium, pizzaBuilderDesktopImage3Big, pizzaBuilderDesktopImage3,
-    pizzaVSLogo, pizzaVSLogoSmall, pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3,
-    pizzaVSDesktopImage1Small, pizzaVSDesktopImage1Medium, pizzaVSDesktopImage1Big, pizzaVSDesktopImage1,
-    pizzaVSDesktopImage2Small, pizzaVSDesktopImage2Medium, pizzaVSDesktopImage2Big, pizzaVSDesktopImage2,
-    pizzaVSDesktopImage3Small, pizzaVSDesktopImage3Medium, pizzaVSDesktopImage3Big, pizzaVSDesktopImage3,
-    dnailsLogo, dnailsLogoSmall, dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4,
-    dnailsDesktopImage1Small, dnailsDesktopImage1Medium, dnailsDesktopImage1Big, dnailsDesktopImage1,
-    dnailsDesktopImage2Small, dnailsDesktopImage2Medium, dnailsDesktopImage2Big, dnailsDesktopImage2,
-    dnailsDesktopImage3Small, dnailsDesktopImage3Medium, dnailsDesktopImage3Big, dnailsDesktopImage3,
-    dnailsDesktopImage4Small, dnailsDesktopImage4Medium, dnailsDesktopImage4Big, dnailsDesktopImage4,
-    atroLogo, atroLogoSmall,
-    atroCodeImage1Small, atroCodeImage1Medium, atroCodeImage1Big, atroCodeImage1,
-    atroCodeImage2Small, atroCodeImage2Medium, atroCodeImage2Big, atroCodeImage2,
-    atroCodeImage3Small, atroCodeImage3Medium, atroCodeImage3Big, atroCodeImage3,
-    portfolioV1Logo, portfolioV1LogoSmall, portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4,
-    portfolioV1DesktopImage1Small, portfolioV1DesktopImage1Medium, portfolioV1DesktopImage1Big, portfolioV1DesktopImage1,
-    portfolioV1DesktopImage2Small, portfolioV1DesktopImage2Medium, portfolioV1DesktopImage2Big, portfolioV1DesktopImage2,
-    portfolioV1DesktopImage3Small, portfolioV1DesktopImage3Medium, portfolioV1DesktopImage3Big, portfolioV1DesktopImage3,
-    portfolioV1DesktopImage4Small, portfolioV1DesktopImage4Medium, portfolioV1DesktopImage4Big, portfolioV1DesktopImage4
-} from '../../images/project_images';
+import { projectImages } from '../../images/project_images';
+import { checkMotionReduce } from '../../utils/checkMotionReduce';
 
 export const Projects: React.FC = () => {
 
-    const { language, setCurrentSection, motionNotReduced } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
-    const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    const projectsRef = useRef(null);
 
     const [projectSize, setProjectSize] = useState(0);
     const [sectionHeight, setSectionHeight] = useState(0);
@@ -43,8 +21,10 @@ export const Projects: React.FC = () => {
 
     const isEnglish = language === 'english';
 
+
     useEffect(() => {
         const isDesktop = window.matchMedia('(orientation: landscape)').matches;
+        const motionNotReduced = !checkMotionReduce();
 
         // Get elements
         const projectsSection = projectsRef.current;
@@ -129,7 +109,7 @@ export const Projects: React.FC = () => {
             });
         };
 
-    }, [motionNotReduced, setCurrentSection])
+    }, [setCurrentSection])
 
     // Project data with mapping
     const projectNames = ['Pizza Builder', 'Pizza VS', 'DNails', 'ATRO', 'Portfolio V1'];
@@ -164,13 +144,13 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
-                logo: { small: pizzaBuilderLogoSmall, normal: pizzaBuilderLogo },
+                logo: { small: projectImages.pizzaBuilderLogoSmall, normal: projectImages.pizzaBuilderLogo },
                 desktop: [
-                    { small: pizzaBuilderDesktopImage1Small, medium: pizzaBuilderDesktopImage1Medium, big: pizzaBuilderDesktopImage1Big, full: pizzaBuilderDesktopImage1 },
-                    { small: pizzaBuilderDesktopImage2Small, medium: pizzaBuilderDesktopImage2Medium, big: pizzaBuilderDesktopImage2Big, full: pizzaBuilderDesktopImage2 },
-                    { small: pizzaBuilderDesktopImage3Small, medium: pizzaBuilderDesktopImage3Medium, big: pizzaBuilderDesktopImage3Big, full: pizzaBuilderDesktopImage3 }
+                    { small: projectImages.pizzaBuilderDesktopImage1Small, medium: projectImages.pizzaBuilderDesktopImage1Medium, big: projectImages.pizzaBuilderDesktopImage1Big, full: projectImages.pizzaBuilderDesktopImage1 },
+                    { small: projectImages.pizzaBuilderDesktopImage2Small, medium: projectImages.pizzaBuilderDesktopImage2Medium, big: projectImages.pizzaBuilderDesktopImage2Big, full: projectImages.pizzaBuilderDesktopImage2 },
+                    { small: projectImages.pizzaBuilderDesktopImage3Small, medium: projectImages.pizzaBuilderDesktopImage3Medium, big: projectImages.pizzaBuilderDesktopImage3Big, full: projectImages.pizzaBuilderDesktopImage3 }
                 ],
-                mobile: [pizzaBuilderMobileImage1, pizzaBuilderMobileImage2, pizzaBuilderMobileImage3]
+                mobile: [projectImages.pizzaBuilderMobileImage1, projectImages.pizzaBuilderMobileImage2, projectImages.pizzaBuilderMobileImage3]
             },
             links: {
                 github: 'https://github.com/Vukain/PizzaBuilder',
@@ -186,13 +166,13 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'gsap', 'illustrator'],
             images: {
-                logo: { small: pizzaVSLogoSmall, normal: pizzaVSLogo },
+                logo: { small: projectImages.pizzaVSLogoSmall, normal: projectImages.pizzaVSLogo },
                 desktop: [
-                    { small: pizzaVSDesktopImage1Small, medium: pizzaVSDesktopImage1Medium, big: pizzaVSDesktopImage1Big, full: pizzaVSDesktopImage1 },
-                    { small: pizzaVSDesktopImage2Small, medium: pizzaVSDesktopImage2Medium, big: pizzaVSDesktopImage2Big, full: pizzaVSDesktopImage2 },
-                    { small: pizzaVSDesktopImage3Small, medium: pizzaVSDesktopImage3Medium, big: pizzaVSDesktopImage3Big, full: pizzaVSDesktopImage3 }
+                    { small: projectImages.pizzaVSDesktopImage1Small, medium: projectImages.pizzaVSDesktopImage1Medium, big: projectImages.pizzaVSDesktopImage1Big, full: projectImages.pizzaVSDesktopImage1 },
+                    { small: projectImages.pizzaVSDesktopImage2Small, medium: projectImages.pizzaVSDesktopImage2Medium, big: projectImages.pizzaVSDesktopImage2Big, full: projectImages.pizzaVSDesktopImage2 },
+                    { small: projectImages.pizzaVSDesktopImage3Small, medium: projectImages.pizzaVSDesktopImage3Medium, big: projectImages.pizzaVSDesktopImage3Big, full: projectImages.pizzaVSDesktopImage3 }
                 ],
-                mobile: [pizzaVSMobileImage1, pizzaVSMobileImage2, pizzaVSMobileImage3]
+                mobile: [projectImages.pizzaVSMobileImage1, projectImages.pizzaVSMobileImage2, projectImages.pizzaVSMobileImage3]
             },
             links: {
                 github: 'https://github.com/Vukain/PizzaVS',
@@ -208,14 +188,14 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'react', 'firebase', 'canvas'],
             images: {
-                logo: { small: dnailsLogoSmall, normal: dnailsLogo },
+                logo: { small: projectImages.dnailsLogoSmall, normal: projectImages.dnailsLogo },
                 desktop: [
-                    { small: dnailsDesktopImage1Small, medium: dnailsDesktopImage1Medium, big: dnailsDesktopImage1Big, full: dnailsDesktopImage1 },
-                    { small: dnailsDesktopImage2Small, medium: dnailsDesktopImage2Medium, big: dnailsDesktopImage2Big, full: dnailsDesktopImage2 },
-                    { small: dnailsDesktopImage3Small, medium: dnailsDesktopImage3Medium, big: dnailsDesktopImage3Big, full: dnailsDesktopImage3 },
-                    { small: dnailsDesktopImage4Small, medium: dnailsDesktopImage4Medium, big: dnailsDesktopImage4Big, full: dnailsDesktopImage4 }
+                    { small: projectImages.dnailsDesktopImage1Small, medium: projectImages.dnailsDesktopImage1Medium, big: projectImages.dnailsDesktopImage1Big, full: projectImages.dnailsDesktopImage1 },
+                    { small: projectImages.dnailsDesktopImage2Small, medium: projectImages.dnailsDesktopImage2Medium, big: projectImages.dnailsDesktopImage2Big, full: projectImages.dnailsDesktopImage2 },
+                    { small: projectImages.dnailsDesktopImage3Small, medium: projectImages.dnailsDesktopImage3Medium, big: projectImages.dnailsDesktopImage3Big, full: projectImages.dnailsDesktopImage3 },
+                    { small: projectImages.dnailsDesktopImage4Small, medium: projectImages.dnailsDesktopImage4Medium, big: projectImages.dnailsDesktopImage4Big, full: projectImages.dnailsDesktopImage4 }
                 ],
-                mobile: [dnailsMobileImage1, dnailsMobileImage2, dnailsMobileImage3, dnailsMobileImage4]
+                mobile: [projectImages.dnailsMobileImage1, projectImages.dnailsMobileImage2, projectImages.dnailsMobileImage3, projectImages.dnailsMobileImage4]
             },
             links: {
                 github: 'https://github.com/Vukain/DNails',
@@ -231,11 +211,11 @@ export const Projects: React.FC = () => {
             },
             technologies: ['python', 'oop', 'colorama'],
             images: {
-                logo: { small: atroLogoSmall, normal: atroLogo },
+                logo: { small: projectImages.atroLogoSmall, normal: projectImages.atroLogo },
                 code: [
-                    { small: atroCodeImage1Small, medium: atroCodeImage1Medium, big: atroCodeImage1Big, full: atroCodeImage1 },
-                    { small: atroCodeImage2Small, medium: atroCodeImage2Medium, big: atroCodeImage2Big, full: atroCodeImage2 },
-                    { small: atroCodeImage3Small, medium: atroCodeImage3Medium, big: atroCodeImage3Big, full: atroCodeImage3 }
+                    { small: projectImages.atroCodeImage1Small, medium: projectImages.atroCodeImage1Medium, big: projectImages.atroCodeImage1Big, full: projectImages.atroCodeImage1 },
+                    { small: projectImages.atroCodeImage2Small, medium: projectImages.atroCodeImage2Medium, big: projectImages.atroCodeImage2Big, full: projectImages.atroCodeImage2 },
+                    { small: projectImages.atroCodeImage3Small, medium: projectImages.atroCodeImage3Medium, big: projectImages.atroCodeImage3Big, full: projectImages.atroCodeImage3 }
                 ]
             },
             links: {
@@ -252,14 +232,14 @@ export const Projects: React.FC = () => {
             },
             technologies: ['html', 'sass', 'javascript', 'illustrator'],
             images: {
-                logo: { small: portfolioV1LogoSmall, normal: portfolioV1Logo },
+                logo: { small: projectImages.portfolioV1LogoSmall, normal: projectImages.portfolioV1Logo },
                 desktop: [
-                    { small: portfolioV1DesktopImage1Small, medium: portfolioV1DesktopImage1Medium, big: portfolioV1DesktopImage1Big, full: portfolioV1DesktopImage1 },
-                    { small: portfolioV1DesktopImage2Small, medium: portfolioV1DesktopImage2Medium, big: portfolioV1DesktopImage2Big, full: portfolioV1DesktopImage2 },
-                    { small: portfolioV1DesktopImage3Small, medium: portfolioV1DesktopImage3Medium, big: portfolioV1DesktopImage3Big, full: portfolioV1DesktopImage3 },
-                    { small: portfolioV1DesktopImage4Small, medium: portfolioV1DesktopImage4Medium, big: portfolioV1DesktopImage4Big, full: portfolioV1DesktopImage4 }
+                    { small: projectImages.portfolioV1DesktopImage1Small, medium: projectImages.portfolioV1DesktopImage1Medium, big: projectImages.portfolioV1DesktopImage1Big, full: projectImages.portfolioV1DesktopImage1 },
+                    { small: projectImages.portfolioV1DesktopImage2Small, medium: projectImages.portfolioV1DesktopImage2Medium, big: projectImages.portfolioV1DesktopImage2Big, full: projectImages.portfolioV1DesktopImage2 },
+                    { small: projectImages.portfolioV1DesktopImage3Small, medium: projectImages.portfolioV1DesktopImage3Medium, big: projectImages.portfolioV1DesktopImage3Big, full: projectImages.portfolioV1DesktopImage3 },
+                    { small: projectImages.portfolioV1DesktopImage4Small, medium: projectImages.portfolioV1DesktopImage4Medium, big: projectImages.portfolioV1DesktopImage4Big, full: projectImages.portfolioV1DesktopImage4 }
                 ],
-                mobile: [portfolioV1MobileImage1, portfolioV1MobileImage2, portfolioV1MobileImage3, portfolioV1MobileImage4]
+                mobile: [projectImages.portfolioV1MobileImage1, projectImages.portfolioV1MobileImage2, projectImages.portfolioV1MobileImage3, projectImages.portfolioV1MobileImage4]
             },
             links: {
                 github: 'https://github.com/Vukain/PortfolioV1B',
@@ -268,7 +248,7 @@ export const Projects: React.FC = () => {
         },
     ];
 
-    const mappedProjects = projects.map((data, index) => (<Project data={data} key={index + data.id} index={index} numberOfProjects={projects.length} currentProject={currentProject} setCurrentProject={setCurrentProject} projectSize={projectSize} sectionHeight={sectionHeight} />))
+    const mappedProjects = projects.map((data, index) => (<Project data={data} key={index + data.id} index={index} numberOfProjects={projects.length} currentProject={currentProject} setCurrentProject={setCurrentProject} projectSize={projectSize} sectionHeight={sectionHeight} />));
 
     return (
         <>

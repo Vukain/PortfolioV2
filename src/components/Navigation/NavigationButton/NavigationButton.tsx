@@ -39,12 +39,12 @@ export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibi
         }
     };
 
-    let logo;
+    let textOrImage = <span className={styles.text}>{name}</span>;
 
     if (image) {
-        const Logo = image.main;
-        const LogoHover = image.hover;
-        logo = <>
+        const { main: Logo, hover: LogoHover } = image;
+
+        textOrImage = <>
             <Logo className={clsx(styles.logo, styles['logo--main'])} />
             <LogoHover className={clsx(styles.logo, styles['logo--hover'])} />
         </>;
@@ -52,7 +52,7 @@ export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibi
 
     return (
         <button className={clsx(styles.button, !navigationVisibility && styles['button--hidden'], currentSection === id && styles['button--active'], skipDelay && styles['button--skip_delay'])} onClick={onClickHandler}>
-            {image ? logo : <span className={styles.text}>{name}</span>}
+            {textOrImage}
         </button >
     );
 };

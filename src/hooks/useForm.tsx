@@ -9,15 +9,7 @@ type InputsData = Record<string, {
     error: Record<string, string>;
 }>;
 
-type ReturnType = {
-    inputValues: InputsData,
-    setInputValues: React.Dispatch<React.SetStateAction<InputsData>>,
-    changeHandler: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-};
-
-export const useForm = (...fields: Fields): ReturnType => {
-
-    const { validate } = validateInput();
+export const useForm = (...fields: Fields) => {
 
     const initInputs = (fields: Fields) => {
 
@@ -36,7 +28,7 @@ export const useForm = (...fields: Fields): ReturnType => {
 
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        const status = validate({ name: name, value: value }) ? 'valid' : 'error';
+        const status = validateInput({ name: name, value: value }) ? 'valid' : 'error';
         setInputValues(prevState => ({
             ...prevState,
             [name]: { ...prevState[name], value: value, status: status }

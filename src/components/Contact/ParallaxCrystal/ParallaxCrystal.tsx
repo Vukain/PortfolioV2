@@ -9,13 +9,11 @@ type MyProps = {
         name: string,
         moveSpeed: number,
         orbitRange: string,
-        crystalImage: React.FC<{ className?: string }>
+        CrystalImage: React.FC<{ className?: string }>
     };
 };
 
-export const ParallaxCrystal: React.FC<MyProps> = ({ data: { name, moveSpeed, orbitRange, crystalImage }, cursorXPosition, cursorYPosition }) => {
-
-    const CrystalImage = crystalImage;
+export const ParallaxCrystal: React.FC<MyProps> = ({ data: { name, moveSpeed, orbitRange, CrystalImage }, cursorXPosition, cursorYPosition }) => {
 
     return (
         <div className={clsx(styles.crystal_wrapper, styles[`crystal_wrapper--${name}`])} style={{ transform: `translate(${moveSpeed * (window.innerWidth - cursorXPosition) / 100}px, ${moveSpeed * (window.innerHeight - cursorYPosition) / 100}px)` }}>

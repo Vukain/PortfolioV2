@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import styles from './Skills.module.sass';
 
 import { AppContext } from '../../store/AppContext';
+import { checkMotionReduce } from '../../utils/checkMotionReduce';
 import { SkillCard, SectionName } from '../';
 
 import { ReactComponent as FrontendIcon } from '../../images/icons/adjustments.svg';
@@ -14,9 +15,10 @@ import { ReactComponent as CrystalMoving } from '../../images/crystal_scroll.svg
 import { ReactComponent as MotionPathDesktop } from '../../images/motion_path_desktop.svg';
 import { ReactComponent as MotionPathMobile } from '../../images/motion_path_mobile.svg';
 
+
 export const Skills: React.FC = () => {
 
-    const { language, motionNotReduced, setCurrentSection } = useContext(AppContext);
+    const { language, setCurrentSection } = useContext(AppContext);
 
     const crystalRef: React.MutableRefObject<null | SVGSVGElement> = useRef(null);
     const frontendRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
@@ -33,6 +35,8 @@ export const Skills: React.FC = () => {
     useEffect(() => {
         const [crystal, frontendCard, backendCard, graphicsCard] = [crystalRef.current, frontendRef.current, backendRef.current, graphicsRef.current];
 
+        const motionNotReduced = !checkMotionReduce();
+
         if (crystal) {
             const elementGetter = gsap.utils.selector(crystal);
 
@@ -46,8 +50,6 @@ export const Skills: React.FC = () => {
             const inner = elementGetter('[id*="inner"]');
 
             gsap.set([inner, crystal], { autoAlpha: 0 })
-
-            if (motionNotReduced) { }
 
             // Timelines for crystal shards scroll animation
             const [leftBottomShardTL, rightBottomShardTL, leftShardTL, topShardTL, rightShardTL, bottomShardTL] = Array.from(Array(6), (_, index) => (gsap.timeline({
