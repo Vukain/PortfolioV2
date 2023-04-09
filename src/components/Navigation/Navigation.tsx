@@ -38,7 +38,7 @@ export const Navigation: React.FC = () => {
     const buttonsList = buttonsData.map((item, index) => (
         <NavigationButton
             skipDelay={skipAnimationDelay} navigationVisibility={navigationVisibility} navigationVisibilitySetter={setNavigationVisibility}
-            name={item.name} id={item.id} key={index} image={item.image} />
+            name={item.name} id={item.id} key={index + item.id} image={item.image} />
     ));
 
     const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index} />));

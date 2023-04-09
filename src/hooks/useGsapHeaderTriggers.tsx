@@ -106,5 +106,5 @@ export const useGsapHeaderTriggers = (objectRef: refProp) => {
             }
         });
 
-    }, [setCurrentSection]);
+    }, [objectRef, setCurrentSection]);
 };

@@ -5,16 +5,15 @@ import emailjs from '@emailjs/browser';
 import styles from './Contact.module.sass';
 
 import { checkMotionReduce } from '../../utils/checkMotionReduce';
-import { useGsapContactTriggers } from '../../hooks/useGsapContactTriggers';
 import { useForm } from '../../hooks/useForm';
+import { useLanguageSwitch } from '../../hooks/useLanguageSwitch';
+import { useGsapContactTriggers } from '../../hooks/useGsapContactTriggers';
 import { Button, SectionName, ParallaxCrystal } from '../';
-
 import {
     HeroShardImg1, HeroShardImg2, HeroShardImg3, HeroShardImg4, HeroShardImg5, HeroShardImg6, HeroShardImg7,
     ScrollShardImg1, ScrollShardImg2, ScrollShardImg3, ScrollShardImg4, ScrollShardImg5, ScrollShardImg6, ScrollShardImg7,
     SpikedShardImg1, SpikedShardImg2, SpikedShardImg3, SpikedShardImg4
 } from '../../images/parallax_shards';
-import { useLanguageSwitch } from '../../hooks/useLanguageSwitch';
 
 // Could be used as Mutable<React.RefObject<T>> instead of React.MutableRefObject
 // type Mutable<Type> = {

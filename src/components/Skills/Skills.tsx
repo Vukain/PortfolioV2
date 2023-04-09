@@ -256,7 +256,7 @@ export const Skills: React.FC = () => {
                     scrub: 2,
                     start: motionStart,
                     end: motionEnd,
-                    invalidateOnRefresh: true,
+                    invalidateOnRefresh: false,
                 }
             });
 

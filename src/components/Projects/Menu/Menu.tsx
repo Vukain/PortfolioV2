@@ -1,27 +1,38 @@
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { clsx } from 'clsx';
 
 import styles from './Menu.module.sass';
 
-type MyProps = {
+import { checkProjectSize } from '../../../utils/checkProjectSize';
+
+type Props = {
     names: string[],
-    currentProject: number,
-    projectSize: number,
-    sectionHeight: number
+    currentProject: number
 };
 
-export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, sectionHeight }) => {
+export const Menu: React.FC<Props> = ({ names, currentProject }) => {
+
+    const [projectSize, setProjectSize] = useState(0);
+    const [sectionHeight, setSectionHeight] = useState(0);
+
+    useEffect(() => {
+        const { sectionHeight, projectSize } = checkProjectSize()
+        setSectionHeight(sectionHeight);
+        setProjectSize(projectSize);
+    }, []);
 
     const clickHandler = (e: React.MouseEvent<HTMLElement>, index: number) => {
         e.preventDefault()
+
         // Alternative scroll method without ability to adjust speed
         // window.scroll({
-        //     top: sectionHeight + (index * projectWidth),
+        //     top: sectionHeight + (index * projectSize),
         //     left: 0,
         //     behavior: 'smooth'
         // });
 
-        // Fix for weird jump glitch when entering pinned state
+        // Fix for weird jump glitch when entering pinned state, small delay needed for fix to work as intended
         if (currentProject === 0) {
             window.scroll({
                 top: sectionHeight + 1,
@@ -35,8 +46,6 @@ export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, se
                 behavior: 'smooth'
             });
         };
-
-        // Small delay needed for fix to work as intended
         setTimeout(() => {
             gsap.to(window, {
                 scrollTo: {
@@ -49,7 +58,7 @@ export const Menu: React.FC<MyProps> = ({ names, currentProject, projectSize, se
     };
 
     const projectLinks = names.map((element, index) => (
-        <div className={styles.wrapper} key={index}>
+        <div className={styles.wrapper} key={index + element}>
             <button className={clsx(styles.button, currentProject === index && styles['button--active'])} onClick={(e) => { clickHandler(e, index) }} >
                 <span className={styles.text}>{element}</span>
             </button>
