@@ -12,7 +12,7 @@ export const useGsapImagePortalTriggers = (portalRef: PortalRef, isActive: boole
 
     const { currentSection } = useContext(AppContext);
 
-    // Ref used to work within several useEffects
+    // Ref used to use timeline within several useEffects
     const imagesTL: React.MutableRefObject<null | gsap.core.Timeline> = useRef(null);
 
     // Setup timeline and get objects for animations

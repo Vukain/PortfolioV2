@@ -31,29 +31,32 @@ export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImage
 
     useGsapImagePortalTriggers(portalRef, isActive, { desktopImages: Boolean(desktopImages), mobileImages: Boolean(mobileImages), codeImages: Boolean(codeImages) });
 
-    // Create project screenshots
-    const codeScreenshots = codeImages ? codeImages.map((image, index) => (
+    const codeScreenshots = codeImages?.map((image, index) => (
         <img className={styles.screenshot_code} key={`code_${index}`}
             srcSet={`${image.full} 600w, ${image.full} 800w, ${image.full} 1000w, ${image.full} 1100w`}
             sizes={'(orientation: portrait) 70vw, 40vw'}
             src={image.full} alt={`project code screenshot ${index + 1}`}
         />
-    )) : null;
+    ));
 
-    const desktopScreenshots = desktopImages ? desktopImages.map((image, index) => (
+    const desktopScreenshots = desktopImages?.map((image, index) => (
         <img className={styles.screenshot_desktop} key={`desktop_${index}`}
             srcSet={`${image.small} 800w, ${image.medium} 1200w, ${image.big} 1600w, ${image.full} 1900w`}
             sizes={'(orientation: portrait) 60vw, 35vw'}
             src={image.full} alt={`project desktop screenshot ${index + 1}`}
         />
-    )) : null;
+    ));
 
-    const mobileScreenshots = mobileImages ? mobileImages.map((image, index) => (
+    const mobileScreenshots = mobileImages?.map((image, index) => (
         <img className={styles.screenshot_mobile} key={`mobile_${index}`} src={image} alt={`project mobile screenshot ${index + 1}`} />
-    )) : null;
+    ));
+
+    const screenshots = [codeScreenshots, desktopScreenshots, mobileScreenshots].filter(el => el).map((el, idx) => <div key={idx} className={styles.wrapper_screenshots}>
+        {el}
+    </div>)
 
     return (
-        <div className={styles.image_portal} ref={portalRef} onClick={() => { console.log(currentSection) }}>
+        <div className={styles.image_portal} ref={portalRef}>
 
             <div className={styles.wrapper}>
                 <div className={styles.wrapper_logos}>
@@ -63,15 +66,7 @@ export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImage
                         src={logoImage.normal} alt='project logo' loading="lazy"
                     />
                 </div>
-                <div className={styles.wrapper_screenshots}>
-                    {desktopScreenshots}
-                </div>
-                <div className={styles.wrapper_screenshots}>
-                    {mobileScreenshots}
-                </div>
-                <div className={styles.wrapper_screenshots}>
-                    {codeScreenshots}
-                </div>
+                {screenshots}
             </div>
 
             <a href={live} className={styles.hyperlink} target="_blank" rel="noopener noreferrer" aria-label='project live version' tabIndex={isActive ? 0 : -1}>

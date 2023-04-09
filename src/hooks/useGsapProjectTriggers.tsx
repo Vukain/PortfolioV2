@@ -36,9 +36,12 @@ export const useGsapProjectTriggers = (infoRef: InfoRef, index: number, numberOf
             gsap.set([slidingText], { yPercent: motionReducerSwitch('105'), opacity: 0 });
         };
 
-        // Create timeline detecting which project is active
         infoTL.current = gsap.timeline({
-            defaults: { transformOrigin: 'center', ease: 'sine.inOut' },
+            defaults: { transformOrigin: 'center', ease: 'sine.inOut' }
+        })
+
+        // Create timeline detecting which project is active
+        gsap.timeline({
             scrollTrigger: {
                 trigger: '#app',
                 onEnter: () => {
