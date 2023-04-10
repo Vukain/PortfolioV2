@@ -5,13 +5,13 @@ import styles from './SkillCard.module.sass';
 
 import { ReactComponent as CardCrystal } from '../../../images/crystal_card.svg';
 
-type MyProps = {
+type Props = {
     data: { category: string, display: string, skills: string[] },
     children: JSX.Element,
     activeCard: string
 };
 
-export const SkillCard = forwardRef<HTMLDivElement, MyProps>(({ data: { category, display, skills }, activeCard, children }, ref) => {
+export const SkillCard = forwardRef<HTMLDivElement, Props>(({ data: { category, display, skills }, activeCard, children }, ref) => {
 
     return (
         <article className={styles.card} ref={ref} tabIndex={0}>

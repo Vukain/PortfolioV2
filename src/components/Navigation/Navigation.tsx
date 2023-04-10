@@ -41,7 +41,7 @@ export const Navigation: React.FC = () => {
             name={item.name} id={item.id} key={index + item.id} image={item.image} />
     ));
 
-    const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index} />));
+    const burgerSegments = Array(4).fill(null).map((_, index) => (<div className={styles.hamburger_segment} key={index + 'burger'} />));
 
     return (
         <nav className={clsx(styles.navigation, !navigationVisibility && styles['navigation--hidden'], skipAnimationDelay && styles['navigation--skip_delay'])}>

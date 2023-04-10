@@ -1,9 +1,7 @@
-import { useRef, useContext } from 'react';
+import { useRef } from 'react';
 import { clsx } from 'clsx';
 
 import styles from './ImagePortal.module.sass';
-
-import { AppContext } from '../../../../store/AppContext';
 
 import { ReactComponent as GithubIcon } from '../../../../images/icons/github-project.svg';
 import { ReactComponent as LinkIcon } from '../../../../images/icons/link.svg';
@@ -25,14 +23,12 @@ type Props = {
 
 export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImages, mobileImages, codeImages }, links: { github, live }, isActive }) => {
 
-    const { currentSection } = useContext(AppContext);
-
     const portalRef = useRef(null);
 
     useGsapImagePortalTriggers(portalRef, isActive, { desktopImages: Boolean(desktopImages), mobileImages: Boolean(mobileImages), codeImages: Boolean(codeImages) });
 
     const codeScreenshots = codeImages?.map((image, index) => (
-        <img className={styles.screenshot_code} key={`code_${index}`}
+        <img className={styles.screenshot_code} key={index + 'code'}
             srcSet={`${image.full} 600w, ${image.full} 800w, ${image.full} 1000w, ${image.full} 1100w`}
             sizes={'(orientation: portrait) 70vw, 40vw'}
             src={image.full} alt={`project code screenshot ${index + 1}`}
@@ -40,7 +36,7 @@ export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImage
     ));
 
     const desktopScreenshots = desktopImages?.map((image, index) => (
-        <img className={styles.screenshot_desktop} key={`desktop_${index}`}
+        <img className={styles.screenshot_desktop} key={index + 'desktop'}
             srcSet={`${image.small} 800w, ${image.medium} 1200w, ${image.big} 1600w, ${image.full} 1900w`}
             sizes={'(orientation: portrait) 60vw, 35vw'}
             src={image.full} alt={`project desktop screenshot ${index + 1}`}
@@ -48,12 +44,13 @@ export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImage
     ));
 
     const mobileScreenshots = mobileImages?.map((image, index) => (
-        <img className={styles.screenshot_mobile} key={`mobile_${index}`} src={image} alt={`project mobile screenshot ${index + 1}`} />
+        <img className={styles.screenshot_mobile} key={index + 'mobile'} src={image} alt={`project mobile screenshot ${index + 1}`} />
     ));
 
-    const screenshots = [codeScreenshots, desktopScreenshots, mobileScreenshots].filter(el => el).map((el, idx) => <div key={idx} className={styles.wrapper_screenshots}>
-        {el}
-    </div>)
+    const screenshots = [codeScreenshots, desktopScreenshots, mobileScreenshots].filter(element => element).map((element, index) =>
+        <div key={index + 'screenshots'} className={styles.wrapper_screenshots}>
+            {element}
+        </div>)
 
     return (
         <div className={styles.image_portal} ref={portalRef}>
@@ -63,8 +60,7 @@ export const ImagePortal: React.FC<Props> = ({ images: { logoImage, desktopImage
                     <img className={styles.logo}
                         srcSet={`${logoImage.small} 800w, ${logoImage.normal} 1200w`}
                         sizes={'(orientation: portrait) 70vw, 45vw'}
-                        src={logoImage.normal} alt='project logo' loading="lazy"
-                    />
+                        src={logoImage.normal} alt='project logo' loading="lazy" />
                 </div>
                 {screenshots}
             </div>
