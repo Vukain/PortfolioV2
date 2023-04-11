@@ -6,7 +6,7 @@ import styles from './Navigation.module.sass';
 import { AppContext } from '../../store/AppContext';
 import { checkLocation } from '../../utils/checkLocation';
 import { useLanguageSwitch } from '../../hooks/useLanguageSwitch';
-import { NavigationButton } from '../';
+import { LanguageChanger, NavigationButton } from '../';
 import { ReactComponent as VukainLogoGreen } from '../../images/vuk_sygnet_green.svg';
 import { ReactComponent as VukainLogoPurple } from '../../images/vuk_sygnet_purple.svg';
 
@@ -45,7 +45,9 @@ export const Navigation: React.FC = () => {
 
     return (
         <nav className={clsx(styles.navigation, !navigationVisibility && styles['navigation--hidden'], skipAnimationDelay && styles['navigation--skip_delay'])}>
+
             {buttonsList}
+            <LanguageChanger skipDelay={skipAnimationDelay} navigationVisibility={navigationVisibility} />
 
             <div className={clsx(styles.hamburger, navigationVisibility && styles['hamburger--active'], skipAnimationDelay && styles['hamburger--skip_delay'])} onClick={onClickHandler}>
                 {burgerSegments}

@@ -7,12 +7,14 @@
     align-items: center
     height: 10vh
     background-image: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2), var(--color-gradient-3))
-    padding: 0 3vw
+    padding: 0 4.5vw
     overflow: hidden
     @include mobile-and-small
-        padding: 0 3vw
+        padding: 0
         height: 9vh
-        grid-template-columns: 1fr max-content 1fr
+        gap: 0
+        grid-template-columns: max-content max-content
+        justify-content: space-evenly
 
 .copy
     color: var(--color-font-1)

@@ -20,14 +20,15 @@
         position: absolute
         z-index: 999
         flex-direction: column
-        right: 5.7%
-        @media not screen and (prefers-reduced-motion: reduce)
-            transform: translateX(50%)
+        right: 4.5vw
+        // @media not screen and (prefers-reduced-motion: reduce)
+        //     transform: translateX(50%)
         @include mobile-and-small
             flex-direction: row
             gap: 6vw
             top: 13vw
             left: 6vw
+            right: unset
             transform: translateY(-50%)
 
 .link

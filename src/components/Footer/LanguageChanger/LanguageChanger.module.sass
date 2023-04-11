@@ -1,29 +1,66 @@
 @import '../../../sass/mixins'
+@import '../../../sass/variables'
+
+@keyframes nav-slide
+    100%
+        transform: translateY(0%)
+
+.wrapper
+
+    @include desktop
+        padding: 2vh 0
+        @media not screen and (prefers-reduced-motion: reduce)
+            transform: translateY(-120%)
+            animation: nav-slide 1.4s calc($ui-slide-delay * 1s) cubic-bezier(0.65, 0, 0.35, 1) forwards
+            &--skip_delay
+                animation-delay: 0s
+
+    @include mobile-and-small
+        overflow: hidden
+        padding: 1vh
+        z-index: 99999
+
+        transform: translateY(0%)
+        &--hidden
+            transition: 0s 2s visibility
+            visibility: hidden
+            & .changer
+                transition: transform .3s 0s ease
+                transform: translateY(150%)
 
 .changer
     justify-self: end
-    height: 4.4vh
-    width: 10.4vh
-    background-color: var(--color-font-1)
-    border-radius: 2.2vh
+    height: 4vh
+    width: 8vh
+    background-color: var(--background-color-2)
+    border-radius: 2vh
     display: flex
     justify-content: space-between
     align-items: center
     position: relative
+    outline: .4vh solid var(--color-gradient-3)
+    transition: transform .8s .62s ease
     @include mobile-and-small
-        height: 8.8vw
-        width: 20.8vw
+        height: 10vw
+        width: 20vw
+        border-radius: 8vw
 
 .indicator
     position: absolute
-    top: .2vh
-    right: .2vh
-    bottom: .2vh
-    left: .2vh
-    border-radius: 2vh
+    top: .4vh
+    right: .4vh
+    bottom: .4vh
+    left: .4vh
+    border-radius: 1.8vh
     overflow: hidden
     z-index: 1
     transition: .3s
+    @include mobile-and-small
+        top: 1vw
+        right: 1vw
+        bottom: 1vw
+        left: 1vw
+        border-radius: 10vw
     &::before
         @include before-after
         width: 100%
@@ -31,48 +68,35 @@
         border-radius: 2vh
         background-color: var(--color-gradient-3)
         transition: .3s transform
-    @include mobile-and-small
-        top: .4vw
-        right: .4vw
-        bottom: .4vw
-        left: .4vw
-        border-radius: 4vw
-
-        &--english
-            &::before
-                transform: translate(-12vw, 0%)
-
-        &--polish
-            &::before
-                transform: translate(12vw, 0%)
 
     &--english
         &::before
-            transform: translate(-6vh, 0%)
-
+            transform: translate(-4vh, 0%)
+            @include mobile-and-small
+                transform: translate(-10vw, 0%)
     &--polish
         &::before
-            transform: translate(6vh, 0%)
-
+            transform: translate(4vh, 0%)
+            @include mobile-and-small
+                transform: translate(10vw, 0%)
 .button
     all: unset
     cursor: pointer
-    width: 4vh
-    height: 4vh
+    width: 3.2vh
+    height: 3.2vh
     border-radius: 50%
-    font-size: calc(.8 * var(--font-size-normal))
+    font-size: calc(.65 * var(--font-size-normal))
     letter-spacing: var(--letter-spacing-tiny)
     font-weight: bold
     z-index: 2
-    color: var(--background-color-2)
+    color: var(--color-font-1)
     background-color: transparent
     transition: color .3s, background-color .4s
-    margin: .2vh
+    margin: .4vh
     &:hover, &:focus-visible
         background-color: var(--color-main-1)
-        color: var(--color-font-1)
     @include mobile-and-small
-        margin: .4vw
+        margin: 1vw
         font-size: calc(.9 * var(--font-size-normal))
         width: 8vw
         height: 8vw

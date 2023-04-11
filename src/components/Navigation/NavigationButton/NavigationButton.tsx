@@ -5,7 +5,7 @@ import styles from './NavigationButton.module.sass';
 
 import { AppContext } from '../../../store/AppContext';
 
-type MyProps = {
+type Props = {
     id: string,
     name: string,
     navigationVisibility: boolean,
@@ -14,12 +14,11 @@ type MyProps = {
     image?: Record<"main" | "hover", React.FC<{ className?: string, title?: string }>>,
 };
 
-export const NavigationButton: React.FC<MyProps> = ({ id, name, navigationVisibility, skipDelay, navigationVisibilitySetter, image }) => {
+export const NavigationButton: React.FC<Props> = ({ id, name, navigationVisibility, skipDelay, navigationVisibilitySetter, image }) => {
 
     const { setNavigateTo, currentSection, setCurrentSection } = useContext(AppContext);
 
     const onClickHandler = () => {
-
         // Scroll to location and play navigation animation
         setCurrentSection(id)
         if (window.matchMedia('(orientation: landscape)').matches) {

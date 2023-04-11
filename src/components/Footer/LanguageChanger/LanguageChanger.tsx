@@ -5,7 +5,12 @@ import styles from './LanguageChanger.module.sass';
 
 import { AppContext } from '../../../store/AppContext';
 
-export const LanguageChanger: React.FC = () => {
+type Props = {
+    skipDelay: boolean,
+    navigationVisibility: boolean,
+};
+
+export const LanguageChanger: React.FC<Props> = ({ skipDelay, navigationVisibility }) => {
 
     const { language, setLanguage } = useContext(AppContext);
 
@@ -27,10 +32,12 @@ export const LanguageChanger: React.FC = () => {
     };
 
     return (
-        <div className={styles.changer}>
-            <div className={clsx(styles.indicator, styles[`indicator--${language}`])}></div>
-            <button className={clsx(styles.button, language === 'english' && styles.selected)} onClick={() => { onClickHandler('en') }}>EN</button>
-            <button className={clsx(styles.button, language === 'polish' && styles.selected)} onClick={() => { onClickHandler('pl') }}>PL</button>
+        <div className={clsx(styles.wrapper, skipDelay && styles['wrapper--skip_delay'], !navigationVisibility && styles['wrapper--hidden'])}>
+            <div className={styles.changer}>
+                <div className={clsx(styles.indicator, styles[`indicator--${language}`])}></div>
+                <button className={clsx(styles.button, language === 'english' && styles.selected)} onClick={() => { onClickHandler('en') }}>EN</button>
+                <button className={clsx(styles.button, language === 'polish' && styles.selected)} onClick={() => { onClickHandler('pl') }}>PL</button>
+            </div>
         </div>
     );
 };

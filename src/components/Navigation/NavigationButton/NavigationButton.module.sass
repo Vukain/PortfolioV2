@@ -54,7 +54,7 @@
                 transition-delay: .92s
         & .logo
             @include mobile-and-small
-                transition-delay: .92s, 0s, 0s
+                transition-delay: 1.02s, 0s, 0s
     &:nth-child(2)
         & .text
             background-position-x: 33%
@@ -66,7 +66,7 @@
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 33%
-                transition-delay: .82s
+                transition-delay: .92s
     &:nth-child(3)
         & .text
             background-position-x: 66%
@@ -78,7 +78,7 @@
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 66%
-                transition-delay: .72s
+                transition-delay: .82s
 
     &:nth-child(4)
         & .text
@@ -91,11 +91,11 @@
             @include mobile-and-small
                 background-position-x: unset
                 background-position-y: 100%
-                transition-delay: .62s
+                transition-delay: .72s
 
     &--hidden
         @include mobile-and-small
-            transition: 0s 2s
+            transition: 0s 2s visibility
             visibility: hidden
             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
                 & .text, & .logo
