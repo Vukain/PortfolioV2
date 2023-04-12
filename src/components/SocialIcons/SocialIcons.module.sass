@@ -11,7 +11,7 @@
 
 .icons
     display: flex
-    gap: 1.5vw
+    gap: 2vw
     justify-self: start
     @include mobile-and-small
         gap: 6vw
@@ -37,17 +37,9 @@
         & .wrapper
             &::before
                 background-color: var(--color-font-1)
-            &--hero
-                &::before
-                    outline-offset: 1vh
-        @include mobile-and-small
-            & .icon
-                fill: var(--color-main-2)
-            & .wrapper
-                &--hero
-                    &:hover, &:focus
-                        &::before
-                            outline-offset: 2vw
+                outline-offset: 1vh
+                @include mobile-and-small
+                    outline-offset: 2vw
 
     @media not screen and (prefers-reduced-motion: reduce)
         @for $i from 1 to 4
@@ -71,12 +63,15 @@
         left: 50%
         transform: translate(-50%, -50%)
         transition: background-color .4s, outline-offset .2s ease
+        outline: .4vh solid var(--color-font-1)
+        outline-offset: .4vh
     @include mobile-and-small
         width: 8vw
         height: 8vw
         &::before
             width: 6vw
             height: 6vw
+            outline-offset: .7vw
 
     &--hero
         @media not screen and (prefers-reduced-motion: reduce)
@@ -84,7 +79,7 @@
             animation: icon-slide-right 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards
         &::before
             background-color: var(--color-font-1)
-            outline: .4vh solid var(--color-gradient-3)
+            outline-color: var(--color-gradient-3)
             outline-offset: .5vh
         @include mobile-and-small
             @media not screen and (prefers-reduced-motion: reduce)
@@ -92,7 +87,7 @@
                 animation: icon-slide-top .8s cubic-bezier(0.65, 0, 0.35, 1) forwards
             &::before
                 outline-offset: 1vw
-                outline: .4vh solid var(--color-main-2)
+                outline-color: var(--color-main-2)
 
 .icon
     display: block
