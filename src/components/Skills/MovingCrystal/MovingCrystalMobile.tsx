@@ -99,7 +99,7 @@ export const MovingCrystalMobile: React.FC = () => {
                 duration: .2,
                 delay: -.2,
                 onComplete: () => {
-                    if (!motionReduced) {
+                    if (navigator.userAgent.toLowerCase().indexOf('firefox') === -1 && !motionReduced) {
                         setFloat(true);
                     };
                 }
@@ -139,19 +139,12 @@ export const MovingCrystalMobile: React.FC = () => {
             };
 
             timelinesRef.current = [breakCrystalTL, floatingCrystalTL, ...crystalShardsTL];
-            // Unused automatic crystal floating, now floating is synced with scroll and then transitions into css floating animation
-            // const floatingShardAuto = gsap.timeline({ defaults: { ease: 'none', transformOrigin: 'center' }, repeat: -1, yoyo: true });
-
-            // floatingShardAuto.to(lowerShard, { duration: 1, yPercent: '+=35', rotateZ: '2deg' })
-            //   .to(lowerShard, { duration: 1, yPercent: '+=40', rotateZ: '-4deg' })
-            //   .to(lowerShard, { duration: 1, yPercent: '+=30', rotateZ: '3deg' })
-            //   .to(lowerShard, { duration: 1, yPercent: '+=25', rotateZ: '-3deg' })
         };
 
         return () => {
             timelineKiller(timelinesRef.current!)
-        }
-    }, [])
+        };
+    }, []);
 
     return (
         <>

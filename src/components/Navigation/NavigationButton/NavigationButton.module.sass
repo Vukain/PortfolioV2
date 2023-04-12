@@ -11,7 +11,7 @@
     @include mobile-and-small
         width: 30vw
         transition: transform .8s ease, opacity .3s ease, filter .7s ease
-        transform: translateY(0%)
+        transform: translateY(0)
     &--main
         filter: saturate(0)
     &--hover
@@ -32,7 +32,7 @@
         z-index: 99999
     @include desktop
         @media not screen and (prefers-reduced-motion: reduce)
-            transform: translateY(-110%)
+            transform: translateY(-12vh)
             animation: nav-slide 1.4s calc($ui-slide-delay * 1s) cubic-bezier(0.65, 0, 0.35, 1) forwards
             &--skip_delay
                 animation-delay: 0s

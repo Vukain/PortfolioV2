@@ -6,11 +6,10 @@
         transform: translateY(0%)
 
 .wrapper
-
     @include desktop
         padding: 2vh 0
         @media not screen and (prefers-reduced-motion: reduce)
-            transform: translateY(-120%)
+            transform: translateY(-12vh)
             animation: nav-slide 1.4s calc($ui-slide-delay * 1s) cubic-bezier(0.65, 0, 0.35, 1) forwards
             &--skip_delay
                 animation-delay: 0s
