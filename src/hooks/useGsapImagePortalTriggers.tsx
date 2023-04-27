@@ -43,7 +43,7 @@ export const useGsapImagePortalTriggers = (portalRef: PortalRef, isActive: boole
         if (codeImages) {
             const codeScreenshots: HTMLElement[] = elementGetter('[class*="screenshot_code"]');
             const freezeTime = 1.5;
-            const staggerTime = 1.2 + freezeTime;
+            const staggerTime = 1.3 + freezeTime;
             const duration = 1;
 
             gsap.set(codeScreenshots, { top: '50%', left: '50%', yPercent: '-50', xPercent: '-50', translateY: isDesktop ? '85vh' : '40vh', scale: .9 })

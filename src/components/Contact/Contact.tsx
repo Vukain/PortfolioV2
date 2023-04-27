@@ -15,11 +15,6 @@ import {
     SpikedShardImg1, SpikedShardImg2, SpikedShardImg3, SpikedShardImg4
 } from '../../images/parallax_shards';
 
-// Could be used as Mutable<React.RefObject<T>> instead of React.MutableRefObject
-// type Mutable<Type> = {
-//     -readonly [Key in keyof Type]: Type[Key];
-// };
-
 type Crystals = Array<{
     name: string,
     CrystalImage: React.FC,
@@ -29,10 +24,10 @@ type Crystals = Array<{
 
 export const Contact: React.FC = () => {
 
+    const initialCursorXPositionRef = useRef(0);
+    const initialCursorYPositionRef = useRef(0);
+    const formRef = useRef(null);
     const sectionRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
-    const formRef: React.MutableRefObject<null | HTMLFormElement> = useRef(null);
-    const initialCursorXPositionRef: React.MutableRefObject<number> = useRef(0);
-    const initialCursorYPositionRef: React.MutableRefObject<number> = useRef(0);
     const errorTimeout: React.MutableRefObject<null | NodeJS.Timeout> = useRef(null);
 
     const [cursorXPosition, setCursorXPosition] = useState(0);
