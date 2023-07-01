@@ -18,6 +18,22 @@ import { ReactComponent as SpikedShardImg3 } from './spiked_3.svg';
 import { ReactComponent as SpikedShardImg4 } from './spiked_4.svg';
 
 export {
-    HeroShardImg1, HeroShardImg2, HeroShardImg3, HeroShardImg4, HeroShardImg5, HeroShardImg6, HeroShardImg7,
-    ScrollShardImg1, ScrollShardImg2, ScrollShardImg3, ScrollShardImg4, ScrollShardImg5, ScrollShardImg6, ScrollShardImg7, SpikedShardImg1, SpikedShardImg2, SpikedShardImg3, SpikedShardImg4
+  HeroShardImg1,
+  HeroShardImg2,
+  HeroShardImg3,
+  HeroShardImg4,
+  HeroShardImg5,
+  HeroShardImg6,
+  HeroShardImg7,
+  ScrollShardImg1,
+  ScrollShardImg2,
+  ScrollShardImg3,
+  ScrollShardImg4,
+  ScrollShardImg5,
+  ScrollShardImg6,
+  ScrollShardImg7,
+  SpikedShardImg1,
+  SpikedShardImg2,
+  SpikedShardImg3,
+  SpikedShardImg4,
 };

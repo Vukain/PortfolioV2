@@ -60,6 +60,7 @@
     "@craco/craco": "^7.1.0",
     "@svgr/webpack": "^6.2.1",
     "cross-env": "^7.0.3",
+    "prettier": "^2.8.8",
     "webpack-cli": "^4.9.2"
   }
 }

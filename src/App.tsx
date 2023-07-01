@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 import './App.sass';
 
@@ -14,7 +14,7 @@ gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, ScrollToPlugin);
 
 // Affects performance
 gsap.config({
-  force3D: true
+  force3D: true,
 });
 
 // Fix for animation jump when address bar toggles on mobile
@@ -23,9 +23,7 @@ ScrollTrigger.config({
 });
 
 export const App = () => {
-
   useEffect(() => {
-
     const location = checkLocation();
 
     // Scroll to section, when direct linking, after complete page load
@@ -33,7 +31,7 @@ export const App = () => {
       setTimeout(() => {
         if (['projects', 'skills', 'contact'].includes(location)) {
           window.location.href = `#${location}`;
-        };
+        }
       }, 0);
     } else {
       document.addEventListener('readystatechange', () => {
@@ -41,18 +39,16 @@ export const App = () => {
           setTimeout(() => {
             if (['projects', 'skills', 'contact'].includes(location)) {
               window.location.href = `#${location}`;
-            };
+            }
           }, 0);
-        };
+        }
       });
-    };
-  }, [])
+    }
+  }, []);
 
   return (
-    <AppContextProvider >
-
-      <div className='App' id='app'>
-
+    <AppContextProvider>
+      <div className="App" id="app">
         <ProgressBar />
         <Navigation />
         <Header />
@@ -60,9 +56,7 @@ export const App = () => {
         <Skills />
         <Contact />
         <Footer />
-
-      </div >
-
+      </div>
     </AppContextProvider>
   );
 };
